@@ -62,8 +62,6 @@ namespace Project_Insight
         public static int m_mes = 1;
         public static int m_año = 2018;
         public static int m_semana = 0;
-        /*public static DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
-        public static Calendar cal = dfi.Calendar;*/
         public static DateTime[,] meetings_days = new DateTime[5,2];
         public static string[]  guard_cbx_names = new string[10];
         public static int date_checksum = 0;
