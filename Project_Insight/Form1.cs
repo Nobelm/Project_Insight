@@ -62,8 +62,6 @@ namespace Project_Insight
         public static int m_mes = 1;
         public static int m_año = 2018;
         public static int m_semana = 0;
-        /*public static DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
-        public static Calendar cal = dfi.Calendar;*/
         public static DateTime[,] meetings_days = new DateTime[5,2];
         public static string[]  guard_cbx_names = new string[10];
         public static int date_checksum = 0;
@@ -89,6 +87,7 @@ namespace Project_Insight
             Warn("[1] Make DB static in the code, and implement \"save as pdf\" logic");
             Warn("[2] Implementing autofill function");
             Warn("[3] Implementing handling for \"Asambleas\"");
+            Warn("[4] Get path for DB.csv and update DataBase for Git");
         }
 
         public void Main_Form_FormClosed(object sender, FormClosedEventArgs e)
