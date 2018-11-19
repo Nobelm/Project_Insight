@@ -43,7 +43,7 @@ namespace Project_Insight
 
         private void Refresh_2_0()
         {
-            //open CSV file
+           /* //open CSV file
             Elders.Clear();
             Ministerials.Clear();
             Generals.Clear();
@@ -105,12 +105,12 @@ namespace Project_Insight
            /* Eld_Grid.AutoSize = true;
             Min_Grid.AutoSize = true;
             Gen_Grid.AutoSize = true;
-            Cln_Grid.AutoSize = true;*/
+            Cln_Grid.AutoSize = true;
             Eld_Grid.Refresh();
             Min_Grid.Refresh();
             Gen_Grid.Refresh();
             Cln_Grid.Refresh();
-            sr.Close();
+            sr.Close();*/
         }
 
         

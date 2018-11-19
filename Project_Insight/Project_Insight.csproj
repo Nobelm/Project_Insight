@@ -76,6 +76,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\DB.csv" />
+    <None Include="bin\Debug\Programs.xlsx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -152,6 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Artanis.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DB.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

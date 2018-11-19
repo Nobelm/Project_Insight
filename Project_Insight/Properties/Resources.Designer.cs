@@ -81,6 +81,39 @@ namespace Project_Insight.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Jose Luis Mares
+        ///Orlando Robert
+        ///Cesar Mares
+        ///Maximino Jimenez
+        ///Jose Cruz Villeda
+        ///Omar Belin
+        ///end section
+        ///Mario Flores
+        ///Hugo Robert
+        ///Primitivo Martinez
+        ///Roberto Meza
+        ///Noel Belin
+        ///end section
+        ///Adolfo Morales Garcia
+        ///Antonio Cordova Garcia
+        ///Arturo Velino Garcia España
+        ///Axel Jimenez Cruz
+        ///Horacio Martinez Bautista
+        ///Luis Antonio Castañeda Jimenez
+        ///Martin Abraham Martinez Lopez
+        ///Ronaldo Jahaziel Martinez Aguas
+        ///Saul Alejandro Garcia Nieves
+        ///Claudio Alonso Vargas
+        ///Francisco Perez Hernandez
+        ///Jesus David Rangel R [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string DB {
+            get {
+                return ResourceManager.GetString("DB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Executor {
@@ -137,6 +170,16 @@ namespace Project_Insight.Properties {
             get {
                 object obj = ResourceManager.GetObject("Oracle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Programs {
+            get {
+                object obj = ResourceManager.GetObject("Programs", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

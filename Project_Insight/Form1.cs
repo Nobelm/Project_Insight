@@ -66,7 +66,8 @@ namespace Project_Insight
         public static string[]  guard_cbx_names = new string[10];
         public static int date_checksum = 0;
         public static string[] Command_history = new string[10];
-        public static string[] Command_input = new string[] {"op_xlsx", "op_db", "sv", "clc", "rst", "mnth", "wk", "autofill", "exit"};
+        //public static string[] Command_input = new string[] {"op_xlsx", "op_db", "sv", "clc", "rst", "mnth", "wk", "autofill", "exit"};
+        //public static string[] Command_input = new string[] {"new", "open", "save", "exit", "month"};
         public static string[] month = new string[] { "ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic" };
         public static int command_iterator = 0;
         DB_Form DB_Form = new DB_Form();
@@ -94,6 +95,7 @@ namespace Project_Insight
             if (excel_ready)
             {
                 excel_ready = false;
+                objBooks.Close(0);
                 objApp.Quit();
                 Marshal.ReleaseComObject(Sheet_VyM);
                 Marshal.ReleaseComObject(objBooks);
@@ -221,7 +223,7 @@ namespace Project_Insight
             {
                 busy_trace = true;
                 var array = data.ToCharArray();
-                log_txtBx.SelectionColor = Color.Lime;
+                log_txtBx.SelectionColor = Color.White;
                 log_txtBx.AppendText("L-" + lineNumber + ": ");
                 for (int i = 0; i <= array.Length - 1; i++)
                 {
@@ -247,113 +249,65 @@ namespace Project_Insight
         {
             if (e.KeyCode == Keys.Enter)
             {
-                string Str = txt_Command.Text;
-                Str = Str.ToLower();
-                Command("Executing [" + Str + "] command");
-                Save_command(Str);
-                for (int i=0; i<= Command_input.Length-1; i++)
+                if (txt_Command.Text != "")
                 {
-                    if (Str.Contains(Command_input[i]))
+                    string Str = txt_Command.Text.ToLower();
+                    string cmd = Str;
+                    string sup = "";
+                    int index = 0;
+                    if (Str.Length > 4)
                     {
-                        switch (i)
-                        {
-                            case 0:
-                                {
-                                    openingExcel();
-                                    break;
-                                }
-                            case 1:
-                                {
-                                    open_DB();
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    if (Str.Contains("vym"))
-                                    {
-                                        Process_save(1);
-                                    }
-                                    else if (Str.Contains("rp"))
-                                    {
-                                        Process_save(2);
-                                    }
-                                    else if (Str.Contains("ac"))
-                                    {
-                                        Process_save(3);
-                                    }
-                                    else if (Str.Contains("all"))
-                                    {
-                                        Process_save(4);
-                                    }
-                                    else
-                                    {
-                                        Str = "";
-                                        Warn("Unknown Command");
-                                    }
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    Process_clear();
-                                    break;
-                                }
-                            case 4:
-                                {
-                                    Process_restore();
-                                    break;
-                                }
-                            case 5:
-                                {
-                                    string aux = Str.Substring(5);
-                                    for (int it = 0; it <= month.Length - 1; it++)
-                                    {
-                                        if (aux.Contains(month[it]))
-                                        {
-
-                                            m_mes = it + 1;
-                                            lbl_Month.Text = "Mes: " + month[it];
-                                            Set_date();
-                                            break;
-                                        }
-                                    }
-                                    break;
-                                }
-                            case 6:
-                                {
-                                    if (int.TryParse(Str.Substring(3, 1), out m_semana))
-                                    {
-                                        if (m_semana > 5)
-                                        {
-                                            m_semana = 5;
-                                        }
-                                        else if(m_semana < 1)
-                                        {
-                                            m_semana = 1;
-                                        }
-                                        Notify("Week set in [" + m_semana.ToString() + "]");
-                                        lbl_Week.Text = "Semana: " + m_semana.ToString();
-                                    }
-                                    else
-                                    {
-                                        Warn("Week not recognised");
-                                    }
-                                    break;
-                                }
-                            case 7:
-                                {
-                                    Autofill_Handler();
-                                    break;
-                                }
-                            case 8:
-                                {
-                                    Main_Form_FormClosed(this, null);
-                                    break;
-                                }
-                        }
-                        break;
+                        index = cmd.IndexOf(" ");
+                        cmd = cmd.Substring(0, index);
+                        sup = Str.Substring(index+1);
                     }
+                    Command("Executing [" + Str + "] command");
+                    Save_command(Str);
+                    switch (cmd)
+                    {
+                        case "new":
+                            {
+                                bool month_found = false;
+                                for (int i = 0; i <= month.Length - 1; i++)
+                                {
+                                    if (sup.Contains(month[i]))
+                                    {
+                                        m_mes = i + 1;
+                                        month_found = true;
+                                        break;
+                                    }
+                                }
+                                if (month_found)
+                                {
+                                    New_Instance();
+                                }
+                                else
+                                {
+                                    Warn("Invalid Parameters");
+                                }
+                                break;
+                            }
+                        case "open":
+                            {
+                                Known_Instance();
+                                break;
+                            } 
+                        case "exit":
+                            {
+                                Main_Form_FormClosed(this, null);
+                                break;
+                            }
+                        default:
+                            {
+                                for (int i = 0; i <= month.Length - 1; i++)
+                                {
+                                    //if()
+                                }
+                                break;
+                            }
+                    }
+                    txt_Command.Text = "";
                 }
-                txt_Command.Text = "";
             }
             else if (e.KeyCode == Keys.Up)
             {
@@ -448,77 +402,76 @@ namespace Project_Insight
             }
         }
 
-        private void btn_nwProg_Click(object sender, EventArgs e)
+        public void New_Instance()
         {
-            Notify("Opening file for JW meetings");
-            openingExcel();
+            if (excel_ready)
+            {
+                excel_ready = false;
+                objBooks.Close(0);
+                objApp.Quit();
+            }
+            string path = Application.StartupPath + "\\\\Programs.xlsx";
+            Opening_Excel(path);
         }
 
-        public void openingExcel()
+        public void Known_Instance()
         {
-            /*try
-            {*/
-                OpenFileDialog openExcel = new OpenFileDialog();
-                openExcel.Filter = "Excel files (*.xlsx, *.xls)|*.xlsx;*.xls";
-                openExcel.FileName = "";
-                openExcel.Title = "Load Excel File";
-                if (DialogResult.OK == openExcel.ShowDialog())
-                {
-                    //If the filepath exist
-                    if (null != openExcel.FileName)
-                    {
-                        objBooks = (Excel.Workbook)objApp.Workbooks.Open(openExcel.FileName, 0, false, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
-
-                        objSheets = objBooks.Worksheets;
-                        Sheet_VyM = (Excel.Worksheet)objSheets.get_Item(1);
-                        range_1 = Sheet_VyM.get_Range("A1", "H137");
-                        cellValue_1 = (System.Object[,])range_1.get_Value();
-
-                        if ((cellValue_1[53, 1] != null) && (cellValue_1[53, 1].ToString() == "S-140 AGR-Technologies"))
-                        {
-                            Notify("File decoded correctly");
-                            excel_ready = true;
-                            tab_Control.Enabled = true;
-
-                            Sheet_RP = (Excel.Worksheet)objSheets.get_Item(2);
-                            range_2 = Sheet_RP.get_Range("A1", "H70");
-                            cellValue_2 = (System.Object[,])range_2.get_Value();
-
-                            Sheet_PA = (Excel.Worksheet)objSheets.get_Item(3);
-                            range_3 = Sheet_PA.get_Range("A1", "H70");
-                            cellValue_3 = (System.Object[,])range_3.get_Value();
-
-                            Sheet_DB = (Excel.Worksheet)objSheets.get_Item(4);
-                            range_4 = Sheet_DB.get_Range("A1", "J42");
-                            cellValue_4 = (System.Object[,])range_4.get_Value();
-
-                            //lbl_path.Text = "Path: " + openExcel.FileName.ToString();
-                            Notify("Path: " + openExcel.FileName.ToString());
-
-                            open_DB();
-                            Process_read();
-
-                    }
-                        else
-                        {
-                            objBooks.Close(false, false, Type.Missing);
-                            //Close the workbook
-                            objApp.Quit();
-                            Warn("Corrupted file or not invalid");
-                            btn_nwProg_Click(this, null);
-                        }
-                    }
-                }
-                else
-                {
-                    Warn("Not selected file");
-                }                
-            /*}
-            catch
+            if (excel_ready)
             {
-                Warn("Unknown error");
-                openingExcel();
-            }*/
+                excel_ready = false;
+                objBooks.Close(0);
+                objApp.Quit();
+            }
+            OpenFileDialog openExcel = new OpenFileDialog
+            {
+                Filter = "Excel files (*.xlsx, *.xls)|*.xlsx;*.xls",
+                FileName = "",
+                Title = "Load Excel File"
+            };
+            if (DialogResult.OK == openExcel.ShowDialog())
+            {
+                if (null != openExcel.FileName)
+                {
+                    Opening_Excel(openExcel.FileName);
+                }
+            }
+            else
+            {
+                Warn("File not loaded");
+            }
+        }
+
+        public void Opening_Excel(string path)
+        {
+            objBooks = (Excel.Workbook)objApp.Workbooks.Open(path, 0, false, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
+
+            objSheets = objBooks.Worksheets;
+            Sheet_VyM = (Excel.Worksheet)objSheets.get_Item(1);
+            range_1 = Sheet_VyM.get_Range("A1", "H137");
+            cellValue_1 = (System.Object[,])range_1.get_Value();
+
+            if ((cellValue_1[53, 1] != null) && (cellValue_1[53, 1].ToString() == "S-140 AGR-Technologies"))
+            {
+                Notify("File decoded correctly");
+                tab_Control.Enabled = true;
+
+                Sheet_RP = (Excel.Worksheet)objSheets.get_Item(2);
+                range_2 = Sheet_RP.get_Range("A1", "H70");
+                cellValue_2 = (System.Object[,])range_2.get_Value();
+
+                Sheet_PA = (Excel.Worksheet)objSheets.get_Item(3);
+                range_3 = Sheet_PA.get_Range("A1", "H70");
+                cellValue_3 = (System.Object[,])range_3.get_Value();
+
+                Notify("Path: " + path);
+                excel_ready = true;
+                open_DB();
+                Process_read();
+            }
+            else
+            {
+                Warn("Invalid file");
+            }
         }
 
         private void Process_clear()
@@ -532,6 +485,7 @@ namespace Project_Insight
             if (excel_ready)
             {
                 Fill_cbx();
+                Get_Meetings();
                 VyM_Handler(true);
                 RP_Handler(true);
                 AC_Handler(true);
@@ -636,6 +590,12 @@ namespace Project_Insight
         {
             Notify("Restore info");
             Process_read();
+        }
+
+        public void Get_Meetings()
+        {
+           
+
         }
 
         public void VyM_Handler(bool read)
@@ -1169,9 +1129,19 @@ namespace Project_Insight
 
         private void Txt_Date_TextChanged(object sender, EventArgs e)
         {
-            var array = txt_Date.Text.ToCharArray();
+            TextBox txtbx = (TextBox)sender;
+            string Str = txtbx.Text.ToLower();
+            var array = txtbx.Text.ToCharArray();
             int result = 0;
             bool converted = false;
+            for (int i = 0; i <= month.Length-1; i++)
+            {
+                if (Str.Contains(month[i]))
+                {
+                    m_mes = i + 1;
+                    break;
+                }
+            }
             if (array.Length >= 3)
             {
                 if (array[1] == ' ')
@@ -1179,7 +1149,7 @@ namespace Project_Insight
                     converted = int.TryParse(array[0].ToString(), out result);
                     if (converted)
                     {
-                        Notify("Detecting Day to [" + result.ToString() + "]");
+                        Notify("Detecting Day [" + result.ToString() + "]");
                         m_dia = result;
                         Set_date();
                     }
@@ -1189,7 +1159,7 @@ namespace Project_Insight
                     converted = int.TryParse(array[0].ToString() + array[1].ToString(), out result);
                     if (converted)
                     {
-                        Notify("Detecting Day to [" + result.ToString() + "]");
+                        Notify("Detecting Day [" + result.ToString() + "]");
                         m_dia = result;
                         Set_date();
                     }
@@ -1201,6 +1171,7 @@ namespace Project_Insight
         {
             int checksum_aux = 0;
             checksum_aux = m_año + m_mes + m_dia;
+            lbl_Month.Text = "Mes: " + month[m_mes - 1];
             if (checksum_aux != date_checksum)
             {
                 date_checksum = checksum_aux;
