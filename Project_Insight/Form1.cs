@@ -299,10 +299,7 @@ namespace Project_Insight
                             }
                         default:
                             {
-                                for (int i = 0; i <= month.Length - 1; i++)
-                                {
-                                    //if()
-                                }
+
                                 break;
                             }
                     }
