@@ -13,6 +13,8 @@ using System.Globalization;
 using System.Threading;
 using System.Runtime.CompilerServices;
 
+/*Developed by AGR-Systems Science and Tech Division*/
+
 namespace Project_Insight
 {
     public partial class Main_Form : Form
@@ -71,6 +73,8 @@ namespace Project_Insight
         public static string[] month = new string[] { "ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic" };
         public static int command_iterator = 0;
         DB_Form DB_Form = new DB_Form();
+        public static string Path = "";
+        public static bool is_new_instance = false;
 
 
         public Main_Form()
@@ -297,6 +301,19 @@ namespace Project_Insight
                                 Main_Form_FormClosed(this, null);
                                 break;
                             }
+                        case "save":
+                            {
+                                string[] file = new string[] {"vym", "rp", "ac", "all"};
+                                for (int i = 0; i <= file.Length - 1; i++)
+                                {
+                                    if (sup.Contains(file[i]))
+                                    {
+                                        Process_save(i + 1);
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
                         default:
                             {
 
@@ -401,24 +418,21 @@ namespace Project_Insight
 
         public void New_Instance()
         {
-            if (excel_ready)
+            Path = Application.StartupPath + "\\\\Programs.xlsx";
+            is_new_instance = true;
+            /*if (excel_ready)
             {
                 excel_ready = false;
                 objBooks.Close(0);
                 objApp.Quit();
             }
             string path = Application.StartupPath + "\\\\Programs.xlsx";
-            Opening_Excel(path);
+            Opening_Excel(path);*/
+            tab_Control.Enabled = true;
         }
 
         public void Known_Instance()
         {
-            if (excel_ready)
-            {
-                excel_ready = false;
-                objBooks.Close(0);
-                objApp.Quit();
-            }
             OpenFileDialog openExcel = new OpenFileDialog
             {
                 Filter = "Excel files (*.xlsx, *.xls)|*.xlsx;*.xls",
@@ -429,13 +443,16 @@ namespace Project_Insight
             {
                 if (null != openExcel.FileName)
                 {
-                    Opening_Excel(openExcel.FileName);
+                    Path = openExcel.FileName;
+                    Opening_Excel(Path);
                 }
             }
             else
             {
                 Warn("File not loaded");
             }
+            is_new_instance = false;
+            tab_Control.Enabled = true;
         }
 
         public void Opening_Excel(string path)
@@ -450,7 +467,6 @@ namespace Project_Insight
             if ((cellValue_1[53, 1] != null) && (cellValue_1[53, 1].ToString() == "S-140 AGR-Technologies"))
             {
                 Notify("File decoded correctly");
-                tab_Control.Enabled = true;
 
                 Sheet_RP = (Excel.Worksheet)objSheets.get_Item(2);
                 range_2 = Sheet_RP.get_Range("A1", "H70");
@@ -462,8 +478,8 @@ namespace Project_Insight
 
                 Notify("Path: " + path);
                 excel_ready = true;
-                open_DB();
-                Process_read();
+                //open_DB();
+                //Process_read();
             }
             else
             {
@@ -491,35 +507,43 @@ namespace Project_Insight
 
         private void Process_save(int save)
         {
-            if (excel_ready)
+            string FileName = "";
+            FileName += CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m_mes);
+            if (true)
             {
+                Opening_Excel(Path);
                 if ((save == 1) || (save == 4))
                 {
                     VyM_Handler(false);
+                    FileName += "_VyM";
                 }
 
                 if ((save == 2) || (save == 4))
                 {
                     RP_Handler(false);
+                    FileName += "_RP";
                 }
                 if ((save == 3) || (save == 4))
                 {
                     AC_Handler(false);
+                    FileName += "_AC";
                 }
+                Notify("FileName: " + FileName);
                 pending_refresh_DB = true;
-                objBooks.Save();
-                if ((save == 1) || (save == 4))
+                Notify(Application.StartupPath + FileName + ".xlsx");
+                if (is_new_instance)
                 {
-                    VyM_Handler(true);
+                    objBooks.SaveAs(Application.StartupPath + FileName + ".xlsx");
                 }
-
-                if ((save == 2) || (save == 4))
+                else
                 {
-                    RP_Handler(true);
+                    objBooks.Save();
                 }
-                if ((save == 3) || (save == 4))
+                if (excel_ready)
                 {
-                    AC_Handler(true);
+                    excel_ready = false;
+                    objBooks.Close(0);
+                    objApp.Quit();
                 }
                 Notify("Saved file for JW Meetings" + ", Week [" + m_semana.ToString() + "]");
                 Notify("Saved date: [" + m_dia.ToString() + "-" + m_mes.ToString() + "-" + m_año.ToString() + "]");
