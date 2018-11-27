@@ -64,8 +64,8 @@ namespace Project_Insight
         public static int m_mes = 1;
         public static int m_año = 2018;
         public static int m_semana = 0;
-        public static DateTime[,] meetings_days = new DateTime[5,2];
-        public static string[]  guard_cbx_names = new string[10];
+        public static DateTime[,] meetings_days = new DateTime[5, 2];
+        public static string[] guard_cbx_names = new string[10];
         public static int date_checksum = 0;
         public static string[] Command_history = new string[10];
         //public static string[] Command_input = new string[] {"op_xlsx", "op_db", "sv", "clc", "rst", "mnth", "wk", "autofill", "exit"};
@@ -75,6 +75,12 @@ namespace Project_Insight
         DB_Form DB_Form = new DB_Form();
         public static string Path = "";
         public static bool is_new_instance = false;
+        public static VyM_Mes VyM_Mes = new VyM_Mes();
+        public static RP_Mes RP_Mes = new RP_Mes();
+        public static AC_Mes AC_Mes = new AC_Mes();
+        public static string[] VyM_Names = new string[] { "ig_1", "ig_2", "tb_1", "tb_2", "tb_3", "tb_4", "sm_1", "sm_2", "sm_3", "sm_4", "sm_5", "sm_6",
+            "nv_1", "nv_2", "nv3", "nv_4", "nv_5", "nv_6", "nv_7" };
+        public static string[] RP_Names = new string[] { "rp_11", "rp_12", "rp_13", "rp_14", "rp_15", "rp_16", "rp_17", "rp_18", "rp_19", "rp_s1", "rp_s1", };
 
 
         public Main_Form()
@@ -86,12 +92,13 @@ namespace Project_Insight
 
         private void Main_Form_Load(object sender, EventArgs e)
         {
+            Notify("Project Insight 2.0");
             Notify("UI up and ready \nWelcome back Hierarch!");
             Presenter(p.Executor);
-            Warn("Pending changes:");
-            Warn("[1] Make DB static in the code, and implement \"save as pdf\" logic");
-            Warn("[2] Implementing autofill function");
-            Warn("[3] Implementing handling for \"Asambleas\"");
+            var autocomplete = new AutoCompleteStringCollection();
+            autocomplete.AddRange(VyM_Names);                               //Experimental
+            txt_Command.AutoCompleteCustomSource = autocomplete;
+            
         }
 
         public void Main_Form_FormClosed(object sender, FormClosedEventArgs e)
@@ -221,7 +228,7 @@ namespace Project_Insight
             }
         }
 
-        public async void Command(string data, [CallerLineNumber] int lineNumber = 0)
+        /*public async void Command(string data, [CallerLineNumber] int lineNumber = 0)
         {
             if (!busy_trace)
             {
@@ -247,7 +254,7 @@ namespace Project_Insight
             {
                 String_stack(data, true, 3, lineNumber);
             }
-        }
+        }*/
 
         private void Process_txt_Command(object sender, KeyEventArgs e)
         {
@@ -262,10 +269,13 @@ namespace Project_Insight
                     if (Str.Length > 4)
                     {
                         index = cmd.IndexOf(" ");
-                        cmd = cmd.Substring(0, index);
-                        sup = Str.Substring(index+1);
+                        if (index >= 0)
+                        {
+                            cmd = cmd.Substring(0, index);
+                            sup = Str.Substring(index + 1);
+                        }
                     }
-                    Command("Executing [" + Str + "] command");
+                    Notify("Executing [" + Str + "] command");
                     Save_command(Str);
                     switch (cmd)
                     {
@@ -314,9 +324,15 @@ namespace Project_Insight
                                 }
                                 break;
                             }
+                        case "tab":
+                            {
+                                int.TryParse(sup, out int tab);
+                                tab_Control.SelectedIndex = tab;
+                                break;
+                            }
                         default:
                             {
-
+                                Warn("Invalid Command or missing arguments");
                                 break;
                             }
                     }
@@ -349,6 +365,7 @@ namespace Project_Insight
                     txt_Command.Text = "";
                 }
             }
+            Write_Cell(txt_Command.Text.ToLower());
         }
 
         public void Save_command(string cmd)
@@ -398,11 +415,11 @@ namespace Project_Insight
                 else if(notify_warn == 2)
                 {
                     Warn(str_stack[0], int_stack[0]);
-                }
+                }/*
                 else
                 {
                     Command(str_stack[0], int_stack[0]);
-                }
+                }*/
                 for (int i = 1; i <= str_stack.Length - 1; i++)
                 {
                     str_stack[i - 1] = str_stack[i];
@@ -613,10 +630,42 @@ namespace Project_Insight
             Process_read();
         }
 
+        /*Add DateTime of the month meetings in the array*/
         public void Get_Meetings()
         {
            
 
+        }
+
+        /*Process message to write de selected cell*/
+        public void Write_Cell(string Str)
+        {
+            var Array_input = Str.ToCharArray();
+            
+            //Notify(txt_Command.Text);
+            //txt_Command.AutoCompleteCustomSource.Count;
+          switch (tab_Control.SelectedIndex)
+            {
+                case 0:
+                    {
+                        for (int i = 0; i <= VyM_Names.Length - 1; i++)
+                        {
+                            if (VyM_Names[i].Contains(Str))
+                            {
+
+                            }
+                        }
+                        break;
+                    }
+                case 1:
+                    {
+                        break;
+                    }
+                case 2:
+                    {
+                        break;
+                    }
+            }
         }
 
         public void VyM_Handler(bool read)
@@ -628,22 +677,16 @@ namespace Project_Insight
                 cellValue_1 = (System.Object[,])range_1.get_Value();
                 txt_Date.Text = Check_null_string(cellValue_1[primary_cell, A]);
                 txt_Pres.Text = Check_null_string(cellValue_1[primary_cell, G]);
-                txt_CSA.Text = Check_null_string(cellValue_1[primary_cell + 1, G]);
-                Compare_cbx_string(Check_null_string(cellValue_1[primary_cell + 2, G]), cbx_Ora1VyM);
                 txt_TdlB_1.Text = Check_null_string(cellValue_1[primary_cell + 6, C]);
                 txt_TdlB_A1.Text = Check_null_string(cellValue_1[primary_cell + 6, G]);
                 txt_TdlB_A2.Text = Check_null_string(cellValue_1[primary_cell + 7, G]);
                 txt_TdlB_A3.Text = Check_null_string(cellValue_1[primary_cell + 8, G]);
-                txt_TdlB_B3.Text = Check_null_string(cellValue_1[primary_cell + 8, F]);
                 txt_SMM1.Text = Check_null_string(cellValue_1[primary_cell + 11, C]);
                 txt_SMM_A1.Text = Check_null_string(cellValue_1[primary_cell + 11, G]);
-                txt_SMM_B1.Text = Check_null_string(cellValue_1[primary_cell + 11, F]);
                 txt_SMM2.Text = Check_null_string(cellValue_1[primary_cell + 12, C]);
                 txt_SMM_A2.Text = Check_null_string(cellValue_1[primary_cell + 12, G]);
-                txt_SMM_B2.Text = Check_null_string(cellValue_1[primary_cell + 12, F]);
                 txt_SMM3.Text = Check_null_string(cellValue_1[primary_cell + 13, C]);
                 txt_SMM_A3.Text = Check_null_string(cellValue_1[primary_cell + 13, G]);
-                txt_SMM_B3.Text = Check_null_string(cellValue_1[primary_cell + 13, F]);
                 txt_NVC1.Text = Check_null_string(cellValue_1[primary_cell + 17, C]);
                 txt_NVC_A1.Text = Check_null_string(cellValue_1[primary_cell + 17, G]);
                 txt_NVC2.Text = Check_null_string(cellValue_1[primary_cell + 18, C]);
@@ -657,27 +700,20 @@ namespace Project_Insight
                 int primary_cell = Get_cell();
                 Sheet_VyM.Cells[primary_cell, A] = Check_null(txt_Date).ToUpper();
                 Sheet_VyM.Cells[primary_cell, G] = Check_null(txt_Pres);
-                Sheet_VyM.Cells[primary_cell + 1, G] = Check_null(txt_CSA);
-
-                Sheet_VyM.Cells[primary_cell + 2, G] = Check_null_cbx(cbx_Ora1VyM);
                 Sheet_VyM.Cells[primary_cell + 6, C] = Check_null(txt_TdlB_1);
                 Get_index_time(Sheet_VyM.get_Range("C" + (primary_cell + 6).ToString()));
                 Sheet_VyM.Cells[primary_cell + 6, G] = Check_null(txt_TdlB_A1);
                 Sheet_VyM.Cells[primary_cell + 7, G] = Check_null(txt_TdlB_A2);
                 Sheet_VyM.Cells[primary_cell + 8, G] = Check_null(txt_TdlB_A3);
-                Sheet_VyM.Cells[primary_cell + 8, F] = Check_null(txt_TdlB_B3);
                 Sheet_VyM.Cells[primary_cell + 11, C] = Check_null(txt_SMM1);
                 Get_index_time(Sheet_VyM.get_Range("C" + (primary_cell + 11).ToString()));
                 Sheet_VyM.Cells[primary_cell + 11, G] = Check_null(txt_SMM_A1);
-                Sheet_VyM.Cells[primary_cell + 11, F] = Check_null(txt_SMM_B1);
                 Sheet_VyM.Cells[primary_cell + 12, C] = Check_null(txt_SMM2);
                 Get_index_time(Sheet_VyM.get_Range("C" + (primary_cell + 12).ToString()));
                 Sheet_VyM.Cells[primary_cell + 12, G] = Check_null(txt_SMM_A2);
-                Sheet_VyM.Cells[primary_cell + 12, F] = Check_null(txt_SMM_B2);
                 Sheet_VyM.Cells[primary_cell + 13, C] = Check_null(txt_SMM3);
                 Get_index_time(Sheet_VyM.get_Range("C" + (primary_cell + 13).ToString()));
                 Sheet_VyM.Cells[primary_cell + 13, G] = Check_null(txt_SMM_A3);
-                Sheet_VyM.Cells[primary_cell + 13, F] = Check_null(txt_SMM_B3);
                 Sheet_VyM.Cells[primary_cell + 17, C] = Check_null(txt_NVC1);
                 Get_index_time(Sheet_VyM.get_Range("C" + (primary_cell + 17).ToString()));
                 Sheet_VyM.Cells[primary_cell + 17, G] = Check_null(txt_NVC_A1);
@@ -966,13 +1002,11 @@ namespace Project_Insight
 
         public void Fill_cbx()  
         {
-            cbx_Ora1VyM.Items.Clear();
             cbx_NVC_A3L.Items.Clear();
             cbx_Ora2VyM.Items.Clear();
 
             for (int i = 0; i <= DB_Form.Generals.Count - 1; i++)
             {
-                cbx_Ora1VyM.Items.Add(DB_Form.Generals[i].Nombre);
                 cbx_NVC_A3L.Items.Add(DB_Form.Generals[i].Nombre);
                 cbx_Ora2VyM.Items.Add(DB_Form.Generals[i].Nombre);
             }           
