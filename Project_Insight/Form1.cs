@@ -62,7 +62,7 @@ namespace Project_Insight
         public static bool pending_refresh_DB = false;
         public static int m_dia = 1;
         public static int m_mes = 1;
-        public static int m_año = 2018;
+        public static int m_año = DateTime.Today.Year;
         public static int m_semana = 0;
         public static DateTime[,] meetings_days = new DateTime[5, 2];
         public static string[] guard_cbx_names = new string[10];
@@ -78,9 +78,17 @@ namespace Project_Insight
         public static VyM_Mes VyM_Mes = new VyM_Mes();
         public static RP_Mes RP_Mes = new RP_Mes();
         public static AC_Mes AC_Mes = new AC_Mes();
-        public static string[] VyM_Names = new string[] { "ig_1", "ig_2", "tb_1", "tb_2", "tb_3", "tb_4", "sm_1", "sm_2", "sm_3", "sm_4", "sm_5", "sm_6",
-            "nv_1", "nv_2", "nv3", "nv_4", "nv_5", "nv_6", "nv_7" };
-        public static string[] RP_Names = new string[] { "rp_11", "rp_12", "rp_13", "rp_14", "rp_15", "rp_16", "rp_17", "rp_18", "rp_19", "rp_s1", "rp_s1", };
+        //public static string[] VyM_Names = new string[] { "ig_1", "ig_2", "tb_1", "tb_2", "tb_3", "tb_4", "sm_1", "sm_2", "sm_3", "sm_4", "sm_5", "sm_6",
+        //   "nv_1", "nv_2", "nv3", "nv_4", "nv_5", "nv_6", "nv_7" };
+        //public static string[] RP_Names = new string[] { "rp_101", "rp_12", "rp_13", "rp_14", "rp_15", "rp_16", "rp_17", "rp_18", "rp_19", "rp_s1", "rp_s1", };
+        IDictionary<string, object> Dict_vym = new Dictionary<string, object>();
+        IDictionary<string, object> Dict_rp = new Dictionary<string, object>();
+        IDictionary<string, object> Dict_ac = new Dictionary<string, object>();
+        public static int tab_meeting = 0;
+        public static string aux_command;
+        public static bool selected_txt = false;
+        public static bool is_loading = false;
+
 
 
         public Main_Form()
@@ -95,10 +103,82 @@ namespace Project_Insight
             Notify("Project Insight 2.0");
             Notify("UI up and ready \nWelcome back Hierarch!");
             Presenter(p.Executor);
+            Autocomplete_dictionary();
+            txt_Command.Focus();
             var autocomplete = new AutoCompleteStringCollection();
-            autocomplete.AddRange(VyM_Names);                               //Experimental
+            autocomplete.AddRange(Dict_vym.Keys.ToArray());
             txt_Command.AutoCompleteCustomSource = autocomplete;
-            
+        }
+
+        public void Autocomplete_dictionary()
+        {
+            Dict_vym.Add("ig_10", txt_Date);
+            Dict_vym.Add("ig_20", txt_Pres);
+            Dict_vym.Add("tb_10", txt_TdlB_1);
+            Dict_vym.Add("tb_20", txt_TdlB_A1);
+            Dict_vym.Add("tb_30", txt_TdlB_A2);
+            Dict_vym.Add("tb_40", txt_TdlB_A3);
+            Dict_vym.Add("sm_11", txt_SMM1);
+            Dict_vym.Add("sm_12", txt_SMM_A1);
+            Dict_vym.Add("sm_21", txt_SMM2);
+            Dict_vym.Add("sm_22", txt_SMM_A2);
+            Dict_vym.Add("sm_31", txt_SMM3);
+            Dict_vym.Add("sm_32", txt_SMM_A3);
+            Dict_vym.Add("nv_11", txt_NVC1);
+            Dict_vym.Add("nv_12", txt_NVC_A1);
+            Dict_vym.Add("nv_21", txt_NVC2);
+            Dict_vym.Add("nv_22", txt_NVC_A2);
+            Dict_vym.Add("nv_30", txt_NVC_A3);
+            Dict_vym.Add("nv_40", txt_NVC_A4);
+            Dict_vym.Add("nv_50", txt_Ora2VyM);
+
+            Dict_rp.Add("rp_01", txt_PresRP);
+            Dict_rp.Add("rp_02", txt_RP_Speech);
+            Dict_rp.Add("rp_03", txt_RP_Disc);
+            Dict_rp.Add("rp_04", txt_RP_Cong);
+            Dict_rp.Add("rp_05", txt_Title_Atly);
+            Dict_rp.Add("rp_06", txt_Con_Atly);
+            Dict_rp.Add("rp_07", txt_Lect_Atly);
+            Dict_rp.Add("rp_08", txt_OraRP);
+            Dict_rp.Add("rp_09", txt_Sal_Disc);
+            Dict_rp.Add("rp_10", txt_Sal_Title);
+            Dict_rp.Add("rp_11", txt_Sal_Cong);
+
+            Dict_ac.Add("ac_11", txt_Aseo_1);
+            Dict_ac.Add("ac_12", txt_Cap_L_1);
+            Dict_ac.Add("ac_13", txt_AC1_L_1);
+            Dict_ac.Add("ac_14", txt_AC2_L_1);
+            Dict_ac.Add("ac_15", txt_Cap_S_1);
+            Dict_ac.Add("ac_16", txt_AC1_S_1);
+            Dict_ac.Add("ac_17", txt_AC2_S_1);
+            Dict_ac.Add("ac_21", txt_Aseo_2);
+            Dict_ac.Add("ac_22", txt_Cap_L_2);
+            Dict_ac.Add("ac_23", txt_AC1_L_2);
+            Dict_ac.Add("ac_24", txt_AC2_L_2);
+            Dict_ac.Add("ac_25", txt_Cap_S_2);
+            Dict_ac.Add("ac_26", txt_AC1_S_2);
+            Dict_ac.Add("ac_27", txt_AC2_S_2);
+            Dict_ac.Add("ac_31", txt_Aseo_3);
+            Dict_ac.Add("ac_32", txt_Cap_L_3);
+            Dict_ac.Add("ac_33", txt_AC1_L_3);
+            Dict_ac.Add("ac_34", txt_AC2_L_3);
+            Dict_ac.Add("ac_35", txt_Cap_S_3);
+            Dict_ac.Add("ac_36", txt_AC1_S_3);
+            Dict_ac.Add("ac_37", txt_AC2_S_3);
+            Dict_ac.Add("ac_41", txt_Aseo_4);
+            Dict_ac.Add("ac_42", txt_Cap_L_4);
+            Dict_ac.Add("ac_43", txt_AC1_L_4);
+            Dict_ac.Add("ac_44", txt_AC2_L_4);
+            Dict_ac.Add("ac_45", txt_Cap_S_4);
+            Dict_ac.Add("ac_46", txt_AC1_S_4);
+            Dict_ac.Add("ac_47", txt_AC2_S_4);
+            Dict_ac.Add("ac_51", txt_Aseo_5);
+            Dict_ac.Add("ac_52", txt_Cap_L_5);
+            Dict_ac.Add("ac_53", txt_AC1_L_5);
+            Dict_ac.Add("ac_54", txt_AC2_L_5);
+            Dict_ac.Add("ac_55", txt_Cap_S_5);
+            Dict_ac.Add("ac_56", txt_AC1_S_5);
+            Dict_ac.Add("ac_57", txt_AC2_S_5);
         }
 
         public void Main_Form_FormClosed(object sender, FormClosedEventArgs e)
@@ -199,16 +279,16 @@ namespace Project_Insight
         public async void Warn(string data, [CallerLineNumber] int lineNumber = 0, [CallerMemberName] string caller = null)
         {
             if (!busy_trace)
-            {                
+            {
                 busy_trace = true;
                 var array = data.ToCharArray();
                 log_txtBx.SelectionColor = Color.Red;
                 log_txtBx.AppendText("L-" + lineNumber + ": ");
-                if(caller != "String_stack")
+                if (caller != "String_stack")
                 {
                     log_txtBx.AppendText("(" + caller + ") ");
                 }
-                for (int i=0; i<= array.Length - 1; i++)
+                for (int i = 0; i <= array.Length - 1; i++)
                 {
                     log_txtBx.AppendText(array[i].ToString());
                     await Task.Delay(5);
@@ -228,33 +308,46 @@ namespace Project_Insight
             }
         }
 
-        /*public async void Command(string data, [CallerLineNumber] int lineNumber = 0)
+        public async void Loading_Trace()
         {
-            if (!busy_trace)
+            string aux = "";
+            if (busy_trace)
             {
-                busy_trace = true;
-                var array = data.ToCharArray();
-                log_txtBx.SelectionColor = Color.White;
-                log_txtBx.AppendText("L-" + lineNumber + ": ");
-                for (int i = 0; i <= array.Length - 1; i++)
-                {
-                    log_txtBx.AppendText(array[i].ToString());
-                    await Task.Delay(5);
-                }
-                log_txtBx.AppendText("\n");
-                log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                log_txtBx.ScrollToCaret();
-                busy_trace = false;
-                if (pending_trace)
-                {
-                    String_stack("", false, 3, lineNumber);
-                }
+                await Task.Delay(100);
             }
-            else
+            busy_trace = true;
+            log_txtBx.SelectionColor = Color.White;
+            for (int i = 0; i <= 10; i++)
             {
-                String_stack(data, true, 3, lineNumber);
+                log_txtBx.AppendText(".");
+                await Task.Delay(5);
             }
-        }*/
+            is_loading = true;
+            aux = log_txtBx.Text;
+            log_txtBx.Text = "";
+            while (is_loading)
+            {
+                aux += "\\";
+                log_txtBx.Text = aux;
+                await Task.Delay(20);
+                aux.Substring(0, aux.Length - 1);
+                aux += "|";
+                log_txtBx.Text = aux;
+                await Task.Delay(20);
+                log_txtBx.AppendText("/");
+                await Task.Delay(20);
+                log_txtBx.AppendText("-");
+                await Task.Delay(20);
+            }
+            log_txtBx.AppendText("\n");
+            log_txtBx.SelectionStart = log_txtBx.Text.Length;
+            log_txtBx.ScrollToCaret();
+            busy_trace = false;
+            if (pending_trace)
+            {
+                String_stack("", false, 1, 0);
+            }
+        }
 
         private void Process_txt_Command(object sender, KeyEventArgs e)
         {
@@ -305,7 +398,7 @@ namespace Project_Insight
                             {
                                 Known_Instance();
                                 break;
-                            } 
+                            }
                         case "exit":
                             {
                                 Main_Form_FormClosed(this, null);
@@ -313,7 +406,7 @@ namespace Project_Insight
                             }
                         case "save":
                             {
-                                string[] file = new string[] {"vym", "rp", "ac", "all"};
+                                string[] file = new string[] { "vym", "rp", "ac", "all" };
                                 for (int i = 0; i <= file.Length - 1; i++)
                                 {
                                     if (sup.Contains(file[i]))
@@ -326,22 +419,66 @@ namespace Project_Insight
                             }
                         case "tab":
                             {
-                                int.TryParse(sup, out int tab);
-                                tab_Control.SelectedIndex = tab;
+                                if (int.TryParse(sup, out int tab))
+                                {
+                                    tab_Control.SelectedIndex = tab;
+                                }
+                                break;
+                            }
+                        case "week":
+                            {
+                                if (int.TryParse(sup, out int wk))
+                                {
+                                    m_semana = wk;
+                                }
                                 break;
                             }
                         default:
                             {
-                                Warn("Invalid Command or missing arguments");
+                                switch (tab_meeting)
+                                {
+                                    case 0:
+                                        {
+
+                                            if (Dict_vym.ContainsKey(cmd))
+                                            {
+                                                TextBox txt = (TextBox)Dict_vym[cmd];
+                                                txt.Text = sup;
+                                                txt.BackColor = Color.White;
+                                            }
+                                            break;
+                                        }
+                                    case 1:
+                                        {
+                                            if (Dict_rp.ContainsKey(cmd))
+                                            {
+                                                TextBox txt = (TextBox)Dict_rp[cmd];
+                                                txt.Text = sup;
+                                                txt.BackColor = Color.White;
+                                            }
+                                            break;
+                                        }
+                                    case 2:
+                                        {
+                                            if (Dict_ac.ContainsKey(cmd))
+                                            {
+                                                TextBox txt = (TextBox)Dict_ac[cmd];
+                                                txt.Text = sup;
+                                                txt.BackColor = Color.White;
+                                            }
+                                            break;
+                                        }
+                                }
                                 break;
                             }
                     }
                     txt_Command.Text = "";
+                    txt_Command.Focus();
                 }
             }
             else if (e.KeyCode == Keys.Up)
             {
-                if (command_iterator < Command_history.Length-1)
+                if (command_iterator < Command_history.Length - 1)
                 {
                     command_iterator++;
                     if (Command_history[command_iterator] != null)
@@ -366,6 +503,84 @@ namespace Project_Insight
                 }
             }
             Write_Cell(txt_Command.Text.ToLower());
+        }
+
+        private void txt_Command_TextChanged(object sender, EventArgs e)
+        {
+            string Str = txt_Command.Text.ToLower();
+            string cmd = Str;
+            int index = 0;
+            if (Str.Length > 4)
+            {
+                index = cmd.IndexOf(" ");
+                if (index >= 0)
+                {
+                    cmd = cmd.Substring(0, index);
+                }
+            }
+            switch (tab_meeting)
+            {
+                case 0:
+                    {
+                        if (Dict_vym.ContainsKey(cmd))
+                        {
+                            TextBox txt = (TextBox)Dict_vym[cmd];
+                            txt.BackColor = Color.OrangeRed;
+                            if ((cmd != aux_command) && (aux_command != null))
+                            {
+                                TextBox txt_aux = (TextBox)Dict_vym[aux_command];
+                                txt_aux.BackColor = Color.White;
+                            }
+                            aux_command = cmd;
+                        }
+                        else if (aux_command != null)
+                        {
+                            TextBox txt = (TextBox)Dict_vym[aux_command];
+                            txt.BackColor = Color.White;
+                        }
+                        break;
+                    }
+                case 1:
+                    {
+                        if (Dict_rp.ContainsKey(cmd))
+                        {
+                            TextBox txt = (TextBox)Dict_rp[cmd];
+                            txt.BackColor = Color.OrangeRed;
+                            if ((cmd != aux_command) && (aux_command != null))
+                            {
+                                TextBox txt_aux = (TextBox)Dict_rp[aux_command];
+                                txt_aux.BackColor = Color.White;
+                            }
+                            aux_command = cmd;
+                        }
+                        else if (aux_command != null)
+                        {
+                            TextBox txt = (TextBox)Dict_rp[aux_command];
+                            txt.BackColor = Color.White;
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        if (Dict_ac.ContainsKey(cmd))
+                        {
+                            TextBox txt = (TextBox)Dict_ac[cmd];
+                            txt.BackColor = Color.OrangeRed;
+                            if ((cmd != aux_command) && (aux_command != null))
+                            {
+                                TextBox txt_aux = (TextBox)Dict_ac[aux_command];
+                                txt_aux.BackColor = Color.White;
+                            }
+                            aux_command = cmd;
+                        }
+                        else if (aux_command != null)
+                        {
+                            TextBox txt = (TextBox)Dict_ac[aux_command];
+                            txt.BackColor = Color.White;
+                        }
+                        break;
+                    }
+            }
         }
 
         public void Save_command(string cmd)
@@ -433,6 +648,7 @@ namespace Project_Insight
             }
         }
 
+        /*New excel file*/
         public void New_Instance()
         {
             Path = Application.StartupPath + "\\\\Programs.xlsx";
@@ -446,8 +662,10 @@ namespace Project_Insight
             string path = Application.StartupPath + "\\\\Programs.xlsx";
             Opening_Excel(path);*/
             tab_Control.Enabled = true;
+            Get_Meetings();
         }
 
+        /*Open an existing excel program*/
         public void Known_Instance()
         {
             OpenFileDialog openExcel = new OpenFileDialog
@@ -515,7 +733,6 @@ namespace Project_Insight
             if (excel_ready)
             {
                 Fill_cbx();
-                Get_Meetings();
                 VyM_Handler(true);
                 RP_Handler(true);
                 AC_Handler(true);
@@ -615,14 +832,14 @@ namespace Project_Insight
             }
         }
 
-        private void Cmbx_Week_SelectedIndexChanged(object sender, EventArgs e) 
+        /*private void Cmbx_Week_SelectedIndexChanged(object sender, EventArgs e) 
         {
             if (excel_ready)
             {
                 Process_read();
                 //cbx_Day_SelectedIndexChanged(cbx_Day, null);
             }
-        }
+        }*/
                
         private void Process_restore()
         {
@@ -633,8 +850,45 @@ namespace Project_Insight
         /*Add DateTime of the month meetings in the array*/
         public void Get_Meetings()
         {
-           
-
+            int days = DateTime.DaysInMonth(2018, m_mes);
+            int i = -1;
+            int check = 0;
+            int aux_m = 0;
+            int aux_y = m_año;
+            for (int d = 1; d <= days; d++)
+            {
+                if (new DateTime(m_año, m_mes, d).DayOfWeek == DayOfWeek.Monday)
+                {
+                    i++;
+                    meetings_days[i, 0] = new DateTime(m_año, m_mes, d);
+                    check++;
+                }
+                if ((new DateTime(m_año, m_mes, d).DayOfWeek == DayOfWeek.Saturday) && (i>=0))
+                {                    
+                    meetings_days[i, 1] = new DateTime(m_año, m_mes, d);
+                    check++;
+                }
+            }
+            if (check % 2 != 0)
+            {
+                if (i == 4)
+                {
+                    aux_m = m_mes + 1;
+                    if (aux_m > 12)
+                    {
+                        aux_m = 1;
+                        aux_y++;
+                    }
+                    for (int d = 1; d <= days; d++)
+                    {
+                        if ((new DateTime(aux_y, aux_m, d).DayOfWeek == DayOfWeek.Saturday) && (i >= 0))
+                        {
+                            meetings_days[i, 1] = new DateTime(aux_y, aux_m, d);
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
         /*Process message to write de selected cell*/
@@ -648,13 +902,13 @@ namespace Project_Insight
             {
                 case 0:
                     {
-                        for (int i = 0; i <= VyM_Names.Length - 1; i++)
+                        /*for (int i = 0; i <= VyM_Names.Length - 1; i++)
                         {
                             if (VyM_Names[i].Contains(Str))
                             {
 
                             }
-                        }
+                        }*/
                         break;
                     }
                 case 1:
@@ -692,8 +946,8 @@ namespace Project_Insight
                 txt_NVC2.Text = Check_null_string(cellValue_1[primary_cell + 18, C]);
                 txt_NVC_A2.Text = Check_null_string(cellValue_1[primary_cell + 18, G]);
                 txt_NVC_A3.Text = Check_null_string(cellValue_1[primary_cell + 19, G]);
-                Compare_cbx_string(Check_null_string(cellValue_1[primary_cell + 20, G]), cbx_NVC_A3L);
-                Compare_cbx_string(Check_null_string(cellValue_1[primary_cell + 22, G]), cbx_Ora2VyM);
+                //Compare_cbx_string(Check_null_string(cellValue_1[primary_cell + 20, G]), cbx_NVC_A3L);
+                //Compare_cbx_string(Check_null_string(cellValue_1[primary_cell + 22, G]), cbx_Ora2VyM);
             }
             else
             {
@@ -721,8 +975,8 @@ namespace Project_Insight
                 Get_index_time(Sheet_VyM.get_Range("C" + (primary_cell + 18).ToString()));
                 Sheet_VyM.Cells[primary_cell + 18, G] = Check_null(txt_NVC_A2);
                 Sheet_VyM.Cells[primary_cell + 19, G] = Check_null(txt_NVC_A3);
-                Sheet_VyM.Cells[primary_cell + 20, G] = Check_null_cbx(cbx_NVC_A3L);
-                Sheet_VyM.Cells[primary_cell + 22, G] = Check_null_cbx(cbx_Ora2VyM);
+                //Sheet_VyM.Cells[primary_cell + 20, G] = Check_null_cbx(cbx_NVC_A3L);
+                //Sheet_VyM.Cells[primary_cell + 22, G] = Check_null_cbx(cbx_Ora2VyM);
                 //time
                 Sheet_VyM.Cells[primary_cell + 2, A] = time_0.Text;
                 Sheet_VyM.Cells[primary_cell + 3, A] = time_1.Text;
@@ -748,20 +1002,20 @@ namespace Project_Insight
             {
                 cellValue_2 = (System.Object[,])range_2.get_Value();
                 int primary_cell = 4;
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 1, H]), cbx_PresRP_1);
-                txt_RP_Speech_1.Text = Check_null_string(cellValue_2[primary_cell + 2, D]);
-                txt_RP_Disc_1.Text = Check_null_string(cellValue_2[primary_cell + 2, H]);
-                txt_RP_Cong_1.Text = Check_null_string(cellValue_2[primary_cell + 3, E]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 5, H]), cbx_CondAtly_1);
-                txt_AdlA_Title_1.Text = Check_null_string(cellValue_2[primary_cell + 6, D]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 6, H]), cbx_LectRP_1);
-                txt_Sal_Disc_1.Text = Check_null_string(cellValue_2[primary_cell + 10, C]);
-                txt_Sal_Title_1.Text = Check_null_string(cellValue_2[primary_cell + 10, E]);
-                txt_Sal_Cong_1.Text = Check_null_string(cellValue_2[primary_cell + 10, H]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 7, H]), cbx_OraRP_1);
+                //Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 1, H]), cbx_PresRP_1);
+                txt_RP_Speech.Text = Check_null_string(cellValue_2[primary_cell + 2, D]);
+                txt_RP_Disc.Text = Check_null_string(cellValue_2[primary_cell + 2, H]);
+                txt_RP_Cong.Text = Check_null_string(cellValue_2[primary_cell + 3, E]);
+                //Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 5, H]), cbx_CondAtly_1);
+                txt_Title_Atly.Text = Check_null_string(cellValue_2[primary_cell + 6, D]);
+                //Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 6, H]), cbx_LectRP_1);
+                txt_Sal_Disc.Text = Check_null_string(cellValue_2[primary_cell + 10, C]);
+                txt_Sal_Title.Text = Check_null_string(cellValue_2[primary_cell + 10, E]);
+                txt_Sal_Cong.Text = Check_null_string(cellValue_2[primary_cell + 10, H]);
+                //Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 7, H]), cbx_OraRP_1);
 
                 primary_cell = 17;
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 1, H]), cbx_PresRP_2);
+                /*Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 1, H]), cbx_PresRP_2);
                 txt_RP_Speech_2.Text = Check_null_string(cellValue_2[primary_cell + 2, D]);
                 txt_RP_Disc_2.Text = Check_null_string(cellValue_2[primary_cell + 2, H]);
                 txt_RP_Cong_2.Text = Check_null_string(cellValue_2[primary_cell + 3, E]);
@@ -810,25 +1064,25 @@ namespace Project_Insight
                 txt_Sal_Disc_5.Text = Check_null_string(cellValue_2[primary_cell + 10, C]);
                 txt_Sal_Title_5.Text = Check_null_string(cellValue_2[primary_cell + 10, E]);
                 txt_Sal_Cong_5.Text = Check_null_string(cellValue_2[primary_cell + 10, H]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 7, H]), cbx_OraRP_5);
+                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 7, H]), cbx_OraRP_5);*/
             }
             else
             {
                 int primary_cell = 4;
-                Sheet_RP.Cells[primary_cell + 1, H] = Check_null_cbx(cbx_PresRP_1);
-                Sheet_RP.Cells[primary_cell + 2, D] = Check_null(txt_RP_Speech_1);
-                Sheet_RP.Cells[primary_cell + 2, H] = Check_null(txt_RP_Disc_1);
-                Sheet_RP.Cells[primary_cell + 3, E] = Check_null(txt_RP_Cong_1);
-                Sheet_RP.Cells[primary_cell + 5, H] = Check_null_cbx(cbx_CondAtly_1);
-                Sheet_RP.Cells[primary_cell + 6, D] = Check_null(txt_AdlA_Title_1);
-                Sheet_RP.Cells[primary_cell + 6, H] = Check_null_cbx(cbx_LectRP_1);
-                Sheet_RP.Cells[primary_cell + 7, H] = Check_null_cbx(cbx_OraRP_1);
-                Sheet_RP.Cells[primary_cell + 10, C] = txt_Sal_Disc_1.Text;
-                Sheet_RP.Cells[primary_cell + 10, E] = txt_Sal_Title_1.Text;
-                Sheet_RP.Cells[primary_cell + 10, H] = txt_Sal_Cong_1.Text;
+                //Sheet_RP.Cells[primary_cell + 1, H] = Check_null_cbx(cbx_PresRP_1);
+                Sheet_RP.Cells[primary_cell + 2, D] = Check_null(txt_RP_Speech);
+                Sheet_RP.Cells[primary_cell + 2, H] = Check_null(txt_RP_Disc);
+                Sheet_RP.Cells[primary_cell + 3, E] = Check_null(txt_RP_Cong);
+                //Sheet_RP.Cells[primary_cell + 5, H] = Check_null_cbx(cbx_CondAtly_1);
+                Sheet_RP.Cells[primary_cell + 6, D] = Check_null(txt_Title_Atly);
+                //Sheet_RP.Cells[primary_cell + 6, H] = Check_null_cbx(cbx_LectRP_1);
+                //Sheet_RP.Cells[primary_cell + 7, H] = Check_null_cbx(cbx_OraRP_1);
+                Sheet_RP.Cells[primary_cell + 10, C] = txt_Sal_Disc.Text;
+                Sheet_RP.Cells[primary_cell + 10, E] = txt_Sal_Title.Text;
+                Sheet_RP.Cells[primary_cell + 10, H] = txt_Sal_Cong.Text;
 
                 primary_cell = 17;
-                Sheet_RP.Cells[primary_cell + 1, H] = Check_null_cbx(cbx_PresRP_2);
+               /* Sheet_RP.Cells[primary_cell + 1, H] = Check_null_cbx(cbx_PresRP_2);
                 Sheet_RP.Cells[primary_cell + 2, D] = Check_null(txt_RP_Speech_2);
                 Sheet_RP.Cells[primary_cell + 2, H] = Check_null(txt_RP_Disc_2);
                 Sheet_RP.Cells[primary_cell + 3, E] = Check_null(txt_RP_Cong_2);
@@ -877,7 +1131,7 @@ namespace Project_Insight
                 Sheet_RP.Cells[primary_cell + 7, H] = Check_null_cbx(cbx_OraRP_5);
                 Sheet_RP.Cells[primary_cell + 10, C] = txt_Sal_Disc_5.Text;
                 Sheet_RP.Cells[primary_cell + 10, E] = txt_Sal_Title_5.Text;
-                Sheet_RP.Cells[primary_cell + 10, H] = txt_Sal_Cong_5.Text;
+                Sheet_RP.Cells[primary_cell + 10, H] = txt_Sal_Cong_5.Text;*/
             }
         }
 
@@ -888,7 +1142,7 @@ namespace Project_Insight
             {
                 cellValue_3 = (System.Object[,])range_3.get_Value();
                 int primary_cell = 5;
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, A]), cbx_Aseo_1);
+                /*Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, A]), cbx_Aseo_1);
                 Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, C]), cbx_Cap_L_1);
                 Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 2, C]), cbx_AC1_L_1);
                 Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, C]), cbx_AC2_L_1);
@@ -930,12 +1184,12 @@ namespace Project_Insight
                 Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, C]), cbx_AC2_L_5);
                 Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, E]), cbx_Cap_S_5);
                 Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 2, E]), cbx_AC1_S_5);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, E]), cbx_AC2_S_5);
+                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, E]), cbx_AC2_S_5);*/
             }
             else
             {
                 int primary_cell = 5;
-                Sheet_PA.Cells[primary_cell + 1, A] = Check_null_cbx(cbx_Aseo_1);
+               /* Sheet_PA.Cells[primary_cell + 1, A] = Check_null_cbx(cbx_Aseo_1);
                 Sheet_PA.Cells[primary_cell + 1, C] = Check_null_cbx(cbx_Cap_L_1);
                 Sheet_PA.Cells[primary_cell + 2, C] = Check_null_cbx(cbx_AC1_L_1);
                 Sheet_PA.Cells[primary_cell + 3, C] = Check_null_cbx(cbx_AC2_L_1);
@@ -977,7 +1231,7 @@ namespace Project_Insight
                 Sheet_PA.Cells[primary_cell + 3, C] = Check_null_cbx(cbx_AC2_L_5);
                 Sheet_PA.Cells[primary_cell + 1, E] = Check_null_cbx(cbx_Cap_S_5);
                 Sheet_PA.Cells[primary_cell + 2, E] = Check_null_cbx(cbx_AC1_S_5);
-                Sheet_PA.Cells[primary_cell + 3, E] = Check_null_cbx(cbx_AC2_S_5);
+                Sheet_PA.Cells[primary_cell + 3, E] = Check_null_cbx(cbx_AC2_S_5);*/
             }
         }
 
@@ -1002,14 +1256,14 @@ namespace Project_Insight
 
         public void Fill_cbx()  
         {
-            cbx_NVC_A3L.Items.Clear();
+            /*cbx_NVC_A3L.Items.Clear();
             cbx_Ora2VyM.Items.Clear();
 
             for (int i = 0; i <= DB_Form.Generals.Count - 1; i++)
             {
                 cbx_NVC_A3L.Items.Add(DB_Form.Generals[i].Nombre);
                 cbx_Ora2VyM.Items.Add(DB_Form.Generals[i].Nombre);
-            }           
+            } */          
         }
 
         public string Check_null_string(object cellvalue)
@@ -1081,21 +1335,31 @@ namespace Project_Insight
 
         private void tab_Control_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            var autocomplete = new AutoCompleteStringCollection();
             if (tab_Control.SelectedIndex == 0)
             {
+                tab_meeting = 0;
+                autocomplete.AddRange(Dict_vym.Keys.ToArray());
                 Presenter(p.Executor);
                 Notify("Overview");
             }
             else if (tab_Control.SelectedIndex == 1)
             {
+                tab_meeting = 1;
+                autocomplete.AddRange(Dict_rp.Keys.ToArray());
                 Presenter(p.Artanis);
                 Notify("Section 'Reunion Publica y analisis de La Atalaya'");
             }
             else
             {
+                tab_meeting = 2;
+                autocomplete.AddRange(Dict_ac.Keys.ToArray());
                 Presenter(p.Oracle);
                 Notify("Section 'Acomodadores'");
             }
+
+            txt_Command.AutoCompleteCustomSource = autocomplete;
         }
 
         private void Check_time(object sender, EventArgs e)
