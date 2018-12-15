@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Project_Insight
 {
-    static class RP_Mes
+    public class RP_Mes
     {
-        public static RP_Sem Semana1 = new RP_Sem();
-        public static RP_Sem Semana2 = new RP_Sem();
-        public static RP_Sem Semana3 = new RP_Sem();
-        public static RP_Sem Semana4 = new RP_Sem();
-        public static RP_Sem Semana5 = new RP_Sem();
+        static RP_Sem Semana1 = new RP_Sem();
+        static RP_Sem Semana2 = new RP_Sem();
+        static RP_Sem Semana3 = new RP_Sem();
+        static RP_Sem Semana4 = new RP_Sem();
+        static RP_Sem Semana5 = new RP_Sem();
     }
 
     class RP_Sem
@@ -26,5 +26,8 @@ namespace Project_Insight
         public string Conductor { get; set; }
         public string Lector { get; set; }
         public string Oracion { get; set; }
+        public string Discu_Sal { get; set; }
+        public string Ttl_Sal { get; set; }
+        public string Cong_Sal { get; set; }
     }
 }

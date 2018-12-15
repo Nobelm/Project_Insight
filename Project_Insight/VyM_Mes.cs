@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Project_Insight
 {
-    static class VyM_Mes
+    public class VyM_Mes
     {
-        public static VyM_Sem Semana1 = new VyM_Sem();
-        public static VyM_Sem Semana2 = new VyM_Sem();
-        public static VyM_Sem Semana3 = new VyM_Sem();
-        public static VyM_Sem Semana4 = new VyM_Sem();
-        public static VyM_Sem Semana5 = new VyM_Sem();
+        static VyM_Sem Semana1 = new VyM_Sem();
+        static VyM_Sem Semana2 = new VyM_Sem();
+        static VyM_Sem Semana3 = new VyM_Sem();
+        static VyM_Sem Semana4 = new VyM_Sem();
+        static VyM_Sem Semana5 = new VyM_Sem();
     }
 
     class VyM_Sem
