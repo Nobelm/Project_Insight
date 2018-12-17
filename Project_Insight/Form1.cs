@@ -63,7 +63,7 @@ namespace Project_Insight
         public static int m_dia = 1;
         public static int m_mes = 1;
         public static int m_año = DateTime.Today.Year;
-        public static int m_semana = 0;
+        public static int m_semana = 1;
         public static DateTime[,] meetings_days = new DateTime[5, 2];
         public static string[] guard_cbx_names = new string[10];
         public static int date_checksum = 0;
@@ -75,9 +75,9 @@ namespace Project_Insight
         DB_Form DB_Form = new DB_Form();
         public static string Path = "";
         public static bool is_new_instance = false;
-        public static VyM_Mes VyM_Mes = new VyM_Mes();
-        public static RP_Mes RP_Mes = new RP_Mes();
-        public static AC_Mes AC_Mes = new AC_Mes();
+        public static VyM_Mes VyM_mes = new VyM_Mes();
+        public static RP_Mes RP_mes = new RP_Mes();
+        public static AC_Mes AC_mes = new AC_Mes();
         //public static string[] VyM_Names = new string[] { "ig_1", "ig_2", "tb_1", "tb_2", "tb_3", "tb_4", "sm_1", "sm_2", "sm_3", "sm_4", "sm_5", "sm_6",
         //   "nv_1", "nv_2", "nv3", "nv_4", "nv_5", "nv_6", "nv_7" };
         //public static string[] RP_Names = new string[] { "rp_101", "rp_12", "rp_13", "rp_14", "rp_15", "rp_16", "rp_17", "rp_18", "rp_19", "rp_s1", "rp_s1", };
@@ -311,16 +311,17 @@ namespace Project_Insight
         public async void Loading_Trace()
         {
             string aux = "";
+            int delay = 40;
             if (busy_trace)
             {
-                await Task.Delay(100);
+                await Task.Delay(1000);
             }
             busy_trace = true;
             log_txtBx.SelectionColor = Color.White;
-            for (int i = 0; i <= 10; i++)
+            for (int i = 0; i <= 20; i++)
             {
                 log_txtBx.AppendText(".");
-                await Task.Delay(5);
+                await Task.Delay(20);
             }
             is_loading = true;
             aux = log_txtBx.Text;
@@ -329,17 +330,26 @@ namespace Project_Insight
             {
                 aux += "\\";
                 log_txtBx.Text = aux;
-                await Task.Delay(20);
-                aux.Substring(0, aux.Length - 1);
+                await Task.Delay(delay);
+                aux = aux.Substring(0, aux.Length - 1);
                 aux += "|";
                 log_txtBx.Text = aux;
-                await Task.Delay(20);
-                log_txtBx.AppendText("/");
-                await Task.Delay(20);
-                log_txtBx.AppendText("-");
-                await Task.Delay(20);
+                await Task.Delay(delay);
+                aux = aux.Substring(0, aux.Length - 1);
+                aux += "/";
+                log_txtBx.Text = aux;
+                await Task.Delay(delay);
+                aux = aux.Substring(0, aux.Length - 1);
+                aux += "-";
+                log_txtBx.Text = aux;
+                await Task.Delay(delay);                
+                aux = aux.Substring(0, aux.Length - 1);
             }
             log_txtBx.AppendText("\n");
+            log_txtBx.SelectionColor = Color.Green;
+            log_txtBx.AppendText("Complete!");
+            log_txtBx.AppendText("\n");
+            await Task.Delay(delay);
             log_txtBx.SelectionStart = log_txtBx.Text.Length;
             log_txtBx.ScrollToCaret();
             busy_trace = false;
@@ -431,8 +441,14 @@ namespace Project_Insight
                                 {
                                     m_semana = wk;
                                 }
+                                Loading_Trace();
                                 break;
                             }
+                            case "stop":
+                                {
+                                is_loading = false;
+                                break;
+                                }
                         default:
                             {
                                 switch (tab_meeting)
@@ -580,6 +596,28 @@ namespace Project_Insight
                         }
                         break;
                     }
+            }
+        }
+
+        public void Pre_save_info(TextBox txt)
+        {
+            switch(tab_meeting)
+            {
+                case 0: 
+                {
+                    //VyM_mes.Semana1.Fecha = "123";
+                    break;
+                }
+                case 1: 
+                {
+
+                    break;
+                }
+                case 2: 
+                {
+
+                    break;
+                }
             }
         }
 
