@@ -39,11 +39,9 @@ namespace Project_Insight
         private Excel.Worksheet Sheet_VyM;
         private Excel.Worksheet Sheet_RP;
         private Excel.Worksheet Sheet_PA;
-        private Excel.Worksheet Sheet_DB;
         private Excel.Range range_1;
         private Excel.Range range_2;
         private Excel.Range range_3;
-        private Excel.Range range_4;
         public static bool excel_ready = false;
         private DateTime dateTime = new DateTime(2018, 1, 1, 7, 00, 00);
         private DateTime start_time = new DateTime(2018, 1, 1, 7, 00, 00);
@@ -51,7 +49,7 @@ namespace Project_Insight
         private object[,] cellValue_1 = null;
         private object[,] cellValue_2 = null;
         private object[,] cellValue_3 = null;
-        public static Object[,] cellValue_4 = null;
+        public static object[,] cellValue_4 = null;
         public static string[] str_stack = new string[50];
         public static int[] int_stack = new int[50];
         public static bool busy_trace = false;
@@ -105,19 +103,16 @@ namespace Project_Insight
             Presenter(p.Executor);
             Autocomplete_dictionary();
             txt_Command.Focus();
-            var autocomplete = new AutoCompleteStringCollection();
-            autocomplete.AddRange(Dict_vym.Keys.ToArray());
-            txt_Command.AutoCompleteCustomSource = autocomplete;
         }
 
         public void Autocomplete_dictionary()
         {
-            Dict_vym.Add("ig_10", txt_Date);
-            Dict_vym.Add("ig_20", txt_Pres);
-            Dict_vym.Add("tb_10", txt_TdlB_1);
-            Dict_vym.Add("tb_20", txt_TdlB_A1);
-            Dict_vym.Add("tb_30", txt_TdlB_A2);
-            Dict_vym.Add("tb_40", txt_TdlB_A3);
+            Dict_vym.Add("ig_01", txt_Date);
+            Dict_vym.Add("ig_02", txt_Pres);
+            Dict_vym.Add("tb_01", txt_TdlB_1);
+            Dict_vym.Add("tb_02", txt_TdlB_A1);
+            Dict_vym.Add("tb_03", txt_TdlB_A2);
+            Dict_vym.Add("tb_04", txt_TdlB_A3);
             Dict_vym.Add("sm_11", txt_SMM1);
             Dict_vym.Add("sm_12", txt_SMM_A1);
             Dict_vym.Add("sm_21", txt_SMM2);
@@ -128,10 +123,11 @@ namespace Project_Insight
             Dict_vym.Add("nv_12", txt_NVC_A1);
             Dict_vym.Add("nv_21", txt_NVC2);
             Dict_vym.Add("nv_22", txt_NVC_A2);
-            Dict_vym.Add("nv_30", txt_NVC_A3);
-            Dict_vym.Add("nv_40", txt_NVC_A4);
-            Dict_vym.Add("nv_50", txt_Ora2VyM);
+            Dict_vym.Add("nv_03", txt_NVC_A3);
+            Dict_vym.Add("nv_04", txt_NVC_A4);
+            Dict_vym.Add("nv_05", txt_Ora2VyM);
 
+            Dict_rp.Add("rp_00", txt_DateRP);
             Dict_rp.Add("rp_01", txt_PresRP);
             Dict_rp.Add("rp_02", txt_RP_Speech);
             Dict_rp.Add("rp_03", txt_RP_Disc);
@@ -439,16 +435,21 @@ namespace Project_Insight
                             {
                                 if (int.TryParse(sup, out int wk))
                                 {
-                                    m_semana = wk;
+                                    if (wk != m_semana)
+                                    {
+                                        m_semana = wk;
+                                        Pre_save_info();
+                                        Week_Handler();
+                                    }
                                 }
-                                Loading_Trace();
+                                //Loading_Trace();
                                 break;
                             }
-                            case "stop":
-                                {
-                                is_loading = false;
+                        case "stop":
+                            {
+                                //is_loading = false;
                                 break;
-                                }
+                            }
                         default:
                             {
                                 switch (tab_meeting)
@@ -461,6 +462,7 @@ namespace Project_Insight
                                                 TextBox txt = (TextBox)Dict_vym[cmd];
                                                 txt.Text = sup;
                                                 txt.BackColor = Color.White;
+                                                Pre_save_info();
                                             }
                                             break;
                                         }
@@ -471,6 +473,7 @@ namespace Project_Insight
                                                 TextBox txt = (TextBox)Dict_rp[cmd];
                                                 txt.Text = sup;
                                                 txt.BackColor = Color.White;
+                                                Pre_save_info();
                                             }
                                             break;
                                         }
@@ -481,6 +484,7 @@ namespace Project_Insight
                                                 TextBox txt = (TextBox)Dict_ac[cmd];
                                                 txt.Text = sup;
                                                 txt.BackColor = Color.White;
+                                                Pre_save_info();
                                             }
                                             break;
                                         }
@@ -501,6 +505,7 @@ namespace Project_Insight
                     {
                         txt_Command.Text = Command_history[command_iterator];
                     }
+                    txt_Command.ScrollToCaret();
                 }
             }
             else if (e.KeyCode == Keys.Down)
@@ -517,6 +522,7 @@ namespace Project_Insight
                 {
                     txt_Command.Text = "";
                 }
+                txt_Command.ScrollToCaret();
             }
             Write_Cell(txt_Command.Text.ToLower());
         }
@@ -599,28 +605,6 @@ namespace Project_Insight
             }
         }
 
-        public void Pre_save_info(TextBox txt)
-        {
-            switch(tab_meeting)
-            {
-                case 0: 
-                {
-                    //VyM_mes.Semana1.Fecha = "123";
-                    break;
-                }
-                case 1: 
-                {
-
-                    break;
-                }
-                case 2: 
-                {
-
-                    break;
-                }
-            }
-        }
-
         public void Save_command(string cmd)
         {
             for (int i = Command_history.Length - 1; i >= 2; i--)
@@ -690,6 +674,7 @@ namespace Project_Insight
         public void New_Instance()
         {
             Path = Application.StartupPath + "\\\\Programs.xlsx";
+            Notify("Running new instance");
             is_new_instance = true;
             /*if (excel_ready)
             {
@@ -701,6 +686,10 @@ namespace Project_Insight
             Opening_Excel(path);*/
             tab_Control.Enabled = true;
             Get_Meetings();
+            Week_Handler();
+            var autocomplete = new AutoCompleteStringCollection();
+            autocomplete.AddRange(Dict_vym.Keys.ToArray());
+            txt_Command.AutoCompleteCustomSource = autocomplete;
         }
 
         /*Open an existing excel program*/
@@ -726,6 +715,9 @@ namespace Project_Insight
             }
             is_new_instance = false;
             tab_Control.Enabled = true;
+            var autocomplete = new AutoCompleteStringCollection();
+            autocomplete.AddRange(Dict_vym.Keys.ToArray());
+            txt_Command.AutoCompleteCustomSource = autocomplete;
         }
 
         public void Opening_Excel(string path)
@@ -763,18 +755,6 @@ namespace Project_Insight
         private void Process_clear()
         {
             Warn("Clear all!");
-        }
-
-        public void Process_read()
-        {
-            start_time = dateTime;
-            if (excel_ready)
-            {
-                Fill_cbx();
-                VyM_Handler(true);
-                RP_Handler(true);
-                AC_Handler(true);
-            }
         }
 
         private void Process_save(int save)
@@ -882,12 +862,12 @@ namespace Project_Insight
         private void Process_restore()
         {
             Notify("Restore info");
-            Process_read();
         }
 
         /*Add DateTime of the month meetings in the array*/
         public void Get_Meetings()
         {
+            Notify("Getting meetings for month [" + month[m_mes - 1].ToString() + "]");
             int days = DateTime.DaysInMonth(2018, m_mes);
             int i = -1;
             int check = 0;
@@ -1292,18 +1272,6 @@ namespace Project_Insight
             }
         }
 
-        public void Fill_cbx()  
-        {
-            /*cbx_NVC_A3L.Items.Clear();
-            cbx_Ora2VyM.Items.Clear();
-
-            for (int i = 0; i <= DB_Form.Generals.Count - 1; i++)
-            {
-                cbx_NVC_A3L.Items.Add(DB_Form.Generals[i].Nombre);
-                cbx_Ora2VyM.Items.Add(DB_Form.Generals[i].Nombre);
-            } */          
-        }
-
         public string Check_null_string(object cellvalue)
         {
             if (cellvalue == null)
@@ -1636,7 +1604,7 @@ namespace Project_Insight
                     if (value == 0)
                     {
                         s = (m_año-2000).ToString() + m_mes.ToString("00") + m_dia.ToString("00");
-                        Sheet_DB.Cells[i, column] = s;
+                        //Sheet_DB.Cells[i, column] = s;
                         break;
                     }
                 }
@@ -1646,6 +1614,535 @@ namespace Project_Insight
         private void Autofill_Handler()
         {
 
+        }
+
+        /*Function so set local variables' info into form*/
+        public async void Week_Handler()
+        {
+            await Task.Delay(50);
+            int lun = 0;
+            switch (tab_meeting)
+            {
+                case 0:
+                    {
+                        switch (m_semana)
+                        {
+                            case 1:
+                                {
+                                    txt_Date.Text = VyM_mes.Semana1.Fecha;
+                                    txt_Pres.Text = VyM_mes.Semana1.Presidente;
+                                    txt_TdlB_1.Text = VyM_mes.Semana1.Discurso;
+                                    txt_TdlB_A1.Text = VyM_mes.Semana1.Discurso_A;
+                                    txt_TdlB_A2.Text = VyM_mes.Semana1.Perlas;
+                                    txt_TdlB_A3.Text = VyM_mes.Semana1.Lectura;
+                                    txt_SMM1.Text = VyM_mes.Semana1.SMM1;
+                                    txt_SMM_A1.Text = VyM_mes.Semana1.SMM1_A;
+                                    txt_SMM2.Text = VyM_mes.Semana1.SMM2;
+                                    txt_SMM_A2.Text = VyM_mes.Semana1.SMM2_A;
+                                    txt_SMM3.Text = VyM_mes.Semana1.SMM3;
+                                    txt_SMM_A3.Text = VyM_mes.Semana1.SMM3_A;
+                                    txt_NVC1.Text = VyM_mes.Semana1.NVC1;
+                                    txt_NVC_A1.Text = VyM_mes.Semana1.NVC1_A;
+                                    txt_NVC2.Text = VyM_mes.Semana1.NVC2;
+                                    txt_NVC2.Text = VyM_mes.Semana1.NVC2_A;
+                                    txt_NVC_A3.Text = VyM_mes.Semana1.Libro_A;
+                                    txt_NVC_A4.Text = VyM_mes.Semana1.Libro_L;
+                                    txt_Ora2VyM.Text = VyM_mes.Semana1.Oracion;
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    txt_Date.Text = VyM_mes.Semana2.Fecha;
+                                    txt_Pres.Text = VyM_mes.Semana2.Presidente;
+                                    txt_TdlB_1.Text = VyM_mes.Semana2.Discurso;
+                                    txt_TdlB_A1.Text = VyM_mes.Semana2.Discurso_A;
+                                    txt_TdlB_A2.Text = VyM_mes.Semana2.Perlas;
+                                    txt_TdlB_A3.Text = VyM_mes.Semana2.Lectura;
+                                    txt_SMM1.Text = VyM_mes.Semana2.SMM1;
+                                    txt_SMM_A1.Text = VyM_mes.Semana2.SMM1_A;
+                                    txt_SMM2.Text = VyM_mes.Semana2.SMM2;
+                                    txt_SMM_A2.Text = VyM_mes.Semana2.SMM2_A;
+                                    txt_SMM3.Text = VyM_mes.Semana2.SMM3;
+                                    txt_SMM_A3.Text = VyM_mes.Semana2.SMM3_A;
+                                    txt_NVC1.Text = VyM_mes.Semana2.NVC1;
+                                    txt_NVC_A1.Text = VyM_mes.Semana2.NVC1_A;
+                                    txt_NVC2.Text = VyM_mes.Semana2.NVC2;
+                                    txt_NVC2.Text = VyM_mes.Semana2.NVC2_A;
+                                    txt_NVC_A3.Text = VyM_mes.Semana2.Libro_A;
+                                    txt_NVC_A4.Text = VyM_mes.Semana2.Libro_L;
+                                    txt_Ora2VyM.Text = VyM_mes.Semana2.Oracion;
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    txt_Date.Text = VyM_mes.Semana3.Fecha;
+                                    txt_Pres.Text = VyM_mes.Semana3.Presidente;
+                                    txt_TdlB_1.Text = VyM_mes.Semana3.Discurso;
+                                    txt_TdlB_A1.Text = VyM_mes.Semana3.Discurso_A;
+                                    txt_TdlB_A2.Text = VyM_mes.Semana3.Perlas;
+                                    txt_TdlB_A3.Text = VyM_mes.Semana3.Lectura;
+                                    txt_SMM1.Text = VyM_mes.Semana3.SMM1;
+                                    txt_SMM_A1.Text = VyM_mes.Semana3.SMM1_A;
+                                    txt_SMM2.Text = VyM_mes.Semana3.SMM2;
+                                    txt_SMM_A2.Text = VyM_mes.Semana3.SMM2_A;
+                                    txt_SMM3.Text = VyM_mes.Semana3.SMM3;
+                                    txt_SMM_A3.Text = VyM_mes.Semana3.SMM3_A;
+                                    txt_NVC1.Text = VyM_mes.Semana3.NVC1;
+                                    txt_NVC_A1.Text = VyM_mes.Semana3.NVC1_A;
+                                    txt_NVC2.Text = VyM_mes.Semana3.NVC2;
+                                    txt_NVC2.Text = VyM_mes.Semana3.NVC2_A;
+                                    txt_NVC_A3.Text = VyM_mes.Semana3.Libro_A;
+                                    txt_NVC_A4.Text = VyM_mes.Semana3.Libro_L;
+                                    txt_Ora2VyM.Text = VyM_mes.Semana3.Oracion;
+                                    break;
+                                }
+                            case 4:
+                                {
+                                    txt_Date.Text = VyM_mes.Semana4.Fecha;
+                                    txt_Pres.Text = VyM_mes.Semana4.Presidente;
+                                    txt_TdlB_1.Text = VyM_mes.Semana4.Discurso;
+                                    txt_TdlB_A1.Text = VyM_mes.Semana4.Discurso_A;
+                                    txt_TdlB_A2.Text = VyM_mes.Semana4.Perlas;
+                                    txt_TdlB_A3.Text = VyM_mes.Semana4.Lectura;
+                                    txt_SMM1.Text = VyM_mes.Semana4.SMM1;
+                                    txt_SMM_A1.Text = VyM_mes.Semana4.SMM1_A;
+                                    txt_SMM2.Text = VyM_mes.Semana4.SMM2;
+                                    txt_SMM_A2.Text = VyM_mes.Semana4.SMM2_A;
+                                    txt_SMM3.Text = VyM_mes.Semana4.SMM3;
+                                    txt_SMM_A3.Text = VyM_mes.Semana4.SMM3_A;
+                                    txt_NVC1.Text = VyM_mes.Semana4.NVC1;
+                                    txt_NVC_A1.Text = VyM_mes.Semana4.NVC1_A;
+                                    txt_NVC2.Text = VyM_mes.Semana4.NVC2;
+                                    txt_NVC2.Text = VyM_mes.Semana4.NVC2_A;
+                                    txt_NVC_A3.Text = VyM_mes.Semana4.Libro_A;
+                                    txt_NVC_A4.Text = VyM_mes.Semana4.Libro_L;
+                                    txt_Ora2VyM.Text = VyM_mes.Semana4.Oracion;
+                                    break;
+                                }
+                            case 5:
+                                {
+                                    txt_Date.Text = VyM_mes.Semana5.Fecha;
+                                    txt_Pres.Text = VyM_mes.Semana5.Presidente;
+                                    txt_TdlB_1.Text = VyM_mes.Semana5.Discurso;
+                                    txt_TdlB_A1.Text = VyM_mes.Semana5.Discurso_A;
+                                    txt_TdlB_A2.Text = VyM_mes.Semana5.Perlas;
+                                    txt_TdlB_A3.Text = VyM_mes.Semana5.Lectura;
+                                    txt_SMM1.Text = VyM_mes.Semana5.SMM1;
+                                    txt_SMM_A1.Text = VyM_mes.Semana5.SMM1_A;
+                                    txt_SMM2.Text = VyM_mes.Semana5.SMM2;
+                                    txt_SMM_A2.Text = VyM_mes.Semana5.SMM2_A;
+                                    txt_SMM3.Text = VyM_mes.Semana5.SMM3;
+                                    txt_SMM_A3.Text = VyM_mes.Semana5.SMM3_A;
+                                    txt_NVC1.Text = VyM_mes.Semana5.NVC1;
+                                    txt_NVC_A1.Text = VyM_mes.Semana5.NVC1_A;
+                                    txt_NVC2.Text = VyM_mes.Semana5.NVC2;
+                                    txt_NVC2.Text = VyM_mes.Semana5.NVC2_A;
+                                    txt_NVC_A3.Text = VyM_mes.Semana5.Libro_A;
+                                    txt_NVC_A4.Text = VyM_mes.Semana5.Libro_L;
+                                    txt_Ora2VyM.Text = VyM_mes.Semana5.Oracion;
+                                    break;
+                                }
+                        }
+                        lun = 0;
+                        break;
+                    }
+                case 1:
+                    {
+                        switch (m_semana)
+                        {
+                            case 1:
+                                {
+                                    txt_DateRP.Text= RP_mes.Semana1.Fecha;
+                                    txt_RP_Speech.Text = RP_mes.Semana1.Titulo;
+                                    txt_PresRP.Text = RP_mes.Semana1.Presidente;
+                                    txt_RP_Disc.Text = RP_mes.Semana1.Congregacion;
+                                    txt_RP_Cong.Text = RP_mes.Semana1.Discursante;
+                                    txt_Title_Atly.Text = RP_mes.Semana1.Titulo_Atalaya;
+                                    txt_Con_Atly.Text = RP_mes.Semana1.Conductor;
+                                    txt_Lect_Atly.Text = RP_mes.Semana1.Lector;
+                                    txt_OraRP.Text = RP_mes.Semana1.Oracion;
+                                    txt_Sal_Disc.Text = RP_mes.Semana1.Discu_Sal;
+                                    txt_Sal_Title.Text = RP_mes.Semana1.Ttl_Sal;
+                                    txt_Sal_Cong.Text = RP_mes.Semana1.Cong_Sal;
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    txt_DateRP.Text = RP_mes.Semana2.Fecha;
+                                    txt_RP_Speech.Text = RP_mes.Semana2.Titulo;
+                                    txt_PresRP.Text = RP_mes.Semana2.Presidente;
+                                    txt_RP_Disc.Text = RP_mes.Semana2.Congregacion;
+                                    txt_RP_Cong.Text = RP_mes.Semana2.Discursante;
+                                    txt_Title_Atly.Text = RP_mes.Semana2.Titulo_Atalaya;
+                                    txt_Con_Atly.Text = RP_mes.Semana2.Conductor;
+                                    txt_Lect_Atly.Text = RP_mes.Semana2.Lector;
+                                    txt_OraRP.Text = RP_mes.Semana2.Oracion;
+                                    txt_Sal_Disc.Text = RP_mes.Semana2.Discu_Sal;
+                                    txt_Sal_Title.Text = RP_mes.Semana2.Ttl_Sal;
+                                    txt_Sal_Cong.Text = RP_mes.Semana2.Cong_Sal;
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    txt_DateRP.Text = RP_mes.Semana3.Fecha;
+                                    txt_RP_Speech.Text = RP_mes.Semana3.Titulo;
+                                    txt_PresRP.Text = RP_mes.Semana3.Presidente;
+                                    txt_RP_Disc.Text = RP_mes.Semana3.Congregacion;
+                                    txt_RP_Cong.Text = RP_mes.Semana3.Discursante;
+                                    txt_Title_Atly.Text = RP_mes.Semana3.Titulo_Atalaya;
+                                    txt_Con_Atly.Text = RP_mes.Semana3.Conductor;
+                                    txt_Lect_Atly.Text = RP_mes.Semana3.Lector;
+                                    txt_OraRP.Text = RP_mes.Semana3.Oracion;
+                                    txt_Sal_Disc.Text = RP_mes.Semana3.Discu_Sal;
+                                    txt_Sal_Title.Text = RP_mes.Semana3.Ttl_Sal;
+                                    txt_Sal_Cong.Text = RP_mes.Semana3.Cong_Sal;
+                                    break;
+                                }
+                            case 4:
+                                {
+                                    txt_DateRP.Text = RP_mes.Semana4.Fecha;
+                                    txt_RP_Speech.Text = RP_mes.Semana4.Titulo;
+                                    txt_PresRP.Text = RP_mes.Semana4.Presidente;
+                                    txt_RP_Disc.Text = RP_mes.Semana4.Congregacion;
+                                    txt_RP_Cong.Text = RP_mes.Semana4.Discursante;
+                                    txt_Title_Atly.Text = RP_mes.Semana4.Titulo_Atalaya;
+                                    txt_Con_Atly.Text = RP_mes.Semana4.Conductor;
+                                    txt_Lect_Atly.Text = RP_mes.Semana4.Lector;
+                                    txt_OraRP.Text = RP_mes.Semana4.Oracion;
+                                    txt_Sal_Disc.Text = RP_mes.Semana4.Discu_Sal;
+                                    txt_Sal_Title.Text = RP_mes.Semana4.Ttl_Sal;
+                                    txt_Sal_Cong.Text = RP_mes.Semana4.Cong_Sal;
+                                    break;
+                                }
+                            case 5:
+                                {
+                                    txt_DateRP.Text = RP_mes.Semana5.Fecha;
+                                    txt_RP_Speech.Text = RP_mes.Semana5.Titulo;
+                                    txt_PresRP.Text = RP_mes.Semana5.Presidente;
+                                    txt_RP_Disc.Text = RP_mes.Semana5.Congregacion;
+                                    txt_RP_Cong.Text = RP_mes.Semana5.Discursante;
+                                    txt_Title_Atly.Text = RP_mes.Semana5.Titulo_Atalaya;
+                                    txt_Con_Atly.Text = RP_mes.Semana5.Conductor;
+                                    txt_Lect_Atly.Text = RP_mes.Semana5.Lector;
+                                    txt_OraRP.Text = RP_mes.Semana5.Oracion;
+                                    txt_Sal_Disc.Text = RP_mes.Semana5.Discu_Sal;
+                                    txt_Sal_Title.Text = RP_mes.Semana5.Ttl_Sal;
+                                    txt_Sal_Cong.Text = RP_mes.Semana5.Cong_Sal;
+                                    break;
+                                }
+                        }
+                        lun = 1;
+                        break;
+                    }
+                case 2:
+                    {
+                        txt_Aseo_1.Text = AC_mes.Semana1.Cap_Aseo;
+                        txt_Cap_L_1.Text = AC_mes.Semana1.Vym_Cap;
+                        txt_AC1_L_1.Text = AC_mes.Semana1.Vym_Izq;
+                        txt_AC2_L_1.Text = AC_mes.Semana1.Vym_Der;
+                        txt_Cap_S_1.Text = AC_mes.Semana1.Rp_Cap;
+                        txt_AC1_S_1.Text = AC_mes.Semana1.Rp_Izq;
+                        txt_AC2_S_1.Text = AC_mes.Semana1.Rp_Der;
+
+                        txt_Aseo_2.Text = AC_mes.Semana2.Cap_Aseo;
+                        txt_Cap_L_2.Text = AC_mes.Semana2.Vym_Cap;
+                        txt_AC1_L_2.Text = AC_mes.Semana2.Vym_Izq;
+                        txt_AC2_L_2.Text = AC_mes.Semana2.Vym_Der;
+                        txt_Cap_S_2.Text = AC_mes.Semana2.Rp_Cap;
+                        txt_AC1_S_2.Text = AC_mes.Semana2.Rp_Izq;
+                        txt_AC2_S_2.Text = AC_mes.Semana2.Rp_Der;
+
+                        txt_Aseo_3.Text = AC_mes.Semana3.Cap_Aseo;
+                        txt_Cap_L_3.Text = AC_mes.Semana3.Vym_Cap;
+                        txt_AC1_L_3.Text = AC_mes.Semana3.Vym_Izq;
+                        txt_AC2_L_3.Text = AC_mes.Semana3.Vym_Der;
+                        txt_Cap_S_3.Text = AC_mes.Semana3.Rp_Cap;
+                        txt_AC1_S_3.Text = AC_mes.Semana3.Rp_Izq;
+                        txt_AC2_S_3.Text = AC_mes.Semana3.Rp_Der;
+
+                        txt_Aseo_4.Text = AC_mes.Semana4.Cap_Aseo;
+                        txt_Cap_L_4.Text = AC_mes.Semana4.Vym_Cap;
+                        txt_AC1_L_4.Text = AC_mes.Semana4.Vym_Izq;
+                        txt_AC2_L_4.Text = AC_mes.Semana4.Vym_Der;
+                        txt_Cap_S_4.Text = AC_mes.Semana4.Rp_Cap;
+                        txt_AC1_S_4.Text = AC_mes.Semana4.Rp_Izq;
+                        txt_AC2_S_4.Text = AC_mes.Semana4.Rp_Der;
+
+                        txt_Aseo_5.Text = AC_mes.Semana5.Cap_Aseo;
+                        txt_Cap_L_5.Text = AC_mes.Semana5.Vym_Cap;
+                        txt_AC1_L_5.Text = AC_mes.Semana5.Vym_Izq;
+                        txt_AC2_L_5.Text = AC_mes.Semana5.Vym_Der;
+                        txt_Cap_S_5.Text = AC_mes.Semana5.Rp_Cap;
+                        txt_AC1_S_5.Text = AC_mes.Semana5.Rp_Izq;
+                        txt_AC2_S_5.Text = AC_mes.Semana5.Rp_Der;
+                        break;
+                    }
+            }
+            //meetings_days
+            Notify("Seeting info for week [" + m_semana.ToString() + "]\nDay meeting: " + meetings_days[m_semana - 1, lun].ToString("dd/MM/yyyy"));
+        }
+    
+
+        /*Function to save txtbx info in local variables*/
+        public async void Pre_save_info()
+        {
+            Notify("Saving info in local variables");
+            await Task.Delay(50);
+            switch (tab_meeting)
+            {
+                case 0:
+                    {
+                        switch (m_semana)
+                        {
+                            case 1:
+                                {
+                                    VyM_mes.Semana1.Fecha = txt_Date.Text;
+                                    VyM_mes.Semana1.Presidente = txt_Pres.Text;
+                                    VyM_mes.Semana1.Discurso = txt_TdlB_1.Text;
+                                    VyM_mes.Semana1.Discurso_A = txt_TdlB_A1.Text;
+                                    VyM_mes.Semana1.Perlas = txt_TdlB_A2.Text;
+                                    VyM_mes.Semana1.Lectura = txt_TdlB_A3.Text;
+                                    VyM_mes.Semana1.SMM1 = txt_SMM1.Text;
+                                    VyM_mes.Semana1.SMM1_A = txt_SMM_A1.Text;
+                                    VyM_mes.Semana1.SMM2 = txt_SMM2.Text;
+                                    VyM_mes.Semana1.SMM2_A = txt_SMM_A2.Text;
+                                    VyM_mes.Semana1.SMM3 = txt_SMM3.Text;
+                                    VyM_mes.Semana1.SMM3_A = txt_SMM_A3.Text;
+                                    VyM_mes.Semana1.NVC1 = txt_NVC1.Text;
+                                    VyM_mes.Semana1.NVC1_A = txt_NVC_A1.Text;
+                                    VyM_mes.Semana1.NVC2 = txt_NVC2.Text;
+                                    VyM_mes.Semana1.NVC2_A = txt_NVC2.Text;
+                                    VyM_mes.Semana1.Libro_A = txt_NVC_A3.Text;
+                                    VyM_mes.Semana1.Libro_L = txt_NVC_A4.Text;
+                                    VyM_mes.Semana1.Oracion = txt_Ora2VyM.Text;
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    VyM_mes.Semana2.Fecha = txt_Date.Text;
+                                    VyM_mes.Semana2.Presidente = txt_Pres.Text;
+                                    VyM_mes.Semana2.Discurso = txt_TdlB_1.Text;
+                                    VyM_mes.Semana2.Discurso_A = txt_TdlB_A1.Text;
+                                    VyM_mes.Semana2.Perlas = txt_TdlB_A2.Text;
+                                    VyM_mes.Semana2.Lectura = txt_TdlB_A3.Text;
+                                    VyM_mes.Semana2.SMM1 = txt_SMM1.Text;
+                                    VyM_mes.Semana2.SMM1_A = txt_SMM_A1.Text;
+                                    VyM_mes.Semana2.SMM2 = txt_SMM2.Text;
+                                    VyM_mes.Semana2.SMM2_A = txt_SMM_A2.Text;
+                                    VyM_mes.Semana2.SMM3 = txt_SMM3.Text;
+                                    VyM_mes.Semana2.SMM3_A = txt_SMM_A3.Text;
+                                    VyM_mes.Semana2.NVC1 = txt_NVC1.Text;
+                                    VyM_mes.Semana2.NVC1_A = txt_NVC_A1.Text;
+                                    VyM_mes.Semana2.NVC2 = txt_NVC2.Text;
+                                    VyM_mes.Semana2.NVC2_A = txt_NVC2.Text;
+                                    VyM_mes.Semana2.Libro_A = txt_NVC_A3.Text;
+                                    VyM_mes.Semana2.Libro_L = txt_NVC_A4.Text;
+                                    VyM_mes.Semana2.Oracion = txt_Ora2VyM.Text;
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    VyM_mes.Semana3.Fecha = txt_Date.Text;
+                                    VyM_mes.Semana3.Presidente = txt_Pres.Text;
+                                    VyM_mes.Semana3.Discurso = txt_TdlB_1.Text;
+                                    VyM_mes.Semana3.Discurso_A = txt_TdlB_A1.Text;
+                                    VyM_mes.Semana3.Perlas = txt_TdlB_A2.Text;
+                                    VyM_mes.Semana3.Lectura = txt_TdlB_A3.Text;
+                                    VyM_mes.Semana3.SMM1 = txt_SMM1.Text;
+                                    VyM_mes.Semana3.SMM1_A = txt_SMM_A1.Text;
+                                    VyM_mes.Semana3.SMM2 = txt_SMM2.Text;
+                                    VyM_mes.Semana3.SMM2_A = txt_SMM_A2.Text;
+                                    VyM_mes.Semana3.SMM3 = txt_SMM3.Text;
+                                    VyM_mes.Semana3.SMM3_A = txt_SMM_A3.Text;
+                                    VyM_mes.Semana3.NVC1 = txt_NVC1.Text;
+                                    VyM_mes.Semana3.NVC1_A = txt_NVC_A1.Text;
+                                    VyM_mes.Semana3.NVC2 = txt_NVC2.Text;
+                                    VyM_mes.Semana3.NVC2_A = txt_NVC2.Text;
+                                    VyM_mes.Semana3.Libro_A = txt_NVC_A3.Text;
+                                    VyM_mes.Semana3.Libro_L = txt_NVC_A4.Text;
+                                    VyM_mes.Semana3.Oracion = txt_Ora2VyM.Text;
+                                    break;
+                                }
+                            case 4:
+                                {
+                                    VyM_mes.Semana4.Fecha = txt_Date.Text;
+                                    VyM_mes.Semana4.Presidente = txt_Pres.Text;
+                                    VyM_mes.Semana4.Discurso = txt_TdlB_1.Text;
+                                    VyM_mes.Semana4.Discurso_A = txt_TdlB_A1.Text;
+                                    VyM_mes.Semana4.Perlas = txt_TdlB_A2.Text;
+                                    VyM_mes.Semana4.Lectura = txt_TdlB_A3.Text;
+                                    VyM_mes.Semana4.SMM1 = txt_SMM1.Text;
+                                    VyM_mes.Semana4.SMM1_A = txt_SMM_A1.Text;
+                                    VyM_mes.Semana4.SMM2 = txt_SMM2.Text;
+                                    VyM_mes.Semana4.SMM2_A = txt_SMM_A2.Text;
+                                    VyM_mes.Semana4.SMM3 = txt_SMM3.Text;
+                                    VyM_mes.Semana4.SMM3_A = txt_SMM_A3.Text;
+                                    VyM_mes.Semana4.NVC1 = txt_NVC1.Text;
+                                    VyM_mes.Semana4.NVC1_A = txt_NVC_A1.Text;
+                                    VyM_mes.Semana4.NVC2 = txt_NVC2.Text;
+                                    VyM_mes.Semana4.NVC2_A = txt_NVC2.Text;
+                                    VyM_mes.Semana4.Libro_A = txt_NVC_A3.Text;
+                                    VyM_mes.Semana4.Libro_L = txt_NVC_A4.Text;
+                                    VyM_mes.Semana4.Oracion = txt_Ora2VyM.Text;
+                                    break;
+                                }
+                            case 5:
+                                {
+                                    VyM_mes.Semana5.Fecha = txt_Date.Text;
+                                    VyM_mes.Semana5.Presidente = txt_Pres.Text;
+                                    VyM_mes.Semana5.Discurso = txt_TdlB_1.Text;
+                                    VyM_mes.Semana5.Discurso_A = txt_TdlB_A1.Text;
+                                    VyM_mes.Semana5.Perlas = txt_TdlB_A2.Text;
+                                    VyM_mes.Semana5.Lectura = txt_TdlB_A3.Text;
+                                    VyM_mes.Semana5.SMM1 = txt_SMM1.Text;
+                                    VyM_mes.Semana5.SMM1_A = txt_SMM_A1.Text;
+                                    VyM_mes.Semana5.SMM2 = txt_SMM2.Text;
+                                    VyM_mes.Semana5.SMM2_A = txt_SMM_A2.Text;
+                                    VyM_mes.Semana5.SMM3 = txt_SMM3.Text;
+                                    VyM_mes.Semana5.SMM3_A = txt_SMM_A3.Text;
+                                    VyM_mes.Semana5.NVC1 = txt_NVC1.Text;
+                                    VyM_mes.Semana5.NVC1_A = txt_NVC_A1.Text;
+                                    VyM_mes.Semana5.NVC2 = txt_NVC2.Text;
+                                    VyM_mes.Semana5.NVC2_A = txt_NVC2.Text;
+                                    VyM_mes.Semana5.Libro_A = txt_NVC_A3.Text;
+                                    VyM_mes.Semana5.Libro_L = txt_NVC_A4.Text;
+                                    VyM_mes.Semana5.Oracion = txt_Ora2VyM.Text;
+                                    break;
+                                }
+                        }
+                        break;
+                    }
+                case 1:
+                    {
+                        switch (m_semana)
+                        {
+                            case 1:
+                                {
+                                    RP_mes.Semana1.Fecha = txt_DateRP.Text;
+                                    RP_mes.Semana1.Titulo = txt_RP_Speech.Text;
+                                    RP_mes.Semana1.Presidente = txt_PresRP.Text;
+                                    RP_mes.Semana1.Congregacion = txt_RP_Disc.Text;
+                                    RP_mes.Semana1.Discursante = txt_RP_Cong.Text;
+                                    RP_mes.Semana1.Titulo_Atalaya = txt_Title_Atly.Text;
+                                    RP_mes.Semana1.Conductor = txt_Con_Atly.Text;
+                                    RP_mes.Semana1.Lector = txt_Lect_Atly.Text;
+                                    RP_mes.Semana1.Oracion = txt_OraRP.Text;
+                                    RP_mes.Semana1.Discu_Sal = txt_Sal_Disc.Text;
+                                    RP_mes.Semana1.Ttl_Sal = txt_Sal_Title.Text;
+                                    RP_mes.Semana1.Cong_Sal = txt_Sal_Cong.Text;
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    RP_mes.Semana2.Fecha = txt_DateRP.Text;
+                                    RP_mes.Semana2.Titulo = txt_RP_Speech.Text;
+                                    RP_mes.Semana2.Presidente = txt_PresRP.Text;
+                                    RP_mes.Semana2.Congregacion = txt_RP_Disc.Text;
+                                    RP_mes.Semana2.Discursante = txt_RP_Cong.Text;
+                                    RP_mes.Semana2.Titulo_Atalaya = txt_Title_Atly.Text;
+                                    RP_mes.Semana2.Conductor = txt_Con_Atly.Text;
+                                    RP_mes.Semana2.Lector = txt_Lect_Atly.Text;
+                                    RP_mes.Semana2.Oracion = txt_OraRP.Text;
+                                    RP_mes.Semana2.Discu_Sal = txt_Sal_Disc.Text;
+                                    RP_mes.Semana2.Ttl_Sal = txt_Sal_Title.Text;
+                                    RP_mes.Semana2.Cong_Sal = txt_Sal_Cong.Text;
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    RP_mes.Semana3.Fecha = txt_DateRP.Text;
+                                    RP_mes.Semana3.Titulo = txt_RP_Speech.Text;
+                                    RP_mes.Semana3.Presidente = txt_PresRP.Text;
+                                    RP_mes.Semana3.Congregacion = txt_RP_Disc.Text;
+                                    RP_mes.Semana3.Discursante = txt_RP_Cong.Text;
+                                    RP_mes.Semana3.Titulo_Atalaya = txt_Title_Atly.Text;
+                                    RP_mes.Semana3.Conductor = txt_Con_Atly.Text;
+                                    RP_mes.Semana3.Lector = txt_Lect_Atly.Text;
+                                    RP_mes.Semana3.Oracion = txt_OraRP.Text;
+                                    RP_mes.Semana3.Discu_Sal = txt_Sal_Disc.Text;
+                                    RP_mes.Semana3.Ttl_Sal = txt_Sal_Title.Text;
+                                    RP_mes.Semana3.Cong_Sal = txt_Sal_Cong.Text;
+                                    break;
+                                }
+                            case 4:
+                                {
+                                    RP_mes.Semana4.Fecha = txt_DateRP.Text;
+                                    RP_mes.Semana4.Titulo = txt_RP_Speech.Text;
+                                    RP_mes.Semana4.Presidente = txt_PresRP.Text;
+                                    RP_mes.Semana4.Congregacion = txt_RP_Disc.Text;
+                                    RP_mes.Semana4.Discursante = txt_RP_Cong.Text;
+                                    RP_mes.Semana4.Titulo_Atalaya = txt_Title_Atly.Text;
+                                    RP_mes.Semana4.Conductor = txt_Con_Atly.Text;
+                                    RP_mes.Semana4.Lector = txt_Lect_Atly.Text;
+                                    RP_mes.Semana4.Oracion = txt_OraRP.Text;
+                                    RP_mes.Semana4.Discu_Sal = txt_Sal_Disc.Text;
+                                    RP_mes.Semana4.Ttl_Sal = txt_Sal_Title.Text;
+                                    RP_mes.Semana4.Cong_Sal = txt_Sal_Cong.Text;
+                                    break;
+                                }
+                            case 5:
+                                {
+                                    RP_mes.Semana5.Fecha = txt_DateRP.Text;
+                                    RP_mes.Semana5.Titulo = txt_RP_Speech.Text;
+                                    RP_mes.Semana5.Presidente = txt_PresRP.Text;
+                                    RP_mes.Semana5.Congregacion = txt_RP_Disc.Text;
+                                    RP_mes.Semana5.Discursante = txt_RP_Cong.Text;
+                                    RP_mes.Semana5.Titulo_Atalaya = txt_Title_Atly.Text;
+                                    RP_mes.Semana5.Conductor = txt_Con_Atly.Text;
+                                    RP_mes.Semana5.Lector = txt_Lect_Atly.Text;
+                                    RP_mes.Semana5.Oracion = txt_OraRP.Text;
+                                    RP_mes.Semana5.Discu_Sal = txt_Sal_Disc.Text;
+                                    RP_mes.Semana5.Ttl_Sal = txt_Sal_Title.Text;
+                                    RP_mes.Semana5.Cong_Sal = txt_Sal_Cong.Text;
+                                    break;
+                                }
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        AC_mes.Semana1.Cap_Aseo = txt_Aseo_1.Text;
+                        AC_mes.Semana1.Vym_Cap = txt_Cap_L_1.Text;
+                        AC_mes.Semana1.Vym_Izq = txt_AC1_L_1.Text;
+                        AC_mes.Semana1.Vym_Der = txt_AC2_L_1.Text;
+                        AC_mes.Semana1.Rp_Cap = txt_Cap_S_1.Text;
+                        AC_mes.Semana1.Rp_Izq = txt_AC1_S_1.Text;
+                        AC_mes.Semana1.Rp_Der = txt_AC2_S_1.Text;
+
+                        AC_mes.Semana2.Cap_Aseo = txt_Aseo_2.Text;
+                        AC_mes.Semana2.Vym_Cap = txt_Cap_L_2.Text;
+                        AC_mes.Semana2.Vym_Izq = txt_AC1_L_2.Text;
+                        AC_mes.Semana2.Vym_Der = txt_AC2_L_2.Text;
+                        AC_mes.Semana2.Rp_Cap = txt_Cap_S_2.Text;
+                        AC_mes.Semana2.Rp_Izq = txt_AC1_S_2.Text;
+                        AC_mes.Semana2.Rp_Der = txt_AC2_S_2.Text;
+
+                        AC_mes.Semana3.Cap_Aseo = txt_Aseo_3.Text;
+                        AC_mes.Semana3.Vym_Cap = txt_Cap_L_3.Text;
+                        AC_mes.Semana3.Vym_Izq = txt_AC1_L_3.Text;
+                        AC_mes.Semana3.Vym_Der = txt_AC2_L_3.Text;
+                        AC_mes.Semana3.Rp_Cap = txt_Cap_S_3.Text;
+                        AC_mes.Semana3.Rp_Izq = txt_AC1_S_3.Text;
+                        AC_mes.Semana3.Rp_Der = txt_AC2_S_3.Text;
+
+                        AC_mes.Semana4.Cap_Aseo = txt_Aseo_4.Text;
+                        AC_mes.Semana4.Vym_Cap = txt_Cap_L_4.Text;
+                        AC_mes.Semana4.Vym_Izq = txt_AC1_L_4.Text;
+                        AC_mes.Semana4.Vym_Der = txt_AC2_L_4.Text;
+                        AC_mes.Semana4.Rp_Cap = txt_Cap_S_4.Text;
+                        AC_mes.Semana4.Rp_Izq = txt_AC1_S_4.Text;
+                        AC_mes.Semana4.Rp_Der = txt_AC2_S_4.Text;
+
+                        AC_mes.Semana5.Cap_Aseo = txt_Aseo_5.Text;
+                        AC_mes.Semana5.Vym_Cap = txt_Cap_L_5.Text;
+                        AC_mes.Semana5.Vym_Izq = txt_AC1_L_5.Text;
+                        AC_mes.Semana5.Vym_Der = txt_AC2_L_5.Text;
+                        AC_mes.Semana5.Rp_Cap = txt_Cap_S_5.Text;
+                        AC_mes.Semana5.Rp_Izq = txt_AC1_S_5.Text;
+                        AC_mes.Semana5.Rp_Der = txt_AC2_S_5.Text;
+                        break;
+                    }
+            }
         }
     }
 }

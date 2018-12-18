@@ -8,14 +8,14 @@ namespace Project_Insight
 {
     public class VyM_Mes
     {
-        static VyM_Sem Semana1 = new VyM_Sem();
-        static VyM_Sem Semana2 = new VyM_Sem();
-        static VyM_Sem Semana3 = new VyM_Sem();
-        static VyM_Sem Semana4 = new VyM_Sem();
-        static VyM_Sem Semana5 = new VyM_Sem();
+        public VyM_Sem Semana1 = new VyM_Sem();
+        public VyM_Sem Semana2 = new VyM_Sem();
+        public VyM_Sem Semana3 = new VyM_Sem();
+        public VyM_Sem Semana4 = new VyM_Sem();
+        public VyM_Sem Semana5 = new VyM_Sem();
     }
 
-    class VyM_Sem
+    public class VyM_Sem
     {
         public string Fecha { get; set; }
         public string Presidente { get; set; }
@@ -33,7 +33,6 @@ namespace Project_Insight
         public string NVC1_A { get; set; }
         public string NVC2 { get; set; }
         public string NVC2_A { get; set; }
-        public string Libro { get; set; }
         public string Libro_A { get; set; }
         public string Libro_L { get; set; } //Lector
         public string Oracion { get; set; }

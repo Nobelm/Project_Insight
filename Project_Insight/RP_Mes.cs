@@ -8,14 +8,14 @@ namespace Project_Insight
 {
     public class RP_Mes
     {
-        static RP_Sem Semana1 = new RP_Sem();
-        static RP_Sem Semana2 = new RP_Sem();
-        static RP_Sem Semana3 = new RP_Sem();
-        static RP_Sem Semana4 = new RP_Sem();
-        static RP_Sem Semana5 = new RP_Sem();
+        public RP_Sem Semana1 = new RP_Sem();
+        public RP_Sem Semana2 = new RP_Sem();
+        public RP_Sem Semana3 = new RP_Sem();
+        public RP_Sem Semana4 = new RP_Sem();
+        public RP_Sem Semana5 = new RP_Sem();
     }
 
-    class RP_Sem
+    public class RP_Sem
     {
         public string Fecha { get; set; }
         public string Titulo { get; set; }

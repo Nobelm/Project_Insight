@@ -90,6 +90,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Tab_RP = new System.Windows.Forms.TabPage();
             this.RP_1 = new System.Windows.Forms.GroupBox();
+            this.txt_OraRP = new System.Windows.Forms.TextBox();
+            this.txt_Lect_Atly = new System.Windows.Forms.TextBox();
             this.txt_Con_Atly = new System.Windows.Forms.TextBox();
             this.txt_PresRP = new System.Windows.Forms.TextBox();
             this.txt_Sal_Title = new System.Windows.Forms.TextBox();
@@ -113,6 +115,28 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.Tab_AC = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txt_AC2_S_5 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_S_5 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_S_5 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_S_4 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_S_4 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_S_4 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_S_3 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_S_3 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_S_3 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_S_2 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_S_2 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_S_2 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_S_1 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_S_1 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_S_1 = new System.Windows.Forms.TextBox();
+            this.txt_Aseo_5 = new System.Windows.Forms.TextBox();
+            this.txt_Aseo_4 = new System.Windows.Forms.TextBox();
+            this.txt_Aseo_3 = new System.Windows.Forms.TextBox();
+            this.txt_Aseo_2 = new System.Windows.Forms.TextBox();
             this.txt_AC2_L_5 = new System.Windows.Forms.TextBox();
             this.txt_AC1_L_5 = new System.Windows.Forms.TextBox();
             this.txt_Cap_L_5 = new System.Windows.Forms.TextBox();
@@ -171,30 +195,7 @@
             this.txt_Command = new System.Windows.Forms.TextBox();
             this.lbl_Week = new System.Windows.Forms.Label();
             this.lbl_Month = new System.Windows.Forms.Label();
-            this.txt_Aseo_2 = new System.Windows.Forms.TextBox();
-            this.txt_Aseo_3 = new System.Windows.Forms.TextBox();
-            this.txt_Aseo_4 = new System.Windows.Forms.TextBox();
-            this.txt_Aseo_5 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_S_5 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_S_5 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_S_5 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_S_4 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_S_4 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_S_4 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_S_3 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_S_3 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_S_3 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_S_2 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_S_2 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_S_2 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_S_1 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_S_1 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_S_1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txt_Lect_Atly = new System.Windows.Forms.TextBox();
-            this.txt_OraRP = new System.Windows.Forms.TextBox();
+            this.txt_DateRP = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picPresenter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.protoss_Frame)).BeginInit();
             this.tab_Control.SuspendLayout();
@@ -851,6 +852,7 @@
             // RP_1
             // 
             this.RP_1.BackColor = System.Drawing.Color.DimGray;
+            this.RP_1.Controls.Add(this.txt_DateRP);
             this.RP_1.Controls.Add(this.txt_OraRP);
             this.RP_1.Controls.Add(this.txt_Lect_Atly);
             this.RP_1.Controls.Add(this.txt_Con_Atly);
@@ -882,6 +884,20 @@
             this.RP_1.TabIndex = 184;
             this.RP_1.TabStop = false;
             this.RP_1.Text = "Fecha: ";
+            // 
+            // txt_OraRP
+            // 
+            this.txt_OraRP.Location = new System.Drawing.Point(351, 180);
+            this.txt_OraRP.Name = "txt_OraRP";
+            this.txt_OraRP.Size = new System.Drawing.Size(183, 20);
+            this.txt_OraRP.TabIndex = 187;
+            // 
+            // txt_Lect_Atly
+            // 
+            this.txt_Lect_Atly.Location = new System.Drawing.Point(611, 180);
+            this.txt_Lect_Atly.Name = "txt_Lect_Atly";
+            this.txt_Lect_Atly.Size = new System.Drawing.Size(181, 20);
+            this.txt_Lect_Atly.TabIndex = 186;
             // 
             // txt_Con_Atly
             // 
@@ -1149,6 +1165,166 @@
             this.Tab_AC.Size = new System.Drawing.Size(827, 621);
             this.Tab_AC.TabIndex = 2;
             this.Tab_AC.Text = "AC";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(493, 582);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 13);
+            this.label4.TabIndex = 221;
+            this.label4.Text = "Acomodador 2";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(493, 556);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(76, 13);
+            this.label10.TabIndex = 220;
+            this.label10.Text = "Acomodador 1";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(493, 529);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 13);
+            this.label11.TabIndex = 219;
+            this.label11.Text = "Capitan";
+            // 
+            // txt_AC2_S_5
+            // 
+            this.txt_AC2_S_5.Location = new System.Drawing.Point(575, 578);
+            this.txt_AC2_S_5.Name = "txt_AC2_S_5";
+            this.txt_AC2_S_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC2_S_5.TabIndex = 218;
+            // 
+            // txt_AC1_S_5
+            // 
+            this.txt_AC1_S_5.Location = new System.Drawing.Point(575, 552);
+            this.txt_AC1_S_5.Name = "txt_AC1_S_5";
+            this.txt_AC1_S_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC1_S_5.TabIndex = 217;
+            // 
+            // txt_Cap_S_5
+            // 
+            this.txt_Cap_S_5.Location = new System.Drawing.Point(575, 525);
+            this.txt_Cap_S_5.Name = "txt_Cap_S_5";
+            this.txt_Cap_S_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_Cap_S_5.TabIndex = 216;
+            // 
+            // txt_AC2_S_4
+            // 
+            this.txt_AC2_S_4.Location = new System.Drawing.Point(575, 456);
+            this.txt_AC2_S_4.Name = "txt_AC2_S_4";
+            this.txt_AC2_S_4.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC2_S_4.TabIndex = 215;
+            // 
+            // txt_AC1_S_4
+            // 
+            this.txt_AC1_S_4.Location = new System.Drawing.Point(575, 430);
+            this.txt_AC1_S_4.Name = "txt_AC1_S_4";
+            this.txt_AC1_S_4.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC1_S_4.TabIndex = 214;
+            // 
+            // txt_Cap_S_4
+            // 
+            this.txt_Cap_S_4.Location = new System.Drawing.Point(575, 404);
+            this.txt_Cap_S_4.Name = "txt_Cap_S_4";
+            this.txt_Cap_S_4.Size = new System.Drawing.Size(227, 20);
+            this.txt_Cap_S_4.TabIndex = 213;
+            // 
+            // txt_AC2_S_3
+            // 
+            this.txt_AC2_S_3.Location = new System.Drawing.Point(575, 336);
+            this.txt_AC2_S_3.Name = "txt_AC2_S_3";
+            this.txt_AC2_S_3.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC2_S_3.TabIndex = 212;
+            // 
+            // txt_AC1_S_3
+            // 
+            this.txt_AC1_S_3.Location = new System.Drawing.Point(575, 310);
+            this.txt_AC1_S_3.Name = "txt_AC1_S_3";
+            this.txt_AC1_S_3.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC1_S_3.TabIndex = 211;
+            // 
+            // txt_Cap_S_3
+            // 
+            this.txt_Cap_S_3.Location = new System.Drawing.Point(575, 284);
+            this.txt_Cap_S_3.Name = "txt_Cap_S_3";
+            this.txt_Cap_S_3.Size = new System.Drawing.Size(227, 20);
+            this.txt_Cap_S_3.TabIndex = 210;
+            // 
+            // txt_AC2_S_2
+            // 
+            this.txt_AC2_S_2.Location = new System.Drawing.Point(575, 217);
+            this.txt_AC2_S_2.Name = "txt_AC2_S_2";
+            this.txt_AC2_S_2.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC2_S_2.TabIndex = 209;
+            // 
+            // txt_AC1_S_2
+            // 
+            this.txt_AC1_S_2.Location = new System.Drawing.Point(575, 191);
+            this.txt_AC1_S_2.Name = "txt_AC1_S_2";
+            this.txt_AC1_S_2.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC1_S_2.TabIndex = 208;
+            // 
+            // txt_Cap_S_2
+            // 
+            this.txt_Cap_S_2.Location = new System.Drawing.Point(575, 165);
+            this.txt_Cap_S_2.Name = "txt_Cap_S_2";
+            this.txt_Cap_S_2.Size = new System.Drawing.Size(227, 20);
+            this.txt_Cap_S_2.TabIndex = 207;
+            // 
+            // txt_AC2_S_1
+            // 
+            this.txt_AC2_S_1.Location = new System.Drawing.Point(575, 99);
+            this.txt_AC2_S_1.Name = "txt_AC2_S_1";
+            this.txt_AC2_S_1.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC2_S_1.TabIndex = 206;
+            // 
+            // txt_AC1_S_1
+            // 
+            this.txt_AC1_S_1.Location = new System.Drawing.Point(575, 73);
+            this.txt_AC1_S_1.Name = "txt_AC1_S_1";
+            this.txt_AC1_S_1.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC1_S_1.TabIndex = 205;
+            // 
+            // txt_Cap_S_1
+            // 
+            this.txt_Cap_S_1.Location = new System.Drawing.Point(575, 47);
+            this.txt_Cap_S_1.Name = "txt_Cap_S_1";
+            this.txt_Cap_S_1.Size = new System.Drawing.Size(227, 20);
+            this.txt_Cap_S_1.TabIndex = 204;
+            // 
+            // txt_Aseo_5
+            // 
+            this.txt_Aseo_5.Location = new System.Drawing.Point(9, 552);
+            this.txt_Aseo_5.Name = "txt_Aseo_5";
+            this.txt_Aseo_5.Size = new System.Drawing.Size(153, 20);
+            this.txt_Aseo_5.TabIndex = 203;
+            // 
+            // txt_Aseo_4
+            // 
+            this.txt_Aseo_4.Location = new System.Drawing.Point(9, 430);
+            this.txt_Aseo_4.Name = "txt_Aseo_4";
+            this.txt_Aseo_4.Size = new System.Drawing.Size(153, 20);
+            this.txt_Aseo_4.TabIndex = 202;
+            // 
+            // txt_Aseo_3
+            // 
+            this.txt_Aseo_3.Location = new System.Drawing.Point(9, 310);
+            this.txt_Aseo_3.Name = "txt_Aseo_3";
+            this.txt_Aseo_3.Size = new System.Drawing.Size(153, 20);
+            this.txt_Aseo_3.TabIndex = 201;
+            // 
+            // txt_Aseo_2
+            // 
+            this.txt_Aseo_2.Location = new System.Drawing.Point(9, 191);
+            this.txt_Aseo_2.Name = "txt_Aseo_2";
+            this.txt_Aseo_2.Size = new System.Drawing.Size(153, 20);
+            this.txt_Aseo_2.TabIndex = 200;
             // 
             // txt_AC2_L_5
             // 
@@ -1647,179 +1823,12 @@
             this.lbl_Month.TabIndex = 93;
             this.lbl_Month.Text = "Mes: ";
             // 
-            // txt_Aseo_2
+            // txt_DateRP
             // 
-            this.txt_Aseo_2.Location = new System.Drawing.Point(9, 191);
-            this.txt_Aseo_2.Name = "txt_Aseo_2";
-            this.txt_Aseo_2.Size = new System.Drawing.Size(153, 20);
-            this.txt_Aseo_2.TabIndex = 200;
-            // 
-            // txt_Aseo_3
-            // 
-            this.txt_Aseo_3.Location = new System.Drawing.Point(9, 310);
-            this.txt_Aseo_3.Name = "txt_Aseo_3";
-            this.txt_Aseo_3.Size = new System.Drawing.Size(153, 20);
-            this.txt_Aseo_3.TabIndex = 201;
-            // 
-            // txt_Aseo_4
-            // 
-            this.txt_Aseo_4.Location = new System.Drawing.Point(9, 430);
-            this.txt_Aseo_4.Name = "txt_Aseo_4";
-            this.txt_Aseo_4.Size = new System.Drawing.Size(153, 20);
-            this.txt_Aseo_4.TabIndex = 202;
-            // 
-            // txt_Aseo_5
-            // 
-            this.txt_Aseo_5.Location = new System.Drawing.Point(9, 552);
-            this.txt_Aseo_5.Name = "txt_Aseo_5";
-            this.txt_Aseo_5.Size = new System.Drawing.Size(153, 20);
-            this.txt_Aseo_5.TabIndex = 203;
-            // 
-            // txt_AC2_S_5
-            // 
-            this.txt_AC2_S_5.Location = new System.Drawing.Point(575, 578);
-            this.txt_AC2_S_5.Name = "txt_AC2_S_5";
-            this.txt_AC2_S_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC2_S_5.TabIndex = 218;
-            // 
-            // txt_AC1_S_5
-            // 
-            this.txt_AC1_S_5.Location = new System.Drawing.Point(575, 552);
-            this.txt_AC1_S_5.Name = "txt_AC1_S_5";
-            this.txt_AC1_S_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC1_S_5.TabIndex = 217;
-            // 
-            // txt_Cap_S_5
-            // 
-            this.txt_Cap_S_5.Location = new System.Drawing.Point(575, 525);
-            this.txt_Cap_S_5.Name = "txt_Cap_S_5";
-            this.txt_Cap_S_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_Cap_S_5.TabIndex = 216;
-            // 
-            // txt_AC2_S_4
-            // 
-            this.txt_AC2_S_4.Location = new System.Drawing.Point(575, 456);
-            this.txt_AC2_S_4.Name = "txt_AC2_S_4";
-            this.txt_AC2_S_4.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC2_S_4.TabIndex = 215;
-            // 
-            // txt_AC1_S_4
-            // 
-            this.txt_AC1_S_4.Location = new System.Drawing.Point(575, 430);
-            this.txt_AC1_S_4.Name = "txt_AC1_S_4";
-            this.txt_AC1_S_4.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC1_S_4.TabIndex = 214;
-            // 
-            // txt_Cap_S_4
-            // 
-            this.txt_Cap_S_4.Location = new System.Drawing.Point(575, 404);
-            this.txt_Cap_S_4.Name = "txt_Cap_S_4";
-            this.txt_Cap_S_4.Size = new System.Drawing.Size(227, 20);
-            this.txt_Cap_S_4.TabIndex = 213;
-            // 
-            // txt_AC2_S_3
-            // 
-            this.txt_AC2_S_3.Location = new System.Drawing.Point(575, 336);
-            this.txt_AC2_S_3.Name = "txt_AC2_S_3";
-            this.txt_AC2_S_3.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC2_S_3.TabIndex = 212;
-            // 
-            // txt_AC1_S_3
-            // 
-            this.txt_AC1_S_3.Location = new System.Drawing.Point(575, 310);
-            this.txt_AC1_S_3.Name = "txt_AC1_S_3";
-            this.txt_AC1_S_3.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC1_S_3.TabIndex = 211;
-            // 
-            // txt_Cap_S_3
-            // 
-            this.txt_Cap_S_3.Location = new System.Drawing.Point(575, 284);
-            this.txt_Cap_S_3.Name = "txt_Cap_S_3";
-            this.txt_Cap_S_3.Size = new System.Drawing.Size(227, 20);
-            this.txt_Cap_S_3.TabIndex = 210;
-            // 
-            // txt_AC2_S_2
-            // 
-            this.txt_AC2_S_2.Location = new System.Drawing.Point(575, 217);
-            this.txt_AC2_S_2.Name = "txt_AC2_S_2";
-            this.txt_AC2_S_2.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC2_S_2.TabIndex = 209;
-            // 
-            // txt_AC1_S_2
-            // 
-            this.txt_AC1_S_2.Location = new System.Drawing.Point(575, 191);
-            this.txt_AC1_S_2.Name = "txt_AC1_S_2";
-            this.txt_AC1_S_2.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC1_S_2.TabIndex = 208;
-            // 
-            // txt_Cap_S_2
-            // 
-            this.txt_Cap_S_2.Location = new System.Drawing.Point(575, 165);
-            this.txt_Cap_S_2.Name = "txt_Cap_S_2";
-            this.txt_Cap_S_2.Size = new System.Drawing.Size(227, 20);
-            this.txt_Cap_S_2.TabIndex = 207;
-            // 
-            // txt_AC2_S_1
-            // 
-            this.txt_AC2_S_1.Location = new System.Drawing.Point(575, 99);
-            this.txt_AC2_S_1.Name = "txt_AC2_S_1";
-            this.txt_AC2_S_1.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC2_S_1.TabIndex = 206;
-            // 
-            // txt_AC1_S_1
-            // 
-            this.txt_AC1_S_1.Location = new System.Drawing.Point(575, 73);
-            this.txt_AC1_S_1.Name = "txt_AC1_S_1";
-            this.txt_AC1_S_1.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC1_S_1.TabIndex = 205;
-            // 
-            // txt_Cap_S_1
-            // 
-            this.txt_Cap_S_1.Location = new System.Drawing.Point(575, 47);
-            this.txt_Cap_S_1.Name = "txt_Cap_S_1";
-            this.txt_Cap_S_1.Size = new System.Drawing.Size(227, 20);
-            this.txt_Cap_S_1.TabIndex = 204;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(493, 582);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 13);
-            this.label4.TabIndex = 221;
-            this.label4.Text = "Acomodador 2";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(493, 556);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 13);
-            this.label10.TabIndex = 220;
-            this.label10.Text = "Acomodador 1";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(493, 529);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(43, 13);
-            this.label11.TabIndex = 219;
-            this.label11.Text = "Capitan";
-            // 
-            // txt_Lect_Atly
-            // 
-            this.txt_Lect_Atly.Location = new System.Drawing.Point(611, 180);
-            this.txt_Lect_Atly.Name = "txt_Lect_Atly";
-            this.txt_Lect_Atly.Size = new System.Drawing.Size(181, 20);
-            this.txt_Lect_Atly.TabIndex = 186;
-            // 
-            // txt_OraRP
-            // 
-            this.txt_OraRP.Location = new System.Drawing.Point(351, 180);
-            this.txt_OraRP.Name = "txt_OraRP";
-            this.txt_OraRP.Size = new System.Drawing.Size(183, 20);
-            this.txt_OraRP.TabIndex = 187;
+            this.txt_DateRP.Location = new System.Drawing.Point(53, 23);
+            this.txt_DateRP.Name = "txt_DateRP";
+            this.txt_DateRP.Size = new System.Drawing.Size(100, 20);
+            this.txt_DateRP.TabIndex = 188;
             // 
             // Main_Form
             // 
@@ -2029,6 +2038,7 @@
         private System.Windows.Forms.TextBox txt_Cap_S_1;
         private System.Windows.Forms.TextBox txt_Lect_Atly;
         private System.Windows.Forms.TextBox txt_OraRP;
+        private System.Windows.Forms.TextBox txt_DateRP;
     }
 }
 
