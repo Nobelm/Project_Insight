@@ -80,6 +80,7 @@
             this.txt_TdlB_1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.General_Info = new System.Windows.Forms.GroupBox();
+            this.lbl_Date = new System.Windows.Forms.Label();
             this.time_0 = new System.Windows.Forms.Label();
             this.time_1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -90,6 +91,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Tab_RP = new System.Windows.Forms.TabPage();
             this.RP_1 = new System.Windows.Forms.GroupBox();
+            this.txt_DateRP = new System.Windows.Forms.TextBox();
             this.txt_OraRP = new System.Windows.Forms.TextBox();
             this.txt_Lect_Atly = new System.Windows.Forms.TextBox();
             this.txt_Con_Atly = new System.Windows.Forms.TextBox();
@@ -191,11 +193,10 @@
             this.lbl_Dia_L_1 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.Calendar = new System.Windows.Forms.MonthCalendar();
+            this.m_calendar = new System.Windows.Forms.MonthCalendar();
             this.txt_Command = new System.Windows.Forms.TextBox();
             this.lbl_Week = new System.Windows.Forms.Label();
             this.lbl_Month = new System.Windows.Forms.Label();
-            this.txt_DateRP = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picPresenter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.protoss_Frame)).BeginInit();
             this.tab_Control.SuspendLayout();
@@ -743,6 +744,7 @@
             // General_Info
             // 
             this.General_Info.BackColor = System.Drawing.Color.DimGray;
+            this.General_Info.Controls.Add(this.lbl_Date);
             this.General_Info.Controls.Add(this.time_0);
             this.General_Info.Controls.Add(this.time_1);
             this.General_Info.Controls.Add(this.label8);
@@ -759,6 +761,14 @@
             this.General_Info.TabStop = false;
             this.General_Info.Text = "Informacion General";
             this.General_Info.Enter += new System.EventHandler(this.General_Info_Enter);
+            // 
+            // lbl_Date
+            // 
+            this.lbl_Date.AutoSize = true;
+            this.lbl_Date.Location = new System.Drawing.Point(146, 16);
+            this.lbl_Date.Name = "lbl_Date";
+            this.lbl_Date.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Date.TabIndex = 111;
             // 
             // time_0
             // 
@@ -797,17 +807,16 @@
             this.txt_Date.Name = "txt_Date";
             this.txt_Date.Size = new System.Drawing.Size(173, 20);
             this.txt_Date.TabIndex = 105;
-            this.txt_Date.TextChanged += new System.EventHandler(this.Txt_Date_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Coral;
-            this.label7.Location = new System.Drawing.Point(16, 44);
+            this.label7.Location = new System.Drawing.Point(16, 21);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(127, 13);
+            this.label7.Size = new System.Drawing.Size(87, 39);
             this.label7.TabIndex = 104;
-            this.label7.Text = "Fecha || Lectura Semanal";
+            this.label7.Text = "Fecha\r\n\r\nLectura Semanal";
             // 
             // label5
             // 
@@ -884,6 +893,13 @@
             this.RP_1.TabIndex = 184;
             this.RP_1.TabStop = false;
             this.RP_1.Text = "Fecha: ";
+            // 
+            // txt_DateRP
+            // 
+            this.txt_DateRP.Location = new System.Drawing.Point(53, 23);
+            this.txt_DateRP.Name = "txt_DateRP";
+            this.txt_DateRP.Size = new System.Drawing.Size(100, 20);
+            this.txt_DateRP.TabIndex = 188;
             // 
             // txt_OraRP
             // 
@@ -1780,15 +1796,15 @@
             this.label43.TabIndex = 103;
             this.label43.Text = "Capitan";
             // 
-            // Calendar
+            // m_calendar
             // 
-            this.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.Calendar.ForeColor = System.Drawing.Color.DarkOrange;
-            this.Calendar.Location = new System.Drawing.Point(868, 12);
-            this.Calendar.Name = "Calendar";
-            this.Calendar.ShowWeekNumbers = true;
-            this.Calendar.TabIndex = 91;
-            this.Calendar.TitleBackColor = System.Drawing.Color.DarkOrange;
+            this.m_calendar.BackColor = System.Drawing.Color.Black;
+            this.m_calendar.ForeColor = System.Drawing.Color.DarkOrange;
+            this.m_calendar.Location = new System.Drawing.Point(868, 12);
+            this.m_calendar.Name = "m_calendar";
+            this.m_calendar.ShowWeekNumbers = true;
+            this.m_calendar.TabIndex = 91;
+            this.m_calendar.TitleBackColor = System.Drawing.Color.DarkOrange;
             // 
             // txt_Command
             // 
@@ -1823,13 +1839,6 @@
             this.lbl_Month.TabIndex = 93;
             this.lbl_Month.Text = "Mes: ";
             // 
-            // txt_DateRP
-            // 
-            this.txt_DateRP.Location = new System.Drawing.Point(53, 23);
-            this.txt_DateRP.Name = "txt_DateRP";
-            this.txt_DateRP.Size = new System.Drawing.Size(100, 20);
-            this.txt_DateRP.TabIndex = 188;
-            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1839,7 +1848,7 @@
             this.Controls.Add(this.lbl_Month);
             this.Controls.Add(this.lbl_Week);
             this.Controls.Add(this.txt_Command);
-            this.Controls.Add(this.Calendar);
+            this.Controls.Add(this.m_calendar);
             this.Controls.Add(this.tab_Control);
             this.Controls.Add(this.log_txtBx);
             this.Controls.Add(this.picPresenter);
@@ -1879,7 +1888,7 @@
         private System.Windows.Forms.Timer timer_Form2;
         private System.Windows.Forms.TabControl tab_Control;
         private System.Windows.Forms.TabPage Tab_VyM;
-        private System.Windows.Forms.MonthCalendar Calendar;
+        private System.Windows.Forms.MonthCalendar m_calendar;
         private System.Windows.Forms.TabPage Tab_RP;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label36;
@@ -2039,6 +2048,7 @@
         private System.Windows.Forms.TextBox txt_Lect_Atly;
         private System.Windows.Forms.TextBox txt_OraRP;
         private System.Windows.Forms.TextBox txt_DateRP;
+        private System.Windows.Forms.Label lbl_Date;
     }
 }
 

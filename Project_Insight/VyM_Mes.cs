@@ -18,6 +18,7 @@ namespace Project_Insight
     public class VyM_Sem
     {
         public string Fecha { get; set; }
+        public string Sem_Biblia { get; set; }
         public string Presidente { get; set; }
         public string Discurso { get; set; }
         public string Discurso_A { get; set; } //Asignado

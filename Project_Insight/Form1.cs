@@ -85,7 +85,8 @@ namespace Project_Insight
         public static int tab_meeting = 0;
         public static string aux_command;
         public static bool selected_txt = false;
-        public static bool is_loading = false;
+        public static int loading_delta = 1;
+        public static int loading = 0;
 
 
 
@@ -123,9 +124,9 @@ namespace Project_Insight
             Dict_vym.Add("nv_12", txt_NVC_A1);
             Dict_vym.Add("nv_21", txt_NVC2);
             Dict_vym.Add("nv_22", txt_NVC_A2);
-            Dict_vym.Add("nv_03", txt_NVC_A3);
-            Dict_vym.Add("nv_04", txt_NVC_A4);
-            Dict_vym.Add("nv_05", txt_Ora2VyM);
+            Dict_vym.Add("nv_30", txt_NVC_A3);
+            Dict_vym.Add("nv_40", txt_NVC_A4);
+            Dict_vym.Add("nv_50", txt_Ora2VyM);
 
             Dict_rp.Add("rp_00", txt_DateRP);
             Dict_rp.Add("rp_01", txt_PresRP);
@@ -314,32 +315,27 @@ namespace Project_Insight
             }
             busy_trace = true;
             log_txtBx.SelectionColor = Color.White;
-            for (int i = 0; i <= 20; i++)
-            {
-                log_txtBx.AppendText(".");
-                await Task.Delay(20);
-            }
-            is_loading = true;
+            log_txtBx.AppendText("\nLoading: ");
             aux = log_txtBx.Text;
             log_txtBx.Text = "";
-            while (is_loading)
+            while (loading < 100)
             {
-                aux += "\\";
+                aux += "\\  " + loading;
                 log_txtBx.Text = aux;
                 await Task.Delay(delay);
-                aux = aux.Substring(0, aux.Length - 1);
-                aux += "|";
+                aux = aux.Substring(0, aux.Length - 4);
+                aux += "|  " + loading.ToString();
                 log_txtBx.Text = aux;
                 await Task.Delay(delay);
-                aux = aux.Substring(0, aux.Length - 1);
-                aux += "/";
+                aux = aux.Substring(0, aux.Length - 4);
+                aux += "/  " + loading.ToString();
                 log_txtBx.Text = aux;
                 await Task.Delay(delay);
-                aux = aux.Substring(0, aux.Length - 1);
-                aux += "-";
+                aux = aux.Substring(0, aux.Length - 4);
+                aux += "-  " + loading.ToString();
                 log_txtBx.Text = aux;
-                await Task.Delay(delay);                
-                aux = aux.Substring(0, aux.Length - 1);
+                await Task.Delay(delay);
+                aux = aux.Substring(0, aux.Length - 4);
             }
             log_txtBx.AppendText("\n");
             log_txtBx.SelectionColor = Color.Green;
@@ -361,7 +357,7 @@ namespace Project_Insight
             {
                 if (txt_Command.Text != "")
                 {
-                    string Str = txt_Command.Text.ToLower();
+                    string Str = txt_Command.Text;
                     string cmd = Str;
                     string sup = "";
                     int index = 0;
@@ -374,6 +370,8 @@ namespace Project_Insight
                             sup = Str.Substring(index + 1);
                         }
                     }
+                    cmd = cmd.ToLower();
+                    Str = cmd + " " + sup;
                     Notify("Executing [" + Str + "] command");
                     Save_command(Str);
                     switch (cmd)
@@ -412,14 +410,11 @@ namespace Project_Insight
                             }
                         case "save":
                             {
-                                string[] file = new string[] { "vym", "rp", "ac", "all" };
-                                for (int i = 0; i <= file.Length - 1; i++)
+                                if (int.TryParse(sup, out int sv))
                                 {
-                                    if (sup.Contains(file[i]))
-                                    {
-                                        Process_save(i + 1);
-                                        break;
-                                    }
+                                    Thread Save_thread = new Thread(() => Process_save(sv));
+                                    Save_thread.Start();
+                                    Loading_Trace();
                                 }
                                 break;
                             }
@@ -435,10 +430,10 @@ namespace Project_Insight
                             {
                                 if (int.TryParse(sup, out int wk))
                                 {
-                                    if (wk != m_semana)
+                                    if ((wk != m_semana) && (wk > 0))
                                     {
-                                        m_semana = wk;
                                         Pre_save_info();
+                                        m_semana = wk;
                                         Week_Handler();
                                     }
                                 }
@@ -462,7 +457,7 @@ namespace Project_Insight
                                                 TextBox txt = (TextBox)Dict_vym[cmd];
                                                 txt.Text = sup;
                                                 txt.BackColor = Color.White;
-                                                Pre_save_info();
+                                                //Pre_save_info();
                                             }
                                             break;
                                         }
@@ -473,7 +468,7 @@ namespace Project_Insight
                                                 TextBox txt = (TextBox)Dict_rp[cmd];
                                                 txt.Text = sup;
                                                 txt.BackColor = Color.White;
-                                                Pre_save_info();
+                                                //Pre_save_info();
                                             }
                                             break;
                                         }
@@ -484,7 +479,7 @@ namespace Project_Insight
                                                 TextBox txt = (TextBox)Dict_ac[cmd];
                                                 txt.Text = sup;
                                                 txt.BackColor = Color.White;
-                                                Pre_save_info();
+                                                //Pre_save_info();
                                             }
                                             break;
                                         }
@@ -504,8 +499,12 @@ namespace Project_Insight
                     if (Command_history[command_iterator] != null)
                     {
                         txt_Command.Text = Command_history[command_iterator];
+                        txt_Command.SelectionStart = txt_Command.Text.Length;
                     }
-                    txt_Command.ScrollToCaret();
+                    else
+                    {
+                        command_iterator--;
+                    }
                 }
             }
             else if (e.KeyCode == Keys.Down)
@@ -516,15 +515,14 @@ namespace Project_Insight
                     if (Command_history[command_iterator] != null)
                     {
                         txt_Command.Text = Command_history[command_iterator];
+                        txt_Command.SelectionStart = txt_Command.Text.Length;
+                    }
+                    else if (command_iterator == 0)
+                    {
+                        txt_Command.Text = "";
                     }
                 }
-                if (command_iterator == 0)
-                {
-                    txt_Command.Text = "";
-                }
-                txt_Command.ScrollToCaret();
             }
-            Write_Cell(txt_Command.Text.ToLower());
         }
 
         private void txt_Command_TextChanged(object sender, EventArgs e)
@@ -557,8 +555,11 @@ namespace Project_Insight
                         }
                         else if (aux_command != null)
                         {
-                            TextBox txt = (TextBox)Dict_vym[aux_command];
-                            txt.BackColor = Color.White;
+                            if (Dict_vym.ContainsKey(aux_command))
+                            {
+                                TextBox txt = (TextBox)Dict_vym[aux_command];
+                                txt.BackColor = Color.White;
+                            }
                         }
                         break;
                     }
@@ -577,8 +578,11 @@ namespace Project_Insight
                         }
                         else if (aux_command != null)
                         {
-                            TextBox txt = (TextBox)Dict_rp[aux_command];
-                            txt.BackColor = Color.White;
+                            if (Dict_rp.ContainsKey(aux_command))
+                            {
+                                TextBox txt = (TextBox)Dict_rp[aux_command];
+                                txt.BackColor = Color.White;
+                            }
                         }
                         break;
                     }
@@ -597,8 +601,11 @@ namespace Project_Insight
                         }
                         else if (aux_command != null)
                         {
-                            TextBox txt = (TextBox)Dict_ac[aux_command];
-                            txt.BackColor = Color.White;
+                            if (Dict_ac.ContainsKey(aux_command))
+                            {
+                                TextBox txt = (TextBox)Dict_ac[aux_command];
+                                txt.BackColor = Color.White;
+                            }
                         }
                         break;
                     }
@@ -609,11 +616,11 @@ namespace Project_Insight
         {
             for (int i = Command_history.Length - 1; i >= 2; i--)
             {
-                Command_history[i] = Command_history[i-1];
+                Command_history[i] = Command_history[i - 1];
             }
             Command_history[1] = cmd;
         }
-        
+
         public void String_stack(string data, bool save, int trace, int line)
         {
             if (save)
@@ -649,7 +656,7 @@ namespace Project_Insight
                 {
                     Notify(str_stack[0], int_stack[0]);
                 }
-                else if(notify_warn == 2)
+                else if (notify_warn == 2)
                 {
                     Warn(str_stack[0], int_stack[0]);
                 }/*
@@ -728,6 +735,7 @@ namespace Project_Insight
             Sheet_VyM = (Excel.Worksheet)objSheets.get_Item(1);
             range_1 = Sheet_VyM.get_Range("A1", "H137");
             cellValue_1 = (System.Object[,])range_1.get_Value();
+            excel_ready = false;
 
             if ((cellValue_1[53, 1] != null) && (cellValue_1[53, 1].ToString() == "S-140 AGR-Technologies"))
             {
@@ -756,53 +764,7 @@ namespace Project_Insight
         {
             Warn("Clear all!");
         }
-
-        private void Process_save(int save)
-        {
-            string FileName = "";
-            FileName += CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m_mes);
-            if (true)
-            {
-                Opening_Excel(Path);
-                if ((save == 1) || (save == 4))
-                {
-                    VyM_Handler(false);
-                    FileName += "_VyM";
-                }
-
-                if ((save == 2) || (save == 4))
-                {
-                    RP_Handler(false);
-                    FileName += "_RP";
-                }
-                if ((save == 3) || (save == 4))
-                {
-                    AC_Handler(false);
-                    FileName += "_AC";
-                }
-                Notify("FileName: " + FileName);
-                pending_refresh_DB = true;
-                Notify(Application.StartupPath + FileName + ".xlsx");
-                if (is_new_instance)
-                {
-                    objBooks.SaveAs(Application.StartupPath + FileName + ".xlsx");
-                }
-                else
-                {
-                    objBooks.Save();
-                }
-                if (excel_ready)
-                {
-                    excel_ready = false;
-                    objBooks.Close(0);
-                    objApp.Quit();
-                }
-                Notify("Saved file for JW Meetings" + ", Week [" + m_semana.ToString() + "]");
-                Notify("Saved date: [" + m_dia.ToString() + "-" + m_mes.ToString() + "-" + m_año.ToString() + "]");
-                Check_time(this, null);
-            }
-        }
-
+        
         private string Check_null_cbx(object sender)
         {
             string str = "";
@@ -849,15 +811,6 @@ namespace Project_Insight
                 }
             }
         }
-
-        /*private void Cmbx_Week_SelectedIndexChanged(object sender, EventArgs e) 
-        {
-            if (excel_ready)
-            {
-                Process_read();
-                //cbx_Day_SelectedIndexChanged(cbx_Day, null);
-            }
-        }*/
                
         private void Process_restore()
         {
@@ -909,44 +862,184 @@ namespace Project_Insight
             }
         }
 
-        /*Process message to write de selected cell*/
-        public void Write_Cell(string Str)
+        private void Process_save(int save)
         {
-            var Array_input = Str.ToCharArray();
-            
-            //Notify(txt_Command.Text);
-            //txt_Command.AutoCompleteCustomSource.Count;
-          switch (tab_Control.SelectedIndex)
+            string FileName = meetings_days[0, 0].Month.ToString();
+            loading = 1;
+            Opening_Excel(Path);
+            loading += 4;
+            Pre_save_info();
+            if (save == 4)
             {
-                case 0:
-                    {
-                        /*for (int i = 0; i <= VyM_Names.Length - 1; i++)
-                        {
-                            if (VyM_Names[i].Contains(Str))
-                            {
-
-                            }
-                        }*/
-                        break;
-                    }
-                case 1:
-                    {
-                        break;
-                    }
-                case 2:
-                    {
-                        break;
-                    }
+                loading_delta = 3;
             }
+            else
+            {
+                loading_delta = 1;
+            }
+            loading += 5;
+            if ((save == 1) || (save == 4))
+            {
+                VyM_Handler(false);
+                FileName += "_VyM";
+            }
+            if ((save == 2) || (save == 4))
+            {
+                RP_Handler(false);
+                FileName += "_RP";
+            }
+            if ((save == 3) || (save == 4))
+            {
+                AC_Handler(false);
+                FileName += "_AC";
+            }
+            //Notify("FileName: " + FileName);
+            pending_refresh_DB = true;
+            //Notify(Application.StartupPath + FileName + ".xlsx");
+            loading = 80;
+            if (is_new_instance)
+            {
+                //objBooks.SaveAs(@"c:\program.xlsx");
+                objBooks.SaveAs(Application.StartupPath + FileName + ".xlsx");
+            }
+            else
+            {
+                objBooks.Save();
+            }
+            loading = 90;
+            if (excel_ready)
+            {
+                excel_ready = false;
+                objBooks.Close(0);
+                objApp.Quit();
+            }
+            //Notify("Saved file for JW Meetings" + ", Week [" + m_semana.ToString() + "]");
+            //Notify("Saved date: [" + m_dia.ToString() + "-" + m_mes.ToString() + "-" + m_año.ToString() + "]");
+            //Check_time(this, null);
+            loading = 100;
         }
 
         public void VyM_Handler(bool read)
         {
-            Notify((read ? "Reading": "Saving") + " VyM meeting");
-            if (read)
+            //Notify((read ? "Reading": "Saving") + " VyM meeting");
+            if (!read)
             {
-                int primary_cell = Get_cell();
-                cellValue_1 = (System.Object[,])range_1.get_Value();
+                Sheet_VyM.Cells[3, A] = VyM_mes.Semana1.Fecha.ToUpper() + " | " + VyM_mes.Semana1.Sem_Biblia.ToUpper();
+                //txt_Date.Text = VyM_mes.Semana1.Sem_Biblia;
+                Sheet_VyM.Cells[3, G] = VyM_mes.Semana1.Presidente;
+                /*
+                txt_TdlB_1.Text = VyM_mes.Semana1.Discurso;
+                txt_TdlB_A1.Text = VyM_mes.Semana1.Discurso_A;
+                txt_TdlB_A2.Text = VyM_mes.Semana1.Perlas;
+                txt_TdlB_A3.Text = VyM_mes.Semana1.Lectura;
+                txt_SMM1.Text = VyM_mes.Semana1.SMM1;
+                txt_SMM_A1.Text = VyM_mes.Semana1.SMM1_A;
+                txt_SMM2.Text = VyM_mes.Semana1.SMM2;
+                txt_SMM_A2.Text = VyM_mes.Semana1.SMM2_A;
+                txt_SMM3.Text = VyM_mes.Semana1.SMM3;
+                txt_SMM_A3.Text = VyM_mes.Semana1.SMM3_A;
+                txt_NVC1.Text = VyM_mes.Semana1.NVC1;
+                txt_NVC_A1.Text = VyM_mes.Semana1.NVC1_A;
+                txt_NVC2.Text = VyM_mes.Semana1.NVC2;
+                txt_NVC2.Text = VyM_mes.Semana1.NVC2_A;
+                txt_NVC_A3.Text = VyM_mes.Semana1.Libro_A;
+                txt_NVC_A4.Text = VyM_mes.Semana1.Libro_L;
+                txt_Ora2VyM.Text = VyM_mes.Semana1.Oracion;*/
+
+                loading += (15/loading_delta);
+
+                //Sheet_VyM.Cells[28, A] = VyM_mes.Semana2.Fecha.ToUpper() + " | " + VyM_mes.Semana2.Sem_Biblia.ToUpper();
+                //Sheet_VyM.Cells[28, G] = VyM_mes.Semana2.Presidente;
+                /*txt_TdlB_1.Text = VyM_mes.Semana2.Discurso;
+                txt_TdlB_A1.Text = VyM_mes.Semana2.Discurso_A;
+                txt_TdlB_A2.Text = VyM_mes.Semana2.Perlas;
+                txt_TdlB_A3.Text = VyM_mes.Semana2.Lectura;
+                txt_SMM1.Text = VyM_mes.Semana2.SMM1;
+                txt_SMM_A1.Text = VyM_mes.Semana2.SMM1_A;
+                txt_SMM2.Text = VyM_mes.Semana2.SMM2;
+                txt_SMM_A2.Text = VyM_mes.Semana2.SMM2_A;
+                txt_SMM3.Text = VyM_mes.Semana2.SMM3;
+                txt_SMM_A3.Text = VyM_mes.Semana2.SMM3_A;
+                txt_NVC1.Text = VyM_mes.Semana2.NVC1;
+                txt_NVC_A1.Text = VyM_mes.Semana2.NVC1_A;
+                txt_NVC2.Text = VyM_mes.Semana2.NVC2;
+                txt_NVC2.Text = VyM_mes.Semana2.NVC2_A;
+                txt_NVC_A3.Text = VyM_mes.Semana2.Libro_A;
+                txt_NVC_A4.Text = VyM_mes.Semana2.Libro_L;
+                txt_Ora2VyM.Text = VyM_mes.Semana2.Oracion;*/
+            
+                loading += (15/loading_delta);
+
+                //lbl_Date.Text = VyM_mes.Semana3.Fecha;
+                /*txt_Date.Text = VyM_mes.Semana3.Sem_Biblia;
+                txt_Pres.Text = VyM_mes.Semana3.Presidente;
+                txt_TdlB_1.Text = VyM_mes.Semana3.Discurso;
+                txt_TdlB_A1.Text = VyM_mes.Semana3.Discurso_A;
+                txt_TdlB_A2.Text = VyM_mes.Semana3.Perlas;
+                txt_TdlB_A3.Text = VyM_mes.Semana3.Lectura;
+                txt_SMM1.Text = VyM_mes.Semana3.SMM1;
+                txt_SMM_A1.Text = VyM_mes.Semana3.SMM1_A;
+                txt_SMM2.Text = VyM_mes.Semana3.SMM2;
+                txt_SMM_A2.Text = VyM_mes.Semana3.SMM2_A;
+                txt_SMM3.Text = VyM_mes.Semana3.SMM3;
+                txt_SMM_A3.Text = VyM_mes.Semana3.SMM3_A;
+                txt_NVC1.Text = VyM_mes.Semana3.NVC1;
+                txt_NVC_A1.Text = VyM_mes.Semana3.NVC1_A;
+                txt_NVC2.Text = VyM_mes.Semana3.NVC2;
+                txt_NVC2.Text = VyM_mes.Semana3.NVC2_A;
+                txt_NVC_A3.Text = VyM_mes.Semana3.Libro_A;
+                txt_NVC_A4.Text = VyM_mes.Semana3.Libro_L;
+                txt_Ora2VyM.Text = VyM_mes.Semana3.Oracion;*/
+                
+                loading += (15 / loading_delta);
+
+                //lbl_Date.Text = VyM_mes.Semana4.Fecha;
+                /*txt_Date.Text = VyM_mes.Semana4.Sem_Biblia;
+                txt_Pres.Text = VyM_mes.Semana4.Presidente;
+                txt_TdlB_1.Text = VyM_mes.Semana4.Discurso;
+                txt_TdlB_A1.Text = VyM_mes.Semana4.Discurso_A;
+                txt_TdlB_A2.Text = VyM_mes.Semana4.Perlas;
+                txt_TdlB_A3.Text = VyM_mes.Semana4.Lectura;
+                txt_SMM1.Text = VyM_mes.Semana4.SMM1;
+                txt_SMM_A1.Text = VyM_mes.Semana4.SMM1_A;
+                txt_SMM2.Text = VyM_mes.Semana4.SMM2;
+                txt_SMM_A2.Text = VyM_mes.Semana4.SMM2_A;
+                txt_SMM3.Text = VyM_mes.Semana4.SMM3;
+                txt_SMM_A3.Text = VyM_mes.Semana4.SMM3_A;
+                txt_NVC1.Text = VyM_mes.Semana4.NVC1;
+                txt_NVC_A1.Text = VyM_mes.Semana4.NVC1_A;
+                txt_NVC2.Text = VyM_mes.Semana4.NVC2;
+                txt_NVC2.Text = VyM_mes.Semana4.NVC2_A;
+                txt_NVC_A3.Text = VyM_mes.Semana4.Libro_A;
+                txt_NVC_A4.Text = VyM_mes.Semana4.Libro_L;
+                txt_Ora2VyM.Text = VyM_mes.Semana4.Oracion;*/
+
+                loading += (15 / loading_delta);
+
+                //lbl_Date.Text = VyM_mes.Semana5.Fecha;
+                /*txt_Date.Text = VyM_mes.Semana5.Sem_Biblia;
+                txt_Pres.Text = VyM_mes.Semana5.Presidente;
+                txt_TdlB_1.Text = VyM_mes.Semana5.Discurso;
+                txt_TdlB_A1.Text = VyM_mes.Semana5.Discurso_A;
+                txt_TdlB_A2.Text = VyM_mes.Semana5.Perlas;
+                txt_TdlB_A3.Text = VyM_mes.Semana5.Lectura;
+                txt_SMM1.Text = VyM_mes.Semana5.SMM1;
+                txt_SMM_A1.Text = VyM_mes.Semana5.SMM1_A;
+                txt_SMM2.Text = VyM_mes.Semana5.SMM2;
+                txt_SMM_A2.Text = VyM_mes.Semana5.SMM2_A;
+                txt_SMM3.Text = VyM_mes.Semana5.SMM3;
+                txt_SMM_A3.Text = VyM_mes.Semana5.SMM3_A;
+                txt_NVC1.Text = VyM_mes.Semana5.NVC1;
+                txt_NVC_A1.Text = VyM_mes.Semana5.NVC1_A;
+                txt_NVC2.Text = VyM_mes.Semana5.NVC2;
+                txt_NVC2.Text = VyM_mes.Semana5.NVC2_A;
+                txt_NVC_A3.Text = VyM_mes.Semana5.Libro_A;
+                txt_NVC_A4.Text = VyM_mes.Semana5.Libro_L;
+                txt_Ora2VyM.Text = VyM_mes.Semana5.Oracion;*/
+
+                loading += (15 / loading_delta);
+
+                /*cellValue_1 = (System.Object[,])range_1.get_Value();
                 txt_Date.Text = Check_null_string(cellValue_1[primary_cell, A]);
                 txt_Pres.Text = Check_null_string(cellValue_1[primary_cell, G]);
                 txt_TdlB_1.Text = Check_null_string(cellValue_1[primary_cell + 6, C]);
@@ -965,12 +1058,12 @@ namespace Project_Insight
                 txt_NVC_A2.Text = Check_null_string(cellValue_1[primary_cell + 18, G]);
                 txt_NVC_A3.Text = Check_null_string(cellValue_1[primary_cell + 19, G]);
                 //Compare_cbx_string(Check_null_string(cellValue_1[primary_cell + 20, G]), cbx_NVC_A3L);
-                //Compare_cbx_string(Check_null_string(cellValue_1[primary_cell + 22, G]), cbx_Ora2VyM);
+                //Compare_cbx_string(Check_null_string(cellValue_1[primary_cell + 22, G]), cbx_Ora2VyM);*/
             }
             else
             {
                 int primary_cell = Get_cell();
-                Sheet_VyM.Cells[primary_cell, A] = Check_null(txt_Date).ToUpper();
+                /*Sheet_VyM.Cells[primary_cell, A] = Check_null(txt_Date).ToUpper();
                 Sheet_VyM.Cells[primary_cell, G] = Check_null(txt_Pres);
                 Sheet_VyM.Cells[primary_cell + 6, C] = Check_null(txt_TdlB_1);
                 Get_index_time(Sheet_VyM.get_Range("C" + (primary_cell + 6).ToString()));
@@ -1009,7 +1102,7 @@ namespace Project_Insight
                 Sheet_VyM.Cells[primary_cell + 18, A] = time_10.Text;
                 Sheet_VyM.Cells[primary_cell + 19, A] = time_11.Text;
                 Sheet_VyM.Cells[primary_cell + 21, A] = time_12.Text;
-                Sheet_VyM.Cells[primary_cell + 22, A] = time_13.Text;
+                Sheet_VyM.Cells[primary_cell + 22, A] = time_13.Text;*/
             }
         }
 
@@ -1341,8 +1434,11 @@ namespace Project_Insight
 
         private void tab_Control_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             var autocomplete = new AutoCompleteStringCollection();
+            if (tab_meeting != tab_Control.SelectedIndex)
+            {
+                Pre_save_info();
+            }
             if (tab_Control.SelectedIndex == 0)
             {
                 tab_meeting = 0;
@@ -1356,6 +1452,7 @@ namespace Project_Insight
                 autocomplete.AddRange(Dict_rp.Keys.ToArray());
                 Presenter(p.Artanis);
                 Notify("Section 'Reunion Publica y analisis de La Atalaya'");
+                
             }
             else
             {
@@ -1364,7 +1461,7 @@ namespace Project_Insight
                 Presenter(p.Oracle);
                 Notify("Section 'Acomodadores'");
             }
-
+            Week_Handler();
             txt_Command.AutoCompleteCustomSource = autocomplete;
         }
 
@@ -1454,7 +1551,7 @@ namespace Project_Insight
 
         private void Txt_Date_TextChanged(object sender, EventArgs e)
         {
-            TextBox txtbx = (TextBox)sender;
+            /*TextBox txtbx = (TextBox)sender;
             string Str = txtbx.Text.ToLower();
             var array = txtbx.Text.ToCharArray();
             int result = 0;
@@ -1489,22 +1586,22 @@ namespace Project_Insight
                         Set_date();
                     }
                 }
-            }
+            }*/
         }
 
         private void Set_date()
         {
             int checksum_aux = 0;
             checksum_aux = m_año + m_mes + m_dia;
-            lbl_Month.Text = "Mes: " + month[m_mes - 1];
+            //lbl_Month.Text = "Mes: " + month[m_mes - 1];
             if (checksum_aux != date_checksum)
             {
                 date_checksum = checksum_aux;
                 if ((m_año != 0) && (m_mes != 0) && (m_dia != 0))
                 {
                     date = new DateTime(m_año, m_mes, m_dia);
-                    Calendar.SetDate(date);
-                    Notify("Date Set in: [" + m_dia.ToString() + "-" + m_mes.ToString() + "-" + m_año.ToString() + "]");
+                    m_calendar.SetDate(date);
+                    Notify("Date Set in: [" + m_dia.ToString() + "/" + m_mes.ToString() + "/" + m_año.ToString() + "]");
                 }
             }
         }
@@ -1617,19 +1714,21 @@ namespace Project_Insight
         }
 
         /*Function so set local variables' info into form*/
-        public async void Week_Handler()
+        public void Week_Handler()
         {
-            await Task.Delay(50);
             int lun = 0;
             switch (tab_meeting)
             {
                 case 0:
                     {
+                        lbl_Date.Text = meetings_days[m_semana - 1, 0].ToString("dddd, dd MMMM");
                         switch (m_semana)
                         {
                             case 1:
                                 {
-                                    txt_Date.Text = VyM_mes.Semana1.Fecha;
+                                    //lbl_Date.Text = meetings_days[m_semana, 0].ToString();
+                                    //lbl_Date.Text = VyM_mes.Semana1.Fecha;
+                                    txt_Date.Text = VyM_mes.Semana1.Sem_Biblia;
                                     txt_Pres.Text = VyM_mes.Semana1.Presidente;
                                     txt_TdlB_1.Text = VyM_mes.Semana1.Discurso;
                                     txt_TdlB_A1.Text = VyM_mes.Semana1.Discurso_A;
@@ -1652,7 +1751,8 @@ namespace Project_Insight
                                 }
                             case 2:
                                 {
-                                    txt_Date.Text = VyM_mes.Semana2.Fecha;
+                                    //lbl_Date.Text = VyM_mes.Semana2.Fecha;
+                                    txt_Date.Text = VyM_mes.Semana2.Sem_Biblia;
                                     txt_Pres.Text = VyM_mes.Semana2.Presidente;
                                     txt_TdlB_1.Text = VyM_mes.Semana2.Discurso;
                                     txt_TdlB_A1.Text = VyM_mes.Semana2.Discurso_A;
@@ -1675,7 +1775,8 @@ namespace Project_Insight
                                 }
                             case 3:
                                 {
-                                    txt_Date.Text = VyM_mes.Semana3.Fecha;
+                                    //lbl_Date.Text = VyM_mes.Semana3.Fecha;
+                                    txt_Date.Text = VyM_mes.Semana3.Sem_Biblia;
                                     txt_Pres.Text = VyM_mes.Semana3.Presidente;
                                     txt_TdlB_1.Text = VyM_mes.Semana3.Discurso;
                                     txt_TdlB_A1.Text = VyM_mes.Semana3.Discurso_A;
@@ -1698,7 +1799,8 @@ namespace Project_Insight
                                 }
                             case 4:
                                 {
-                                    txt_Date.Text = VyM_mes.Semana4.Fecha;
+                                    //lbl_Date.Text = VyM_mes.Semana4.Fecha;
+                                    txt_Date.Text = VyM_mes.Semana4.Sem_Biblia;
                                     txt_Pres.Text = VyM_mes.Semana4.Presidente;
                                     txt_TdlB_1.Text = VyM_mes.Semana4.Discurso;
                                     txt_TdlB_A1.Text = VyM_mes.Semana4.Discurso_A;
@@ -1721,7 +1823,8 @@ namespace Project_Insight
                                 }
                             case 5:
                                 {
-                                    txt_Date.Text = VyM_mes.Semana5.Fecha;
+                                    //lbl_Date.Text = VyM_mes.Semana5.Fecha;
+                                    txt_Date.Text = VyM_mes.Semana5.Sem_Biblia;
                                     txt_Pres.Text = VyM_mes.Semana5.Presidente;
                                     txt_TdlB_1.Text = VyM_mes.Semana5.Discurso;
                                     txt_TdlB_A1.Text = VyM_mes.Semana5.Discurso_A;
@@ -1879,15 +1982,18 @@ namespace Project_Insight
                     }
             }
             //meetings_days
-            Notify("Seeting info for week [" + m_semana.ToString() + "]\nDay meeting: " + meetings_days[m_semana - 1, lun].ToString("dd/MM/yyyy"));
+            Notify("Seeting info for week [" + m_semana.ToString() + "]");
+            m_dia = meetings_days[m_semana - 1, lun].Day;
+            m_mes = meetings_days[m_semana - 1, lun].Month;
+            m_año = meetings_days[m_semana - 1, lun].Year;
+            Set_date();
         }
     
 
         /*Function to save txtbx info in local variables*/
-        public async void Pre_save_info()
+        public void Pre_save_info()
         {
-            Notify("Saving info in local variables");
-            await Task.Delay(50);
+            Notify("Saving info into local variables");
             switch (tab_meeting)
             {
                 case 0:
@@ -1896,7 +2002,8 @@ namespace Project_Insight
                         {
                             case 1:
                                 {
-                                    VyM_mes.Semana1.Fecha = txt_Date.Text;
+                                    VyM_mes.Semana1.Fecha = lbl_Date.Text;
+                                    VyM_mes.Semana1.Sem_Biblia = txt_Date.Text;
                                     VyM_mes.Semana1.Presidente = txt_Pres.Text;
                                     VyM_mes.Semana1.Discurso = txt_TdlB_1.Text;
                                     VyM_mes.Semana1.Discurso_A = txt_TdlB_A1.Text;
@@ -1919,7 +2026,8 @@ namespace Project_Insight
                                 }
                             case 2:
                                 {
-                                    VyM_mes.Semana2.Fecha = txt_Date.Text;
+                                    VyM_mes.Semana2.Fecha = lbl_Date.Text;
+                                    VyM_mes.Semana2.Sem_Biblia = txt_Date.Text;
                                     VyM_mes.Semana2.Presidente = txt_Pres.Text;
                                     VyM_mes.Semana2.Discurso = txt_TdlB_1.Text;
                                     VyM_mes.Semana2.Discurso_A = txt_TdlB_A1.Text;
@@ -1942,7 +2050,8 @@ namespace Project_Insight
                                 }
                             case 3:
                                 {
-                                    VyM_mes.Semana3.Fecha = txt_Date.Text;
+                                    VyM_mes.Semana3.Fecha = lbl_Date.Text;
+                                    VyM_mes.Semana3.Sem_Biblia = txt_Date.Text;
                                     VyM_mes.Semana3.Presidente = txt_Pres.Text;
                                     VyM_mes.Semana3.Discurso = txt_TdlB_1.Text;
                                     VyM_mes.Semana3.Discurso_A = txt_TdlB_A1.Text;
@@ -1965,7 +2074,8 @@ namespace Project_Insight
                                 }
                             case 4:
                                 {
-                                    VyM_mes.Semana4.Fecha = txt_Date.Text;
+                                    VyM_mes.Semana4.Fecha = lbl_Date.Text;
+                                    VyM_mes.Semana4.Sem_Biblia = txt_Date.Text;
                                     VyM_mes.Semana4.Presidente = txt_Pres.Text;
                                     VyM_mes.Semana4.Discurso = txt_TdlB_1.Text;
                                     VyM_mes.Semana4.Discurso_A = txt_TdlB_A1.Text;
@@ -1988,7 +2098,8 @@ namespace Project_Insight
                                 }
                             case 5:
                                 {
-                                    VyM_mes.Semana5.Fecha = txt_Date.Text;
+                                    VyM_mes.Semana5.Fecha = lbl_Date.Text;
+                                    VyM_mes.Semana5.Sem_Biblia = txt_Date.Text;
                                     VyM_mes.Semana5.Presidente = txt_Pres.Text;
                                     VyM_mes.Semana5.Discurso = txt_TdlB_1.Text;
                                     VyM_mes.Semana5.Discurso_A = txt_TdlB_A1.Text;
