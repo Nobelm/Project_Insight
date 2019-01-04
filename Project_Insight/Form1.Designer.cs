@@ -471,6 +471,7 @@
             this.txt_NVC2.Name = "txt_NVC2";
             this.txt_NVC2.Size = new System.Drawing.Size(377, 20);
             this.txt_NVC2.TabIndex = 139;
+            this.txt_NVC2.TextChanged += new System.EventHandler(this.TextChanged);
             // 
             // txt_NVC_A1
             // 
@@ -490,6 +491,7 @@
             this.txt_NVC1.Name = "txt_NVC1";
             this.txt_NVC1.Size = new System.Drawing.Size(377, 20);
             this.txt_NVC1.TabIndex = 136;
+            this.txt_NVC1.TextChanged += new System.EventHandler(this.TextChanged);
             // 
             // Seamos_Maestros
             // 
@@ -561,6 +563,7 @@
             this.txt_SMM3.Name = "txt_SMM3";
             this.txt_SMM3.Size = new System.Drawing.Size(377, 20);
             this.txt_SMM3.TabIndex = 129;
+            this.txt_SMM3.TextChanged += new System.EventHandler(this.TextChanged);
             // 
             // label17
             // 
@@ -588,6 +591,7 @@
             this.txt_SMM2.Name = "txt_SMM2";
             this.txt_SMM2.Size = new System.Drawing.Size(377, 20);
             this.txt_SMM2.TabIndex = 124;
+            this.txt_SMM2.TextChanged += new System.EventHandler(this.TextChanged);
             // 
             // label16
             // 
@@ -615,6 +619,7 @@
             this.txt_SMM1.Name = "txt_SMM1";
             this.txt_SMM1.Size = new System.Drawing.Size(377, 20);
             this.txt_SMM1.TabIndex = 119;
+            this.txt_SMM1.TextChanged += new System.EventHandler(this.TextChanged);
             // 
             // label15
             // 

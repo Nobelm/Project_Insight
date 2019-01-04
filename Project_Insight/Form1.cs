@@ -33,7 +33,7 @@ namespace Project_Insight
 
         public static int A = 1, B = 2, C = 3, D = 4, E = 5, F = 6, G = 7, H = 8;
         public static int actual_presenter = 10;
-        private Excel.Application objApp = new Excel.Application();
+        private Excel.Application objApp;
         private Excel.Workbook objBooks = null;
         private Excel.Sheets objSheets;
         private Excel.Worksheet Sheet_VyM;
@@ -43,7 +43,6 @@ namespace Project_Insight
         private Excel.Range range_2;
         private Excel.Range range_3;
         public static bool excel_ready = false;
-        private DateTime dateTime = new DateTime(2018, 1, 1, 7, 00, 00);
         private DateTime start_time = new DateTime(2018, 1, 1, 7, 00, 00);
         private DateTime date;
         private object[,] cellValue_1 = null;
@@ -87,6 +86,7 @@ namespace Project_Insight
         public static bool selected_txt = false;
         public static int loading_delta = 1;
         public static int loading = 0;
+        public static bool is_loading = false;
 
 
 
@@ -192,6 +192,7 @@ namespace Project_Insight
             Application.Exit();
         }
 
+        /*--------------------------------------- Traces and UI functions ---------------------------------------*/
         public async void Presenter(p ID_Presenter)
         {
             if (actual_presenter != (int)ID_Presenter)
@@ -315,27 +316,37 @@ namespace Project_Insight
             }
             busy_trace = true;
             log_txtBx.SelectionColor = Color.White;
-            log_txtBx.AppendText("\nLoading: ");
+            log_txtBx.AppendText("\nLoading:  ");
             aux = log_txtBx.Text;
             log_txtBx.Text = "";
-            while (loading < 100)
+            log_txtBx.SelectionStart = log_txtBx.Text.Length;
+            log_txtBx.ScrollToCaret();
+            while (is_loading)
             {
-                aux += "\\  " + loading;
+                aux += loading.ToString() + " ....... \\";
                 log_txtBx.Text = aux;
+                log_txtBx.SelectionStart = log_txtBx.Text.Length;
+                log_txtBx.ScrollToCaret();
                 await Task.Delay(delay);
-                aux = aux.Substring(0, aux.Length - 4);
-                aux += "|  " + loading.ToString();
+                aux = aux.Substring(0, aux.Length - 10 - loading.ToString().Length);
+                aux += loading.ToString() + " ....... |";
                 log_txtBx.Text = aux;
+                log_txtBx.SelectionStart = log_txtBx.Text.Length;
+                log_txtBx.ScrollToCaret();
                 await Task.Delay(delay);
-                aux = aux.Substring(0, aux.Length - 4);
-                aux += "/  " + loading.ToString();
+                aux = aux.Substring(0, aux.Length - 10 - loading.ToString().Length);
+                aux += loading.ToString() + " ....... /";
                 log_txtBx.Text = aux;
+                log_txtBx.SelectionStart = log_txtBx.Text.Length;
+                log_txtBx.ScrollToCaret();
                 await Task.Delay(delay);
-                aux = aux.Substring(0, aux.Length - 4);
-                aux += "-  " + loading.ToString();
+                aux = aux.Substring(0, aux.Length - 10 - loading.ToString().Length);
+                aux += loading.ToString() + " ....... -";
                 log_txtBx.Text = aux;
+                log_txtBx.SelectionStart = log_txtBx.Text.Length;
+                log_txtBx.ScrollToCaret();
                 await Task.Delay(delay);
-                aux = aux.Substring(0, aux.Length - 4);
+                aux = aux.Substring(0, aux.Length - 10 - loading.ToString().Length);
             }
             log_txtBx.AppendText("\n");
             log_txtBx.SelectionColor = Color.Green;
@@ -351,6 +362,63 @@ namespace Project_Insight
             }
         }
 
+        public void String_stack(string data, bool save, int trace, int line)
+        {
+            if (save)
+            {
+                switch (trace)
+                {
+                    case 1:
+                        {
+                            data += "1";
+                            break;
+                        }
+                    case 2:
+                        {
+                            data += "2";
+                            break;
+                        }
+                    case 3:
+                        {
+                            data += "3";
+                            break;
+                        }
+                }
+                str_stack[iterator_stack] = data;
+                int_stack[iterator_stack] = line;
+                pending_trace = true;
+                iterator_stack++;
+            }
+            else
+            {
+                int notify_warn = int.Parse(str_stack[0].Substring(str_stack[0].Length - 1));
+                str_stack[0] = str_stack[0].Substring(0, str_stack[0].Length - 1);
+                if (notify_warn == 1)
+                {
+                    Notify(str_stack[0], int_stack[0]);
+                }
+                else if (notify_warn == 2)
+                {
+                    Warn(str_stack[0], int_stack[0]);
+                }/*
+                else
+                {
+                    Command(str_stack[0], int_stack[0]);
+                }*/
+                for (int i = 1; i <= str_stack.Length - 1; i++)
+                {
+                    str_stack[i - 1] = str_stack[i];
+                    int_stack[i - 1] = int_stack[i];
+                }
+                iterator_stack--;
+                if (iterator_stack == 0)
+                {
+                    pending_trace = false;
+                }
+            }
+        }
+
+        /*--------------------------------------- Command functions ---------------------------------------*/
         private void Process_txt_Command(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -621,76 +689,13 @@ namespace Project_Insight
             Command_history[1] = cmd;
         }
 
-        public void String_stack(string data, bool save, int trace, int line)
-        {
-            if (save)
-            {
-                switch (trace)
-                {
-                    case 1:
-                        {
-                            data += "1";
-                            break;
-                        }
-                    case 2:
-                        {
-                            data += "2";
-                            break;
-                        }
-                    case 3:
-                        {
-                            data += "3";
-                            break;
-                        }
-                }
-                str_stack[iterator_stack] = data;
-                int_stack[iterator_stack] = line;
-                pending_trace = true;
-                iterator_stack++;
-            }
-            else
-            {
-                int notify_warn = int.Parse(str_stack[0].Substring(str_stack[0].Length - 1));
-                str_stack[0] = str_stack[0].Substring(0, str_stack[0].Length - 1);
-                if (notify_warn == 1)
-                {
-                    Notify(str_stack[0], int_stack[0]);
-                }
-                else if (notify_warn == 2)
-                {
-                    Warn(str_stack[0], int_stack[0]);
-                }/*
-                else
-                {
-                    Command(str_stack[0], int_stack[0]);
-                }*/
-                for (int i = 1; i <= str_stack.Length - 1; i++)
-                {
-                    str_stack[i - 1] = str_stack[i];
-                    int_stack[i - 1] = int_stack[i];
-                }
-                iterator_stack--;
-                if (iterator_stack == 0)
-                {
-                    pending_trace = false;
-                }
-            }
-        }
-
+        /*--------------------------------------- Excel file Control ---------------------------------------*/
         /*New excel file*/
         public void New_Instance()
         {
             Path = Application.StartupPath + "\\\\Programs.xlsx";
             Notify("Running new instance");
             is_new_instance = true;
-            /*if (excel_ready)
-            {
-                excel_ready = false;
-                objBooks.Close(0);
-                objApp.Quit();
-            }
-            string path = Application.StartupPath + "\\\\Programs.xlsx";
-            Opening_Excel(path);*/
             tab_Control.Enabled = true;
             Get_Meetings();
             Week_Handler();
@@ -714,12 +719,22 @@ namespace Project_Insight
                 {
                     Path = openExcel.FileName;
                     Opening_Excel(Path);
+                    VyM_Handler(false);
+                    Get_Meetings();
+                    Week_Handler();
+                    if (excel_ready)
+                    {
+                        excel_ready = false;
+                        objBooks.Close(0);
+                        objApp.Quit();
+                    }
                 }
             }
             else
             {
                 Warn("File not loaded");
             }
+
             is_new_instance = false;
             tab_Control.Enabled = true;
             var autocomplete = new AutoCompleteStringCollection();
@@ -729,6 +744,7 @@ namespace Project_Insight
 
         public void Opening_Excel(string path)
         {
+            objApp = new Excel.Application();
             objBooks = (Excel.Workbook)objApp.Workbooks.Open(path, 0, false, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
 
             objSheets = objBooks.Worksheets;
@@ -749,10 +765,8 @@ namespace Project_Insight
                 range_3 = Sheet_PA.get_Range("A1", "H70");
                 cellValue_3 = (System.Object[,])range_3.get_Value();
 
-                Notify("Path: " + path);
+                Notify("Opening path: " + path);
                 excel_ready = true;
-                //open_DB();
-                //Process_read();
             }
             else
             {
@@ -763,21 +777,6 @@ namespace Project_Insight
         private void Process_clear()
         {
             Warn("Clear all!");
-        }
-        
-        private string Check_null_cbx(object sender)
-        {
-            string str = "";
-            ComboBox cbx = (ComboBox)sender;
-            if (cbx.SelectedItem == null)
-            {
-                str = "";
-            }
-            else
-            {
-                str = cbx.SelectedItem.ToString();
-            }
-            return str;
         }
 
         public string Check_null(object sender)
@@ -840,6 +839,7 @@ namespace Project_Insight
                     check++;
                 }
             }
+            /*Handler to check Saturdays in another month*/
             if (check % 2 != 0)
             {
                 if (i == 4)
@@ -864,7 +864,8 @@ namespace Project_Insight
 
         private void Process_save(int save)
         {
-            string FileName = meetings_days[0, 0].Month.ToString();
+            is_loading = true;
+            string FileName = meetings_days[0, 0].ToString("MMMM");
             loading = 1;
             Opening_Excel(Path);
             loading += 4;
@@ -880,7 +881,7 @@ namespace Project_Insight
             loading += 5;
             if ((save == 1) || (save == 4))
             {
-                VyM_Handler(false);
+                VyM_Handler(true);
                 FileName += "_VyM";
             }
             if ((save == 2) || (save == 4))
@@ -893,14 +894,19 @@ namespace Project_Insight
                 AC_Handler(false);
                 FileName += "_AC";
             }
-            //Notify("FileName: " + FileName);
+            Notify("FileName: " + FileName);
             pending_refresh_DB = true;
             //Notify(Application.StartupPath + FileName + ".xlsx");
             loading = 80;
             if (is_new_instance)
             {
-                //objBooks.SaveAs(@"c:\program.xlsx");
-                objBooks.SaveAs(Application.StartupPath + FileName + ".xlsx");
+                //objBooks.SaveAs(@"c:\test2.xlsx");
+                //objBooks.SaveAs(Application.StartupPath + FileName + ".xlsx");
+                string createfolder = "c:\\Project_Insight";
+                System.IO.Directory.CreateDirectory(createfolder);
+                objBooks.SaveAs(createfolder + "\\" + FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, false, false, Excel.XlSaveAsAccessMode.xlNoChange, Excel.XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
+                Path = createfolder + "\\" + FileName;
+                Notify("Saved path: " + Path);
             }
             else
             {
@@ -913,38 +919,40 @@ namespace Project_Insight
                 objBooks.Close(0);
                 objApp.Quit();
             }
-            //Notify("Saved file for JW Meetings" + ", Week [" + m_semana.ToString() + "]");
-            //Notify("Saved date: [" + m_dia.ToString() + "-" + m_mes.ToString() + "-" + m_año.ToString() + "]");
-            //Check_time(this, null);
             loading = 100;
+            Notify("Saved file for JW Meetings" + ", Week [" + m_semana.ToString() + "]");
+            Notify("Saved date: [" + m_dia.ToString() + "-" + m_mes.ToString() + "-" + m_año.ToString() + "]");
+            //Check_time(this, null);
+            is_loading = false;
         }
 
-        public void VyM_Handler(bool read)
+        /*--------------------------------------- Meeting handlers ---------------------------------------*/
+        public void VyM_Handler(bool save)
         {
             //Notify((read ? "Reading": "Saving") + " VyM meeting");
-            if (!read)
+            if (save)
             {
-                Sheet_VyM.Cells[3, A] = VyM_mes.Semana1.Fecha.ToUpper() + " | " + VyM_mes.Semana1.Sem_Biblia.ToUpper();
-                //txt_Date.Text = VyM_mes.Semana1.Sem_Biblia;
-                Sheet_VyM.Cells[3, G] = VyM_mes.Semana1.Presidente;
-                /*
-                txt_TdlB_1.Text = VyM_mes.Semana1.Discurso;
-                txt_TdlB_A1.Text = VyM_mes.Semana1.Discurso_A;
-                txt_TdlB_A2.Text = VyM_mes.Semana1.Perlas;
-                txt_TdlB_A3.Text = VyM_mes.Semana1.Lectura;
-                txt_SMM1.Text = VyM_mes.Semana1.SMM1;
-                txt_SMM_A1.Text = VyM_mes.Semana1.SMM1_A;
-                txt_SMM2.Text = VyM_mes.Semana1.SMM2;
-                txt_SMM_A2.Text = VyM_mes.Semana1.SMM2_A;
-                txt_SMM3.Text = VyM_mes.Semana1.SMM3;
-                txt_SMM_A3.Text = VyM_mes.Semana1.SMM3_A;
-                txt_NVC1.Text = VyM_mes.Semana1.NVC1;
-                txt_NVC_A1.Text = VyM_mes.Semana1.NVC1_A;
-                txt_NVC2.Text = VyM_mes.Semana1.NVC2;
-                txt_NVC2.Text = VyM_mes.Semana1.NVC2_A;
-                txt_NVC_A3.Text = VyM_mes.Semana1.Libro_A;
-                txt_NVC_A4.Text = VyM_mes.Semana1.Libro_L;
-                txt_Ora2VyM.Text = VyM_mes.Semana1.Oracion;*/
+                int primary_cell = Get_cell();
+                Sheet_VyM.Cells[primary_cell, A] = VyM_mes.Semana1.Fecha.ToUpper();
+                Sheet_VyM.Cells[primary_cell, D] = VyM_mes.Semana1.Sem_Biblia.ToUpper();
+                Sheet_VyM.Cells[primary_cell, G] = VyM_mes.Semana1.Presidente;
+                Sheet_VyM.Cells[primary_cell + 6, C] = VyM_mes.Semana1.Discurso;
+                Sheet_VyM.Cells[primary_cell + 6, G] = VyM_mes.Semana1.Discurso_A;
+                Sheet_VyM.Cells[primary_cell + 7, G] = VyM_mes.Semana1.Perlas;
+                Sheet_VyM.Cells[primary_cell + 8, G] = VyM_mes.Semana1.Lectura;
+                Sheet_VyM.Cells[primary_cell + 11, C] = VyM_mes.Semana1.SMM1;
+                Sheet_VyM.Cells[primary_cell + 11, G] = VyM_mes.Semana1.SMM1_A;
+                Sheet_VyM.Cells[primary_cell + 12, C] = VyM_mes.Semana1.SMM2;
+                Sheet_VyM.Cells[primary_cell + 12, G] = VyM_mes.Semana1.SMM2_A;
+                Sheet_VyM.Cells[primary_cell + 13, C] = VyM_mes.Semana1.SMM3;
+                Sheet_VyM.Cells[primary_cell + 13, G] = VyM_mes.Semana1.SMM3_A;
+                Sheet_VyM.Cells[primary_cell + 17, C] = VyM_mes.Semana1.NVC1;
+                Sheet_VyM.Cells[primary_cell + 17, G] = VyM_mes.Semana1.NVC1_A;
+                Sheet_VyM.Cells[primary_cell + 18, C] = VyM_mes.Semana1.NVC2;
+                Sheet_VyM.Cells[primary_cell + 18, G] = VyM_mes.Semana1.NVC2_A;
+                Sheet_VyM.Cells[primary_cell + 19, G] = VyM_mes.Semana1.Libro_A;
+                Sheet_VyM.Cells[primary_cell + 20, G] = VyM_mes.Semana1.Libro_L;
+                Sheet_VyM.Cells[primary_cell + 22, G] = VyM_mes.Semana1.Oracion;
 
                 loading += (15/loading_delta);
 
@@ -1062,47 +1070,10 @@ namespace Project_Insight
             }
             else
             {
-                int primary_cell = Get_cell();
-                /*Sheet_VyM.Cells[primary_cell, A] = Check_null(txt_Date).ToUpper();
-                Sheet_VyM.Cells[primary_cell, G] = Check_null(txt_Pres);
-                Sheet_VyM.Cells[primary_cell + 6, C] = Check_null(txt_TdlB_1);
-                Get_index_time(Sheet_VyM.get_Range("C" + (primary_cell + 6).ToString()));
-                Sheet_VyM.Cells[primary_cell + 6, G] = Check_null(txt_TdlB_A1);
-                Sheet_VyM.Cells[primary_cell + 7, G] = Check_null(txt_TdlB_A2);
-                Sheet_VyM.Cells[primary_cell + 8, G] = Check_null(txt_TdlB_A3);
-                Sheet_VyM.Cells[primary_cell + 11, C] = Check_null(txt_SMM1);
-                Get_index_time(Sheet_VyM.get_Range("C" + (primary_cell + 11).ToString()));
-                Sheet_VyM.Cells[primary_cell + 11, G] = Check_null(txt_SMM_A1);
-                Sheet_VyM.Cells[primary_cell + 12, C] = Check_null(txt_SMM2);
-                Get_index_time(Sheet_VyM.get_Range("C" + (primary_cell + 12).ToString()));
-                Sheet_VyM.Cells[primary_cell + 12, G] = Check_null(txt_SMM_A2);
-                Sheet_VyM.Cells[primary_cell + 13, C] = Check_null(txt_SMM3);
-                Get_index_time(Sheet_VyM.get_Range("C" + (primary_cell + 13).ToString()));
-                Sheet_VyM.Cells[primary_cell + 13, G] = Check_null(txt_SMM_A3);
-                Sheet_VyM.Cells[primary_cell + 17, C] = Check_null(txt_NVC1);
-                Get_index_time(Sheet_VyM.get_Range("C" + (primary_cell + 17).ToString()));
-                Sheet_VyM.Cells[primary_cell + 17, G] = Check_null(txt_NVC_A1);
-                Sheet_VyM.Cells[primary_cell + 18, C] = Check_null(txt_NVC2);
-                Get_index_time(Sheet_VyM.get_Range("C" + (primary_cell + 18).ToString()));
-                Sheet_VyM.Cells[primary_cell + 18, G] = Check_null(txt_NVC_A2);
-                Sheet_VyM.Cells[primary_cell + 19, G] = Check_null(txt_NVC_A3);
-                //Sheet_VyM.Cells[primary_cell + 20, G] = Check_null_cbx(cbx_NVC_A3L);
-                //Sheet_VyM.Cells[primary_cell + 22, G] = Check_null_cbx(cbx_Ora2VyM);
-                //time
-                Sheet_VyM.Cells[primary_cell + 2, A] = time_0.Text;
-                Sheet_VyM.Cells[primary_cell + 3, A] = time_1.Text;
-                Sheet_VyM.Cells[primary_cell + 6, A] = time_2.Text;
-                Sheet_VyM.Cells[primary_cell + 7, A] = time_3.Text;
-                Sheet_VyM.Cells[primary_cell + 8, A] = time_4.Text;
-                Sheet_VyM.Cells[primary_cell + 11, A] = time_5.Text;
-                Sheet_VyM.Cells[primary_cell + 12, A] = time_6.Text;
-                Sheet_VyM.Cells[primary_cell + 13, A] = time_7.Text;
-                Sheet_VyM.Cells[primary_cell + 16, A] = time_8.Text;
-                Sheet_VyM.Cells[primary_cell + 17, A] = time_9.Text;
-                Sheet_VyM.Cells[primary_cell + 18, A] = time_10.Text;
-                Sheet_VyM.Cells[primary_cell + 19, A] = time_11.Text;
-                Sheet_VyM.Cells[primary_cell + 21, A] = time_12.Text;
-                Sheet_VyM.Cells[primary_cell + 22, A] = time_13.Text;*/
+                Get_month_from_Excel(cellValue_1[3, A]);
+                VyM_mes.Semana1.Sem_Biblia = Check_null_string(cellValue_1[3, D]);
+                VyM_mes.Semana1.Presidente = Check_null_string(cellValue_1[3, G]);
+
             }
         }
 
@@ -1346,7 +1317,10 @@ namespace Project_Insight
             }
         }
 
-        public void Compare_cbx_string(object cell_value, object sender)
+
+/*--------------------------------------- Auxiliar functions to set/read strings ---------------------------------------*/
+
+        /*public void Compare_cbx_string(object cell_value, object sender)
         {
             if (cell_value.ToString() != null)
             {
@@ -1363,7 +1337,32 @@ namespace Project_Insight
                     }
                 }
             }
+        }*/
+
+        private void Get_month_from_Excel(object cellvalue)
+        {
+            bool month_found = false;
+            for (int i = 0; i <= month.Length - 1; i++)
+            {
+                if (cellvalue.ToString().ToLower().Contains(month[i]))
+                {
+                    m_mes = i + 1;
+                    month_found = true;
+                    break;
+                }
+            }
+            if (month_found)
+            {
+                Notify("Month set in [" + m_mes.ToString() + "]");
+            }
+            else
+            {
+                m_mes = DateTime.Today.Month;
+                Warn("Month not found in first week, seeting today's month [" + m_mes.ToString() + "]");
+            }
+            
         }
+
 
         public string Check_null_string(object cellvalue)
         {
@@ -1465,55 +1464,67 @@ namespace Project_Insight
             txt_Command.AutoCompleteCustomSource = autocomplete;
         }
 
-        private void Check_time(object sender, EventArgs e)
+        private void TextChanged(object sender, EventArgs e)
         {
-            dateTime = new DateTime(2018, 1, 1, 7, 00, 00);
-            time_0.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-            dateTime = dateTime.AddMinutes(5);
-            time_1.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-            dateTime = dateTime.AddMinutes(3);
-            time_2.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-            dateTime = dateTime.AddMinutes(10);
-            time_3.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-            dateTime = dateTime.AddMinutes(8);
-            time_4.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-            dateTime = dateTime.AddMinutes(5+1); //adjusting to real time
-            time_5.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-            dateTime = dateTime.AddMinutes(Analyze_string(txt_SMM1.Text, true));
-            time_6.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-            dateTime = dateTime.AddMinutes(Analyze_string(txt_SMM2.Text, true));
-            time_7.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-            dateTime = dateTime.AddMinutes(Analyze_string(txt_SMM3.Text, true) + 1); //adjusting to real time
-            time_8.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-            dateTime = dateTime.AddMinutes(3);
-            time_9.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-            dateTime = dateTime.AddMinutes(Analyze_string(txt_NVC1.Text, false));
-            if ((txt_NVC2.Text == null) || (txt_NVC2.Text == " ") || (txt_NVC2.Text == " -"))
+
+        }
+
+        private void Save_time_from_string(VyM_Sem vyM_Sem, int wk, bool save)
+        {
+            DateTime Aux_dateTime = new DateTime(2018, 1, 1, 7, 00, 00);
+            if (save)
             {
-                time_10.Text = " ";                
+
             }
-            else
+            else // read
             {
-                time_10.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-                dateTime = dateTime.AddMinutes(Analyze_string(txt_NVC2.Text, false));
-            }
-            dateTime = dateTime.AddMinutes(1); //adjusting to real time
-            time_11.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-            dateTime = dateTime.AddMinutes(30);
-            time_12.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-            dateTime = dateTime.AddMinutes(3);
-            time_13.Text = dateTime.Hour.ToString() + ":" + dateTime.Minute.ToString();
-            if (dateTime.Hour == 8 && dateTime.Minute == 40)
-            {
-                time_13.ForeColor = Color.Green;
-            }
-            else
-            {
-                time_13.ForeColor = Color.Red;
+                time_0.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(5);
+                time_1.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(3);
+                time_2.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(10);
+                time_3.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(8);
+                time_4.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(5+1); //adjusting to real time
+                time_5.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(vyM_Sem.SMM1, true));
+                time_6.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(vyM_Sem.SMM2, true));
+                time_7.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(vyM_Sem.SMM3, true) + 1); //adjusting to real time
+                time_8.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(3);
+                time_9.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(vyM_Sem.NVC1, false));
+                if ((txt_NVC2.Text == null) || (txt_NVC2.Text == " ") || (txt_NVC2.Text == " -"))
+                {
+                    time_10.Text = " ";                
+                }
+                else
+                {
+                    time_10.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                    Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(vyM_Sem.NVC2, false));
+                }
+                Aux_dateTime = Aux_dateTime.AddMinutes(1); //adjusting to real time
+                time_11.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(30);
+                time_12.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(3);
+                time_13.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                if (Aux_dateTime.Hour == 8 && Aux_dateTime.Minute == 40)
+                {
+                    time_13.ForeColor = Color.Green;
+                }
+                else
+                {
+                    time_13.ForeColor = Color.Red;
+                }
             }
         }
 
-        public int Analyze_string(string Str, bool SMM)
+        public int Get_time_from_string(string Str, bool SMM)
         {
             string min = "mins.";
             string video = "video";
@@ -1549,51 +1560,11 @@ namespace Project_Insight
             return time;
         }
 
-        private void Txt_Date_TextChanged(object sender, EventArgs e)
-        {
-            /*TextBox txtbx = (TextBox)sender;
-            string Str = txtbx.Text.ToLower();
-            var array = txtbx.Text.ToCharArray();
-            int result = 0;
-            bool converted = false;
-            for (int i = 0; i <= month.Length-1; i++)
-            {
-                if (Str.Contains(month[i]))
-                {
-                    m_mes = i + 1;
-                    break;
-                }
-            }
-            if (array.Length >= 3)
-            {
-                if (array[1] == ' ')
-                {
-                    converted = int.TryParse(array[0].ToString(), out result);
-                    if (converted)
-                    {
-                        Notify("Detecting Day [" + result.ToString() + "]");
-                        m_dia = result;
-                        Set_date();
-                    }
-                }
-                else if (array[2] == ' ')
-                {
-                    converted = int.TryParse(array[0].ToString() + array[1].ToString(), out result);
-                    if (converted)
-                    {
-                        Notify("Detecting Day [" + result.ToString() + "]");
-                        m_dia = result;
-                        Set_date();
-                    }
-                }
-            }*/
-        }
-
         private void Set_date()
         {
             int checksum_aux = 0;
             checksum_aux = m_año + m_mes + m_dia;
-            //lbl_Month.Text = "Mes: " + month[m_mes - 1];
+            lbl_Month.Text = "Mes: " + meetings_days[m_semana-1, 0].ToString("MMMM");
             if (checksum_aux != date_checksum)
             {
                 date_checksum = checksum_aux;
@@ -1629,7 +1600,7 @@ namespace Project_Insight
             }
         }
 
-        public void save_DB(object sender)
+        /*public void save_DB(object sender)
         {
             ComboBox cbx = (ComboBox)sender;
             int column = 0;
@@ -1717,6 +1688,7 @@ namespace Project_Insight
         public void Week_Handler()
         {
             int lun = 0;
+            lbl_Week.Text = "Semana: " + m_semana.ToString();
             switch (tab_meeting)
             {
                 case 0:
