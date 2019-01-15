@@ -310,9 +310,9 @@ namespace Project_Insight
         {
             string aux = "";
             int delay = 40;
-            if (busy_trace)
+            while (busy_trace)
             {
-                await Task.Delay(1000);
+                await Task.Delay(500);
             }
             busy_trace = true;
             log_txtBx.SelectionColor = Color.White;
@@ -504,7 +504,10 @@ namespace Project_Insight
                                         m_semana = wk;
                                         Week_Handler();
                                     }
-                                }//else if x3
+                                } else if (sup == "")
+                                {
+
+                                }
                                 //Loading_Trace();
                                 break;
                             }
@@ -696,7 +699,7 @@ namespace Project_Insight
             Path = Application.StartupPath + "\\\\Programs.xlsx";
             Notify("Running new instance");
             is_new_instance = true;
-            tab_Control.Enabled = true;
+            //tab_Control.Enabled = true;
             Get_Meetings();
             Week_Handler();
             var autocomplete = new AutoCompleteStringCollection();
