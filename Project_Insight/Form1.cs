@@ -504,7 +504,7 @@ namespace Project_Insight
                                         m_semana = wk;
                                         Week_Handler();
                                     }
-                                }
+                                }//else if x3
                                 //Loading_Trace();
                                 break;
                             }
