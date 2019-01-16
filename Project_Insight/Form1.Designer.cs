@@ -80,7 +80,7 @@
             this.txt_TdlB_1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.General_Info = new System.Windows.Forms.GroupBox();
-            this.lbl_Date = new System.Windows.Forms.Label();
+            this.lbl_DateVyM = new System.Windows.Forms.Label();
             this.time_0 = new System.Windows.Forms.Label();
             this.time_1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -91,7 +91,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Tab_RP = new System.Windows.Forms.TabPage();
             this.RP_1 = new System.Windows.Forms.GroupBox();
-            this.txt_DateRP = new System.Windows.Forms.TextBox();
             this.txt_OraRP = new System.Windows.Forms.TextBox();
             this.txt_Lect_Atly = new System.Windows.Forms.TextBox();
             this.txt_Con_Atly = new System.Windows.Forms.TextBox();
@@ -197,6 +196,7 @@
             this.txt_Command = new System.Windows.Forms.TextBox();
             this.lbl_Week = new System.Windows.Forms.Label();
             this.lbl_Month = new System.Windows.Forms.Label();
+            this.lbl_DateRP = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPresenter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.protoss_Frame)).BeginInit();
             this.tab_Control.SuspendLayout();
@@ -749,7 +749,7 @@
             // General_Info
             // 
             this.General_Info.BackColor = System.Drawing.Color.DimGray;
-            this.General_Info.Controls.Add(this.lbl_Date);
+            this.General_Info.Controls.Add(this.lbl_DateVyM);
             this.General_Info.Controls.Add(this.time_0);
             this.General_Info.Controls.Add(this.time_1);
             this.General_Info.Controls.Add(this.label8);
@@ -767,13 +767,13 @@
             this.General_Info.Text = "Informacion General";
             this.General_Info.Enter += new System.EventHandler(this.General_Info_Enter);
             // 
-            // lbl_Date
+            // lbl_DateVyM
             // 
-            this.lbl_Date.AutoSize = true;
-            this.lbl_Date.Location = new System.Drawing.Point(146, 16);
-            this.lbl_Date.Name = "lbl_Date";
-            this.lbl_Date.Size = new System.Drawing.Size(0, 13);
-            this.lbl_Date.TabIndex = 111;
+            this.lbl_DateVyM.AutoSize = true;
+            this.lbl_DateVyM.Location = new System.Drawing.Point(146, 16);
+            this.lbl_DateVyM.Name = "lbl_DateVyM";
+            this.lbl_DateVyM.Size = new System.Drawing.Size(0, 13);
+            this.lbl_DateVyM.TabIndex = 111;
             // 
             // time_0
             // 
@@ -866,7 +866,7 @@
             // RP_1
             // 
             this.RP_1.BackColor = System.Drawing.Color.DimGray;
-            this.RP_1.Controls.Add(this.txt_DateRP);
+            this.RP_1.Controls.Add(this.lbl_DateRP);
             this.RP_1.Controls.Add(this.txt_OraRP);
             this.RP_1.Controls.Add(this.txt_Lect_Atly);
             this.RP_1.Controls.Add(this.txt_Con_Atly);
@@ -898,13 +898,6 @@
             this.RP_1.TabIndex = 184;
             this.RP_1.TabStop = false;
             this.RP_1.Text = "Fecha: ";
-            // 
-            // txt_DateRP
-            // 
-            this.txt_DateRP.Location = new System.Drawing.Point(53, 23);
-            this.txt_DateRP.Name = "txt_DateRP";
-            this.txt_DateRP.Size = new System.Drawing.Size(100, 20);
-            this.txt_DateRP.TabIndex = 188;
             // 
             // txt_OraRP
             // 
@@ -1844,6 +1837,14 @@
             this.lbl_Month.TabIndex = 93;
             this.lbl_Month.Text = "Mes: ";
             // 
+            // lbl_DateRP
+            // 
+            this.lbl_DateRP.AutoSize = true;
+            this.lbl_DateRP.Location = new System.Drawing.Point(53, 23);
+            this.lbl_DateRP.Name = "lbl_DateRP";
+            this.lbl_DateRP.Size = new System.Drawing.Size(0, 13);
+            this.lbl_DateRP.TabIndex = 188;
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2052,8 +2053,8 @@
         private System.Windows.Forms.TextBox txt_Cap_S_1;
         private System.Windows.Forms.TextBox txt_Lect_Atly;
         private System.Windows.Forms.TextBox txt_OraRP;
-        private System.Windows.Forms.TextBox txt_DateRP;
-        private System.Windows.Forms.Label lbl_Date;
+        private System.Windows.Forms.Label lbl_DateVyM;
+        private System.Windows.Forms.Label lbl_DateRP;
     }
 }
 

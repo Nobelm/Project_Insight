@@ -30,6 +30,8 @@ namespace Project_Insight
         public string SMM2_A { get; set; }
         public string SMM3 { get; set; }
         public string SMM3_A { get; set; }
+        public string SMM4 { get; set; }
+        public string SMM4_A { get; set; }
         public string NVC1 { get; set; }
         public string NVC1_A { get; set; }
         public string NVC2 { get; set; }

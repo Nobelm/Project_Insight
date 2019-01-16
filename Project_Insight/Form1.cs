@@ -38,12 +38,12 @@ namespace Project_Insight
         private Excel.Sheets objSheets;
         private Excel.Worksheet Sheet_VyM;
         private Excel.Worksheet Sheet_RP;
-        private Excel.Worksheet Sheet_PA;
+        private Excel.Worksheet Sheet_AC;
         private Excel.Range range_1;
         private Excel.Range range_2;
         private Excel.Range range_3;
         public static bool excel_ready = false;
-        private DateTime start_time = new DateTime(2018, 1, 1, 7, 00, 00);
+        private DateTime start_time = new DateTime(DateTime.Today.Year, 1, 1, 7, 00, 00);
         private DateTime date;
         private object[,] cellValue_1 = null;
         private object[,] cellValue_2 = null;
@@ -65,8 +65,6 @@ namespace Project_Insight
         public static string[] guard_cbx_names = new string[10];
         public static int date_checksum = 0;
         public static string[] Command_history = new string[10];
-        //public static string[] Command_input = new string[] {"op_xlsx", "op_db", "sv", "clc", "rst", "mnth", "wk", "autofill", "exit"};
-        //public static string[] Command_input = new string[] {"new", "open", "save", "exit", "month"};
         public static string[] month = new string[] { "ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic" };
         public static int command_iterator = 0;
         DB_Form DB_Form = new DB_Form();
@@ -75,9 +73,6 @@ namespace Project_Insight
         public static VyM_Mes VyM_mes = new VyM_Mes();
         public static RP_Mes RP_mes = new RP_Mes();
         public static AC_Mes AC_mes = new AC_Mes();
-        //public static string[] VyM_Names = new string[] { "ig_1", "ig_2", "tb_1", "tb_2", "tb_3", "tb_4", "sm_1", "sm_2", "sm_3", "sm_4", "sm_5", "sm_6",
-        //   "nv_1", "nv_2", "nv3", "nv_4", "nv_5", "nv_6", "nv_7" };
-        //public static string[] RP_Names = new string[] { "rp_101", "rp_12", "rp_13", "rp_14", "rp_15", "rp_16", "rp_17", "rp_18", "rp_19", "rp_s1", "rp_s1", };
         IDictionary<string, object> Dict_vym = new Dictionary<string, object>();
         IDictionary<string, object> Dict_rp = new Dictionary<string, object>();
         IDictionary<string, object> Dict_ac = new Dictionary<string, object>();
@@ -86,7 +81,8 @@ namespace Project_Insight
         public static bool selected_txt = false;
         public static int loading_delta = 1;
         public static int loading = 0;
-        public static bool is_loading = false;
+        public static bool week_five_exist = false;
+        public static bool UI_running = false;
 
 
 
@@ -128,7 +124,7 @@ namespace Project_Insight
             Dict_vym.Add("nv_40", txt_NVC_A4);
             Dict_vym.Add("nv_50", txt_Ora2VyM);
 
-            Dict_rp.Add("rp_00", txt_DateRP);
+            //Dict_rp.Add("rp_00", lbl_DateRP);
             Dict_rp.Add("rp_01", txt_PresRP);
             Dict_rp.Add("rp_02", txt_RP_Speech);
             Dict_rp.Add("rp_03", txt_RP_Disc);
@@ -321,33 +317,38 @@ namespace Project_Insight
             log_txtBx.Text = "";
             log_txtBx.SelectionStart = log_txtBx.Text.Length;
             log_txtBx.ScrollToCaret();
-            while (is_loading)
+            while (loading < 100)
             {
-                aux += loading.ToString() + " ....... \\";
+                aux += loading.ToString() + " % ...\\";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
                 log_txtBx.ScrollToCaret();
                 await Task.Delay(delay);
-                aux = aux.Substring(0, aux.Length - 10 - loading.ToString().Length);
-                aux += loading.ToString() + " ....... |";
+                aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
+                aux += loading.ToString() + " % ...|";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
                 log_txtBx.ScrollToCaret();
                 await Task.Delay(delay);
-                aux = aux.Substring(0, aux.Length - 10 - loading.ToString().Length);
-                aux += loading.ToString() + " ....... /";
+                aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
+                aux += loading.ToString() + " % .../";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
                 log_txtBx.ScrollToCaret();
                 await Task.Delay(delay);
-                aux = aux.Substring(0, aux.Length - 10 - loading.ToString().Length);
-                aux += loading.ToString() + " ....... -";
+                aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
+                aux += loading.ToString() + " % ...-";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
                 log_txtBx.ScrollToCaret();
                 await Task.Delay(delay);
-                aux = aux.Substring(0, aux.Length - 10 - loading.ToString().Length);
+                aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
             }
+            aux += loading.ToString() + " % ...\\";
+            log_txtBx.Text = aux;
+            log_txtBx.SelectionStart = log_txtBx.Text.Length;
+            log_txtBx.ScrollToCaret();
+            await Task.Delay(delay);
             log_txtBx.AppendText("\n");
             log_txtBx.SelectionColor = Color.Green;
             log_txtBx.AppendText("Complete!");
@@ -378,11 +379,6 @@ namespace Project_Insight
                             data += "2";
                             break;
                         }
-                    case 3:
-                        {
-                            data += "3";
-                            break;
-                        }
                 }
                 str_stack[iterator_stack] = data;
                 int_stack[iterator_stack] = line;
@@ -400,11 +396,7 @@ namespace Project_Insight
                 else if (notify_warn == 2)
                 {
                     Warn(str_stack[0], int_stack[0]);
-                }/*
-                else
-                {
-                    Command(str_stack[0], int_stack[0]);
-                }*/
+                }
                 for (int i = 1; i <= str_stack.Length - 1; i++)
                 {
                     str_stack[i - 1] = str_stack[i];
@@ -419,6 +411,7 @@ namespace Project_Insight
         }
 
         /*--------------------------------------- Command functions ---------------------------------------*/
+
         private void Process_txt_Command(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -442,6 +435,7 @@ namespace Project_Insight
                     Str = cmd + " " + sup;
                     Notify("Executing [" + Str + "] command");
                     Save_command(Str);
+                    command_iterator = 0;
                     switch (cmd)
                     {
                         case "new":
@@ -478,82 +472,114 @@ namespace Project_Insight
                             }
                         case "save":
                             {
-                                if (int.TryParse(sup, out int sv))
+                                if (UI_running)
                                 {
-                                    Thread Save_thread = new Thread(() => Process_save(sv));
-                                    Save_thread.Start();
-                                    Loading_Trace();
+                                    if (int.TryParse(sup, out int sv))
+                                    {
+                                        Thread Save_thread = new Thread(() => Process_save(sv));
+                                        Save_thread.Start();
+                                        Loading_Trace();
+                                    }
+                                }
+                                else
+                                {
+                                    Warn("Need to create a new instance or open an existing program");
                                 }
                                 break;
                             }
                         case "tab":
                             {
-                                if (int.TryParse(sup, out int tab))
+                                if (UI_running)
                                 {
-                                    tab_Control.SelectedIndex = tab;
+                                    if (int.TryParse(sup, out int tab))
+                                    {
+                                        tab_Control.SelectedIndex = tab;
+                                    }
+                                }
+                                else
+                                {
+                                    Warn("Need to create a new instance or open an existing program");
                                 }
                                 break;
                             }
                         case "week":
                             {
-                                if (int.TryParse(sup, out int wk))
+                                if (UI_running)
                                 {
-                                    if ((wk != m_semana) && (wk > 0))
+                                    if (int.TryParse(sup, out int wk))
                                     {
-                                        Pre_save_info();
-                                        m_semana = wk;
-                                        Week_Handler();
+                                        if ((wk != m_semana) && (wk > 0))
+                                        {
+                                            if ((wk == 5) && (!week_five_exist))
+                                            {
+                                                Warn("Month [" + m_mes.ToString() + "] doesn't have 5 weeks");
+                                            }
+                                            else
+                                            {
+                                                Pre_save_info();
+                                                m_semana = wk;
+                                                Week_Handler();
+                                            }
+                                        }
                                     }
-                                } else if (sup == "")
-                                {
+                                    else if (sup == "") //@ToDo set and create hadler for memorial, asamblea and visita
+                                    {
 
+                                    }
                                 }
-                                //Loading_Trace();
+                                else
+                                {
+                                    Warn("Need to create a new instance or open an existing program");
+                                }
                                 break;
                             }
-                        case "stop":
+                        case "test":
                             {
-                                //is_loading = false;
+                                
                                 break;
                             }
                         default:
                             {
-                                switch (tab_meeting)
+                                if (UI_running)
                                 {
-                                    case 0:
-                                        {
+                                    switch (tab_meeting)
+                                    {
+                                        case 0:
+                                            {
 
-                                            if (Dict_vym.ContainsKey(cmd))
-                                            {
-                                                TextBox txt = (TextBox)Dict_vym[cmd];
-                                                txt.Text = sup;
-                                                txt.BackColor = Color.White;
-                                                //Pre_save_info();
+                                                if (Dict_vym.ContainsKey(cmd))
+                                                {
+                                                    TextBox txt = (TextBox)Dict_vym[cmd];
+                                                    txt.Text = sup;
+                                                    txt.BackColor = Color.White;
+                                                }
+                                                break;
                                             }
-                                            break;
-                                        }
-                                    case 1:
-                                        {
-                                            if (Dict_rp.ContainsKey(cmd))
+                                        case 1:
                                             {
-                                                TextBox txt = (TextBox)Dict_rp[cmd];
-                                                txt.Text = sup;
-                                                txt.BackColor = Color.White;
-                                                //Pre_save_info();
+                                                if (Dict_rp.ContainsKey(cmd))
+                                                {
+                                                    TextBox txt = (TextBox)Dict_rp[cmd];
+                                                    txt.Text = sup;
+                                                    txt.BackColor = Color.White;
+                                                }
+                                                break;
                                             }
-                                            break;
-                                        }
-                                    case 2:
-                                        {
-                                            if (Dict_ac.ContainsKey(cmd))
+                                        case 2:
                                             {
-                                                TextBox txt = (TextBox)Dict_ac[cmd];
-                                                txt.Text = sup;
-                                                txt.BackColor = Color.White;
-                                                //Pre_save_info();
+                                                if (Dict_ac.ContainsKey(cmd))
+                                                {
+                                                    TextBox txt = (TextBox)Dict_ac[cmd];
+                                                    txt.Text = sup;
+                                                    txt.BackColor = Color.White;
+                                                }
+                                                break;
                                             }
-                                            break;
-                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    Warn("Need to create a new instance or open an existing program");
                                 }
                                 break;
                             }
@@ -693,6 +719,7 @@ namespace Project_Insight
         }
 
         /*--------------------------------------- Excel file Control ---------------------------------------*/
+
         /*New excel file*/
         public void New_Instance()
         {
@@ -705,6 +732,7 @@ namespace Project_Insight
             var autocomplete = new AutoCompleteStringCollection();
             autocomplete.AddRange(Dict_vym.Keys.ToArray());
             txt_Command.AutoCompleteCustomSource = autocomplete;
+            UI_running = true;
         }
 
         /*Open an existing excel program*/
@@ -731,6 +759,7 @@ namespace Project_Insight
                         objBooks.Close(0);
                         objApp.Quit();
                     }
+                    UI_running = true;
                 }
             }
             else
@@ -764,8 +793,8 @@ namespace Project_Insight
                 range_2 = Sheet_RP.get_Range("A1", "H70");
                 cellValue_2 = (System.Object[,])range_2.get_Value();
 
-                Sheet_PA = (Excel.Worksheet)objSheets.get_Item(3);
-                range_3 = Sheet_PA.get_Range("A1", "H70");
+                Sheet_AC = (Excel.Worksheet)objSheets.get_Item(3);
+                range_3 = Sheet_AC.get_Range("A1", "H70");
                 cellValue_3 = (System.Object[,])range_3.get_Value();
 
                 Notify("Opening path: " + path);
@@ -782,25 +811,8 @@ namespace Project_Insight
             Warn("Clear all!");
         }
 
-        public string Check_null(object sender)
-        {
-            string Str = "";
-            TextBox txt_bx = (TextBox)sender;
-            if ((txt_bx.Text != null) && (txt_bx.Text != " "))
-            {
-                txt_bx.BackColor = Color.White;
-            }
-            else
-            {
-                txt_bx.BackColor = Color.LightCoral;
-                Warn("Empty field in [" + txt_bx.Name.ToString() + "]");
-            }
-            Str = txt_bx.Text;
-            return Str;
-        }
-
-
-        public void Get_index_time(Excel.Range cell)
+        /*@ToDo Set font size to (x min.)*/
+        public void Set_Font(Excel.Range cell)
         {
             string Str = cell.Text;
             var array = Str.ToCharArray();
@@ -813,7 +825,8 @@ namespace Project_Insight
                 }
             }
         }
-               
+             
+        /*Reset all information in form*/
         private void Process_restore()
         {
             Notify("Restore info");
@@ -828,7 +841,7 @@ namespace Project_Insight
             int check = 0;
             int aux_m = 0;
             int aux_y = m_año;
-            for (int d = 1; d <= days; d++)
+            for (short d = 1; d <= days; d++)
             {
                 if (new DateTime(m_año, m_mes, d).DayOfWeek == DayOfWeek.Monday)
                 {
@@ -845,8 +858,16 @@ namespace Project_Insight
             /*Handler to check Saturdays in another month*/
             if (check % 2 != 0)
             {
-                if (i == 4)
+                if ((i == 3) || (i == 4)) //Week 4 or 5
                 {
+                    if (i == 4)
+                    {
+                        week_five_exist = true;
+                    }
+                    else
+                    {
+                        week_five_exist = false;
+                    }
                     aux_m = m_mes + 1;
                     if (aux_m > 12)
                     {
@@ -863,11 +884,27 @@ namespace Project_Insight
                     }
                 }
             }
+            //ToDo save all dates in objects!
+            VyM_mes.Semana1.Fecha = meetings_days[0, 0].ToString("dddd, dd MMMM");
+            VyM_mes.Semana2.Fecha = meetings_days[1, 0].ToString("dddd, dd MMMM");
+            VyM_mes.Semana3.Fecha = meetings_days[2, 0].ToString("dddd, dd MMMM");
+            VyM_mes.Semana4.Fecha = meetings_days[3, 0].ToString("dddd, dd MMMM");
+            if (week_five_exist)
+            {
+                VyM_mes.Semana5.Fecha = meetings_days[4, 0].ToString("dddd, dd MMMM");
+            }
+            RP_mes.Semana1.Fecha = meetings_days[0, 1].ToString("dddd, dd MMMM");
+            RP_mes.Semana2.Fecha = meetings_days[1, 1].ToString("dddd, dd MMMM");
+            RP_mes.Semana3.Fecha = meetings_days[2, 1].ToString("dddd, dd MMMM");
+            RP_mes.Semana4.Fecha = meetings_days[3, 1].ToString("dddd, dd MMMM");
+            if (week_five_exist)
+            {
+                RP_mes.Semana5.Fecha = meetings_days[4, 1].ToString("dddd, dd MMMM");
+            }
         }
 
         private void Process_save(int save)
         {
-            is_loading = true;
             string FileName = meetings_days[0, 0].ToString("MMMM");
             loading = 1;
             Opening_Excel(Path);
@@ -889,17 +926,16 @@ namespace Project_Insight
             }
             if ((save == 2) || (save == 4))
             {
-                RP_Handler(false);
+                RP_Handler(true);
                 FileName += "_RP";
             }
             if ((save == 3) || (save == 4))
             {
-                AC_Handler(false);
+                AC_Handler(true);
                 FileName += "_AC";
             }
             Notify("FileName: " + FileName);
             pending_refresh_DB = true;
-            //Notify(Application.StartupPath + FileName + ".xlsx");
             loading = 80;
             if (is_new_instance)
             {
@@ -922,425 +958,302 @@ namespace Project_Insight
                 objBooks.Close(0);
                 objApp.Quit();
             }
-            loading = 100;
-            Notify("Saved file for JW Meetings" + ", Week [" + m_semana.ToString() + "]");
             Notify("Saved date: [" + m_dia.ToString() + "-" + m_mes.ToString() + "-" + m_año.ToString() + "]");
             //Check_time(this, null);
-            is_loading = false;
+            loading = 100;
         }
 
         /*--------------------------------------- Meeting handlers ---------------------------------------*/
         public void VyM_Handler(bool save)
         {
-            //Notify((read ? "Reading": "Saving") + " VyM meeting");
             if (save)
             {
-                int primary_cell = Get_cell();
-                Sheet_VyM.Cells[primary_cell, A] = VyM_mes.Semana1.Fecha.ToUpper();
-                Sheet_VyM.Cells[primary_cell, D] = VyM_mes.Semana1.Sem_Biblia.ToUpper();
-                Sheet_VyM.Cells[primary_cell, G] = VyM_mes.Semana1.Presidente;
-                Sheet_VyM.Cells[primary_cell + 6, C] = VyM_mes.Semana1.Discurso;
-                Sheet_VyM.Cells[primary_cell + 6, G] = VyM_mes.Semana1.Discurso_A;
-                Sheet_VyM.Cells[primary_cell + 7, G] = VyM_mes.Semana1.Perlas;
-                Sheet_VyM.Cells[primary_cell + 8, G] = VyM_mes.Semana1.Lectura;
-                Sheet_VyM.Cells[primary_cell + 11, C] = VyM_mes.Semana1.SMM1;
-                Sheet_VyM.Cells[primary_cell + 11, G] = VyM_mes.Semana1.SMM1_A;
-                Sheet_VyM.Cells[primary_cell + 12, C] = VyM_mes.Semana1.SMM2;
-                Sheet_VyM.Cells[primary_cell + 12, G] = VyM_mes.Semana1.SMM2_A;
-                Sheet_VyM.Cells[primary_cell + 13, C] = VyM_mes.Semana1.SMM3;
-                Sheet_VyM.Cells[primary_cell + 13, G] = VyM_mes.Semana1.SMM3_A;
-                Sheet_VyM.Cells[primary_cell + 17, C] = VyM_mes.Semana1.NVC1;
-                Sheet_VyM.Cells[primary_cell + 17, G] = VyM_mes.Semana1.NVC1_A;
-                Sheet_VyM.Cells[primary_cell + 18, C] = VyM_mes.Semana1.NVC2;
-                Sheet_VyM.Cells[primary_cell + 18, G] = VyM_mes.Semana1.NVC2_A;
-                Sheet_VyM.Cells[primary_cell + 19, G] = VyM_mes.Semana1.Libro_A;
-                Sheet_VyM.Cells[primary_cell + 20, G] = VyM_mes.Semana1.Libro_L;
-                Sheet_VyM.Cells[primary_cell + 22, G] = VyM_mes.Semana1.Oracion;
-
+                VyM_Save_Week(VyM_mes.Semana1, 1);
                 loading += (15/loading_delta);
-
-                //Sheet_VyM.Cells[28, A] = VyM_mes.Semana2.Fecha.ToUpper() + " | " + VyM_mes.Semana2.Sem_Biblia.ToUpper();
-                //Sheet_VyM.Cells[28, G] = VyM_mes.Semana2.Presidente;
-                /*txt_TdlB_1.Text = VyM_mes.Semana2.Discurso;
-                txt_TdlB_A1.Text = VyM_mes.Semana2.Discurso_A;
-                txt_TdlB_A2.Text = VyM_mes.Semana2.Perlas;
-                txt_TdlB_A3.Text = VyM_mes.Semana2.Lectura;
-                txt_SMM1.Text = VyM_mes.Semana2.SMM1;
-                txt_SMM_A1.Text = VyM_mes.Semana2.SMM1_A;
-                txt_SMM2.Text = VyM_mes.Semana2.SMM2;
-                txt_SMM_A2.Text = VyM_mes.Semana2.SMM2_A;
-                txt_SMM3.Text = VyM_mes.Semana2.SMM3;
-                txt_SMM_A3.Text = VyM_mes.Semana2.SMM3_A;
-                txt_NVC1.Text = VyM_mes.Semana2.NVC1;
-                txt_NVC_A1.Text = VyM_mes.Semana2.NVC1_A;
-                txt_NVC2.Text = VyM_mes.Semana2.NVC2;
-                txt_NVC2.Text = VyM_mes.Semana2.NVC2_A;
-                txt_NVC_A3.Text = VyM_mes.Semana2.Libro_A;
-                txt_NVC_A4.Text = VyM_mes.Semana2.Libro_L;
-                txt_Ora2VyM.Text = VyM_mes.Semana2.Oracion;*/
-            
+                VyM_Save_Week(VyM_mes.Semana2, 2);
                 loading += (15/loading_delta);
-
-                //lbl_Date.Text = VyM_mes.Semana3.Fecha;
-                /*txt_Date.Text = VyM_mes.Semana3.Sem_Biblia;
-                txt_Pres.Text = VyM_mes.Semana3.Presidente;
-                txt_TdlB_1.Text = VyM_mes.Semana3.Discurso;
-                txt_TdlB_A1.Text = VyM_mes.Semana3.Discurso_A;
-                txt_TdlB_A2.Text = VyM_mes.Semana3.Perlas;
-                txt_TdlB_A3.Text = VyM_mes.Semana3.Lectura;
-                txt_SMM1.Text = VyM_mes.Semana3.SMM1;
-                txt_SMM_A1.Text = VyM_mes.Semana3.SMM1_A;
-                txt_SMM2.Text = VyM_mes.Semana3.SMM2;
-                txt_SMM_A2.Text = VyM_mes.Semana3.SMM2_A;
-                txt_SMM3.Text = VyM_mes.Semana3.SMM3;
-                txt_SMM_A3.Text = VyM_mes.Semana3.SMM3_A;
-                txt_NVC1.Text = VyM_mes.Semana3.NVC1;
-                txt_NVC_A1.Text = VyM_mes.Semana3.NVC1_A;
-                txt_NVC2.Text = VyM_mes.Semana3.NVC2;
-                txt_NVC2.Text = VyM_mes.Semana3.NVC2_A;
-                txt_NVC_A3.Text = VyM_mes.Semana3.Libro_A;
-                txt_NVC_A4.Text = VyM_mes.Semana3.Libro_L;
-                txt_Ora2VyM.Text = VyM_mes.Semana3.Oracion;*/
-                
+                VyM_Save_Week(VyM_mes.Semana3, 3);
                 loading += (15 / loading_delta);
-
-                //lbl_Date.Text = VyM_mes.Semana4.Fecha;
-                /*txt_Date.Text = VyM_mes.Semana4.Sem_Biblia;
-                txt_Pres.Text = VyM_mes.Semana4.Presidente;
-                txt_TdlB_1.Text = VyM_mes.Semana4.Discurso;
-                txt_TdlB_A1.Text = VyM_mes.Semana4.Discurso_A;
-                txt_TdlB_A2.Text = VyM_mes.Semana4.Perlas;
-                txt_TdlB_A3.Text = VyM_mes.Semana4.Lectura;
-                txt_SMM1.Text = VyM_mes.Semana4.SMM1;
-                txt_SMM_A1.Text = VyM_mes.Semana4.SMM1_A;
-                txt_SMM2.Text = VyM_mes.Semana4.SMM2;
-                txt_SMM_A2.Text = VyM_mes.Semana4.SMM2_A;
-                txt_SMM3.Text = VyM_mes.Semana4.SMM3;
-                txt_SMM_A3.Text = VyM_mes.Semana4.SMM3_A;
-                txt_NVC1.Text = VyM_mes.Semana4.NVC1;
-                txt_NVC_A1.Text = VyM_mes.Semana4.NVC1_A;
-                txt_NVC2.Text = VyM_mes.Semana4.NVC2;
-                txt_NVC2.Text = VyM_mes.Semana4.NVC2_A;
-                txt_NVC_A3.Text = VyM_mes.Semana4.Libro_A;
-                txt_NVC_A4.Text = VyM_mes.Semana4.Libro_L;
-                txt_Ora2VyM.Text = VyM_mes.Semana4.Oracion;*/
-
+                VyM_Save_Week(VyM_mes.Semana4, 4);
                 loading += (15 / loading_delta);
-
-                //lbl_Date.Text = VyM_mes.Semana5.Fecha;
-                /*txt_Date.Text = VyM_mes.Semana5.Sem_Biblia;
-                txt_Pres.Text = VyM_mes.Semana5.Presidente;
-                txt_TdlB_1.Text = VyM_mes.Semana5.Discurso;
-                txt_TdlB_A1.Text = VyM_mes.Semana5.Discurso_A;
-                txt_TdlB_A2.Text = VyM_mes.Semana5.Perlas;
-                txt_TdlB_A3.Text = VyM_mes.Semana5.Lectura;
-                txt_SMM1.Text = VyM_mes.Semana5.SMM1;
-                txt_SMM_A1.Text = VyM_mes.Semana5.SMM1_A;
-                txt_SMM2.Text = VyM_mes.Semana5.SMM2;
-                txt_SMM_A2.Text = VyM_mes.Semana5.SMM2_A;
-                txt_SMM3.Text = VyM_mes.Semana5.SMM3;
-                txt_SMM_A3.Text = VyM_mes.Semana5.SMM3_A;
-                txt_NVC1.Text = VyM_mes.Semana5.NVC1;
-                txt_NVC_A1.Text = VyM_mes.Semana5.NVC1_A;
-                txt_NVC2.Text = VyM_mes.Semana5.NVC2;
-                txt_NVC2.Text = VyM_mes.Semana5.NVC2_A;
-                txt_NVC_A3.Text = VyM_mes.Semana5.Libro_A;
-                txt_NVC_A4.Text = VyM_mes.Semana5.Libro_L;
-                txt_Ora2VyM.Text = VyM_mes.Semana5.Oracion;*/
-
-                loading += (15 / loading_delta);
-
-                /*cellValue_1 = (System.Object[,])range_1.get_Value();
-                txt_Date.Text = Check_null_string(cellValue_1[primary_cell, A]);
-                txt_Pres.Text = Check_null_string(cellValue_1[primary_cell, G]);
-                txt_TdlB_1.Text = Check_null_string(cellValue_1[primary_cell + 6, C]);
-                txt_TdlB_A1.Text = Check_null_string(cellValue_1[primary_cell + 6, G]);
-                txt_TdlB_A2.Text = Check_null_string(cellValue_1[primary_cell + 7, G]);
-                txt_TdlB_A3.Text = Check_null_string(cellValue_1[primary_cell + 8, G]);
-                txt_SMM1.Text = Check_null_string(cellValue_1[primary_cell + 11, C]);
-                txt_SMM_A1.Text = Check_null_string(cellValue_1[primary_cell + 11, G]);
-                txt_SMM2.Text = Check_null_string(cellValue_1[primary_cell + 12, C]);
-                txt_SMM_A2.Text = Check_null_string(cellValue_1[primary_cell + 12, G]);
-                txt_SMM3.Text = Check_null_string(cellValue_1[primary_cell + 13, C]);
-                txt_SMM_A3.Text = Check_null_string(cellValue_1[primary_cell + 13, G]);
-                txt_NVC1.Text = Check_null_string(cellValue_1[primary_cell + 17, C]);
-                txt_NVC_A1.Text = Check_null_string(cellValue_1[primary_cell + 17, G]);
-                txt_NVC2.Text = Check_null_string(cellValue_1[primary_cell + 18, C]);
-                txt_NVC_A2.Text = Check_null_string(cellValue_1[primary_cell + 18, G]);
-                txt_NVC_A3.Text = Check_null_string(cellValue_1[primary_cell + 19, G]);
-                //Compare_cbx_string(Check_null_string(cellValue_1[primary_cell + 20, G]), cbx_NVC_A3L);
-                //Compare_cbx_string(Check_null_string(cellValue_1[primary_cell + 22, G]), cbx_Ora2VyM);*/
-            }
-            else
-            {
-                Get_month_from_Excel(cellValue_1[3, A]);
-                VyM_mes.Semana1.Sem_Biblia = Check_null_string(cellValue_1[3, D]);
-                VyM_mes.Semana1.Presidente = Check_null_string(cellValue_1[3, G]);
-
-            }
-        }
-
-        public void RP_Handler(bool read)
-        {
-            Notify((read ? "Reading" : "Saving") + " RP meeting");
-            if (read)
-            {
-                cellValue_2 = (System.Object[,])range_2.get_Value();
-                int primary_cell = 4;
-                //Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 1, H]), cbx_PresRP_1);
-                txt_RP_Speech.Text = Check_null_string(cellValue_2[primary_cell + 2, D]);
-                txt_RP_Disc.Text = Check_null_string(cellValue_2[primary_cell + 2, H]);
-                txt_RP_Cong.Text = Check_null_string(cellValue_2[primary_cell + 3, E]);
-                //Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 5, H]), cbx_CondAtly_1);
-                txt_Title_Atly.Text = Check_null_string(cellValue_2[primary_cell + 6, D]);
-                //Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 6, H]), cbx_LectRP_1);
-                txt_Sal_Disc.Text = Check_null_string(cellValue_2[primary_cell + 10, C]);
-                txt_Sal_Title.Text = Check_null_string(cellValue_2[primary_cell + 10, E]);
-                txt_Sal_Cong.Text = Check_null_string(cellValue_2[primary_cell + 10, H]);
-                //Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 7, H]), cbx_OraRP_1);
-
-                primary_cell = 17;
-                /*Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 1, H]), cbx_PresRP_2);
-                txt_RP_Speech_2.Text = Check_null_string(cellValue_2[primary_cell + 2, D]);
-                txt_RP_Disc_2.Text = Check_null_string(cellValue_2[primary_cell + 2, H]);
-                txt_RP_Cong_2.Text = Check_null_string(cellValue_2[primary_cell + 3, E]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 5, H]), cbx_CondAtly_2);
-                txt_AdlA_Title_2.Text = Check_null_string(cellValue_2[primary_cell + 6, D]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 6, H]), cbx_LectRP_2);
-                txt_Sal_Disc_2.Text = Check_null_string(cellValue_2[primary_cell + 10, C]);
-                txt_Sal_Title_2.Text = Check_null_string(cellValue_2[primary_cell + 10, E]);
-                txt_Sal_Cong_2.Text = Check_null_string(cellValue_2[primary_cell + 10, H]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 7, H]), cbx_OraRP_1);
-
-                primary_cell = 30;
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 1, H]), cbx_PresRP_3);
-                txt_RP_Speech_3.Text = Check_null_string(cellValue_2[primary_cell + 2, D]);
-                txt_RP_Disc_3.Text = Check_null_string(cellValue_2[primary_cell + 2, H]);
-                txt_RP_Cong_3.Text = Check_null_string(cellValue_2[primary_cell + 3, E]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 5, H]), cbx_CondAtly_3);
-                txt_AdlA_Title_3.Text = Check_null_string(cellValue_2[primary_cell + 6, D]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 6, H]), cbx_LectRP_3);
-                txt_Sal_Disc_3.Text = Check_null_string(cellValue_2[primary_cell + 10, C]);
-                txt_Sal_Title_3.Text = Check_null_string(cellValue_2[primary_cell + 10, E]);
-                txt_Sal_Cong_3.Text = Check_null_string(cellValue_2[primary_cell + 10, H]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 7, H]), cbx_OraRP_3);
-
-                primary_cell = 43;
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 1, H]), cbx_PresRP_4);
-                txt_RP_Speech_4.Text = Check_null_string(cellValue_2[primary_cell + 2, D]);
-                txt_RP_Disc_4.Text = Check_null_string(cellValue_2[primary_cell + 2, H]);
-                txt_RP_Cong_4.Text = Check_null_string(cellValue_2[primary_cell + 3, E]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 5, H]), cbx_CondAtly_4);
-                txt_AdlA_Title_4.Text = Check_null_string(cellValue_2[primary_cell + 6, D]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 6, H]), cbx_LectRP_4);
-                txt_Sal_Disc_4.Text = Check_null_string(cellValue_2[primary_cell + 10, C]);
-                txt_Sal_Title_4.Text = Check_null_string(cellValue_2[primary_cell + 10, E]);
-                txt_Sal_Cong_4.Text = Check_null_string(cellValue_2[primary_cell + 10, H]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 7, H]), cbx_OraRP_4);
-
-                primary_cell = 59;
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 1, H]), cbx_PresRP_5);
-                txt_RP_Speech_5.Text = Check_null_string(cellValue_2[primary_cell + 2, D]);
-                txt_RP_Disc_5.Text = Check_null_string(cellValue_2[primary_cell + 2, H]);
-                txt_RP_Cong_5.Text = Check_null_string(cellValue_2[primary_cell + 3, E]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 5, H]), cbx_CondAtly_5);
-                txt_AdlA_Title_5.Text = Check_null_string(cellValue_2[primary_cell + 6, D]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 6, H]), cbx_LectRP_5);
-                txt_Sal_Disc_5.Text = Check_null_string(cellValue_2[primary_cell + 10, C]);
-                txt_Sal_Title_5.Text = Check_null_string(cellValue_2[primary_cell + 10, E]);
-                txt_Sal_Cong_5.Text = Check_null_string(cellValue_2[primary_cell + 10, H]);
-                Compare_cbx_string(Check_null_string(cellValue_2[primary_cell + 7, H]), cbx_OraRP_5);*/
-            }
-            else
-            {
-                int primary_cell = 4;
-                //Sheet_RP.Cells[primary_cell + 1, H] = Check_null_cbx(cbx_PresRP_1);
-                Sheet_RP.Cells[primary_cell + 2, D] = Check_null(txt_RP_Speech);
-                Sheet_RP.Cells[primary_cell + 2, H] = Check_null(txt_RP_Disc);
-                Sheet_RP.Cells[primary_cell + 3, E] = Check_null(txt_RP_Cong);
-                //Sheet_RP.Cells[primary_cell + 5, H] = Check_null_cbx(cbx_CondAtly_1);
-                Sheet_RP.Cells[primary_cell + 6, D] = Check_null(txt_Title_Atly);
-                //Sheet_RP.Cells[primary_cell + 6, H] = Check_null_cbx(cbx_LectRP_1);
-                //Sheet_RP.Cells[primary_cell + 7, H] = Check_null_cbx(cbx_OraRP_1);
-                Sheet_RP.Cells[primary_cell + 10, C] = txt_Sal_Disc.Text;
-                Sheet_RP.Cells[primary_cell + 10, E] = txt_Sal_Title.Text;
-                Sheet_RP.Cells[primary_cell + 10, H] = txt_Sal_Cong.Text;
-
-                primary_cell = 17;
-               /* Sheet_RP.Cells[primary_cell + 1, H] = Check_null_cbx(cbx_PresRP_2);
-                Sheet_RP.Cells[primary_cell + 2, D] = Check_null(txt_RP_Speech_2);
-                Sheet_RP.Cells[primary_cell + 2, H] = Check_null(txt_RP_Disc_2);
-                Sheet_RP.Cells[primary_cell + 3, E] = Check_null(txt_RP_Cong_2);
-                Sheet_RP.Cells[primary_cell + 5, H] = Check_null_cbx(cbx_CondAtly_2);
-                Sheet_RP.Cells[primary_cell + 6, D] = Check_null(txt_AdlA_Title_2);
-                Sheet_RP.Cells[primary_cell + 6, H] = Check_null_cbx(cbx_LectRP_2);
-                Sheet_RP.Cells[primary_cell + 7, H] = Check_null_cbx(cbx_OraRP_2);
-                Sheet_RP.Cells[primary_cell + 10, C] = txt_Sal_Disc_2.Text;
-                Sheet_RP.Cells[primary_cell + 10, E] = txt_Sal_Title_2.Text;
-                Sheet_RP.Cells[primary_cell + 10, H] = txt_Sal_Cong_2.Text;
-
-                primary_cell = 30;
-                Sheet_RP.Cells[primary_cell + 1, H] = Check_null_cbx(cbx_PresRP_3);
-                Sheet_RP.Cells[primary_cell + 2, D] = Check_null(txt_RP_Speech_3);
-                Sheet_RP.Cells[primary_cell + 2, H] = Check_null(txt_RP_Disc_3);
-                Sheet_RP.Cells[primary_cell + 3, E] = Check_null(txt_RP_Cong_3);
-                Sheet_RP.Cells[primary_cell + 5, H] = Check_null_cbx(cbx_CondAtly_3);
-                Sheet_RP.Cells[primary_cell + 6, D] = Check_null(txt_AdlA_Title_3);
-                Sheet_RP.Cells[primary_cell + 6, H] = Check_null_cbx(cbx_LectRP_3);
-                Sheet_RP.Cells[primary_cell + 7, H] = Check_null_cbx(cbx_OraRP_3);
-                Sheet_RP.Cells[primary_cell + 10, C] = txt_Sal_Disc_3.Text;
-                Sheet_RP.Cells[primary_cell + 10, E] = txt_Sal_Title_3.Text;
-                Sheet_RP.Cells[primary_cell + 10, H] = txt_Sal_Cong_3.Text;
-
-                primary_cell = 43;
-                Sheet_RP.Cells[primary_cell + 1, H] = Check_null_cbx(cbx_PresRP_4);
-                Sheet_RP.Cells[primary_cell + 2, D] = Check_null(txt_RP_Speech_4);
-                Sheet_RP.Cells[primary_cell + 2, H] = Check_null(txt_RP_Disc_4);
-                Sheet_RP.Cells[primary_cell + 3, E] = Check_null(txt_RP_Cong_4);
-                Sheet_RP.Cells[primary_cell + 5, H] = Check_null_cbx(cbx_CondAtly_4);
-                Sheet_RP.Cells[primary_cell + 6, D] = Check_null(txt_AdlA_Title_4);
-                Sheet_RP.Cells[primary_cell + 6, H] = Check_null_cbx(cbx_LectRP_4);
-                Sheet_RP.Cells[primary_cell + 7, H] = Check_null_cbx(cbx_OraRP_4);
-                Sheet_RP.Cells[primary_cell + 10, C] = txt_Sal_Disc_4.Text;
-                Sheet_RP.Cells[primary_cell + 10, E] = txt_Sal_Title_4.Text;
-                Sheet_RP.Cells[primary_cell + 10, H] = txt_Sal_Cong_4.Text;
-
-                primary_cell = 59;
-                Sheet_RP.Cells[primary_cell + 1, H] = Check_null_cbx(cbx_PresRP_5);
-                Sheet_RP.Cells[primary_cell + 2, D] = Check_null(txt_RP_Speech_5);
-                Sheet_RP.Cells[primary_cell + 2, H] = Check_null(txt_RP_Disc_5);
-                Sheet_RP.Cells[primary_cell + 3, E] = Check_null(txt_RP_Cong_5);
-                Sheet_RP.Cells[primary_cell + 5, H] = Check_null_cbx(cbx_CondAtly_5);
-                Sheet_RP.Cells[primary_cell + 6, D] = Check_null(txt_AdlA_Title_5);
-                Sheet_RP.Cells[primary_cell + 6, H] = Check_null_cbx(cbx_LectRP_5);
-                Sheet_RP.Cells[primary_cell + 7, H] = Check_null_cbx(cbx_OraRP_5);
-                Sheet_RP.Cells[primary_cell + 10, C] = txt_Sal_Disc_5.Text;
-                Sheet_RP.Cells[primary_cell + 10, E] = txt_Sal_Title_5.Text;
-                Sheet_RP.Cells[primary_cell + 10, H] = txt_Sal_Cong_5.Text;*/
-            }
-        }
-
-        public void AC_Handler(bool read)
-        {
-            Notify((read ? "Reading" : "Saving") + " AC program");
-            if (read)
-            {
-                cellValue_3 = (System.Object[,])range_3.get_Value();
-                int primary_cell = 5;
-                /*Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, A]), cbx_Aseo_1);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, C]), cbx_Cap_L_1);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 2, C]), cbx_AC1_L_1);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, C]), cbx_AC2_L_1);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, E]), cbx_Cap_S_1);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 2, E]), cbx_AC1_S_1);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, E]), cbx_AC2_S_1);
-
-                primary_cell = 13;
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, A]), cbx_Aseo_2);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, C]), cbx_Cap_L_2);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 2, C]), cbx_AC1_L_2);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, C]), cbx_AC2_L_2);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, E]), cbx_Cap_S_2);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 2, E]), cbx_AC1_S_2);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, E]), cbx_AC2_S_2);
-
-                primary_cell = 21;
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, A]), cbx_Aseo_3);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, C]), cbx_Cap_L_3);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 2, C]), cbx_AC1_L_3);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, C]), cbx_AC2_L_3);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, E]), cbx_Cap_S_3);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 2, E]), cbx_AC1_S_3);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, E]), cbx_AC2_S_3);
-
-                primary_cell = 29;
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, A]), cbx_Aseo_4);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, C]), cbx_Cap_L_4);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 2, C]), cbx_AC1_L_4);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, C]), cbx_AC2_L_4);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, E]), cbx_Cap_S_4);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 2, E]), cbx_AC1_S_4);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, E]), cbx_AC2_S_4);
-
-                primary_cell = 37;
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, A]), cbx_Aseo_5);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, C]), cbx_Cap_L_5);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 2, C]), cbx_AC1_L_5);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, C]), cbx_AC2_L_5);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 1, E]), cbx_Cap_S_5);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 2, E]), cbx_AC1_S_5);
-                Compare_cbx_string(Check_null_string(cellValue_3[primary_cell + 3, E]), cbx_AC2_S_5);*/
-            }
-            else
-            {
-                int primary_cell = 5;
-               /* Sheet_PA.Cells[primary_cell + 1, A] = Check_null_cbx(cbx_Aseo_1);
-                Sheet_PA.Cells[primary_cell + 1, C] = Check_null_cbx(cbx_Cap_L_1);
-                Sheet_PA.Cells[primary_cell + 2, C] = Check_null_cbx(cbx_AC1_L_1);
-                Sheet_PA.Cells[primary_cell + 3, C] = Check_null_cbx(cbx_AC2_L_1);
-                Sheet_PA.Cells[primary_cell + 1, E] = Check_null_cbx(cbx_Cap_S_1);
-                Sheet_PA.Cells[primary_cell + 2, E] = Check_null_cbx(cbx_AC1_S_1);
-                Sheet_PA.Cells[primary_cell + 3, E] = Check_null_cbx(cbx_AC2_S_1);
-
-                primary_cell = 13;
-                Sheet_PA.Cells[primary_cell + 1, A] = Check_null_cbx(cbx_Aseo_2);
-                Sheet_PA.Cells[primary_cell + 1, C] = Check_null_cbx(cbx_Cap_L_2);
-                Sheet_PA.Cells[primary_cell + 2, C] = Check_null_cbx(cbx_AC1_L_2);
-                Sheet_PA.Cells[primary_cell + 3, C] = Check_null_cbx(cbx_AC2_L_2);
-                Sheet_PA.Cells[primary_cell + 1, E] = Check_null_cbx(cbx_Cap_S_2);
-                Sheet_PA.Cells[primary_cell + 2, E] = Check_null_cbx(cbx_AC1_S_2);
-                Sheet_PA.Cells[primary_cell + 3, E] = Check_null_cbx(cbx_AC2_S_2);
-
-                primary_cell = 21;
-                Sheet_PA.Cells[primary_cell + 1, A] = Check_null_cbx(cbx_Aseo_3);
-                Sheet_PA.Cells[primary_cell + 1, C] = Check_null_cbx(cbx_Cap_L_3);
-                Sheet_PA.Cells[primary_cell + 2, C] = Check_null_cbx(cbx_AC1_L_3);
-                Sheet_PA.Cells[primary_cell + 3, C] = Check_null_cbx(cbx_AC2_L_3);
-                Sheet_PA.Cells[primary_cell + 1, E] = Check_null_cbx(cbx_Cap_S_3);
-                Sheet_PA.Cells[primary_cell + 2, E] = Check_null_cbx(cbx_AC1_S_3);
-                Sheet_PA.Cells[primary_cell + 3, E] = Check_null_cbx(cbx_AC2_S_3);
-
-                primary_cell = 29;
-                Sheet_PA.Cells[primary_cell + 1, A] = Check_null_cbx(cbx_Aseo_4);
-                Sheet_PA.Cells[primary_cell + 1, C] = Check_null_cbx(cbx_Cap_L_4);
-                Sheet_PA.Cells[primary_cell + 2, C] = Check_null_cbx(cbx_AC1_L_4);
-                Sheet_PA.Cells[primary_cell + 3, C] = Check_null_cbx(cbx_AC2_L_4);
-                Sheet_PA.Cells[primary_cell + 1, E] = Check_null_cbx(cbx_Cap_S_4);
-                Sheet_PA.Cells[primary_cell + 2, E] = Check_null_cbx(cbx_AC1_S_4);
-                Sheet_PA.Cells[primary_cell + 3, E] = Check_null_cbx(cbx_AC2_S_4);
-
-                primary_cell = 37;
-                Sheet_PA.Cells[primary_cell + 1, A] = Check_null_cbx(cbx_Aseo_5);
-                Sheet_PA.Cells[primary_cell + 1, C] = Check_null_cbx(cbx_Cap_L_5);
-                Sheet_PA.Cells[primary_cell + 2, C] = Check_null_cbx(cbx_AC1_L_5);
-                Sheet_PA.Cells[primary_cell + 3, C] = Check_null_cbx(cbx_AC2_L_5);
-                Sheet_PA.Cells[primary_cell + 1, E] = Check_null_cbx(cbx_Cap_S_5);
-                Sheet_PA.Cells[primary_cell + 2, E] = Check_null_cbx(cbx_AC1_S_5);
-                Sheet_PA.Cells[primary_cell + 3, E] = Check_null_cbx(cbx_AC2_S_5);*/
-            }
-        }
-
-
-/*--------------------------------------- Auxiliar functions to set/read strings ---------------------------------------*/
-
-        /*public void Compare_cbx_string(object cell_value, object sender)
-        {
-            if (cell_value.ToString() != null)
-            {
-                int value = 100;
-                ComboBox cbx = (ComboBox)sender;
-                cbx.SelectedIndex = -1;
-                for (int i = 0; i <= cbx.Items.Count - 1; i++)
+                if (week_five_exist)
                 {
-                    value = cell_value.ToString().CompareTo(cbx.Items[i].ToString());
-                    if (value == 0)
-                    {
-                        cbx.SelectedIndex = i;
-                        break;
-                    }
+                    VyM_Save_Week(VyM_mes.Semana5, 5);
+                }
+                loading += (15 / loading_delta);
+            }
+            else
+            {
+                for (short sm = 1; sm <= 5; sm++) //cycle to read all 5 weeks
+                {
+                    VyM_Read_Week(sm);
                 }
             }
-        }*/
+        }
+
+        public void VyM_Save_Week(VyM_Sem sem, short num_sem)
+        {
+            short primary_cell = Get_vym_cell(num_sem);
+            Sheet_VyM.Cells[primary_cell, A] = sem.Fecha.ToUpper();
+            if (sem.Sem_Biblia != null)
+            {
+                Sheet_VyM.Cells[primary_cell, D] = sem.Sem_Biblia.ToUpper();
+                Sheet_VyM.Cells[primary_cell, G] = sem.Presidente;
+                Sheet_VyM.Cells[primary_cell + 6, C] = sem.Discurso;
+                Sheet_VyM.Cells[primary_cell + 6, G] = sem.Discurso_A;
+                Sheet_VyM.Cells[primary_cell + 7, G] = sem.Perlas;
+                Sheet_VyM.Cells[primary_cell + 8, G] = sem.Lectura;
+                Sheet_VyM.Cells[primary_cell + 11, C] = sem.SMM1;
+                Sheet_VyM.Cells[primary_cell + 11, G] = sem.SMM1_A;
+                Sheet_VyM.Cells[primary_cell + 12, C] = sem.SMM2;
+                Sheet_VyM.Cells[primary_cell + 12, G] = sem.SMM2_A;
+                Sheet_VyM.Cells[primary_cell + 13, C] = sem.SMM3;
+                Sheet_VyM.Cells[primary_cell + 13, G] = sem.SMM3_A;
+                /*@ToDo Implement SMM4  and SMM4_A*/
+                Sheet_VyM.Cells[primary_cell + 17, C] = sem.NVC1;
+                Sheet_VyM.Cells[primary_cell + 17, G] = sem.NVC1_A;
+                Sheet_VyM.Cells[primary_cell + 18, C] = sem.NVC2;
+                Sheet_VyM.Cells[primary_cell + 18, G] = sem.NVC2_A;
+                Sheet_VyM.Cells[primary_cell + 19, G] = sem.Libro_A;
+                Sheet_VyM.Cells[primary_cell + 20, G] = sem.Libro_L;
+                Sheet_VyM.Cells[primary_cell + 22, G] = sem.Oracion;
+            }
+        }
+
+        public void VyM_Read_Week(short num_sem)
+        {
+            VyM_Sem sem = new VyM_Sem();
+            short primary_cell = Get_vym_cell(num_sem);
+            Get_month_from_Excel(cellValue_1[primary_cell, A]);
+            sem.Sem_Biblia  = Check_null_string(cellValue_1[primary_cell, D]);
+            sem.Presidente  = Check_null_string(cellValue_1[primary_cell, G]);
+            sem.Discurso    = Check_null_string(cellValue_1[primary_cell + 6, C]);
+            sem.Discurso_A  = Check_null_string(cellValue_1[primary_cell + 6, G]);
+            sem.Perlas      = Check_null_string(cellValue_1[primary_cell + 7, G]);
+            sem.Lectura     = Check_null_string(cellValue_1[primary_cell + 8, G]);
+            sem.SMM1        = Check_null_string(cellValue_1[primary_cell + 11, C]);
+            sem.SMM1_A      = Check_null_string(cellValue_1[primary_cell + 11, G]);
+            sem.SMM2        = Check_null_string(cellValue_1[primary_cell + 12, C]);
+            sem.SMM2_A      = Check_null_string(cellValue_1[primary_cell + 12, G]);
+            sem.SMM3        = Check_null_string(cellValue_1[primary_cell + 13, C]);
+            sem.SMM3_A      = Check_null_string(cellValue_1[primary_cell + 13, G]);
+            /*@ToDo Implement SMM4  and SMM4_A*/
+            sem.NVC1        = Check_null_string(cellValue_1[primary_cell + 17, C]);
+            sem.NVC1_A      = Check_null_string(cellValue_1[primary_cell + 17, G]);
+            sem.NVC2        = Check_null_string(cellValue_1[primary_cell + 18, C]);
+            sem.NVC2_A      = Check_null_string(cellValue_1[primary_cell + 18, G]);
+            sem.Libro_A     = Check_null_string(cellValue_1[primary_cell + 19, G]);
+            sem.Libro_L     = Check_null_string(cellValue_1[primary_cell + 20, G]);
+            sem.Oracion     = Check_null_string(cellValue_1[primary_cell + 22, G]);
+
+            switch (num_sem)
+            {
+                case 1:
+                    {
+                        VyM_mes.Semana1 = sem;
+                        break;
+                    }
+                case 2:
+                    {
+                        VyM_mes.Semana2 = sem;
+                        break;
+                    }
+                case 3:
+                    {
+                        VyM_mes.Semana3 = sem;
+                        break;
+                    }
+                case 4:
+                    {
+                        VyM_mes.Semana4 = sem;
+                        break;
+                    }
+                case 5:
+                    {
+                        VyM_mes.Semana5 = sem;
+                        break;
+                    }
+            }
+        }
+
+        public void RP_Handler(bool save)
+        {
+            if (save)
+            {
+                RP_Save_Week(RP_mes.Semana1, 1);
+                loading += (15 / loading_delta);
+                RP_Save_Week(RP_mes.Semana2, 2);
+                loading += (15 / loading_delta);
+                RP_Save_Week(RP_mes.Semana3, 3);
+                loading += (15 / loading_delta);
+                RP_Save_Week(RP_mes.Semana4, 4);
+                loading += (15 / loading_delta);
+                if (week_five_exist)
+                {
+                    RP_Save_Week(RP_mes.Semana5, 5);
+                }
+                loading += (15 / loading_delta);
+            }
+            else
+            {
+                for (short sm = 1; sm <= 5; sm++) //cycle to read all 5 weeks
+                {
+                    RP_Read_Week(sm);
+                }
+            }
+        }
+
+        public void RP_Save_Week(RP_Sem sem, short num_sem)
+        {
+            short primary_cell = Get_rp_cell(num_sem);
+            Sheet_RP.Cells[primary_cell, C] = sem.Fecha.ToUpper();
+            if (sem.Presidente != null)
+            {
+                Sheet_RP.Cells[primary_cell + 1, H] = sem.Presidente;
+                Sheet_RP.Cells[primary_cell + 2, D] = sem.Titulo;
+                Sheet_RP.Cells[primary_cell + 2, H] = sem.Discursante;
+                Sheet_RP.Cells[primary_cell + 3, E] = sem.Congregacion;
+                Sheet_RP.Cells[primary_cell + 6, D] = sem.Titulo_Atalaya;
+                Sheet_RP.Cells[primary_cell + 5, H] = sem.Conductor;
+                Sheet_RP.Cells[primary_cell + 7, H] = sem.Lector;
+                Sheet_RP.Cells[primary_cell + 8, H] = sem.Oracion;
+                Sheet_RP.Cells[primary_cell + 10, C] = sem.Discu_Sal;
+                Sheet_RP.Cells[primary_cell + 10, E] = sem.Ttl_Sal;
+                Sheet_RP.Cells[primary_cell + 10, H] = sem.Cong_Sal;
+            }
+        }
+
+        public void RP_Read_Week(short num_sem)
+        {
+            RP_Sem sem = new RP_Sem();
+            short primary_cell = Get_rp_cell(num_sem);
+            sem.Presidente      = Check_null_string(cellValue_2[primary_cell + 1, H]);
+            sem.Titulo          = Check_null_string(cellValue_2[primary_cell + 2, D]);
+            sem.Discursante     = Check_null_string(cellValue_2[primary_cell + 2, H]);
+            sem.Congregacion    = Check_null_string(cellValue_2[primary_cell + 3, E]);
+            sem.Titulo_Atalaya  = Check_null_string(cellValue_2[primary_cell + 6, D]);
+            sem.Conductor       = Check_null_string(cellValue_2[primary_cell + 5, H]);
+            sem.Lector          = Check_null_string(cellValue_2[primary_cell + 7, H]);
+            sem.Oracion         = Check_null_string(cellValue_2[primary_cell + 8, H]);
+            sem.Discu_Sal       = Check_null_string(cellValue_2[primary_cell + 10, C]);
+            sem.Ttl_Sal         = Check_null_string(cellValue_2[primary_cell + 10, E]);
+            sem.Cong_Sal        = Check_null_string(cellValue_2[primary_cell + 10, H]);
+            switch (num_sem)
+            {
+                case 1:
+                    {
+                        RP_mes.Semana1 = sem;
+                        break;
+                    }
+                case 2:
+                    {
+                        RP_mes.Semana2 = sem;
+                        break;
+                    }
+                case 3:
+                    {
+                        RP_mes.Semana3 = sem;
+                        break;
+                    }
+                case 4:
+                    {
+                        RP_mes.Semana4 = sem;
+                        break;
+                    }
+                case 5:
+                    {
+                        RP_mes.Semana5 = sem;
+                        break;
+                    }
+            }
+        }
+
+        public void AC_Handler(bool save) 
+        {
+            if (save)
+            {
+                AC_Save_Week(AC_mes.Semana1, 1);
+                loading += (15 / loading_delta);
+                AC_Save_Week(AC_mes.Semana2, 2);
+                loading += (15 / loading_delta);
+                AC_Save_Week(AC_mes.Semana3, 3);
+                loading += (15 / loading_delta);
+                AC_Save_Week(AC_mes.Semana4, 4);
+                loading += (15 / loading_delta);
+                if (week_five_exist)
+                {
+                    AC_Save_Week(AC_mes.Semana5, 5);
+                }
+                loading += (15 / loading_delta);
+            }
+            else
+            {
+                for (short sm = 1; sm <= 5; sm++) //cycle to read all 5 weeks
+                {
+                    AC_Read_Week(sm);
+                }
+            }
+        }
+
+        public void AC_Save_Week(AC_Sem sem, short num_sem)
+        {
+            short primary_cell = Get_ac_cell(num_sem);
+            Sheet_AC.Cells[primary_cell, B] = meetings_days[num_sem - 1, 0].ToString("dddd, dd MMMM");
+            Sheet_AC.Cells[primary_cell, D] = meetings_days[num_sem - 1, 1].ToString("dddd, dd MMMM");
+            if (sem.Vym_Cap != null)
+            {
+                Sheet_AC.Cells[primary_cell + 1, C] = sem.Vym_Cap;
+                Sheet_AC.Cells[primary_cell + 1, E] = sem.Rp_Cap;
+                Sheet_AC.Cells[primary_cell + 2, A] = sem.Cap_Aseo;
+                Sheet_AC.Cells[primary_cell + 2, C] = sem.Vym_Der;
+                Sheet_AC.Cells[primary_cell + 2, E] = sem.Rp_Der;
+                Sheet_AC.Cells[primary_cell + 3, C] = sem.Vym_Izq;
+                Sheet_AC.Cells[primary_cell + 3, E] = sem.Rp_Cap;
+            }
+        }
+
+        public void AC_Read_Week(short num_sem)
+        {
+            AC_Sem sem = new AC_Sem();
+            short primary_cell = Get_ac_cell(num_sem);
+            sem.Vym_Cap     = Check_null_string(cellValue_3[primary_cell + 1, C]);
+            sem.Rp_Cap      = Check_null_string(cellValue_3[primary_cell + 1, E]);
+            sem.Cap_Aseo    = Check_null_string(cellValue_3[primary_cell + 2, A]);
+            sem.Vym_Der     = Check_null_string(cellValue_3[primary_cell + 2, C]);
+            sem.Rp_Der      = Check_null_string(cellValue_3[primary_cell + 2, E]);
+            sem.Vym_Izq     = Check_null_string(cellValue_3[primary_cell + 3, C]);
+            sem.Rp_Izq      = Check_null_string(cellValue_3[primary_cell + 3, E]);
+            switch (num_sem)
+            {
+                case 1:
+                    {
+                        AC_mes.Semana1 = sem;
+                        break;
+                    }
+                case 2:
+                    {
+                        AC_mes.Semana2 = sem;
+                        break;
+                    }
+                case 3:
+                    {
+                        AC_mes.Semana3 = sem;
+                        break;
+                    }
+                case 4:
+                    {
+                        AC_mes.Semana4 = sem;
+                        break;
+                    }
+                case 5:
+                    {
+                        AC_mes.Semana5 = sem;
+                        break;
+                    }
+            }
+        }
+
+        /*--------------------------------------- Auxiliar functions to set/read strings ---------------------------------------*/
 
         private void Get_month_from_Excel(object cellvalue)
         {
@@ -1376,10 +1289,10 @@ namespace Project_Insight
             return cellvalue.ToString();
         }
 
-        public int Get_cell()
+        public short Get_vym_cell(short num_sem)
         {
-            int cell = 0;
-            switch (m_semana)
+            short cell = 0;
+            switch (num_sem - 1)
             {
                 case 0:
                     {
@@ -1410,6 +1323,73 @@ namespace Project_Insight
             return cell;
         }
 
+        public short Get_rp_cell(short num_sem)
+        {
+            short cell = 0;
+            switch (num_sem - 1)
+            {
+                case 0:
+                    {
+                        cell = 4;
+                        break;
+                    }
+                case 1:
+                    {
+                        cell = 17;
+                        break;
+                    }
+                case 2:
+                    {
+                        cell = 30;
+                        break;
+                    }
+                case 3:
+                    {
+                        cell = 43;
+                        break;
+                    }
+                case 4:
+                    {
+                        cell = 59;
+                        break;
+                    }
+            }
+            return cell;
+        }
+
+        public short Get_ac_cell(short num_sem)
+        {
+            short cell = 0;
+            switch (num_sem - 1)
+            {
+                case 0:
+                    {
+                        cell = 5;
+                        break;
+                    }
+                case 1:
+                    {
+                        cell = 13;
+                        break;
+                    }
+                case 2:
+                    {
+                        cell = 21;
+                        break;
+                    }
+                case 3:
+                    {
+                        cell = 29;
+                        break;
+                    }
+                case 4:
+                    {
+                        cell = 37;
+                        break;
+                    }
+            }
+            return cell;
+        }
         private void General_Info_Enter(object sender, EventArgs e)
         {
             Presenter(p.Executor);
@@ -1467,11 +1447,6 @@ namespace Project_Insight
             txt_Command.AutoCompleteCustomSource = autocomplete;
         }
 
-        private void TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Save_time_from_string(VyM_Sem vyM_Sem, int wk, bool save)
         {
             DateTime Aux_dateTime = new DateTime(2018, 1, 1, 7, 00, 00);
@@ -1525,6 +1500,11 @@ namespace Project_Insight
                     time_13.ForeColor = Color.Red;
                 }
             }
+        }
+
+        private void TextChanged(object sender, EventArgs e)
+        {
+            /*@ToDo check times from txtbx on the fly*/
         }
 
         public int Get_time_from_string(string Str, bool SMM)
@@ -1603,90 +1583,6 @@ namespace Project_Insight
             }
         }
 
-        /*public void save_DB(object sender)
-        {
-            ComboBox cbx = (ComboBox)sender;
-            int column = 0;
-            string s = "0";
-            switch (cbx.Name.ToString())
-            {
-                case "cbx_Ora1VyM":
-                    {
-                        column = 9;
-                        break;
-                    }
-                case "cbx_NVC_A3L":
-                    {
-                        column = 10;
-                        break;
-                    }
-                case "cbx_Ora2VyM":
-                    {
-                        column = 9;
-                        break;
-                    }
-                case "cbx_PresRP":
-                    {
-                        column = 5;
-                        break;
-                    }
-                case "cbx_LectRP":
-                    {
-                        column = 6;
-                        break;
-                    }
-                case "cbx_OraRP":
-                    {
-                        column = 7;
-                        break;
-                    }
-                case "cbx_CondAtly":
-                    {
-                        column = 8;
-                        break;
-                    }
-                case "cbx_Cap":
-                    {
-                        column = 3 ;
-                        break;
-                    }
-                case "cbx_AC1":
-                    {
-                        column = 4;
-                        break;
-                    }
-                case "cbx_AC2":
-                    {
-                        column = 4;
-                        break;
-                    }
-                case "cbx_Aseo":
-                    {
-                        column = 3;
-                        break;
-                    }
-            }
-            for (int i = 5; i <= 42; i++)
-            {
-                int value = 100;
-                if ((cellValue_4[i, B] != null) && (cbx.SelectedItem != null))
-                {
-                    value = cbx.SelectedItem.ToString().CompareTo(cellValue_4[i, B].ToString());
-                    if (value == 0)
-                    {
-                        s = (m_año-2000).ToString() + m_mes.ToString("00") + m_dia.ToString("00");
-                        //Sheet_DB.Cells[i, column] = s;
-                        break;
-                    }
-                }
-            }
-        }
-
-        private void Autofill_Handler()
-        {
-
-        }
-
         /*Function so set local variables' info into form*/
         public void Week_Handler()
         {
@@ -1696,128 +1592,32 @@ namespace Project_Insight
             {
                 case 0:
                     {
-                        lbl_Date.Text = meetings_days[m_semana - 1, 0].ToString("dddd, dd MMMM");
+                        lbl_DateVyM.Text = meetings_days[m_semana - 1, 0].ToString("dddd, dd MMMM");
                         switch (m_semana)
                         {
                             case 1:
                                 {
-                                    //lbl_Date.Text = meetings_days[m_semana, 0].ToString();
-                                    //lbl_Date.Text = VyM_mes.Semana1.Fecha;
-                                    txt_Date.Text = VyM_mes.Semana1.Sem_Biblia;
-                                    txt_Pres.Text = VyM_mes.Semana1.Presidente;
-                                    txt_TdlB_1.Text = VyM_mes.Semana1.Discurso;
-                                    txt_TdlB_A1.Text = VyM_mes.Semana1.Discurso_A;
-                                    txt_TdlB_A2.Text = VyM_mes.Semana1.Perlas;
-                                    txt_TdlB_A3.Text = VyM_mes.Semana1.Lectura;
-                                    txt_SMM1.Text = VyM_mes.Semana1.SMM1;
-                                    txt_SMM_A1.Text = VyM_mes.Semana1.SMM1_A;
-                                    txt_SMM2.Text = VyM_mes.Semana1.SMM2;
-                                    txt_SMM_A2.Text = VyM_mes.Semana1.SMM2_A;
-                                    txt_SMM3.Text = VyM_mes.Semana1.SMM3;
-                                    txt_SMM_A3.Text = VyM_mes.Semana1.SMM3_A;
-                                    txt_NVC1.Text = VyM_mes.Semana1.NVC1;
-                                    txt_NVC_A1.Text = VyM_mes.Semana1.NVC1_A;
-                                    txt_NVC2.Text = VyM_mes.Semana1.NVC2;
-                                    txt_NVC2.Text = VyM_mes.Semana1.NVC2_A;
-                                    txt_NVC_A3.Text = VyM_mes.Semana1.Libro_A;
-                                    txt_NVC_A4.Text = VyM_mes.Semana1.Libro_L;
-                                    txt_Ora2VyM.Text = VyM_mes.Semana1.Oracion;
+                                    VyM_Week_Handler(VyM_mes.Semana1);
                                     break;
                                 }
                             case 2:
                                 {
-                                    //lbl_Date.Text = VyM_mes.Semana2.Fecha;
-                                    txt_Date.Text = VyM_mes.Semana2.Sem_Biblia;
-                                    txt_Pres.Text = VyM_mes.Semana2.Presidente;
-                                    txt_TdlB_1.Text = VyM_mes.Semana2.Discurso;
-                                    txt_TdlB_A1.Text = VyM_mes.Semana2.Discurso_A;
-                                    txt_TdlB_A2.Text = VyM_mes.Semana2.Perlas;
-                                    txt_TdlB_A3.Text = VyM_mes.Semana2.Lectura;
-                                    txt_SMM1.Text = VyM_mes.Semana2.SMM1;
-                                    txt_SMM_A1.Text = VyM_mes.Semana2.SMM1_A;
-                                    txt_SMM2.Text = VyM_mes.Semana2.SMM2;
-                                    txt_SMM_A2.Text = VyM_mes.Semana2.SMM2_A;
-                                    txt_SMM3.Text = VyM_mes.Semana2.SMM3;
-                                    txt_SMM_A3.Text = VyM_mes.Semana2.SMM3_A;
-                                    txt_NVC1.Text = VyM_mes.Semana2.NVC1;
-                                    txt_NVC_A1.Text = VyM_mes.Semana2.NVC1_A;
-                                    txt_NVC2.Text = VyM_mes.Semana2.NVC2;
-                                    txt_NVC2.Text = VyM_mes.Semana2.NVC2_A;
-                                    txt_NVC_A3.Text = VyM_mes.Semana2.Libro_A;
-                                    txt_NVC_A4.Text = VyM_mes.Semana2.Libro_L;
-                                    txt_Ora2VyM.Text = VyM_mes.Semana2.Oracion;
+                                    VyM_Week_Handler(VyM_mes.Semana2);
                                     break;
                                 }
                             case 3:
                                 {
-                                    //lbl_Date.Text = VyM_mes.Semana3.Fecha;
-                                    txt_Date.Text = VyM_mes.Semana3.Sem_Biblia;
-                                    txt_Pres.Text = VyM_mes.Semana3.Presidente;
-                                    txt_TdlB_1.Text = VyM_mes.Semana3.Discurso;
-                                    txt_TdlB_A1.Text = VyM_mes.Semana3.Discurso_A;
-                                    txt_TdlB_A2.Text = VyM_mes.Semana3.Perlas;
-                                    txt_TdlB_A3.Text = VyM_mes.Semana3.Lectura;
-                                    txt_SMM1.Text = VyM_mes.Semana3.SMM1;
-                                    txt_SMM_A1.Text = VyM_mes.Semana3.SMM1_A;
-                                    txt_SMM2.Text = VyM_mes.Semana3.SMM2;
-                                    txt_SMM_A2.Text = VyM_mes.Semana3.SMM2_A;
-                                    txt_SMM3.Text = VyM_mes.Semana3.SMM3;
-                                    txt_SMM_A3.Text = VyM_mes.Semana3.SMM3_A;
-                                    txt_NVC1.Text = VyM_mes.Semana3.NVC1;
-                                    txt_NVC_A1.Text = VyM_mes.Semana3.NVC1_A;
-                                    txt_NVC2.Text = VyM_mes.Semana3.NVC2;
-                                    txt_NVC2.Text = VyM_mes.Semana3.NVC2_A;
-                                    txt_NVC_A3.Text = VyM_mes.Semana3.Libro_A;
-                                    txt_NVC_A4.Text = VyM_mes.Semana3.Libro_L;
-                                    txt_Ora2VyM.Text = VyM_mes.Semana3.Oracion;
+                                    VyM_Week_Handler(VyM_mes.Semana3);
                                     break;
                                 }
                             case 4:
                                 {
-                                    //lbl_Date.Text = VyM_mes.Semana4.Fecha;
-                                    txt_Date.Text = VyM_mes.Semana4.Sem_Biblia;
-                                    txt_Pres.Text = VyM_mes.Semana4.Presidente;
-                                    txt_TdlB_1.Text = VyM_mes.Semana4.Discurso;
-                                    txt_TdlB_A1.Text = VyM_mes.Semana4.Discurso_A;
-                                    txt_TdlB_A2.Text = VyM_mes.Semana4.Perlas;
-                                    txt_TdlB_A3.Text = VyM_mes.Semana4.Lectura;
-                                    txt_SMM1.Text = VyM_mes.Semana4.SMM1;
-                                    txt_SMM_A1.Text = VyM_mes.Semana4.SMM1_A;
-                                    txt_SMM2.Text = VyM_mes.Semana4.SMM2;
-                                    txt_SMM_A2.Text = VyM_mes.Semana4.SMM2_A;
-                                    txt_SMM3.Text = VyM_mes.Semana4.SMM3;
-                                    txt_SMM_A3.Text = VyM_mes.Semana4.SMM3_A;
-                                    txt_NVC1.Text = VyM_mes.Semana4.NVC1;
-                                    txt_NVC_A1.Text = VyM_mes.Semana4.NVC1_A;
-                                    txt_NVC2.Text = VyM_mes.Semana4.NVC2;
-                                    txt_NVC2.Text = VyM_mes.Semana4.NVC2_A;
-                                    txt_NVC_A3.Text = VyM_mes.Semana4.Libro_A;
-                                    txt_NVC_A4.Text = VyM_mes.Semana4.Libro_L;
-                                    txt_Ora2VyM.Text = VyM_mes.Semana4.Oracion;
+                                    VyM_Week_Handler(VyM_mes.Semana4);
                                     break;
                                 }
                             case 5:
                                 {
-                                    //lbl_Date.Text = VyM_mes.Semana5.Fecha;
-                                    txt_Date.Text = VyM_mes.Semana5.Sem_Biblia;
-                                    txt_Pres.Text = VyM_mes.Semana5.Presidente;
-                                    txt_TdlB_1.Text = VyM_mes.Semana5.Discurso;
-                                    txt_TdlB_A1.Text = VyM_mes.Semana5.Discurso_A;
-                                    txt_TdlB_A2.Text = VyM_mes.Semana5.Perlas;
-                                    txt_TdlB_A3.Text = VyM_mes.Semana5.Lectura;
-                                    txt_SMM1.Text = VyM_mes.Semana5.SMM1;
-                                    txt_SMM_A1.Text = VyM_mes.Semana5.SMM1_A;
-                                    txt_SMM2.Text = VyM_mes.Semana5.SMM2;
-                                    txt_SMM_A2.Text = VyM_mes.Semana5.SMM2_A;
-                                    txt_SMM3.Text = VyM_mes.Semana5.SMM3;
-                                    txt_SMM_A3.Text = VyM_mes.Semana5.SMM3_A;
-                                    txt_NVC1.Text = VyM_mes.Semana5.NVC1;
-                                    txt_NVC_A1.Text = VyM_mes.Semana5.NVC1_A;
-                                    txt_NVC2.Text = VyM_mes.Semana5.NVC2;
-                                    txt_NVC2.Text = VyM_mes.Semana5.NVC2_A;
-                                    txt_NVC_A3.Text = VyM_mes.Semana5.Libro_A;
-                                    txt_NVC_A4.Text = VyM_mes.Semana5.Libro_L;
-                                    txt_Ora2VyM.Text = VyM_mes.Semana5.Oracion;
+                                    VyM_Week_Handler(VyM_mes.Semana5);
                                     break;
                                 }
                         }
@@ -1826,86 +1626,32 @@ namespace Project_Insight
                     }
                 case 1:
                     {
+                        lbl_DateRP.Text = meetings_days[m_semana - 1, 1].ToString("dddd, dd MMMM");
                         switch (m_semana)
                         {
                             case 1:
                                 {
-                                    txt_DateRP.Text= RP_mes.Semana1.Fecha;
-                                    txt_RP_Speech.Text = RP_mes.Semana1.Titulo;
-                                    txt_PresRP.Text = RP_mes.Semana1.Presidente;
-                                    txt_RP_Disc.Text = RP_mes.Semana1.Congregacion;
-                                    txt_RP_Cong.Text = RP_mes.Semana1.Discursante;
-                                    txt_Title_Atly.Text = RP_mes.Semana1.Titulo_Atalaya;
-                                    txt_Con_Atly.Text = RP_mes.Semana1.Conductor;
-                                    txt_Lect_Atly.Text = RP_mes.Semana1.Lector;
-                                    txt_OraRP.Text = RP_mes.Semana1.Oracion;
-                                    txt_Sal_Disc.Text = RP_mes.Semana1.Discu_Sal;
-                                    txt_Sal_Title.Text = RP_mes.Semana1.Ttl_Sal;
-                                    txt_Sal_Cong.Text = RP_mes.Semana1.Cong_Sal;
+                                    RP_Week_Handler(RP_mes.Semana1);
                                     break;
                                 }
                             case 2:
                                 {
-                                    txt_DateRP.Text = RP_mes.Semana2.Fecha;
-                                    txt_RP_Speech.Text = RP_mes.Semana2.Titulo;
-                                    txt_PresRP.Text = RP_mes.Semana2.Presidente;
-                                    txt_RP_Disc.Text = RP_mes.Semana2.Congregacion;
-                                    txt_RP_Cong.Text = RP_mes.Semana2.Discursante;
-                                    txt_Title_Atly.Text = RP_mes.Semana2.Titulo_Atalaya;
-                                    txt_Con_Atly.Text = RP_mes.Semana2.Conductor;
-                                    txt_Lect_Atly.Text = RP_mes.Semana2.Lector;
-                                    txt_OraRP.Text = RP_mes.Semana2.Oracion;
-                                    txt_Sal_Disc.Text = RP_mes.Semana2.Discu_Sal;
-                                    txt_Sal_Title.Text = RP_mes.Semana2.Ttl_Sal;
-                                    txt_Sal_Cong.Text = RP_mes.Semana2.Cong_Sal;
+                                    RP_Week_Handler(RP_mes.Semana2);
                                     break;
                                 }
                             case 3:
                                 {
-                                    txt_DateRP.Text = RP_mes.Semana3.Fecha;
-                                    txt_RP_Speech.Text = RP_mes.Semana3.Titulo;
-                                    txt_PresRP.Text = RP_mes.Semana3.Presidente;
-                                    txt_RP_Disc.Text = RP_mes.Semana3.Congregacion;
-                                    txt_RP_Cong.Text = RP_mes.Semana3.Discursante;
-                                    txt_Title_Atly.Text = RP_mes.Semana3.Titulo_Atalaya;
-                                    txt_Con_Atly.Text = RP_mes.Semana3.Conductor;
-                                    txt_Lect_Atly.Text = RP_mes.Semana3.Lector;
-                                    txt_OraRP.Text = RP_mes.Semana3.Oracion;
-                                    txt_Sal_Disc.Text = RP_mes.Semana3.Discu_Sal;
-                                    txt_Sal_Title.Text = RP_mes.Semana3.Ttl_Sal;
-                                    txt_Sal_Cong.Text = RP_mes.Semana3.Cong_Sal;
+                                    RP_Week_Handler(RP_mes.Semana3);
                                     break;
                                 }
                             case 4:
                                 {
-                                    txt_DateRP.Text = RP_mes.Semana4.Fecha;
-                                    txt_RP_Speech.Text = RP_mes.Semana4.Titulo;
-                                    txt_PresRP.Text = RP_mes.Semana4.Presidente;
-                                    txt_RP_Disc.Text = RP_mes.Semana4.Congregacion;
-                                    txt_RP_Cong.Text = RP_mes.Semana4.Discursante;
-                                    txt_Title_Atly.Text = RP_mes.Semana4.Titulo_Atalaya;
-                                    txt_Con_Atly.Text = RP_mes.Semana4.Conductor;
-                                    txt_Lect_Atly.Text = RP_mes.Semana4.Lector;
-                                    txt_OraRP.Text = RP_mes.Semana4.Oracion;
-                                    txt_Sal_Disc.Text = RP_mes.Semana4.Discu_Sal;
-                                    txt_Sal_Title.Text = RP_mes.Semana4.Ttl_Sal;
-                                    txt_Sal_Cong.Text = RP_mes.Semana4.Cong_Sal;
+                                    RP_Week_Handler(RP_mes.Semana4);
                                     break;
                                 }
                             case 5:
                                 {
-                                    txt_DateRP.Text = RP_mes.Semana5.Fecha;
-                                    txt_RP_Speech.Text = RP_mes.Semana5.Titulo;
-                                    txt_PresRP.Text = RP_mes.Semana5.Presidente;
-                                    txt_RP_Disc.Text = RP_mes.Semana5.Congregacion;
-                                    txt_RP_Cong.Text = RP_mes.Semana5.Discursante;
-                                    txt_Title_Atly.Text = RP_mes.Semana5.Titulo_Atalaya;
-                                    txt_Con_Atly.Text = RP_mes.Semana5.Conductor;
-                                    txt_Lect_Atly.Text = RP_mes.Semana5.Lector;
-                                    txt_OraRP.Text = RP_mes.Semana5.Oracion;
-                                    txt_Sal_Disc.Text = RP_mes.Semana5.Discu_Sal;
-                                    txt_Sal_Title.Text = RP_mes.Semana5.Ttl_Sal;
-                                    txt_Sal_Cong.Text = RP_mes.Semana5.Cong_Sal;
+                                    RP_Week_Handler(RP_mes.Semana5);
                                     break;
                                 }
                         }
@@ -1963,6 +1709,44 @@ namespace Project_Insight
             m_año = meetings_days[m_semana - 1, lun].Year;
             Set_date();
         }
+
+        public void VyM_Week_Handler(VyM_Sem sem)
+        {
+            txt_Date.Text    = sem.Sem_Biblia;
+            txt_Pres.Text    = sem.Presidente;
+            txt_TdlB_1.Text  = sem.Discurso;
+            txt_TdlB_A1.Text = sem.Discurso_A;
+            txt_TdlB_A2.Text = sem.Perlas;
+            txt_TdlB_A3.Text = sem.Lectura;
+            txt_SMM1.Text    = sem.SMM1;
+            txt_SMM_A1.Text  = sem.SMM1_A;
+            txt_SMM2.Text    = sem.SMM2;
+            txt_SMM_A2.Text  = sem.SMM2_A;
+            txt_SMM3.Text    = sem.SMM3;
+            txt_SMM_A3.Text  = sem.SMM3_A;
+            txt_NVC1.Text    = sem.NVC1;
+            txt_NVC_A1.Text  = sem.NVC1_A;
+            txt_NVC2.Text    = sem.NVC2;
+            txt_NVC2.Text    = sem.NVC2_A;
+            txt_NVC_A3.Text  = sem.Libro_A;
+            txt_NVC_A4.Text  = sem.Libro_L;
+            txt_Ora2VyM.Text = sem.Oracion;
+        }
+
+        public void RP_Week_Handler(RP_Sem sem)
+        {
+            txt_RP_Speech.Text  = sem.Titulo;
+            txt_PresRP.Text     = sem.Presidente;
+            txt_RP_Disc.Text    = sem.Congregacion;
+            txt_RP_Cong.Text    = sem.Discursante;
+            txt_Title_Atly.Text = sem.Titulo_Atalaya;
+            txt_Con_Atly.Text   = sem.Conductor;
+            txt_Lect_Atly.Text  = sem.Lector;
+            txt_OraRP.Text      = sem.Oracion;
+            txt_Sal_Disc.Text   = sem.Discu_Sal;
+            txt_Sal_Title.Text  = sem.Ttl_Sal;
+            txt_Sal_Cong.Text   = sem.Cong_Sal;
+        }
     
 
         /*Function to save txtbx info in local variables*/
@@ -1977,122 +1761,27 @@ namespace Project_Insight
                         {
                             case 1:
                                 {
-                                    VyM_mes.Semana1.Fecha = lbl_Date.Text;
-                                    VyM_mes.Semana1.Sem_Biblia = txt_Date.Text;
-                                    VyM_mes.Semana1.Presidente = txt_Pres.Text;
-                                    VyM_mes.Semana1.Discurso = txt_TdlB_1.Text;
-                                    VyM_mes.Semana1.Discurso_A = txt_TdlB_A1.Text;
-                                    VyM_mes.Semana1.Perlas = txt_TdlB_A2.Text;
-                                    VyM_mes.Semana1.Lectura = txt_TdlB_A3.Text;
-                                    VyM_mes.Semana1.SMM1 = txt_SMM1.Text;
-                                    VyM_mes.Semana1.SMM1_A = txt_SMM_A1.Text;
-                                    VyM_mes.Semana1.SMM2 = txt_SMM2.Text;
-                                    VyM_mes.Semana1.SMM2_A = txt_SMM_A2.Text;
-                                    VyM_mes.Semana1.SMM3 = txt_SMM3.Text;
-                                    VyM_mes.Semana1.SMM3_A = txt_SMM_A3.Text;
-                                    VyM_mes.Semana1.NVC1 = txt_NVC1.Text;
-                                    VyM_mes.Semana1.NVC1_A = txt_NVC_A1.Text;
-                                    VyM_mes.Semana1.NVC2 = txt_NVC2.Text;
-                                    VyM_mes.Semana1.NVC2_A = txt_NVC2.Text;
-                                    VyM_mes.Semana1.Libro_A = txt_NVC_A3.Text;
-                                    VyM_mes.Semana1.Libro_L = txt_NVC_A4.Text;
-                                    VyM_mes.Semana1.Oracion = txt_Ora2VyM.Text;
+                                    VyM_mes.Semana1 = VyM_Set_Week();
                                     break;
                                 }
                             case 2:
                                 {
-                                    VyM_mes.Semana2.Fecha = lbl_Date.Text;
-                                    VyM_mes.Semana2.Sem_Biblia = txt_Date.Text;
-                                    VyM_mes.Semana2.Presidente = txt_Pres.Text;
-                                    VyM_mes.Semana2.Discurso = txt_TdlB_1.Text;
-                                    VyM_mes.Semana2.Discurso_A = txt_TdlB_A1.Text;
-                                    VyM_mes.Semana2.Perlas = txt_TdlB_A2.Text;
-                                    VyM_mes.Semana2.Lectura = txt_TdlB_A3.Text;
-                                    VyM_mes.Semana2.SMM1 = txt_SMM1.Text;
-                                    VyM_mes.Semana2.SMM1_A = txt_SMM_A1.Text;
-                                    VyM_mes.Semana2.SMM2 = txt_SMM2.Text;
-                                    VyM_mes.Semana2.SMM2_A = txt_SMM_A2.Text;
-                                    VyM_mes.Semana2.SMM3 = txt_SMM3.Text;
-                                    VyM_mes.Semana2.SMM3_A = txt_SMM_A3.Text;
-                                    VyM_mes.Semana2.NVC1 = txt_NVC1.Text;
-                                    VyM_mes.Semana2.NVC1_A = txt_NVC_A1.Text;
-                                    VyM_mes.Semana2.NVC2 = txt_NVC2.Text;
-                                    VyM_mes.Semana2.NVC2_A = txt_NVC2.Text;
-                                    VyM_mes.Semana2.Libro_A = txt_NVC_A3.Text;
-                                    VyM_mes.Semana2.Libro_L = txt_NVC_A4.Text;
-                                    VyM_mes.Semana2.Oracion = txt_Ora2VyM.Text;
+                                    VyM_mes.Semana2 = VyM_Set_Week();
                                     break;
                                 }
                             case 3:
                                 {
-                                    VyM_mes.Semana3.Fecha = lbl_Date.Text;
-                                    VyM_mes.Semana3.Sem_Biblia = txt_Date.Text;
-                                    VyM_mes.Semana3.Presidente = txt_Pres.Text;
-                                    VyM_mes.Semana3.Discurso = txt_TdlB_1.Text;
-                                    VyM_mes.Semana3.Discurso_A = txt_TdlB_A1.Text;
-                                    VyM_mes.Semana3.Perlas = txt_TdlB_A2.Text;
-                                    VyM_mes.Semana3.Lectura = txt_TdlB_A3.Text;
-                                    VyM_mes.Semana3.SMM1 = txt_SMM1.Text;
-                                    VyM_mes.Semana3.SMM1_A = txt_SMM_A1.Text;
-                                    VyM_mes.Semana3.SMM2 = txt_SMM2.Text;
-                                    VyM_mes.Semana3.SMM2_A = txt_SMM_A2.Text;
-                                    VyM_mes.Semana3.SMM3 = txt_SMM3.Text;
-                                    VyM_mes.Semana3.SMM3_A = txt_SMM_A3.Text;
-                                    VyM_mes.Semana3.NVC1 = txt_NVC1.Text;
-                                    VyM_mes.Semana3.NVC1_A = txt_NVC_A1.Text;
-                                    VyM_mes.Semana3.NVC2 = txt_NVC2.Text;
-                                    VyM_mes.Semana3.NVC2_A = txt_NVC2.Text;
-                                    VyM_mes.Semana3.Libro_A = txt_NVC_A3.Text;
-                                    VyM_mes.Semana3.Libro_L = txt_NVC_A4.Text;
-                                    VyM_mes.Semana3.Oracion = txt_Ora2VyM.Text;
+                                    VyM_mes.Semana3 = VyM_Set_Week();
                                     break;
                                 }
                             case 4:
                                 {
-                                    VyM_mes.Semana4.Fecha = lbl_Date.Text;
-                                    VyM_mes.Semana4.Sem_Biblia = txt_Date.Text;
-                                    VyM_mes.Semana4.Presidente = txt_Pres.Text;
-                                    VyM_mes.Semana4.Discurso = txt_TdlB_1.Text;
-                                    VyM_mes.Semana4.Discurso_A = txt_TdlB_A1.Text;
-                                    VyM_mes.Semana4.Perlas = txt_TdlB_A2.Text;
-                                    VyM_mes.Semana4.Lectura = txt_TdlB_A3.Text;
-                                    VyM_mes.Semana4.SMM1 = txt_SMM1.Text;
-                                    VyM_mes.Semana4.SMM1_A = txt_SMM_A1.Text;
-                                    VyM_mes.Semana4.SMM2 = txt_SMM2.Text;
-                                    VyM_mes.Semana4.SMM2_A = txt_SMM_A2.Text;
-                                    VyM_mes.Semana4.SMM3 = txt_SMM3.Text;
-                                    VyM_mes.Semana4.SMM3_A = txt_SMM_A3.Text;
-                                    VyM_mes.Semana4.NVC1 = txt_NVC1.Text;
-                                    VyM_mes.Semana4.NVC1_A = txt_NVC_A1.Text;
-                                    VyM_mes.Semana4.NVC2 = txt_NVC2.Text;
-                                    VyM_mes.Semana4.NVC2_A = txt_NVC2.Text;
-                                    VyM_mes.Semana4.Libro_A = txt_NVC_A3.Text;
-                                    VyM_mes.Semana4.Libro_L = txt_NVC_A4.Text;
-                                    VyM_mes.Semana4.Oracion = txt_Ora2VyM.Text;
+                                    VyM_mes.Semana4 = VyM_Set_Week();
                                     break;
                                 }
                             case 5:
                                 {
-                                    VyM_mes.Semana5.Fecha = lbl_Date.Text;
-                                    VyM_mes.Semana5.Sem_Biblia = txt_Date.Text;
-                                    VyM_mes.Semana5.Presidente = txt_Pres.Text;
-                                    VyM_mes.Semana5.Discurso = txt_TdlB_1.Text;
-                                    VyM_mes.Semana5.Discurso_A = txt_TdlB_A1.Text;
-                                    VyM_mes.Semana5.Perlas = txt_TdlB_A2.Text;
-                                    VyM_mes.Semana5.Lectura = txt_TdlB_A3.Text;
-                                    VyM_mes.Semana5.SMM1 = txt_SMM1.Text;
-                                    VyM_mes.Semana5.SMM1_A = txt_SMM_A1.Text;
-                                    VyM_mes.Semana5.SMM2 = txt_SMM2.Text;
-                                    VyM_mes.Semana5.SMM2_A = txt_SMM_A2.Text;
-                                    VyM_mes.Semana5.SMM3 = txt_SMM3.Text;
-                                    VyM_mes.Semana5.SMM3_A = txt_SMM_A3.Text;
-                                    VyM_mes.Semana5.NVC1 = txt_NVC1.Text;
-                                    VyM_mes.Semana5.NVC1_A = txt_NVC_A1.Text;
-                                    VyM_mes.Semana5.NVC2 = txt_NVC2.Text;
-                                    VyM_mes.Semana5.NVC2_A = txt_NVC2.Text;
-                                    VyM_mes.Semana5.Libro_A = txt_NVC_A3.Text;
-                                    VyM_mes.Semana5.Libro_L = txt_NVC_A4.Text;
-                                    VyM_mes.Semana5.Oracion = txt_Ora2VyM.Text;
+                                    VyM_mes.Semana5 = VyM_Set_Week();
                                     break;
                                 }
                         }
@@ -2104,82 +1793,27 @@ namespace Project_Insight
                         {
                             case 1:
                                 {
-                                    RP_mes.Semana1.Fecha = txt_DateRP.Text;
-                                    RP_mes.Semana1.Titulo = txt_RP_Speech.Text;
-                                    RP_mes.Semana1.Presidente = txt_PresRP.Text;
-                                    RP_mes.Semana1.Congregacion = txt_RP_Disc.Text;
-                                    RP_mes.Semana1.Discursante = txt_RP_Cong.Text;
-                                    RP_mes.Semana1.Titulo_Atalaya = txt_Title_Atly.Text;
-                                    RP_mes.Semana1.Conductor = txt_Con_Atly.Text;
-                                    RP_mes.Semana1.Lector = txt_Lect_Atly.Text;
-                                    RP_mes.Semana1.Oracion = txt_OraRP.Text;
-                                    RP_mes.Semana1.Discu_Sal = txt_Sal_Disc.Text;
-                                    RP_mes.Semana1.Ttl_Sal = txt_Sal_Title.Text;
-                                    RP_mes.Semana1.Cong_Sal = txt_Sal_Cong.Text;
+                                    RP_mes.Semana1 = RP_Set_Week();
                                     break;
                                 }
                             case 2:
                                 {
-                                    RP_mes.Semana2.Fecha = txt_DateRP.Text;
-                                    RP_mes.Semana2.Titulo = txt_RP_Speech.Text;
-                                    RP_mes.Semana2.Presidente = txt_PresRP.Text;
-                                    RP_mes.Semana2.Congregacion = txt_RP_Disc.Text;
-                                    RP_mes.Semana2.Discursante = txt_RP_Cong.Text;
-                                    RP_mes.Semana2.Titulo_Atalaya = txt_Title_Atly.Text;
-                                    RP_mes.Semana2.Conductor = txt_Con_Atly.Text;
-                                    RP_mes.Semana2.Lector = txt_Lect_Atly.Text;
-                                    RP_mes.Semana2.Oracion = txt_OraRP.Text;
-                                    RP_mes.Semana2.Discu_Sal = txt_Sal_Disc.Text;
-                                    RP_mes.Semana2.Ttl_Sal = txt_Sal_Title.Text;
-                                    RP_mes.Semana2.Cong_Sal = txt_Sal_Cong.Text;
+                                    RP_mes.Semana2 = RP_Set_Week();
                                     break;
                                 }
                             case 3:
                                 {
-                                    RP_mes.Semana3.Fecha = txt_DateRP.Text;
-                                    RP_mes.Semana3.Titulo = txt_RP_Speech.Text;
-                                    RP_mes.Semana3.Presidente = txt_PresRP.Text;
-                                    RP_mes.Semana3.Congregacion = txt_RP_Disc.Text;
-                                    RP_mes.Semana3.Discursante = txt_RP_Cong.Text;
-                                    RP_mes.Semana3.Titulo_Atalaya = txt_Title_Atly.Text;
-                                    RP_mes.Semana3.Conductor = txt_Con_Atly.Text;
-                                    RP_mes.Semana3.Lector = txt_Lect_Atly.Text;
-                                    RP_mes.Semana3.Oracion = txt_OraRP.Text;
-                                    RP_mes.Semana3.Discu_Sal = txt_Sal_Disc.Text;
-                                    RP_mes.Semana3.Ttl_Sal = txt_Sal_Title.Text;
-                                    RP_mes.Semana3.Cong_Sal = txt_Sal_Cong.Text;
+                                    RP_mes.Semana3 = RP_Set_Week();
                                     break;
                                 }
                             case 4:
                                 {
-                                    RP_mes.Semana4.Fecha = txt_DateRP.Text;
-                                    RP_mes.Semana4.Titulo = txt_RP_Speech.Text;
-                                    RP_mes.Semana4.Presidente = txt_PresRP.Text;
-                                    RP_mes.Semana4.Congregacion = txt_RP_Disc.Text;
-                                    RP_mes.Semana4.Discursante = txt_RP_Cong.Text;
-                                    RP_mes.Semana4.Titulo_Atalaya = txt_Title_Atly.Text;
-                                    RP_mes.Semana4.Conductor = txt_Con_Atly.Text;
-                                    RP_mes.Semana4.Lector = txt_Lect_Atly.Text;
-                                    RP_mes.Semana4.Oracion = txt_OraRP.Text;
-                                    RP_mes.Semana4.Discu_Sal = txt_Sal_Disc.Text;
-                                    RP_mes.Semana4.Ttl_Sal = txt_Sal_Title.Text;
-                                    RP_mes.Semana4.Cong_Sal = txt_Sal_Cong.Text;
+                                    RP_mes.Semana4 = RP_Set_Week();
                                     break;
                                 }
                             case 5:
                                 {
-                                    RP_mes.Semana5.Fecha = txt_DateRP.Text;
-                                    RP_mes.Semana5.Titulo = txt_RP_Speech.Text;
-                                    RP_mes.Semana5.Presidente = txt_PresRP.Text;
-                                    RP_mes.Semana5.Congregacion = txt_RP_Disc.Text;
-                                    RP_mes.Semana5.Discursante = txt_RP_Cong.Text;
-                                    RP_mes.Semana5.Titulo_Atalaya = txt_Title_Atly.Text;
-                                    RP_mes.Semana5.Conductor = txt_Con_Atly.Text;
-                                    RP_mes.Semana5.Lector = txt_Lect_Atly.Text;
-                                    RP_mes.Semana5.Oracion = txt_OraRP.Text;
-                                    RP_mes.Semana5.Discu_Sal = txt_Sal_Disc.Text;
-                                    RP_mes.Semana5.Ttl_Sal = txt_Sal_Title.Text;
-                                    RP_mes.Semana5.Cong_Sal = txt_Sal_Cong.Text;
+                                    RP_mes.Semana5 = RP_Set_Week();
                                     break;
                                 }
                         }
@@ -2229,6 +1863,50 @@ namespace Project_Insight
                         break;
                     }
             }
+        }
+
+        public VyM_Sem VyM_Set_Week()
+        {
+            VyM_Sem sem = new VyM_Sem();
+            sem.Fecha       = lbl_DateVyM.Text;
+            sem.Sem_Biblia  = txt_Date.Text;
+            sem.Presidente  = txt_Pres.Text;
+            sem.Discurso    = txt_TdlB_1.Text;
+            sem.Discurso_A  = txt_TdlB_A1.Text;
+            sem.Perlas      = txt_TdlB_A2.Text;
+            sem.Lectura     = txt_TdlB_A3.Text;
+            sem.SMM1        = txt_SMM1.Text;
+            sem.SMM1_A      = txt_SMM_A1.Text;
+            sem.SMM2        = txt_SMM2.Text;
+            sem.SMM2_A      = txt_SMM_A2.Text;
+            sem.SMM3        = txt_SMM3.Text;
+            sem.SMM3_A      = txt_SMM_A3.Text;
+            sem.NVC1        = txt_NVC1.Text;
+            sem.NVC1_A      = txt_NVC_A1.Text;
+            sem.NVC2        = txt_NVC2.Text;
+            sem.NVC2_A      = txt_NVC2.Text;
+            sem.Libro_A     = txt_NVC_A3.Text;
+            sem.Libro_L     = txt_NVC_A4.Text;
+            sem.Oracion     = txt_Ora2VyM.Text;
+            return sem;
+        }
+
+        public RP_Sem RP_Set_Week()
+        {
+            RP_Sem sem = new RP_Sem();
+            sem.Fecha           = lbl_DateRP.Text;
+            sem.Titulo          = txt_RP_Speech.Text;
+            sem.Presidente      = txt_PresRP.Text;
+            sem.Congregacion    = txt_RP_Disc.Text;
+            sem.Discursante     = txt_RP_Cong.Text;
+            sem.Titulo_Atalaya  = txt_Title_Atly.Text;
+            sem.Conductor       = txt_Con_Atly.Text;
+            sem.Lector          = txt_Lect_Atly.Text;
+            sem.Oracion         = txt_OraRP.Text;
+            sem.Discu_Sal       = txt_Sal_Disc.Text;
+            sem.Ttl_Sal         = txt_Sal_Title.Text;
+            sem.Cong_Sal        = txt_Sal_Cong.Text;
+            return sem;
         }
     }
 }
