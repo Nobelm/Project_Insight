@@ -91,6 +91,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Tab_RP = new System.Windows.Forms.TabPage();
             this.RP_1 = new System.Windows.Forms.GroupBox();
+            this.lbl_DateRP = new System.Windows.Forms.Label();
             this.txt_OraRP = new System.Windows.Forms.TextBox();
             this.txt_Lect_Atly = new System.Windows.Forms.TextBox();
             this.txt_Con_Atly = new System.Windows.Forms.TextBox();
@@ -196,7 +197,10 @@
             this.txt_Command = new System.Windows.Forms.TextBox();
             this.lbl_Week = new System.Windows.Forms.Label();
             this.lbl_Month = new System.Windows.Forms.Label();
-            this.lbl_DateRP = new System.Windows.Forms.Label();
+            this.time7_5 = new System.Windows.Forms.Label();
+            this.txt_SMM_A4 = new System.Windows.Forms.TextBox();
+            this.txt_SMM4 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPresenter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.protoss_Frame)).BeginInit();
             this.tab_Control.SuspendLayout();
@@ -212,9 +216,9 @@
             // 
             // log_txtBx
             // 
-            this.log_txtBx.BackColor = System.Drawing.Color.Navy;
+            this.log_txtBx.BackColor = System.Drawing.Color.MidnightBlue;
             this.log_txtBx.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.log_txtBx.ForeColor = System.Drawing.Color.White;
+            this.log_txtBx.ForeColor = System.Drawing.Color.Orange;
             this.log_txtBx.Location = new System.Drawing.Point(864, 185);
             this.log_txtBx.Name = "log_txtBx";
             this.log_txtBx.ReadOnly = true;
@@ -225,7 +229,6 @@
             // timer_Form2
             // 
             this.timer_Form2.Interval = 200;
-            this.timer_Form2.Tick += new System.EventHandler(this.timer_Form2_Tick);
             // 
             // picPresenter
             // 
@@ -297,7 +300,7 @@
             this.Nuestra_Vida.Controls.Add(this.txt_NVC1);
             this.Nuestra_Vida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nuestra_Vida.ForeColor = System.Drawing.Color.Coral;
-            this.Nuestra_Vida.Location = new System.Drawing.Point(6, 398);
+            this.Nuestra_Vida.Location = new System.Drawing.Point(6, 415);
             this.Nuestra_Vida.Name = "Nuestra_Vida";
             this.Nuestra_Vida.Size = new System.Drawing.Size(814, 200);
             this.Nuestra_Vida.TabIndex = 138;
@@ -405,7 +408,7 @@
             this.time_8.AutoSize = true;
             this.time_8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time_8.ForeColor = System.Drawing.Color.Coral;
-            this.time_8.Location = new System.Drawing.Point(15, 20);
+            this.time_8.Location = new System.Drawing.Point(15, 28);
             this.time_8.Name = "time_8";
             this.time_8.Size = new System.Drawing.Size(34, 13);
             this.time_8.TabIndex = 138;
@@ -416,7 +419,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Coral;
-            this.label14.Location = new System.Drawing.Point(86, 20);
+            this.label14.Location = new System.Drawing.Point(86, 28);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(46, 13);
             this.label14.TabIndex = 146;
@@ -471,7 +474,7 @@
             this.txt_NVC2.Name = "txt_NVC2";
             this.txt_NVC2.Size = new System.Drawing.Size(377, 20);
             this.txt_NVC2.TabIndex = 139;
-            this.txt_NVC2.TextChanged += new System.EventHandler(this.TextChanged);
+            this.txt_NVC2.TextChanged += new System.EventHandler(this.Txt_TextChanged);
             // 
             // txt_NVC_A1
             // 
@@ -491,11 +494,15 @@
             this.txt_NVC1.Name = "txt_NVC1";
             this.txt_NVC1.Size = new System.Drawing.Size(377, 20);
             this.txt_NVC1.TabIndex = 136;
-            this.txt_NVC1.TextChanged += new System.EventHandler(this.TextChanged);
+            this.txt_NVC1.TextChanged += new System.EventHandler(this.Txt_TextChanged);
             // 
             // Seamos_Maestros
             // 
             this.Seamos_Maestros.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Seamos_Maestros.Controls.Add(this.time7_5);
+            this.Seamos_Maestros.Controls.Add(this.txt_SMM_A4);
+            this.Seamos_Maestros.Controls.Add(this.txt_SMM4);
+            this.Seamos_Maestros.Controls.Add(this.label19);
             this.Seamos_Maestros.Controls.Add(this.time_7);
             this.Seamos_Maestros.Controls.Add(this.time_6);
             this.Seamos_Maestros.Controls.Add(this.time_5);
@@ -511,7 +518,7 @@
             this.Seamos_Maestros.ForeColor = System.Drawing.Color.Coral;
             this.Seamos_Maestros.Location = new System.Drawing.Point(6, 261);
             this.Seamos_Maestros.Name = "Seamos_Maestros";
-            this.Seamos_Maestros.Size = new System.Drawing.Size(814, 131);
+            this.Seamos_Maestros.Size = new System.Drawing.Size(814, 148);
             this.Seamos_Maestros.TabIndex = 137;
             this.Seamos_Maestros.TabStop = false;
             this.Seamos_Maestros.Text = "Seamos Mejores Maestros";
@@ -521,7 +528,7 @@
             // 
             this.time_7.AutoSize = true;
             this.time_7.ForeColor = System.Drawing.Color.Coral;
-            this.time_7.Location = new System.Drawing.Point(15, 94);
+            this.time_7.Location = new System.Drawing.Point(15, 88);
             this.time_7.Name = "time_7";
             this.time_7.Size = new System.Drawing.Size(34, 13);
             this.time_7.TabIndex = 137;
@@ -531,7 +538,7 @@
             // 
             this.time_6.AutoSize = true;
             this.time_6.ForeColor = System.Drawing.Color.Coral;
-            this.time_6.Location = new System.Drawing.Point(15, 64);
+            this.time_6.Location = new System.Drawing.Point(15, 58);
             this.time_6.Name = "time_6";
             this.time_6.Size = new System.Drawing.Size(34, 13);
             this.time_6.TabIndex = 136;
@@ -541,7 +548,7 @@
             // 
             this.time_5.AutoSize = true;
             this.time_5.ForeColor = System.Drawing.Color.Coral;
-            this.time_5.Location = new System.Drawing.Point(15, 34);
+            this.time_5.Location = new System.Drawing.Point(15, 28);
             this.time_5.Name = "time_5";
             this.time_5.Size = new System.Drawing.Size(34, 13);
             this.time_5.TabIndex = 116;
@@ -550,7 +557,7 @@
             // txt_SMM_A3
             // 
             this.txt_SMM_A3.ForeColor = System.Drawing.Color.Coral;
-            this.txt_SMM_A3.Location = new System.Drawing.Point(530, 90);
+            this.txt_SMM_A3.Location = new System.Drawing.Point(530, 84);
             this.txt_SMM_A3.Name = "txt_SMM_A3";
             this.txt_SMM_A3.Size = new System.Drawing.Size(239, 20);
             this.txt_SMM_A3.TabIndex = 130;
@@ -558,18 +565,18 @@
             // txt_SMM3
             // 
             this.txt_SMM3.ForeColor = System.Drawing.Color.Coral;
-            this.txt_SMM3.Location = new System.Drawing.Point(89, 90);
+            this.txt_SMM3.Location = new System.Drawing.Point(89, 84);
             this.txt_SMM3.Multiline = true;
             this.txt_SMM3.Name = "txt_SMM3";
             this.txt_SMM3.Size = new System.Drawing.Size(377, 20);
             this.txt_SMM3.TabIndex = 129;
-            this.txt_SMM3.TextChanged += new System.EventHandler(this.TextChanged);
+            this.txt_SMM3.TextChanged += new System.EventHandler(this.Txt_TextChanged);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.ForeColor = System.Drawing.Color.Coral;
-            this.label17.Location = new System.Drawing.Point(69, 94);
+            this.label17.Location = new System.Drawing.Point(69, 88);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(13, 13);
             this.label17.TabIndex = 128;
@@ -578,7 +585,7 @@
             // txt_SMM_A2
             // 
             this.txt_SMM_A2.ForeColor = System.Drawing.Color.Coral;
-            this.txt_SMM_A2.Location = new System.Drawing.Point(530, 60);
+            this.txt_SMM_A2.Location = new System.Drawing.Point(530, 54);
             this.txt_SMM_A2.Name = "txt_SMM_A2";
             this.txt_SMM_A2.Size = new System.Drawing.Size(239, 20);
             this.txt_SMM_A2.TabIndex = 125;
@@ -586,18 +593,18 @@
             // txt_SMM2
             // 
             this.txt_SMM2.ForeColor = System.Drawing.Color.Coral;
-            this.txt_SMM2.Location = new System.Drawing.Point(89, 60);
+            this.txt_SMM2.Location = new System.Drawing.Point(89, 54);
             this.txt_SMM2.Multiline = true;
             this.txt_SMM2.Name = "txt_SMM2";
             this.txt_SMM2.Size = new System.Drawing.Size(377, 20);
             this.txt_SMM2.TabIndex = 124;
-            this.txt_SMM2.TextChanged += new System.EventHandler(this.TextChanged);
+            this.txt_SMM2.TextChanged += new System.EventHandler(this.Txt_TextChanged);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.Color.Coral;
-            this.label16.Location = new System.Drawing.Point(69, 64);
+            this.label16.Location = new System.Drawing.Point(69, 58);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(13, 13);
             this.label16.TabIndex = 123;
@@ -606,7 +613,7 @@
             // txt_SMM_A1
             // 
             this.txt_SMM_A1.ForeColor = System.Drawing.Color.Coral;
-            this.txt_SMM_A1.Location = new System.Drawing.Point(530, 30);
+            this.txt_SMM_A1.Location = new System.Drawing.Point(530, 24);
             this.txt_SMM_A1.Name = "txt_SMM_A1";
             this.txt_SMM_A1.Size = new System.Drawing.Size(239, 20);
             this.txt_SMM_A1.TabIndex = 120;
@@ -614,18 +621,18 @@
             // txt_SMM1
             // 
             this.txt_SMM1.ForeColor = System.Drawing.Color.Coral;
-            this.txt_SMM1.Location = new System.Drawing.Point(89, 30);
+            this.txt_SMM1.Location = new System.Drawing.Point(89, 24);
             this.txt_SMM1.Multiline = true;
             this.txt_SMM1.Name = "txt_SMM1";
             this.txt_SMM1.Size = new System.Drawing.Size(377, 20);
             this.txt_SMM1.TabIndex = 119;
-            this.txt_SMM1.TextChanged += new System.EventHandler(this.TextChanged);
+            this.txt_SMM1.TextChanged += new System.EventHandler(this.Txt_TextChanged);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.Color.Coral;
-            this.label15.Location = new System.Drawing.Point(69, 34);
+            this.label15.Location = new System.Drawing.Point(69, 28);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(13, 13);
             this.label15.TabIndex = 118;
@@ -898,6 +905,14 @@
             this.RP_1.TabIndex = 184;
             this.RP_1.TabStop = false;
             this.RP_1.Text = "Fecha: ";
+            // 
+            // lbl_DateRP
+            // 
+            this.lbl_DateRP.AutoSize = true;
+            this.lbl_DateRP.Location = new System.Drawing.Point(53, 23);
+            this.lbl_DateRP.Name = "lbl_DateRP";
+            this.lbl_DateRP.Size = new System.Drawing.Size(0, 13);
+            this.lbl_DateRP.TabIndex = 188;
             // 
             // txt_OraRP
             // 
@@ -1808,11 +1823,11 @@
             // 
             this.txt_Command.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txt_Command.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_Command.BackColor = System.Drawing.Color.Navy;
-            this.txt_Command.ForeColor = System.Drawing.Color.Lime;
-            this.txt_Command.Location = new System.Drawing.Point(868, 525);
+            this.txt_Command.BackColor = System.Drawing.Color.MidnightBlue;
+            this.txt_Command.ForeColor = System.Drawing.Color.Orange;
+            this.txt_Command.Location = new System.Drawing.Point(864, 525);
             this.txt_Command.Name = "txt_Command";
-            this.txt_Command.Size = new System.Drawing.Size(268, 20);
+            this.txt_Command.Size = new System.Drawing.Size(272, 20);
             this.txt_Command.TabIndex = 1;
             this.txt_Command.TextChanged += new System.EventHandler(this.txt_Command_TextChanged);
             this.txt_Command.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Process_txt_Command);
@@ -1837,13 +1852,43 @@
             this.lbl_Month.TabIndex = 93;
             this.lbl_Month.Text = "Mes: ";
             // 
-            // lbl_DateRP
+            // time7_5
             // 
-            this.lbl_DateRP.AutoSize = true;
-            this.lbl_DateRP.Location = new System.Drawing.Point(53, 23);
-            this.lbl_DateRP.Name = "lbl_DateRP";
-            this.lbl_DateRP.Size = new System.Drawing.Size(0, 13);
-            this.lbl_DateRP.TabIndex = 188;
+            this.time7_5.AutoSize = true;
+            this.time7_5.ForeColor = System.Drawing.Color.Coral;
+            this.time7_5.Location = new System.Drawing.Point(16, 117);
+            this.time7_5.Name = "time7_5";
+            this.time7_5.Size = new System.Drawing.Size(34, 13);
+            this.time7_5.TabIndex = 141;
+            this.time7_5.Text = "00.00";
+            // 
+            // txt_SMM_A4
+            // 
+            this.txt_SMM_A4.ForeColor = System.Drawing.Color.Coral;
+            this.txt_SMM_A4.Location = new System.Drawing.Point(531, 113);
+            this.txt_SMM_A4.Name = "txt_SMM_A4";
+            this.txt_SMM_A4.Size = new System.Drawing.Size(239, 20);
+            this.txt_SMM_A4.TabIndex = 140;
+            // 
+            // txt_SMM4
+            // 
+            this.txt_SMM4.ForeColor = System.Drawing.Color.Coral;
+            this.txt_SMM4.Location = new System.Drawing.Point(90, 113);
+            this.txt_SMM4.Multiline = true;
+            this.txt_SMM4.Name = "txt_SMM4";
+            this.txt_SMM4.Size = new System.Drawing.Size(377, 20);
+            this.txt_SMM4.TabIndex = 139;
+            this.txt_SMM4.TextChanged += new System.EventHandler(this.Txt_TextChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.Color.Coral;
+            this.label19.Location = new System.Drawing.Point(70, 117);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(13, 13);
+            this.label19.TabIndex = 138;
+            this.label19.Text = "4";
             // 
             // Main_Form
             // 
@@ -2055,6 +2100,10 @@
         private System.Windows.Forms.TextBox txt_OraRP;
         private System.Windows.Forms.Label lbl_DateVyM;
         private System.Windows.Forms.Label lbl_DateRP;
+        private System.Windows.Forms.Label time7_5;
+        private System.Windows.Forms.TextBox txt_SMM_A4;
+        private System.Windows.Forms.TextBox txt_SMM4;
+        private System.Windows.Forms.Label label19;
     }
 }
 

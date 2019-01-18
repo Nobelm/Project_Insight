@@ -60,7 +60,7 @@ namespace Project_Insight
         public static int m_dia = 1;
         public static int m_mes = 1;
         public static int m_año = DateTime.Today.Year;
-        public static int m_semana = 1;
+        public static short m_semana = 1;
         public static DateTime[,] meetings_days = new DateTime[5, 2];
         public static string[] guard_cbx_names = new string[10];
         public static int date_checksum = 0;
@@ -78,11 +78,12 @@ namespace Project_Insight
         IDictionary<string, object> Dict_ac = new Dictionary<string, object>();
         public static int tab_meeting = 0;
         public static string aux_command;
-        public static bool selected_txt = false;
+        //public static bool selected_txt = false;
         public static int loading_delta = 1;
         public static int loading = 0;
         public static bool week_five_exist = false;
         public static bool UI_running = false;
+        public static short Conv_Wk = 0;
 
 
 
@@ -116,6 +117,8 @@ namespace Project_Insight
             Dict_vym.Add("sm_22", txt_SMM_A2);
             Dict_vym.Add("sm_31", txt_SMM3);
             Dict_vym.Add("sm_32", txt_SMM_A3);
+            Dict_vym.Add("sm_41", txt_SMM4);
+            Dict_vym.Add("sm_42", txt_SMM_A4);
             Dict_vym.Add("nv_11", txt_NVC1);
             Dict_vym.Add("nv_12", txt_NVC_A1);
             Dict_vym.Add("nv_21", txt_NVC2);
@@ -248,7 +251,7 @@ namespace Project_Insight
             {
                 busy_trace = true;
                 var array = data.ToCharArray();
-                log_txtBx.SelectionColor = Color.White;
+                log_txtBx.SelectionColor = Color.Orange;
                 log_txtBx.AppendText("L-" + lineNumber + ": ");
                 for (int i = 0; i <= array.Length - 1; i++)
                 {
@@ -311,7 +314,7 @@ namespace Project_Insight
                 await Task.Delay(500);
             }
             busy_trace = true;
-            log_txtBx.SelectionColor = Color.White;
+            log_txtBx.SelectionColor = Color.Orange;
             log_txtBx.AppendText("\nLoading:  ");
             aux = log_txtBx.Text;
             log_txtBx.Text = "";
@@ -323,26 +326,26 @@ namespace Project_Insight
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
                 log_txtBx.ScrollToCaret();
-                await Task.Delay(delay);
                 aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
+                await Task.Delay(delay);
                 aux += loading.ToString() + " % ...|";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
                 log_txtBx.ScrollToCaret();
-                await Task.Delay(delay);
                 aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
+                await Task.Delay(delay);
                 aux += loading.ToString() + " % .../";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
                 log_txtBx.ScrollToCaret();
-                await Task.Delay(delay);
                 aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
+                await Task.Delay(delay);
                 aux += loading.ToString() + " % ...-";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
                 log_txtBx.ScrollToCaret();
-                await Task.Delay(delay);
                 aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
+                await Task.Delay(delay);
             }
             aux += loading.ToString() + " % ...\\";
             log_txtBx.Text = aux;
@@ -512,19 +515,27 @@ namespace Project_Insight
                                         {
                                             if ((wk == 5) && (!week_five_exist))
                                             {
-                                                Warn("Month [" + m_mes.ToString() + "] doesn't have 5 weeks");
+                                                Warn("Selected month [" + m_mes.ToString() + "] doesn't have 5 weeks");
                                             }
                                             else
                                             {
                                                 Pre_save_info();
-                                                m_semana = wk;
+                                                m_semana = (short)wk;
                                                 Week_Handler();
                                             }
                                         }
                                     }
-                                    else if (sup == "") //@ToDo set and create hadler for memorial, asamblea and visita
+                                    else if (sup.Contains("conv")) //@ToDo set and create hadler for convention
                                     {
-
+                                        if (sup.Contains("fal"))
+                                        {
+                                            Conv_Wk = 0;
+                                        }
+                                        else if (sup.Contains("tru"))
+                                        {
+                                            Conv_Wk = m_semana;
+                                        }
+                                        Notify("Current week [" + m_semana.ToString() + "] setting as Convention [" + (Conv_Wk > 0 ? "True" : "False") +"]");
                                     }
                                 }
                                 else
@@ -826,7 +837,7 @@ namespace Project_Insight
             }
         }
              
-        /*Reset all information in form*/
+        /*ToDo Reset all information in form*/
         private void Process_restore()
         {
             Notify("Restore info");
@@ -964,6 +975,7 @@ namespace Project_Insight
         }
 
         /*--------------------------------------- Meeting handlers ---------------------------------------*/
+
         public void VyM_Handler(bool save)
         {
             if (save)
@@ -993,30 +1005,37 @@ namespace Project_Insight
 
         public void VyM_Save_Week(VyM_Sem sem, short num_sem)
         {
-            short primary_cell = Get_vym_cell(num_sem);
-            Sheet_VyM.Cells[primary_cell, A] = sem.Fecha.ToUpper();
-            if (sem.Sem_Biblia != null)
+            if (num_sem != Conv_Wk)
             {
-                Sheet_VyM.Cells[primary_cell, D] = sem.Sem_Biblia.ToUpper();
-                Sheet_VyM.Cells[primary_cell, G] = sem.Presidente;
-                Sheet_VyM.Cells[primary_cell + 6, C] = sem.Discurso;
-                Sheet_VyM.Cells[primary_cell + 6, G] = sem.Discurso_A;
-                Sheet_VyM.Cells[primary_cell + 7, G] = sem.Perlas;
-                Sheet_VyM.Cells[primary_cell + 8, G] = sem.Lectura;
-                Sheet_VyM.Cells[primary_cell + 11, C] = sem.SMM1;
-                Sheet_VyM.Cells[primary_cell + 11, G] = sem.SMM1_A;
-                Sheet_VyM.Cells[primary_cell + 12, C] = sem.SMM2;
-                Sheet_VyM.Cells[primary_cell + 12, G] = sem.SMM2_A;
-                Sheet_VyM.Cells[primary_cell + 13, C] = sem.SMM3;
-                Sheet_VyM.Cells[primary_cell + 13, G] = sem.SMM3_A;
-                /*@ToDo Implement SMM4  and SMM4_A*/
-                Sheet_VyM.Cells[primary_cell + 17, C] = sem.NVC1;
-                Sheet_VyM.Cells[primary_cell + 17, G] = sem.NVC1_A;
-                Sheet_VyM.Cells[primary_cell + 18, C] = sem.NVC2;
-                Sheet_VyM.Cells[primary_cell + 18, G] = sem.NVC2_A;
-                Sheet_VyM.Cells[primary_cell + 19, G] = sem.Libro_A;
-                Sheet_VyM.Cells[primary_cell + 20, G] = sem.Libro_L;
-                Sheet_VyM.Cells[primary_cell + 22, G] = sem.Oracion;
+                short primary_cell = Get_vym_cell(num_sem);
+                Sheet_VyM.Cells[primary_cell, A] = sem.Fecha.ToUpper();
+                if (sem.Sem_Biblia != null)
+                {
+                    Sheet_VyM.Cells[primary_cell, D] = sem.Sem_Biblia.ToUpper();
+                    Sheet_VyM.Cells[primary_cell, G] = sem.Presidente;
+                    Sheet_VyM.Cells[primary_cell + 6, C] = sem.Discurso;
+                    Sheet_VyM.Cells[primary_cell + 6, G] = sem.Discurso_A;
+                    Sheet_VyM.Cells[primary_cell + 7, G] = sem.Perlas;
+                    Sheet_VyM.Cells[primary_cell + 8, G] = sem.Lectura;
+                    Sheet_VyM.Cells[primary_cell + 11, C] = sem.SMM1;
+                    Sheet_VyM.Cells[primary_cell + 11, G] = sem.SMM1_A;
+                    Sheet_VyM.Cells[primary_cell + 12, C] = sem.SMM2;
+                    Sheet_VyM.Cells[primary_cell + 12, G] = sem.SMM2_A;
+                    Sheet_VyM.Cells[primary_cell + 13, C] = sem.SMM3;
+                    Sheet_VyM.Cells[primary_cell + 13, G] = sem.SMM3_A;
+                    /*@ToDo Implement SMM4  and SMM4_A*/
+                    Sheet_VyM.Cells[primary_cell + 17, C] = sem.NVC1;
+                    Sheet_VyM.Cells[primary_cell + 17, G] = sem.NVC1_A;
+                    Sheet_VyM.Cells[primary_cell + 18, C] = sem.NVC2;
+                    Sheet_VyM.Cells[primary_cell + 18, G] = sem.NVC2_A;
+                    Sheet_VyM.Cells[primary_cell + 19, G] = sem.Libro_A;
+                    Sheet_VyM.Cells[primary_cell + 20, G] = sem.Libro_L;
+                    Sheet_VyM.Cells[primary_cell + 22, G] = sem.Oracion;
+                }
+            }
+            else
+            {
+                Convention_Handler(1);
             }
         }
 
@@ -1105,21 +1124,28 @@ namespace Project_Insight
 
         public void RP_Save_Week(RP_Sem sem, short num_sem)
         {
-            short primary_cell = Get_rp_cell(num_sem);
-            Sheet_RP.Cells[primary_cell, C] = sem.Fecha.ToUpper();
-            if (sem.Presidente != null)
+            if (num_sem != Conv_Wk)
             {
-                Sheet_RP.Cells[primary_cell + 1, H] = sem.Presidente;
-                Sheet_RP.Cells[primary_cell + 2, D] = sem.Titulo;
-                Sheet_RP.Cells[primary_cell + 2, H] = sem.Discursante;
-                Sheet_RP.Cells[primary_cell + 3, E] = sem.Congregacion;
-                Sheet_RP.Cells[primary_cell + 6, D] = sem.Titulo_Atalaya;
-                Sheet_RP.Cells[primary_cell + 5, H] = sem.Conductor;
-                Sheet_RP.Cells[primary_cell + 7, H] = sem.Lector;
-                Sheet_RP.Cells[primary_cell + 8, H] = sem.Oracion;
-                Sheet_RP.Cells[primary_cell + 10, C] = sem.Discu_Sal;
-                Sheet_RP.Cells[primary_cell + 10, E] = sem.Ttl_Sal;
-                Sheet_RP.Cells[primary_cell + 10, H] = sem.Cong_Sal;
+                short primary_cell = Get_rp_cell(num_sem);
+                Sheet_RP.Cells[primary_cell, C] = sem.Fecha.ToUpper();
+                if (sem.Presidente != null)
+                {
+                    Sheet_RP.Cells[primary_cell + 1, H] = sem.Presidente;
+                    Sheet_RP.Cells[primary_cell + 2, D] = sem.Titulo;
+                    Sheet_RP.Cells[primary_cell + 2, H] = sem.Discursante;
+                    Sheet_RP.Cells[primary_cell + 3, E] = sem.Congregacion;
+                    Sheet_RP.Cells[primary_cell + 6, D] = sem.Titulo_Atalaya;
+                    Sheet_RP.Cells[primary_cell + 5, H] = sem.Conductor;
+                    Sheet_RP.Cells[primary_cell + 7, H] = sem.Lector;
+                    Sheet_RP.Cells[primary_cell + 8, H] = sem.Oracion;
+                    Sheet_RP.Cells[primary_cell + 10, C] = sem.Discu_Sal;
+                    Sheet_RP.Cells[primary_cell + 10, E] = sem.Ttl_Sal;
+                    Sheet_RP.Cells[primary_cell + 10, H] = sem.Cong_Sal;
+                }
+            }
+            else
+            {
+                Convention_Handler(2);
             }
         }
 
@@ -1197,18 +1223,25 @@ namespace Project_Insight
 
         public void AC_Save_Week(AC_Sem sem, short num_sem)
         {
-            short primary_cell = Get_ac_cell(num_sem);
-            Sheet_AC.Cells[primary_cell, B] = meetings_days[num_sem - 1, 0].ToString("dddd, dd MMMM");
-            Sheet_AC.Cells[primary_cell, D] = meetings_days[num_sem - 1, 1].ToString("dddd, dd MMMM");
-            if (sem.Vym_Cap != null)
+            if (num_sem != Conv_Wk)
             {
-                Sheet_AC.Cells[primary_cell + 1, C] = sem.Vym_Cap;
-                Sheet_AC.Cells[primary_cell + 1, E] = sem.Rp_Cap;
-                Sheet_AC.Cells[primary_cell + 2, A] = sem.Cap_Aseo;
-                Sheet_AC.Cells[primary_cell + 2, C] = sem.Vym_Der;
-                Sheet_AC.Cells[primary_cell + 2, E] = sem.Rp_Der;
-                Sheet_AC.Cells[primary_cell + 3, C] = sem.Vym_Izq;
-                Sheet_AC.Cells[primary_cell + 3, E] = sem.Rp_Cap;
+                short primary_cell = Get_ac_cell(num_sem);
+                Sheet_AC.Cells[primary_cell, B] = meetings_days[num_sem - 1, 0].ToString("dddd, dd MMMM");
+                Sheet_AC.Cells[primary_cell, D] = meetings_days[num_sem - 1, 1].ToString("dddd, dd MMMM");
+                if (sem.Vym_Cap != null)
+                {
+                    Sheet_AC.Cells[primary_cell + 1, C] = sem.Vym_Cap;
+                    Sheet_AC.Cells[primary_cell + 1, E] = sem.Rp_Cap;
+                    Sheet_AC.Cells[primary_cell + 2, A] = sem.Cap_Aseo;
+                    Sheet_AC.Cells[primary_cell + 2, C] = sem.Vym_Der;
+                    Sheet_AC.Cells[primary_cell + 2, E] = sem.Rp_Der;
+                    Sheet_AC.Cells[primary_cell + 3, C] = sem.Vym_Izq;
+                    Sheet_AC.Cells[primary_cell + 3, E] = sem.Rp_Cap;
+                }
+            }
+            else
+            {
+                Convention_Handler(3);
             }
         }
 
@@ -1248,6 +1281,31 @@ namespace Project_Insight
                 case 5:
                     {
                         AC_mes.Semana5 = sem;
+                        break;
+                    }
+            }
+        }
+
+        /*ToDo Handler to modify Convention week*/
+        public void Convention_Handler(short program)
+        {
+            Excel.Range range;
+            string a = "A", g = "G";
+            int cell = 3;
+            switch (program)
+            {
+                case 1: //VyM
+                    {
+                        range = Sheet_VyM.get_Range(a+cell.ToString(), g+(cell+22).ToString());
+                        range.Cells.Clear();
+                        break;
+                    }
+                case 2: //RP
+                    {
+                        break;
+                    }
+                case 3: //AC
+                    {
                         break;
                     }
             }
@@ -1447,97 +1505,91 @@ namespace Project_Insight
             txt_Command.AutoCompleteCustomSource = autocomplete;
         }
 
-        private void Save_time_from_string(VyM_Sem vyM_Sem, int wk, bool save)
+        private void Txt_TextChanged(object sender, EventArgs e)
+        {
+            Save_time_from_string();
+        }
+
+        private void Save_time_from_string()
         {
             DateTime Aux_dateTime = new DateTime(2018, 1, 1, 7, 00, 00);
-            if (save)
-            {
 
-            }
-            else // read
+            time_0.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            Aux_dateTime = Aux_dateTime.AddMinutes(5);
+            time_1.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            Aux_dateTime = Aux_dateTime.AddMinutes(3);
+            time_2.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            Aux_dateTime = Aux_dateTime.AddMinutes(10);
+            time_3.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            Aux_dateTime = Aux_dateTime.AddMinutes(8);
+            time_4.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            Aux_dateTime = Aux_dateTime.AddMinutes(5 + 1); //adjusting to real time
+            time_5.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(txt_SMM1.Text) + 1); //adjusting to real time
+            time_6.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(txt_SMM2.Text) + 1); //adjusting to real time
+            time_7.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(txt_SMM3.Text) + 1); //adjusting to real time
+            if ((txt_SMM4.Text == null) || (txt_SMM4.Text == ""))
             {
-                time_0.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                Aux_dateTime = Aux_dateTime.AddMinutes(5);
-                time_1.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                Aux_dateTime = Aux_dateTime.AddMinutes(3);
-                time_2.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                Aux_dateTime = Aux_dateTime.AddMinutes(10);
-                time_3.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                Aux_dateTime = Aux_dateTime.AddMinutes(8);
-                time_4.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                Aux_dateTime = Aux_dateTime.AddMinutes(5+1); //adjusting to real time
-                time_5.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(vyM_Sem.SMM1, true));
-                time_6.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(vyM_Sem.SMM2, true));
-                time_7.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(vyM_Sem.SMM3, true) + 1); //adjusting to real time
-                time_8.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                Aux_dateTime = Aux_dateTime.AddMinutes(3);
-                time_9.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(vyM_Sem.NVC1, false));
-                if ((txt_NVC2.Text == null) || (txt_NVC2.Text == " ") || (txt_NVC2.Text == " -"))
-                {
-                    time_10.Text = " ";                
-                }
-                else
-                {
-                    time_10.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                    Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(vyM_Sem.NVC2, false));
-                }
-                Aux_dateTime = Aux_dateTime.AddMinutes(1); //adjusting to real time
-                time_11.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                Aux_dateTime = Aux_dateTime.AddMinutes(30);
-                time_12.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                Aux_dateTime = Aux_dateTime.AddMinutes(3);
-                time_13.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
-                if (Aux_dateTime.Hour == 8 && Aux_dateTime.Minute == 40)
-                {
-                    time_13.ForeColor = Color.Green;
-                }
-                else
-                {
-                    time_13.ForeColor = Color.Red;
-                }
+                time7_5.Text = " ";
             }
+            else
+            {
+                time7_5.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(txt_SMM4.Text) + 1); //adjusting to real time
+            }      
+            time_8.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            Aux_dateTime = Aux_dateTime.AddMinutes(3);
+            time_9.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(txt_NVC1.Text));
+            if ((txt_NVC2.Text == null) || (txt_NVC2.Text == ""))
+            {
+                time_10.Text = " ";                
+            }
+            else
+            {
+                time_10.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(txt_NVC2.Text));
+            }
+            Aux_dateTime = Aux_dateTime.AddMinutes(1); //adjusting to real time
+            time_11.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            Aux_dateTime = Aux_dateTime.AddMinutes(30);
+            time_12.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            Aux_dateTime = Aux_dateTime.AddMinutes(3);
+            time_13.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
         }
 
-        private void TextChanged(object sender, EventArgs e)
+        public int Get_time_from_string(string Str)
         {
-            /*@ToDo check times from txtbx on the fly*/
-        }
-
-        public int Get_time_from_string(string Str, bool SMM)
-        {
-            string min = "mins.";
-            string video = "video";
-            Str = Str.ToLower();
-            string number = "";
-            var array = Str.ToCharArray();
             int time = 0;
-            if (Str.Contains(min))
+            if (Str != null)
             {
-                int index = Str.IndexOf(min);
-                number = Str.Substring(index - 3, 2);
-                try
+                Str = Str.ToLower();
+                string min = "mins.";
+                string number = "";
+                var array = Str.ToCharArray();
+                if (Str.Contains(min))
                 {
-                    if (number.Contains('('))
+                    int index = Str.IndexOf(min);
+                    number = Str.Substring(index - 3, 2);
+                    try
                     {
-                        number = number.Remove(0, 1);
+                        if (number.Contains('('))
+                        {
+                            number = number.Remove(0, 1);
+                        }
+                        time = int.Parse(number);
                     }
-                    time = int.Parse(number);
+                    catch
+                    {
+                        Warn("Must be numbers");
+                        time = 0;
+                    }
                 }
-                catch
+                if (Str.Contains("video"))
                 {
-                    Warn("Must be numbers");
-                    time = 0;
-                }
-            }
-            if (SMM)
-            {
-                if (!Str.Contains(video))
-                {
-                    time++;
+                    time--;
                 }
             }
             return time;
@@ -1560,7 +1612,7 @@ namespace Project_Insight
             }
         }
 
-        private void open_DB()
+        /*private void open_DB()
         {
             if (!DB_form_show)
             {
@@ -1581,7 +1633,9 @@ namespace Project_Insight
             {
                 timer_Form2.Enabled = false;
             }
-        }
+        }*/
+
+        /*--------------------------------------- Week Handlers  ---------------------------------------*/
 
         /*Function so set local variables' info into form*/
         public void Week_Handler()
