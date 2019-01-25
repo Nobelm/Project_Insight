@@ -126,9 +126,19 @@ namespace Project_Insight.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Fenix {
+        internal static System.Drawing.Bitmap FenixDragoon {
             get {
-                object obj = ResourceManager.GetObject("Fenix", resourceCulture);
+                object obj = ResourceManager.GetObject("FenixDragoon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FenixZealot {
+            get {
+                object obj = ResourceManager.GetObject("FenixZealot", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

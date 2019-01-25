@@ -22,11 +22,12 @@ namespace Project_Insight
         public enum p
         {
             Executor,
-            Fenix,
-            Selendis,
             Oracle,
             DarkTemplar,
+            FenixDragoon,
             HunterKiller,
+            FenixZealot,
+            Selendis,
             Hybrid,
             Artanis
         };
@@ -54,9 +55,8 @@ namespace Project_Insight
         public static bool busy_trace = false;
         public static bool pending_trace = false;
         public static short iterator_stack = 0;
-        public static bool DB_form_show = false;
-        public static string message_form2 = null;
-        public static bool pending_refresh_DB = false;
+        //public static string message_form2 = null;
+        //public static bool pending_refresh_DB = false;
         public static int m_dia = 1;
         public static int m_mes = 1;
         public static int m_año = DateTime.Today.Year;
@@ -68,6 +68,7 @@ namespace Project_Insight
         public static string[] month = new string[] { "ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic" };
         public static int command_iterator = 0;
         DB_Form DB_Form = new DB_Form();
+        //public static bool DB_form_show = false;
         public static string Path = "";
         public static bool is_new_instance = false;
         public static VyM_Mes VyM_mes = new VyM_Mes();
@@ -84,6 +85,7 @@ namespace Project_Insight
         public static bool week_five_exist = false;
         public static bool UI_running = false;
         public static short Conv_Wk = 0;
+        public static string Conv_Name = "";
 
 
 
@@ -206,9 +208,14 @@ namespace Project_Insight
                             picPresenter.Image = Project_Insight.Properties.Resources.Executor;
                             break;
                         }
-                    case p.Fenix:
+                    case p.FenixZealot:
                         {
-                            picPresenter.Image = Project_Insight.Properties.Resources.Fenix;
+                            picPresenter.Image = Project_Insight.Properties.Resources.FenixZealot;
+                            break;
+                        }
+                    case p.FenixDragoon:
+                        {
+                            picPresenter.Image = Project_Insight.Properties.Resources.FenixDragoon;
                             break;
                         }
                     case p.Selendis:
@@ -252,7 +259,7 @@ namespace Project_Insight
                 busy_trace = true;
                 var array = data.ToCharArray();
                 log_txtBx.SelectionColor = Color.Orange;
-                log_txtBx.AppendText("L-" + lineNumber + ": ");
+                //log_txtBx.AppendText("L-" + lineNumber + ": ");
                 for (int i = 0; i <= array.Length - 1; i++)
                 {
                     log_txtBx.AppendText(array[i].ToString());
@@ -320,30 +327,31 @@ namespace Project_Insight
             log_txtBx.Text = "";
             log_txtBx.SelectionStart = log_txtBx.Text.Length;
             log_txtBx.ScrollToCaret();
+            aux += loading.ToString() + " % ...-";
+            log_txtBx.Text = aux;
+            log_txtBx.SelectionStart = log_txtBx.Text.Length;
+            log_txtBx.ScrollToCaret();
+            aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
             while (loading < 100)
             {
                 aux += loading.ToString() + " % ...\\";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                log_txtBx.ScrollToCaret();
                 aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
                 await Task.Delay(delay);
                 aux += loading.ToString() + " % ...|";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                log_txtBx.ScrollToCaret();
                 aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
                 await Task.Delay(delay);
                 aux += loading.ToString() + " % .../";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                log_txtBx.ScrollToCaret();
                 aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
                 await Task.Delay(delay);
                 aux += loading.ToString() + " % ...-";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                log_txtBx.ScrollToCaret();
                 aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
                 await Task.Delay(delay);
             }
@@ -525,18 +533,6 @@ namespace Project_Insight
                                             }
                                         }
                                     }
-                                    else if (sup.Contains("conv")) //@ToDo set and create hadler for convention
-                                    {
-                                        if (sup.Contains("fal"))
-                                        {
-                                            Conv_Wk = 0;
-                                        }
-                                        else if (sup.Contains("tru"))
-                                        {
-                                            Conv_Wk = m_semana;
-                                        }
-                                        Notify("Current week [" + m_semana.ToString() + "] setting as Convention [" + (Conv_Wk > 0 ? "True" : "False") +"]");
-                                    }
                                 }
                                 else
                                 {
@@ -544,9 +540,34 @@ namespace Project_Insight
                                 }
                                 break;
                             }
+                        case "conv":
+                            {
+                                if (UI_running)
+                                {
+                                    if (sup.Contains("false"))
+                                    {
+                                        Conv_Wk = 0;
+                                    }
+                                    else 
+                                    {
+                                        Conv_Name = sup;
+                                        Conv_Wk = m_semana;
+                                    }
+                                    Notify("Current week [" + m_semana.ToString() + "] setting as Convention [" + (Conv_Wk > 0 ? "True" : "False") + "]");
+                                }
+                                else
+                                {
+                                    Warn("Need to create a new instance or open an existing program");
+                                }
+                                break;
+                            }
+                        case "db":
+                            {
+                                DB_Form.Show();
+                                break;
+                            }
                         case "test":
                             {
-                                
                                 break;
                             }
                         default:
@@ -652,6 +673,7 @@ namespace Project_Insight
                     {
                         if (Dict_vym.ContainsKey(cmd))
                         {
+                            Change_Presenter(cmd);
                             TextBox txt = (TextBox)Dict_vym[cmd];
                             txt.BackColor = Color.OrangeRed;
                             if ((cmd != aux_command) && (aux_command != null))
@@ -675,6 +697,7 @@ namespace Project_Insight
                     {
                         if (Dict_rp.ContainsKey(cmd))
                         {
+                            Change_Presenter(cmd);
                             TextBox txt = (TextBox)Dict_rp[cmd];
                             txt.BackColor = Color.OrangeRed;
                             if ((cmd != aux_command) && (aux_command != null))
@@ -698,6 +721,7 @@ namespace Project_Insight
                     {
                         if (Dict_ac.ContainsKey(cmd))
                         {
+                            Change_Presenter(cmd);
                             TextBox txt = (TextBox)Dict_ac[cmd];
                             txt.BackColor = Color.OrangeRed;
                             if ((cmd != aux_command) && (aux_command != null))
@@ -717,6 +741,34 @@ namespace Project_Insight
                         }
                         break;
                     }
+            }
+        }
+
+        public void Change_Presenter(string cmd)
+        {
+            if (cmd.Contains("ig") || cmd.Contains("tb"))
+            {
+                Presenter(p.Executor);
+            }
+            else if (cmd.Contains("sm"))
+            {
+                Presenter(p.Oracle);
+            }
+            else if (cmd.Contains("nv"))
+            {
+                Presenter(p.DarkTemplar);
+            }
+            else if (cmd.Contains("rp"))
+            {
+                Random rnd = new Random();
+                int rnd_pr = rnd.Next(3, 5);
+                Presenter((p)rnd_pr);
+            }
+            else if (cmd.Contains("ac"))
+            {
+                Random rnd = new Random();
+                int rnd_pr = rnd.Next(6, 8);
+                Presenter((p)rnd_pr);
             }
         }
 
@@ -946,16 +998,15 @@ namespace Project_Insight
                 FileName += "_AC";
             }
             Notify("FileName: " + FileName);
-            pending_refresh_DB = true;
             loading = 80;
             if (is_new_instance)
             {
-                //objBooks.SaveAs(@"c:\test2.xlsx");
-                //objBooks.SaveAs(Application.StartupPath + FileName + ".xlsx");
                 string createfolder = "c:\\Project_Insight";
                 System.IO.Directory.CreateDirectory(createfolder);
                 objBooks.SaveAs(createfolder + "\\" + FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, false, false, Excel.XlSaveAsAccessMode.xlNoChange, Excel.XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
                 Path = createfolder + "\\" + FileName;
+                //PDF Implementation TBD
+                //objBooks.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, Path);
                 Notify("Saved path: " + Path);
             }
             else
@@ -1005,10 +1056,10 @@ namespace Project_Insight
 
         public void VyM_Save_Week(VyM_Sem sem, short num_sem)
         {
+            short primary_cell = Get_vym_cell(num_sem);
+            Sheet_VyM.Cells[primary_cell, A] = sem.Fecha.ToUpper();
             if (num_sem != Conv_Wk)
             {
-                short primary_cell = Get_vym_cell(num_sem);
-                Sheet_VyM.Cells[primary_cell, A] = sem.Fecha.ToUpper();
                 if (sem.Sem_Biblia != null)
                 {
                     Sheet_VyM.Cells[primary_cell, D] = sem.Sem_Biblia.ToUpper();
@@ -1024,6 +1075,12 @@ namespace Project_Insight
                     Sheet_VyM.Cells[primary_cell + 13, C] = sem.SMM3;
                     Sheet_VyM.Cells[primary_cell + 13, G] = sem.SMM3_A;
                     /*@ToDo Implement SMM4  and SMM4_A*/
+                    if ((sem.SMM4 != null) && (sem.SMM4_A != null))
+                    {
+                        Sheet_VyM.Cells[primary_cell + 14, C] = sem.SMM4;
+                        Sheet_VyM.Cells[primary_cell + 14, G] = sem.SMM4_A;
+                        primary_cell++;
+                    }
                     Sheet_VyM.Cells[primary_cell + 17, C] = sem.NVC1;
                     Sheet_VyM.Cells[primary_cell + 17, G] = sem.NVC1_A;
                     Sheet_VyM.Cells[primary_cell + 18, C] = sem.NVC2;
@@ -1124,10 +1181,10 @@ namespace Project_Insight
 
         public void RP_Save_Week(RP_Sem sem, short num_sem)
         {
+            short primary_cell = Get_rp_cell(num_sem);
+            Sheet_RP.Cells[primary_cell, C] = sem.Fecha.ToUpper();
             if (num_sem != Conv_Wk)
             {
-                short primary_cell = Get_rp_cell(num_sem);
-                Sheet_RP.Cells[primary_cell, C] = sem.Fecha.ToUpper();
                 if (sem.Presidente != null)
                 {
                     Sheet_RP.Cells[primary_cell + 1, H] = sem.Presidente;
@@ -1223,11 +1280,11 @@ namespace Project_Insight
 
         public void AC_Save_Week(AC_Sem sem, short num_sem)
         {
+            short primary_cell = Get_ac_cell(num_sem);
+            Sheet_AC.Cells[primary_cell, B] = meetings_days[num_sem - 1, 0].ToString("dddd, dd MMMM");
+            Sheet_AC.Cells[primary_cell, D] = meetings_days[num_sem - 1, 1].ToString("dddd, dd MMMM");
             if (num_sem != Conv_Wk)
             {
-                short primary_cell = Get_ac_cell(num_sem);
-                Sheet_AC.Cells[primary_cell, B] = meetings_days[num_sem - 1, 0].ToString("dddd, dd MMMM");
-                Sheet_AC.Cells[primary_cell, D] = meetings_days[num_sem - 1, 1].ToString("dddd, dd MMMM");
                 if (sem.Vym_Cap != null)
                 {
                     Sheet_AC.Cells[primary_cell + 1, C] = sem.Vym_Cap;
@@ -1290,22 +1347,51 @@ namespace Project_Insight
         public void Convention_Handler(short program)
         {
             Excel.Range range;
-            string a = "A", g = "G";
-            int cell = 3;
+            string a = "A", g = "G", e = "E", h = "H";
             switch (program)
             {
                 case 1: //VyM
                     {
-                        range = Sheet_VyM.get_Range(a+cell.ToString(), g+(cell+22).ToString());
+                        short cell = Get_vym_cell(Conv_Wk);
+                        range = Sheet_VyM.get_Range(a+(cell+2).ToString(), g+(cell+22).ToString());
                         range.Cells.Clear();
+                        range = Sheet_VyM.get_Range(a + (cell + 10).ToString(), g + (cell + 15).ToString());
+                        range.Cells.Merge();
+                        range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        range.Cells.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        range.Characters.Font.Size = 16;
+                        range.Interior.Color = Color.Orange;
+                        Sheet_VyM.Cells[cell + 10, A] = Conv_Name;
+                        Sheet_VyM.Cells[cell, F] = "";
+                        Sheet_VyM.Cells[cell + 1, F] = "";
                         break;
                     }
                 case 2: //RP
                     {
+                        short cell = Get_rp_cell(Conv_Wk);
+                        range = Sheet_RP.get_Range(a + (cell + 1).ToString(), h + (cell + 15).ToString());
+                        range.Cells.Clear();
+                        range = Sheet_RP.get_Range(a + (cell + 2).ToString(), h + (cell + 7).ToString());
+                        range.Cells.Merge();
+                        range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        range.Cells.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        range.Characters.Font.Size = 16;
+                        range.Interior.Color = Color.Orange;
+                        Sheet_RP.Cells[cell + 2, A] = Conv_Name;
                         break;
                     }
                 case 3: //AC
                     {
+                        short cell = Get_ac_cell(Conv_Wk);
+                        range = Sheet_AC.get_Range(a + (cell + 1).ToString(), e + (cell + 3).ToString());
+                        range.Cells.Clear();
+                        range = Sheet_AC.get_Range(a + (cell + 1).ToString(), e + (cell + 3).ToString());
+                        range.Cells.Merge();
+                        range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        range.Cells.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        range.Characters.Font.Size = 16;
+                        range.Interior.Color = Color.Orange;
+                        Sheet_AC.Cells[cell + 1, A] = Conv_Name;
                         break;
                     }
             }
@@ -1315,26 +1401,28 @@ namespace Project_Insight
 
         private void Get_month_from_Excel(object cellvalue)
         {
-            bool month_found = false;
-            for (int i = 0; i <= month.Length - 1; i++)
+            if (cellvalue != null)
             {
-                if (cellvalue.ToString().ToLower().Contains(month[i]))
+                bool month_found = false;
+                for (int i = 0; i <= month.Length - 1; i++)
                 {
-                    m_mes = i + 1;
-                    month_found = true;
-                    break;
+                    if (cellvalue.ToString().ToLower().Contains(month[i]))
+                    {
+                        m_mes = i + 1;
+                        month_found = true;
+                        break;
+                    }
+                }
+                if (month_found)
+                {
+                    Notify("Month set in [" + m_mes.ToString() + "]");
+                }
+                else
+                {
+                    m_mes = DateTime.Today.Month;
+                    Warn("Month not found in first week, seeting today's month [" + m_mes.ToString() + "]");
                 }
             }
-            if (month_found)
-            {
-                Notify("Month set in [" + m_mes.ToString() + "]");
-            }
-            else
-            {
-                m_mes = DateTime.Today.Month;
-                Warn("Month not found in first week, seeting today's month [" + m_mes.ToString() + "]");
-            }
-            
         }
 
 
@@ -1468,7 +1556,7 @@ namespace Project_Insight
 
         private void Nuestra_Vida_Enter(object sender, EventArgs e)
         {
-            Presenter(p.Fenix);
+            //Presenter(p.Fenix);
             Notify("Section 'Nuestra Vida Cristiana'");
         }
 
@@ -1481,25 +1569,29 @@ namespace Project_Insight
             }
             if (tab_Control.SelectedIndex == 0)
             {
+                Presenter(p.Executor);
                 tab_meeting = 0;
                 autocomplete.AddRange(Dict_vym.Keys.ToArray());
-                Presenter(p.Executor);
-                Notify("Overview");
+                Notify("\"Vida y Ministerio\" meeting");
             }
             else if (tab_Control.SelectedIndex == 1)
             {
+                Random rnd = new Random();
+                int rnd_pr = rnd.Next(3, 5);
+                Presenter((p)rnd_pr);
                 tab_meeting = 1;
                 autocomplete.AddRange(Dict_rp.Keys.ToArray());
-                Presenter(p.Artanis);
-                Notify("Section 'Reunion Publica y analisis de La Atalaya'");
+                Notify("\"Reunion Publica y Analisis de La Atalaya\" meeting");
                 
             }
             else
             {
+                Random rnd = new Random();
+                int rnd_pr = rnd.Next(6, 8);
+                Presenter((p)rnd_pr);
                 tab_meeting = 2;
                 autocomplete.AddRange(Dict_ac.Keys.ToArray());
-                Presenter(p.Oracle);
-                Notify("Section 'Acomodadores'");
+                Notify("\"Acomodadores\" Section");
             }
             Week_Handler();
             txt_Command.AutoCompleteCustomSource = autocomplete;
@@ -1545,7 +1637,7 @@ namespace Project_Insight
             Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(txt_NVC1.Text));
             if ((txt_NVC2.Text == null) || (txt_NVC2.Text == ""))
             {
-                time_10.Text = " ";                
+                time_10.Text = " ";
             }
             else
             {
@@ -1612,12 +1704,12 @@ namespace Project_Insight
             }
         }
 
-        /*private void open_DB()
+        /*private void Open_DB()
         {
             if (!DB_form_show)
             {
                 DB_form_show = true;
-                timer_Form2.Enabled = true;
+                //timer_Form2.Enabled = true;
                 DB_Form.Show();
             }
         }
@@ -1642,6 +1734,10 @@ namespace Project_Insight
         {
             int lun = 0;
             lbl_Week.Text = "Semana: " + m_semana.ToString();
+            if (Conv_Wk == m_semana)
+            {
+                Warn("Week [" + m_semana.ToString() + "] selected as Convention Week");
+            }
             switch (tab_meeting)
             {
                 case 0:

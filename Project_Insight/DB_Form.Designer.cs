@@ -57,10 +57,6 @@
             this.Eld_Grid.Size = new System.Drawing.Size(474, 175);
             this.Eld_Grid.TabIndex = 0;
             // 
-            // timer_refresh
-            // 
-            this.timer_refresh.Tick += new System.EventHandler(this.timer_refresh_Tick);
-            // 
             // Min_Grid
             // 
             this.Min_Grid.AllowUserToAddRows = false;
@@ -117,7 +113,6 @@
             this.btn_Hide.TabIndex = 5;
             this.btn_Hide.Text = "Hide";
             this.btn_Hide.UseVisualStyleBackColor = true;
-            this.btn_Hide.Click += new System.EventHandler(this.btn_Hide_Click);
             // 
             // DB_Form
             // 

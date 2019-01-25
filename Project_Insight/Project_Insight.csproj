@@ -161,5 +161,8 @@
   <ItemGroup>
     <None Include="Resources\DB.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FenixZealot.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
