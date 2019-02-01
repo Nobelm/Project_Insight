@@ -75,6 +75,7 @@ namespace Project_Insight
         public static RP_Mes RP_mes = new RP_Mes();
         public static AC_Mes AC_mes = new AC_Mes();
         IDictionary<string, object> Dict_vym = new Dictionary<string, object>();
+        IDictionary<object, object> Dict_vym_time = new Dictionary<object, object>();
         IDictionary<string, object> Dict_rp = new Dictionary<string, object>();
         IDictionary<string, object> Dict_ac = new Dictionary<string, object>();
         public static int tab_meeting = 0;
@@ -86,6 +87,8 @@ namespace Project_Insight
         public static bool UI_running = false;
         public static short Conv_Wk = 0;
         public static string Conv_Name = "";
+        public static bool Save_DB = false;
+        public static bool Show_DB = false;
 
 
 
@@ -107,7 +110,7 @@ namespace Project_Insight
 
         public void Autocomplete_dictionary()
         {
-            Dict_vym.Add("ig_01", txt_Date);
+            Dict_vym.Add("ig_01", txt_Lect_Sem);
             Dict_vym.Add("ig_02", txt_Pres);
             Dict_vym.Add("tb_01", txt_TdlB_1);
             Dict_vym.Add("tb_02", txt_TdlB_A1);
@@ -129,7 +132,13 @@ namespace Project_Insight
             Dict_vym.Add("nv_40", txt_NVC_A4);
             Dict_vym.Add("nv_50", txt_Ora2VyM);
 
-            //Dict_rp.Add("rp_00", lbl_DateRP);
+            Dict_vym_time.Add(txt_SMM1, time_5);
+            Dict_vym_time.Add(txt_SMM2, time_6);
+            Dict_vym_time.Add(txt_SMM3, time_7);
+            Dict_vym_time.Add(txt_SMM4, time7_5);
+            Dict_vym_time.Add(txt_NVC1, time_9);
+            Dict_vym_time.Add(txt_NVC2, time_10);
+
             Dict_rp.Add("rp_01", txt_PresRP);
             Dict_rp.Add("rp_02", txt_RP_Speech);
             Dict_rp.Add("rp_03", txt_RP_Disc);
@@ -142,41 +151,46 @@ namespace Project_Insight
             Dict_rp.Add("rp_10", txt_Sal_Title);
             Dict_rp.Add("rp_11", txt_Sal_Cong);
 
-            Dict_ac.Add("ac_11", txt_Aseo_1);
+            Dict_ac.Add("ac_11", txt_Aseo_L_1);
             Dict_ac.Add("ac_12", txt_Cap_L_1);
             Dict_ac.Add("ac_13", txt_AC1_L_1);
             Dict_ac.Add("ac_14", txt_AC2_L_1);
-            Dict_ac.Add("ac_15", txt_Cap_S_1);
-            Dict_ac.Add("ac_16", txt_AC1_S_1);
-            Dict_ac.Add("ac_17", txt_AC2_S_1);
-            Dict_ac.Add("ac_21", txt_Aseo_2);
+            Dict_ac.Add("ac_15", txt_Aseo_S_1);
+            Dict_ac.Add("ac_16", txt_Cap_S_1);
+            Dict_ac.Add("ac_17", txt_AC1_S_1);
+            Dict_ac.Add("ac_18", txt_AC2_S_1);
+            Dict_ac.Add("ac_21", txt_Aseo_L_2);
             Dict_ac.Add("ac_22", txt_Cap_L_2);
             Dict_ac.Add("ac_23", txt_AC1_L_2);
             Dict_ac.Add("ac_24", txt_AC2_L_2);
-            Dict_ac.Add("ac_25", txt_Cap_S_2);
-            Dict_ac.Add("ac_26", txt_AC1_S_2);
-            Dict_ac.Add("ac_27", txt_AC2_S_2);
-            Dict_ac.Add("ac_31", txt_Aseo_3);
+            Dict_ac.Add("ac_25", txt_Aseo_S_2);
+            Dict_ac.Add("ac_26", txt_Cap_S_2);
+            Dict_ac.Add("ac_27", txt_AC1_S_2);
+            Dict_ac.Add("ac_28", txt_AC2_S_2);
+            Dict_ac.Add("ac_31", txt_Aseo_L_3);
             Dict_ac.Add("ac_32", txt_Cap_L_3);
             Dict_ac.Add("ac_33", txt_AC1_L_3);
             Dict_ac.Add("ac_34", txt_AC2_L_3);
-            Dict_ac.Add("ac_35", txt_Cap_S_3);
-            Dict_ac.Add("ac_36", txt_AC1_S_3);
-            Dict_ac.Add("ac_37", txt_AC2_S_3);
-            Dict_ac.Add("ac_41", txt_Aseo_4);
+            Dict_ac.Add("ac_35", txt_Aseo_S_3);
+            Dict_ac.Add("ac_36", txt_Cap_S_3);
+            Dict_ac.Add("ac_37", txt_AC1_S_3);
+            Dict_ac.Add("ac_38", txt_AC2_S_3);
+            Dict_ac.Add("ac_41", txt_Aseo_L_4);
             Dict_ac.Add("ac_42", txt_Cap_L_4);
             Dict_ac.Add("ac_43", txt_AC1_L_4);
             Dict_ac.Add("ac_44", txt_AC2_L_4);
-            Dict_ac.Add("ac_45", txt_Cap_S_4);
-            Dict_ac.Add("ac_46", txt_AC1_S_4);
-            Dict_ac.Add("ac_47", txt_AC2_S_4);
-            Dict_ac.Add("ac_51", txt_Aseo_5);
+            Dict_ac.Add("ac_45", txt_Aseo_S_4);
+            Dict_ac.Add("ac_46", txt_Cap_S_4);
+            Dict_ac.Add("ac_47", txt_AC1_S_4);
+            Dict_ac.Add("ac_48", txt_AC2_S_4);
+            Dict_ac.Add("ac_51", txt_Aseo_L_5);
             Dict_ac.Add("ac_52", txt_Cap_L_5);
             Dict_ac.Add("ac_53", txt_AC1_L_5);
             Dict_ac.Add("ac_54", txt_AC2_L_5);
-            Dict_ac.Add("ac_55", txt_Cap_S_5);
-            Dict_ac.Add("ac_56", txt_AC1_S_5);
-            Dict_ac.Add("ac_57", txt_AC2_S_5);
+            Dict_ac.Add("ac_55", txt_Aseo_S_5);
+            Dict_ac.Add("ac_56", txt_Cap_S_5);
+            Dict_ac.Add("ac_57", txt_AC1_S_5);
+            Dict_ac.Add("ac_58", txt_AC2_S_5);
         }
 
         public void Main_Form_FormClosed(object sender, FormClosedEventArgs e)
@@ -312,8 +326,10 @@ namespace Project_Insight
             }
         }
 
+        /*ToDo Needs improvement, flickering*/
         public async void Loading_Trace()
         {
+            txt_Command.Enabled = false;
             string aux = "";
             int delay = 40;
             while (busy_trace)
@@ -337,22 +353,22 @@ namespace Project_Insight
                 aux += loading.ToString() + " % ...\\";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
+                aux = aux.Remove(aux.Length - 7 - loading.ToString().Length);
                 await Task.Delay(delay);
                 aux += loading.ToString() + " % ...|";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
+                aux = aux.Remove(aux.Length - 7 - loading.ToString().Length);
                 await Task.Delay(delay);
                 aux += loading.ToString() + " % .../";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
+                aux = aux.Remove(aux.Length - 7 - loading.ToString().Length);
                 await Task.Delay(delay);
                 aux += loading.ToString() + " % ...-";
                 log_txtBx.Text = aux;
                 log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
+                aux = aux.Remove(aux.Length - 7 - loading.ToString().Length);
                 await Task.Delay(delay);
             }
             aux += loading.ToString() + " % ...\\";
@@ -368,6 +384,8 @@ namespace Project_Insight
             log_txtBx.SelectionStart = log_txtBx.Text.Length;
             log_txtBx.ScrollToCaret();
             busy_trace = false;
+            txt_Command.Enabled = true;
+            txt_Command.Select();
             if (pending_trace)
             {
                 String_stack("", false, 1, 0);
@@ -458,6 +476,7 @@ namespace Project_Insight
                                     {
                                         m_mes = i + 1;
                                         month_found = true;
+                                        DB_Form.Read_CSV();
                                         break;
                                     }
                                 }
@@ -564,10 +583,44 @@ namespace Project_Insight
                         case "db":
                             {
                                 DB_Form.Show();
+                                Show_DB = true;
+                                break;
+                            }
+                        case "e_db":
+                            {
+                                if (Show_DB)
+                                {
+                                    Notify("Edit DB, Press Enter to edit selected cell");
+                                    Save_DB = true;
+                                    DB_Form.Edit_DB();
+                                }
+                                else
+                                {
+                                    Warn("Need to show DB in order to edit");
+                                }
+                                break;
+                            }
+                        case "s_db":
+                            {
+                                if (Save_DB)
+                                {
+                                    Save_DB = false;
+                                    DB_Form.Save_DB();
+                                }
+                                else
+                                {
+                                    Warn("Edit DB before save");
+                                }
+                                break;
+                            }
+                        case "afil":
+                            {
+                                AutoFill_Handler();
                                 break;
                             }
                         case "test":
                             {
+                                Loading_Trace();
                                 break;
                             }
                         default:
@@ -758,18 +811,6 @@ namespace Project_Insight
             {
                 Presenter(p.DarkTemplar);
             }
-            else if (cmd.Contains("rp"))
-            {
-                Random rnd = new Random();
-                int rnd_pr = rnd.Next(3, 5);
-                Presenter((p)rnd_pr);
-            }
-            else if (cmd.Contains("ac"))
-            {
-                Random rnd = new Random();
-                int rnd_pr = rnd.Next(6, 8);
-                Presenter((p)rnd_pr);
-            }
         }
 
         public void Save_command(string cmd)
@@ -796,6 +837,7 @@ namespace Project_Insight
             autocomplete.AddRange(Dict_vym.Keys.ToArray());
             txt_Command.AutoCompleteCustomSource = autocomplete;
             UI_running = true;
+            Save_time_from_string();
         }
 
         /*Open an existing excel program*/
@@ -835,6 +877,7 @@ namespace Project_Insight
             var autocomplete = new AutoCompleteStringCollection();
             autocomplete.AddRange(Dict_vym.Keys.ToArray());
             txt_Command.AutoCompleteCustomSource = autocomplete;
+            Save_time_from_string();
         }
 
         public void Opening_Excel(string path)
@@ -1020,6 +1063,7 @@ namespace Project_Insight
                 objBooks.Close(0);
                 objApp.Quit();
             }
+            DB_Form.Write_CSV();
             Notify("Saved date: [" + m_dia.ToString() + "-" + m_mes.ToString() + "-" + m_año.ToString() + "]");
             //Check_time(this, null);
             loading = 100;
@@ -1054,13 +1098,14 @@ namespace Project_Insight
             }
         }
 
+        /*ToDo Save time in excel*/
         public void VyM_Save_Week(VyM_Sem sem, short num_sem)
         {
             short primary_cell = Get_vym_cell(num_sem);
             Sheet_VyM.Cells[primary_cell, A] = sem.Fecha.ToUpper();
             if (num_sem != Conv_Wk)
             {
-                if (sem.Sem_Biblia != null)
+                if ((sem.Sem_Biblia != null) && (sem.Sem_Biblia != ""))
                 {
                     Sheet_VyM.Cells[primary_cell, D] = sem.Sem_Biblia.ToUpper();
                     Sheet_VyM.Cells[primary_cell, G] = sem.Presidente;
@@ -1068,19 +1113,25 @@ namespace Project_Insight
                     Sheet_VyM.Cells[primary_cell + 6, G] = sem.Discurso_A;
                     Sheet_VyM.Cells[primary_cell + 7, G] = sem.Perlas;
                     Sheet_VyM.Cells[primary_cell + 8, G] = sem.Lectura;
+                    if ((sem.SMM4 != null) && (sem.SMM4_A != null) && (sem.SMM4 != "") && (sem.SMM4_A != ""))
+                    {
+                        string a = "A", g = "G";
+                        Excel.Range aux_range = Sheet_VyM.get_Range(a + (primary_cell + 11).ToString(), g + (primary_cell + 13).ToString());
+                        aux_range.RowHeight = 23; // Needs to be 23 points for 30 pixels
+                        aux_range = Sheet_VyM.get_Range(a + (primary_cell + 14).ToString(), g + (primary_cell + 14).ToString());
+                        aux_range.RowHeight = 23; // Needs to be 23 points for 30 pixels
+                        aux_range = Sheet_VyM.get_Range(a + (primary_cell + 23).ToString(), g + (primary_cell + 23).ToString());
+                        aux_range.RowHeight = 6;
+                        Sheet_VyM.Cells[primary_cell + 14, C] = sem.SMM4;
+                        Sheet_VyM.Cells[primary_cell + 14, G] = sem.SMM4_A;
+
+                    }
                     Sheet_VyM.Cells[primary_cell + 11, C] = sem.SMM1;
                     Sheet_VyM.Cells[primary_cell + 11, G] = sem.SMM1_A;
                     Sheet_VyM.Cells[primary_cell + 12, C] = sem.SMM2;
                     Sheet_VyM.Cells[primary_cell + 12, G] = sem.SMM2_A;
                     Sheet_VyM.Cells[primary_cell + 13, C] = sem.SMM3;
                     Sheet_VyM.Cells[primary_cell + 13, G] = sem.SMM3_A;
-                    /*@ToDo Implement SMM4  and SMM4_A*/
-                    if ((sem.SMM4 != null) && (sem.SMM4_A != null))
-                    {
-                        Sheet_VyM.Cells[primary_cell + 14, C] = sem.SMM4;
-                        Sheet_VyM.Cells[primary_cell + 14, G] = sem.SMM4_A;
-                        primary_cell++;
-                    }
                     Sheet_VyM.Cells[primary_cell + 17, C] = sem.NVC1;
                     Sheet_VyM.Cells[primary_cell + 17, G] = sem.NVC1_A;
                     Sheet_VyM.Cells[primary_cell + 18, C] = sem.NVC2;
@@ -1088,6 +1139,25 @@ namespace Project_Insight
                     Sheet_VyM.Cells[primary_cell + 19, G] = sem.Libro_A;
                     Sheet_VyM.Cells[primary_cell + 20, G] = sem.Libro_L;
                     Sheet_VyM.Cells[primary_cell + 22, G] = sem.Oracion;
+                    DB_Form.Persistence_VyM(sem, meetings_days[num_sem - 1, 0].ToString("dd/MM/yyyy"));
+
+                    /*Save_time_from_string();
+                    Sheet_VyM.Cells[primary_cell + 1, A] = time_0.Text;
+                    Sheet_VyM.Cells[primary_cell + 2, A] = time_1.Text;
+                    Sheet_VyM.Cells[primary_cell + 5, A] = time_2.Text;
+                    Sheet_VyM.Cells[primary_cell + 6, A] = time_3.Text;
+                    Sheet_VyM.Cells[primary_cell + 7, A] = time_4.Text;
+                    Sheet_VyM.Cells[primary_cell + 10, A] = time_5.Text;
+                    Sheet_VyM.Cells[primary_cell + 11, A] = time_6.Text;
+                    Sheet_VyM.Cells[primary_cell + 12, A] = time_7.Text;
+                    Sheet_VyM.Cells[primary_cell + 13, A] = time7_5.Text;
+                    Sheet_VyM.Cells[primary_cell + 15, A] = time_8.Text;
+                    Sheet_VyM.Cells[primary_cell + 16, A] = time_9.Text;
+                    Sheet_VyM.Cells[primary_cell + 17, A] = time_10.Text;
+                    Sheet_VyM.Cells[primary_cell + 18, A] = time_11.Text;
+                    Sheet_VyM.Cells[primary_cell + 19, A] = time_12.Text;
+                    Sheet_VyM.Cells[primary_cell + 20, A] = time_13.Text;
+                    */
                 }
             }
             else
@@ -1198,6 +1268,8 @@ namespace Project_Insight
                     Sheet_RP.Cells[primary_cell + 10, C] = sem.Discu_Sal;
                     Sheet_RP.Cells[primary_cell + 10, E] = sem.Ttl_Sal;
                     Sheet_RP.Cells[primary_cell + 10, H] = sem.Cong_Sal;
+                    DB_Form.Persistence_RP(sem, meetings_days[num_sem-1, 1].ToString("dd/MM/yyyy"));
+                    //meetings_days[0, 0].ToString("dddd, dd MMMM");
                 }
             }
             else
@@ -1287,13 +1359,15 @@ namespace Project_Insight
             {
                 if (sem.Vym_Cap != null)
                 {
-                    Sheet_AC.Cells[primary_cell + 1, C] = sem.Vym_Cap;
-                    Sheet_AC.Cells[primary_cell + 1, E] = sem.Rp_Cap;
-                    Sheet_AC.Cells[primary_cell + 2, A] = sem.Cap_Aseo;
-                    Sheet_AC.Cells[primary_cell + 2, C] = sem.Vym_Der;
-                    Sheet_AC.Cells[primary_cell + 2, E] = sem.Rp_Der;
+                    Sheet_AC.Cells[primary_cell + 1, C] = sem.Cp_Aseo_VyM;
+                    Sheet_AC.Cells[primary_cell + 2, C] = sem.Vym_Cap;
                     Sheet_AC.Cells[primary_cell + 3, C] = sem.Vym_Izq;
-                    Sheet_AC.Cells[primary_cell + 3, E] = sem.Rp_Cap;
+                    Sheet_AC.Cells[primary_cell + 4, C] = sem.Vym_Der;
+                    Sheet_AC.Cells[primary_cell + 1, E] = sem.Cp_Aseo_RP;
+                    Sheet_AC.Cells[primary_cell + 2, E] = sem.Rp_Cap;
+                    Sheet_AC.Cells[primary_cell + 3, E] = sem.Rp_Izq;
+                    Sheet_AC.Cells[primary_cell + 4, E] = sem.Rp_Der;
+                    DB_Form.Persistence_AC(sem, meetings_days[num_sem - 1, 0].ToString("dd/MM/yyyy"), meetings_days[num_sem - 1, 1].ToString("dd/MM/yyyy"));
                 }
             }
             else
@@ -1306,13 +1380,14 @@ namespace Project_Insight
         {
             AC_Sem sem = new AC_Sem();
             short primary_cell = Get_ac_cell(num_sem);
-            sem.Vym_Cap     = Check_null_string(cellValue_3[primary_cell + 1, C]);
-            sem.Rp_Cap      = Check_null_string(cellValue_3[primary_cell + 1, E]);
-            sem.Cap_Aseo    = Check_null_string(cellValue_3[primary_cell + 2, A]);
-            sem.Vym_Der     = Check_null_string(cellValue_3[primary_cell + 2, C]);
-            sem.Rp_Der      = Check_null_string(cellValue_3[primary_cell + 2, E]);
+            sem.Cp_Aseo_VyM = Check_null_string(cellValue_3[primary_cell + 1, C]);
+            sem.Vym_Cap     = Check_null_string(cellValue_3[primary_cell + 2, C]);
             sem.Vym_Izq     = Check_null_string(cellValue_3[primary_cell + 3, C]);
+            sem.Vym_Der     = Check_null_string(cellValue_3[primary_cell + 4, C]);
+            sem.Cp_Aseo_RP  = Check_null_string(cellValue_3[primary_cell + 1, E]);
+            sem.Rp_Cap      = Check_null_string(cellValue_3[primary_cell + 2, E]);
             sem.Rp_Izq      = Check_null_string(cellValue_3[primary_cell + 3, E]);
+            sem.Rp_Der      = Check_null_string(cellValue_3[primary_cell + 4, E]);
             switch (num_sem)
             {
                 case 1:
@@ -1383,9 +1458,9 @@ namespace Project_Insight
                 case 3: //AC
                     {
                         short cell = Get_ac_cell(Conv_Wk);
-                        range = Sheet_AC.get_Range(a + (cell + 1).ToString(), e + (cell + 3).ToString());
+                        range = Sheet_AC.get_Range(a + (cell + 1).ToString(), e + (cell + 4).ToString());
                         range.Cells.Clear();
-                        range = Sheet_AC.get_Range(a + (cell + 1).ToString(), e + (cell + 3).ToString());
+                        range = Sheet_AC.get_Range(a + (cell + 1).ToString(), e + (cell + 4).ToString());
                         range.Cells.Merge();
                         range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                         range.Cells.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
@@ -1556,7 +1631,6 @@ namespace Project_Insight
 
         private void Nuestra_Vida_Enter(object sender, EventArgs e)
         {
-            //Presenter(p.Fenix);
             Notify("Section 'Nuestra Vida Cristiana'");
         }
 
@@ -1599,28 +1673,37 @@ namespace Project_Insight
 
         private void Txt_TextChanged(object sender, EventArgs e)
         {
+            /* TextBox txt = (TextBox)sender;
+             Label lbl = (Label)Dict_vym_time[txt];
+             Time_Handler(txt.Text, lbl);*/
             Save_time_from_string();
         }
 
+        public void Time_Handler(string Str, Label lbl)
+        {
+
+        }
+
+        /*ToDo low priority set Dictionary txtbx name and time_X name*/
         private void Save_time_from_string()
         {
             DateTime Aux_dateTime = new DateTime(2018, 1, 1, 7, 00, 00);
 
-            time_0.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            time_0.Text = Aux_dateTime.ToString("HH:mm");
             Aux_dateTime = Aux_dateTime.AddMinutes(5);
-            time_1.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            time_1.Text = Aux_dateTime.ToString("HH:mm");
             Aux_dateTime = Aux_dateTime.AddMinutes(3);
-            time_2.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            time_2.Text = Aux_dateTime.ToString("HH:mm");
             Aux_dateTime = Aux_dateTime.AddMinutes(10);
-            time_3.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            time_3.Text = Aux_dateTime.ToString("HH:mm");
             Aux_dateTime = Aux_dateTime.AddMinutes(8);
-            time_4.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            time_4.Text = Aux_dateTime.ToString("HH:mm");
             Aux_dateTime = Aux_dateTime.AddMinutes(5 + 1); //adjusting to real time
-            time_5.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            time_5.Text = Aux_dateTime.ToString("HH:mm");
             Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(txt_SMM1.Text) + 1); //adjusting to real time
-            time_6.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            time_6.Text = Aux_dateTime.ToString("HH:mm");
             Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(txt_SMM2.Text) + 1); //adjusting to real time
-            time_7.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            time_7.Text = Aux_dateTime.ToString("HH:mm");
             Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(txt_SMM3.Text) + 1); //adjusting to real time
             if ((txt_SMM4.Text == null) || (txt_SMM4.Text == ""))
             {
@@ -1628,12 +1711,12 @@ namespace Project_Insight
             }
             else
             {
-                time7_5.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                time7_5.Text = Aux_dateTime.ToString("HH:mm");
                 Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(txt_SMM4.Text) + 1); //adjusting to real time
             }      
-            time_8.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            time_8.Text = Aux_dateTime.ToString("HH:mm");
             Aux_dateTime = Aux_dateTime.AddMinutes(3);
-            time_9.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            time_9.Text = Aux_dateTime.ToString("HH:mm");
             Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(txt_NVC1.Text));
             if ((txt_NVC2.Text == null) || (txt_NVC2.Text == ""))
             {
@@ -1641,15 +1724,15 @@ namespace Project_Insight
             }
             else
             {
-                time_10.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+                time_10.Text = Aux_dateTime.ToString("HH:mm");
                 Aux_dateTime = Aux_dateTime.AddMinutes(Get_time_from_string(txt_NVC2.Text));
             }
             Aux_dateTime = Aux_dateTime.AddMinutes(1); //adjusting to real time
-            time_11.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            time_11.Text = Aux_dateTime.ToString("HH:mm");
             Aux_dateTime = Aux_dateTime.AddMinutes(30);
-            time_12.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            time_12.Text = Aux_dateTime.ToString("HH:mm");
             Aux_dateTime = Aux_dateTime.AddMinutes(3);
-            time_13.Text = Aux_dateTime.Hour.ToString() + ":" + Aux_dateTime.Minute.ToString();
+            time_13.Text = Aux_dateTime.ToString("HH:mm");
         }
 
         public int Get_time_from_string(string Str)
@@ -1704,29 +1787,30 @@ namespace Project_Insight
             }
         }
 
-        /*private void Open_DB()
+        /*ToDo*/
+        public void AutoFill_Handler()
         {
-            if (!DB_form_show)
+            Notify("Executing AutoFill_Handler");
+            switch (tab_meeting)
             {
-                DB_form_show = true;
-                //timer_Form2.Enabled = true;
-                DB_Form.Show();
+                case 0:
+                    {
+
+                        break;
+                    }
+                case 1:
+                    {
+
+                        break;
+                    }
+                case 2:
+                    {
+
+                        break;
+                    }
             }
         }
-
-        private void timer_Form2_Tick(object sender, EventArgs e)
-        {
-            if (message_form2 != null)
-            {
-                Notify(message_form2);
-                message_form2 = null;
-            }
-            if (!DB_form_show)
-            {
-                timer_Form2.Enabled = false;
-            }
-        }*/
-
+        
         /*--------------------------------------- Week Handlers  ---------------------------------------*/
 
         /*Function so set local variables' info into form*/
@@ -1805,47 +1889,65 @@ namespace Project_Insight
                                     break;
                                 }
                         }
+                        Random rnd = new Random();
+                        int rnd_pr = rnd.Next(3, 5);
+                        Presenter((p)rnd_pr);
                         lun = 1;
                         break;
                     }
                 case 2:
                     {
-                        txt_Aseo_1.Text = AC_mes.Semana1.Cap_Aseo;
+                        lbl_Dia_L_1.Text = "Dia: " + meetings_days[0, 0].ToString("dddd, dd MMMM");
+                        lbl_Dia_S_1.Text = "Dia: " + meetings_days[0, 1].ToString("dddd, dd MMMM");
+                        txt_Aseo_L_1.Text = AC_mes.Semana1.Cp_Aseo_VyM;
                         txt_Cap_L_1.Text = AC_mes.Semana1.Vym_Cap;
                         txt_AC1_L_1.Text = AC_mes.Semana1.Vym_Izq;
                         txt_AC2_L_1.Text = AC_mes.Semana1.Vym_Der;
+                        txt_Aseo_S_1.Text = AC_mes.Semana1.Cp_Aseo_RP;
                         txt_Cap_S_1.Text = AC_mes.Semana1.Rp_Cap;
                         txt_AC1_S_1.Text = AC_mes.Semana1.Rp_Izq;
                         txt_AC2_S_1.Text = AC_mes.Semana1.Rp_Der;
 
-                        txt_Aseo_2.Text = AC_mes.Semana2.Cap_Aseo;
+                        lbl_Dia_L_2.Text = "Dia: " + meetings_days[1, 0].ToString("dddd, dd MMMM");
+                        lbl_Dia_S_2.Text = "Dia: " + meetings_days[1, 1].ToString("dddd, dd MMMM");
+                        txt_Aseo_L_2.Text = AC_mes.Semana2.Cp_Aseo_VyM;
                         txt_Cap_L_2.Text = AC_mes.Semana2.Vym_Cap;
                         txt_AC1_L_2.Text = AC_mes.Semana2.Vym_Izq;
                         txt_AC2_L_2.Text = AC_mes.Semana2.Vym_Der;
+                        txt_Aseo_S_2.Text = AC_mes.Semana2.Cp_Aseo_RP;
                         txt_Cap_S_2.Text = AC_mes.Semana2.Rp_Cap;
                         txt_AC1_S_2.Text = AC_mes.Semana2.Rp_Izq;
                         txt_AC2_S_2.Text = AC_mes.Semana2.Rp_Der;
 
-                        txt_Aseo_3.Text = AC_mes.Semana3.Cap_Aseo;
+                        lbl_Dia_L_3.Text = "Dia: " + meetings_days[2, 0].ToString("dddd, dd MMMM");
+                        lbl_Dia_S_3.Text = "Dia: " + meetings_days[2, 1].ToString("dddd, dd MMMM");
+                        txt_Aseo_L_3.Text = AC_mes.Semana3.Cp_Aseo_VyM;
                         txt_Cap_L_3.Text = AC_mes.Semana3.Vym_Cap;
                         txt_AC1_L_3.Text = AC_mes.Semana3.Vym_Izq;
                         txt_AC2_L_3.Text = AC_mes.Semana3.Vym_Der;
+                        txt_Aseo_S_3.Text = AC_mes.Semana3.Cp_Aseo_RP;
                         txt_Cap_S_3.Text = AC_mes.Semana3.Rp_Cap;
                         txt_AC1_S_3.Text = AC_mes.Semana3.Rp_Izq;
                         txt_AC2_S_3.Text = AC_mes.Semana3.Rp_Der;
 
-                        txt_Aseo_4.Text = AC_mes.Semana4.Cap_Aseo;
+                        lbl_Dia_L_4.Text = "Dia: " + meetings_days[3, 0].ToString("dddd, dd MMMM");
+                        lbl_Dia_S_4.Text = "Dia: " + meetings_days[3, 1].ToString("dddd, dd MMMM");
+                        txt_Aseo_L_4.Text = AC_mes.Semana4.Cp_Aseo_VyM;
                         txt_Cap_L_4.Text = AC_mes.Semana4.Vym_Cap;
                         txt_AC1_L_4.Text = AC_mes.Semana4.Vym_Izq;
                         txt_AC2_L_4.Text = AC_mes.Semana4.Vym_Der;
+                        txt_Aseo_S_4.Text = AC_mes.Semana4.Cp_Aseo_RP;
                         txt_Cap_S_4.Text = AC_mes.Semana4.Rp_Cap;
                         txt_AC1_S_4.Text = AC_mes.Semana4.Rp_Izq;
                         txt_AC2_S_4.Text = AC_mes.Semana4.Rp_Der;
 
-                        txt_Aseo_5.Text = AC_mes.Semana5.Cap_Aseo;
+                        lbl_Dia_L_5.Text = "Dia: " + meetings_days[4, 0].ToString("dddd, dd MMMM");
+                        lbl_Dia_S_5.Text = "Dia: " + meetings_days[4, 1].ToString("dddd, dd MMMM");
+                        txt_Aseo_L_5.Text = AC_mes.Semana5.Cp_Aseo_VyM;
                         txt_Cap_L_5.Text = AC_mes.Semana5.Vym_Cap;
                         txt_AC1_L_5.Text = AC_mes.Semana5.Vym_Izq;
                         txt_AC2_L_5.Text = AC_mes.Semana5.Vym_Der;
+                        txt_Aseo_S_5.Text = AC_mes.Semana5.Cp_Aseo_RP;
                         txt_Cap_S_5.Text = AC_mes.Semana5.Rp_Cap;
                         txt_AC1_S_5.Text = AC_mes.Semana5.Rp_Izq;
                         txt_AC2_S_5.Text = AC_mes.Semana5.Rp_Der;
@@ -1862,7 +1964,7 @@ namespace Project_Insight
 
         public void VyM_Week_Handler(VyM_Sem sem)
         {
-            txt_Date.Text    = sem.Sem_Biblia;
+            txt_Lect_Sem.Text    = sem.Sem_Biblia;
             txt_Pres.Text    = sem.Presidente;
             txt_TdlB_1.Text  = sem.Discurso;
             txt_TdlB_A1.Text = sem.Discurso_A;
@@ -1971,42 +2073,47 @@ namespace Project_Insight
                     }
                 case 2:
                     {
-                        AC_mes.Semana1.Cap_Aseo = txt_Aseo_1.Text;
+                        AC_mes.Semana1.Cp_Aseo_VyM = txt_Aseo_L_1.Text;
                         AC_mes.Semana1.Vym_Cap = txt_Cap_L_1.Text;
                         AC_mes.Semana1.Vym_Izq = txt_AC1_L_1.Text;
                         AC_mes.Semana1.Vym_Der = txt_AC2_L_1.Text;
+                        AC_mes.Semana1.Cp_Aseo_RP = txt_Aseo_S_1.Text;
                         AC_mes.Semana1.Rp_Cap = txt_Cap_S_1.Text;
                         AC_mes.Semana1.Rp_Izq = txt_AC1_S_1.Text;
                         AC_mes.Semana1.Rp_Der = txt_AC2_S_1.Text;
 
-                        AC_mes.Semana2.Cap_Aseo = txt_Aseo_2.Text;
+                        AC_mes.Semana2.Cp_Aseo_VyM = txt_Aseo_L_2.Text;
                         AC_mes.Semana2.Vym_Cap = txt_Cap_L_2.Text;
                         AC_mes.Semana2.Vym_Izq = txt_AC1_L_2.Text;
                         AC_mes.Semana2.Vym_Der = txt_AC2_L_2.Text;
+                        AC_mes.Semana2.Cp_Aseo_RP = txt_Aseo_S_2.Text;
                         AC_mes.Semana2.Rp_Cap = txt_Cap_S_2.Text;
                         AC_mes.Semana2.Rp_Izq = txt_AC1_S_2.Text;
                         AC_mes.Semana2.Rp_Der = txt_AC2_S_2.Text;
 
-                        AC_mes.Semana3.Cap_Aseo = txt_Aseo_3.Text;
+                        AC_mes.Semana3.Cp_Aseo_VyM = txt_Aseo_L_3.Text;
                         AC_mes.Semana3.Vym_Cap = txt_Cap_L_3.Text;
                         AC_mes.Semana3.Vym_Izq = txt_AC1_L_3.Text;
                         AC_mes.Semana3.Vym_Der = txt_AC2_L_3.Text;
+                        AC_mes.Semana3.Cp_Aseo_RP = txt_Aseo_S_3.Text;
                         AC_mes.Semana3.Rp_Cap = txt_Cap_S_3.Text;
                         AC_mes.Semana3.Rp_Izq = txt_AC1_S_3.Text;
                         AC_mes.Semana3.Rp_Der = txt_AC2_S_3.Text;
 
-                        AC_mes.Semana4.Cap_Aseo = txt_Aseo_4.Text;
+                        AC_mes.Semana4.Cp_Aseo_VyM = txt_Aseo_L_4.Text;
                         AC_mes.Semana4.Vym_Cap = txt_Cap_L_4.Text;
                         AC_mes.Semana4.Vym_Izq = txt_AC1_L_4.Text;
                         AC_mes.Semana4.Vym_Der = txt_AC2_L_4.Text;
+                        AC_mes.Semana4.Cp_Aseo_RP = txt_Aseo_S_4.Text;
                         AC_mes.Semana4.Rp_Cap = txt_Cap_S_4.Text;
                         AC_mes.Semana4.Rp_Izq = txt_AC1_S_4.Text;
                         AC_mes.Semana4.Rp_Der = txt_AC2_S_4.Text;
 
-                        AC_mes.Semana5.Cap_Aseo = txt_Aseo_5.Text;
+                        AC_mes.Semana5.Cp_Aseo_VyM = txt_Aseo_L_5.Text;
                         AC_mes.Semana5.Vym_Cap = txt_Cap_L_5.Text;
                         AC_mes.Semana5.Vym_Izq = txt_AC1_L_5.Text;
                         AC_mes.Semana5.Vym_Der = txt_AC2_L_5.Text;
+                        AC_mes.Semana5.Cp_Aseo_RP = txt_Aseo_S_5.Text;
                         AC_mes.Semana5.Rp_Cap = txt_Cap_S_5.Text;
                         AC_mes.Semana5.Rp_Izq = txt_AC1_S_5.Text;
                         AC_mes.Semana5.Rp_Der = txt_AC2_S_5.Text;
@@ -2019,7 +2126,7 @@ namespace Project_Insight
         {
             VyM_Sem sem = new VyM_Sem();
             sem.Fecha       = lbl_DateVyM.Text;
-            sem.Sem_Biblia  = txt_Date.Text;
+            sem.Sem_Biblia  = txt_Lect_Sem.Text;
             sem.Presidente  = txt_Pres.Text;
             sem.Discurso    = txt_TdlB_1.Text;
             sem.Discurso_A  = txt_TdlB_A1.Text;
@@ -2031,6 +2138,8 @@ namespace Project_Insight
             sem.SMM2_A      = txt_SMM_A2.Text;
             sem.SMM3        = txt_SMM3.Text;
             sem.SMM3_A      = txt_SMM_A3.Text;
+            sem.SMM4        = txt_SMM4.Text;
+            sem.SMM4_A      = txt_SMM_A4.Text;
             sem.NVC1        = txt_NVC1.Text;
             sem.NVC1_A      = txt_NVC_A1.Text;
             sem.NVC2        = txt_NVC2.Text;

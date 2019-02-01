@@ -81,31 +81,27 @@ namespace Project_Insight.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Jose Luis Mares
-        ///Orlando Robert
-        ///Cesar Mares
-        ///Maximino Jimenez
-        ///Jose Cruz Villeda
-        ///Omar Belin
+        ///   Looks up a localized string similar to Jose Luis Mares,0,0,0,0,0,0
+        ///Cesar Mares,0,0,0,0,0,0
+        ///Roberto Meza,0,0,0,0,0,0
+        ///Jose Villeda,0,0,0,0,0,0
+        ///Max Jimenez,0,0,0,0,0,0
+        ///Omar Belin,0,0,0,0,0,0
+        ///Orlando Robert,0,0,0,0,0,0
         ///end section
-        ///Mario Flores
-        ///Hugo Robert
-        ///Primitivo Martinez
-        ///Roberto Meza
-        ///Noel Belin
+        ///Mario Flores,0,0,0,0,0,0
+        ///Primitivo Martinez,0,0,0,0,0,0
+        ///Axel Jimenez,0,0,0,0,0,0
+        ///Noel Belin,0,0,0,0,0,0
+        ///Hugo Robert,0,0,0,0,0,0
         ///end section
-        ///Adolfo Morales Garcia
-        ///Antonio Cordova Garcia
-        ///Arturo Velino Garcia España
-        ///Axel Jimenez Cruz
-        ///Horacio Martinez Bautista
-        ///Luis Antonio Castañeda Jimenez
-        ///Martin Abraham Martinez Lopez
-        ///Ronaldo Jahaziel Martinez Aguas
-        ///Saul Alejandro Garcia Nieves
-        ///Claudio Alonso Vargas
-        ///Francisco Perez Hernandez
-        ///Jesus David Rangel R [rest of string was truncated]&quot;;.
+        ///Arturo Garcia EspaÃ±a,0,0,0,0
+        ///Antonio Cordova,0,0,0,0
+        ///Saul Garcia,0,0,0,0
+        ///Ronaldo Jaziel Martinez,0,0,0,0
+        ///Claudio Alonso,0,0,0,0
+        ///Adolfo Morales,0,0,0,0
+        ///Juan Rangel, [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string DB {
             get {
@@ -159,6 +155,16 @@ namespace Project_Insight.Properties {
         internal static System.Drawing.Bitmap Hybrid {
             get {
                 object obj = ResourceManager.GetObject("Hybrid", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap loading {
+            get {
+                object obj = ResourceManager.GetObject("loading", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

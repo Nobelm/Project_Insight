@@ -8,36 +8,23 @@ namespace Project_Insight
 {
     public class DB_Mns
     {
-        public string Nombre { get; set; }
-        public DateTime Capitan { get; set; }
-        public DateTime Acom { get; set; }
-        public DateTime Pres_RP { get; set; }
-        public DateTime Lec_RP { get; set; }
-        public DateTime Ora_RP { get; set; }
+        public string Nombre     { get; set; }
+        public string Capitan  { get; set; }
+        public string Acom     { get; set; }
+        public string Pres_RP  { get; set; }
+        public string Lec_RP   { get; set; }
+        public string Ora_RP   { get; set; }
+        public string Cpt_Aseo { get; set; }
 
-        public DB_Mns(string _Nombre, string _Capitan, string _Acom, string _Pres_RP, string _Lec_RP, string _Ora_RP)
+        public DB_Mns(string _Nombre, string _Capitan, string _Acom, string _Pres_RP, string _Lec_RP, string _Ora_RP, string _Cpt_Aseo)
         {
-            Nombre = _Nombre;
-            if (_Capitan.Contains('/'))
-            {
-                Capitan = Convert.ToDateTime(_Capitan);
-            }
-            if (_Acom.Contains('/'))
-            {
-                Acom = Convert.ToDateTime(_Acom);
-            }
-            if (_Pres_RP.Contains('/'))
-            {
-                Pres_RP = Convert.ToDateTime(_Pres_RP);
-            }
-            if (_Lec_RP.Contains('/'))
-            {
-                Lec_RP = Convert.ToDateTime(_Lec_RP);
-            }
-            if (_Ora_RP.Contains('/'))
-            {
-                Ora_RP = Convert.ToDateTime(_Ora_RP);
-            }
+            Nombre   = _Nombre;
+            Capitan  = _Capitan;
+            Acom     = _Acom;
+            Pres_RP  = _Pres_RP;
+            Lec_RP   = _Lec_RP;
+            Ora_RP   = _Ora_RP;
+            Cpt_Aseo = _Cpt_Aseo;
         }
     }
 }

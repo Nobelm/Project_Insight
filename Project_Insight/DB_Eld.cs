@@ -8,37 +8,24 @@ namespace Project_Insight
 {
     public class DB_Eld
     {
-        public string Nombre { get; set; }
-        public DateTime Capitan { get; set; }
-        public DateTime Pres_RP { get; set; }
-        public DateTime Lec_RP { get; set; }
-        public DateTime Ora_RP { get; set; }
-        public DateTime Atalaya { get; set; }
+        public string Nombre     { get; set; }
+        public string Capitan  { get; set; }
+        public string Pres_RP  { get; set; }
+        public string Lec_RP   { get; set; }
+        public string Ora_RP   { get; set; }
+        public string Atalaya  { get; set; }
+        public string Cpt_Aseo { get; set; }
 
 
-        public DB_Eld(string _Nombre, string _Capitan, string _Pres_RP, string _Lec_RP, string _Ora_RP, string _Atalaya)
+        public DB_Eld(string _Nombre, string _Capitan, string _Pres_RP, string _Lec_RP, string _Ora_RP, string _Atalaya, string _Cpt_Aseo)
         {
-            Nombre = _Nombre;
-            if (_Capitan.Contains('/'))
-            {
-                Capitan = Convert.ToDateTime(_Capitan);
-            }
-            if (_Pres_RP.Contains('/'))
-            {
-                Pres_RP = Convert.ToDateTime(_Pres_RP);
-            }
-            if (_Lec_RP.Contains('/'))
-            {
-                Lec_RP = Convert.ToDateTime(_Lec_RP);
-            }
-            if (_Ora_RP.Contains('/'))
-            {
-                Ora_RP = Convert.ToDateTime(_Ora_RP);
-            }
-            if (_Atalaya.Contains('/'))
-            {
-                Atalaya = Convert.ToDateTime(_Atalaya);
-            }
+            Nombre   = _Nombre;
+            Capitan  = _Capitan;
+            Pres_RP  = _Pres_RP;
+            Lec_RP   = _Lec_RP;
+            Ora_RP   = _Ora_RP;
+            Atalaya  = _Atalaya;
+            Cpt_Aseo = _Cpt_Aseo;
         }
     }
 }

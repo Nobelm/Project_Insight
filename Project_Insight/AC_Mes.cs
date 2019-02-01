@@ -17,12 +17,13 @@ namespace Project_Insight
 
     public class AC_Sem
     {
-        public string Cap_Aseo { get; set; }
-        public string Vym_Cap { get; set; }
-        public string Vym_Izq { get; set; }
-        public string Vym_Der { get; set; }
-        public string Rp_Cap { get; set; }
-        public string Rp_Izq { get; set; }
-        public string Rp_Der { get; set; }
+        public string Cp_Aseo_VyM  { get; set; }
+        public string Cp_Aseo_RP   { get; set; }
+        public string Vym_Cap      { get; set; }
+        public string Vym_Izq      { get; set; }
+        public string Vym_Der      { get; set; }
+        public string Rp_Cap       { get; set; }
+        public string Rp_Izq       { get; set; }
+        public string Rp_Der       { get; set; }
     }
 }
