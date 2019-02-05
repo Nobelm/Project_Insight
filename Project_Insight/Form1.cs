@@ -348,6 +348,7 @@ namespace Project_Insight
             log_txtBx.SelectionStart = log_txtBx.Text.Length;
             log_txtBx.ScrollToCaret();
             aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
+            aux = aux.Replace(".-", ".|");
             while (loading < 100)
             {
                 aux += loading.ToString() + " % ...\\";
@@ -615,6 +616,7 @@ namespace Project_Insight
                             }
                         case "afil":
                             {
+                                /*Create a new thread for autofill*/
                                 AutoFill_Handler();
                                 break;
                             }
@@ -1791,6 +1793,8 @@ namespace Project_Insight
         public void AutoFill_Handler()
         {
             Notify("Executing AutoFill_Handler");
+            Pre_save_info();
+            /*Use Sem object to compare fields that are null or empty, create functions to perform autofill in 5 weeks*/
             switch (tab_meeting)
             {
                 case 0:
@@ -1803,6 +1807,7 @@ namespace Project_Insight
 
                         break;
                     }
+
                 case 2:
                     {
 
