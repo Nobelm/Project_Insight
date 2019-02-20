@@ -10,91 +10,161 @@ using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
 using System.IO;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
 
 namespace Project_Insight
 {
     public partial class DB_Form : Form
     {
-        public List<DB_Eld> Elders = new List<DB_Eld>();
-        public List<DB_Mns> Ministerials = new List<DB_Mns>();
-        public List<DB_Gnr> Generals = new List<DB_Gnr>();
-        //public List<DB_Cln> Cleaners = new List <DB_Cln>();
+        private Excel.Application DBApp;
+        private Excel.Workbook DBBooks = null;
+        private Excel.Sheets DBSheets;
+        private Excel.Worksheet Sheet_DB;
+        private Excel.Range range_1;
+        private object[,] cellValue_1 = null;
+        public static bool db_open = false;
 
-        public string Path_CSV = Application.StartupPath + "\\\\DB.csv";
+        public static List<DB_Eld> Elders = new List<DB_Eld>();
+        public static List<DB_Mns> Ministerials = new List<DB_Mns>();
+        public static List<DB_Gnr> Generals = new List<DB_Gnr>();
+
+        public string Path_DB = Application.StartupPath + "\\\\DB.xlsx";
+        CultureInfo en = new CultureInfo("es-MX");
 
         public DB_Form()
         {
-            CultureInfo en = new CultureInfo("es-MX");
             Thread.CurrentThread.CurrentCulture = en;
             InitializeComponent();
         }
 
         private void DB_Form_Load(object sender, EventArgs e)
         {
-            Read_CSV();
+            DB_Control(false);
         }
 
 
         private void DB_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            DBBooks.Close(0);
+            DBApp.Quit();
+            Marshal.ReleaseComObject(Sheet_DB);
+            Marshal.ReleaseComObject(DBBooks);
+            Marshal.ReleaseComObject(DBApp);
         }
 
-        public async void Read_CSV()
+        public void DB_Control(bool save)
         {
-            StreamReader reader;
-            bool read;
-            int lenght = File.ReadAllLines(Path_CSV).Length;
-            string temp = "";
-            await Task.Delay(10);
-            reader = new StreamReader(Path_CSV);
-            short iterator = 0;
-            for (int i = 0; i < lenght; i++)
+            if (!db_open)
             {
+                db_open = true;
+                DBApp = new Excel.Application();
+                DBBooks = (Excel.Workbook)DBApp.Workbooks.Open(Path_DB, 0, false, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
+                DBSheets = DBBooks.Worksheets;
+                Sheet_DB = (Excel.Worksheet)DBSheets.get_Item(1);
+                range_1 = Sheet_DB.get_Range("A1", "G137");
+            }
+            if (save)
+            {
+                Write_DB();
+            }
+            else
+            {
+                cellValue_1 = (System.Object[,])range_1.get_Value();
+                Read_DB();
+            }
+        }
+
+        public void Read_DB()
+        {
+            bool read;
+            string data = "";
+            short iterator = 0;
+            for (int i = 1; i < 50; i++)
+            {
+                if (cellValue_1[i, 1] == null)
+                {
+                    break;
+                }
+                data = cellValue_1[i, 1].ToString();
                 read = true;
-                temp = reader.ReadLine();
-                string[] data = temp.Split(',');
-                if (data[0] == "end section")
+                if (data == "end section")
                 {
                     iterator++;
                     read = false;
                 }
                 if (read)
                 {
+
                     switch (iterator)
                     {
                         case 0:
                             {
-                                Elders.Add(new DB_Eld(data[0], data[1], data[2], data[3], data[4], data[5], data[6]));
+                                Elders.Add(new DB_Eld(cellValue_1[i, 1].ToString(), cellValue_1[i, 2].ToString(), cellValue_1[i, 3].ToString(), cellValue_1[i, 4].ToString(), cellValue_1[i, 5].ToString(), cellValue_1[i, 6].ToString(), cellValue_1[i, 7].ToString()));
                                 break;
                             }
                         case 1:
                             {
-                                Ministerials.Add(new DB_Mns(data[0], data[1], data[2], data[3], data[4], data[5], data[6]));
+                                Ministerials.Add(new DB_Mns(cellValue_1[i, 1].ToString(), cellValue_1[i, 2].ToString(), cellValue_1[i, 3].ToString(), cellValue_1[i, 4].ToString(), cellValue_1[i, 5].ToString(), cellValue_1[i, 7].ToString(), cellValue_1[i, 7].ToString()));
                                 break;
                             }
                         case 2:
                             {
-                                Generals.Add(new DB_Gnr(data[0], data[1], data[2], data[3], data[4]));
+                                Generals.Add(new DB_Gnr(cellValue_1[i, 1].ToString(), cellValue_1[i, 2].ToString(), cellValue_1[i, 3].ToString(), cellValue_1[i, 4].ToString(), cellValue_1[i, 5].ToString()));
                                 break;
                             }
                     }
                 }
             }
-
-            reader.Close();
-            Eld_Grid.DataSource = Elders;
-            Min_Grid.DataSource = Ministerials;
-            Gen_Grid.DataSource = Generals;
-            Eld_Grid.Refresh();
-            Min_Grid.Refresh();
-            Gen_Grid.Refresh();
+            Refresh_Grid();
             /*Message: "Read Succesfull"*/
         }
 
-        public async void Persistence_VyM(VyM_Sem sem, String date)
+        public void Write_DB()
         {
-            await Task.Delay(10);
+            range_1.NumberFormat = "dd/mm/yyyy";
+            int aux = 1, i = 0;
+            for (i = 0; i < Elders.Count; i++)
+            {
+                Sheet_DB.Cells[i + aux, 1] = '\'' + Elders[i].Nombre;
+                Sheet_DB.Cells[i + aux, 2] = '\'' + Elders[i].Capitan.ToString("dd/MM/yyyy", en);
+                Sheet_DB.Cells[i + aux, 3] = '\'' + Elders[i].Pres_RP.ToString("dd/MM/yyyy", en);
+                Sheet_DB.Cells[i + aux, 4] = '\'' + Elders[i].Lec_RP.ToString("dd/MM/yyyy");
+                Sheet_DB.Cells[i + aux, 5] = '\'' + Elders[i].Ora_RP.ToString("dd/MM/yyyy");
+                Sheet_DB.Cells[i + aux, 6] = '\'' + Elders[i].Atalaya .ToString("dd/MM/yyyy");
+                Sheet_DB.Cells[i + aux, 7] = '\'' + Elders[i].Cpt_Aseo.ToString("dd/MM/yyyy");
+            }
+            aux += i++;
+            Sheet_DB.Cells[aux, 1] = "end section";
+            aux++;
+            for (i = 0; i < Ministerials.Count; i++)
+            {
+                Sheet_DB.Cells[i + aux, 1] = '\'' + Ministerials[i].Nombre;
+                Sheet_DB.Cells[i + aux, 2] = '\'' + Ministerials[i].Capitan.ToString("dd/MM/yyyy");
+                Sheet_DB.Cells[i + aux, 3] = '\'' + Ministerials[i].Acom.ToString("dd/MM/yyyy");
+                Sheet_DB.Cells[i + aux, 4] = '\'' + Ministerials[i].Pres_RP.ToString("dd/MM/yyyy");
+                Sheet_DB.Cells[i + aux, 5] = '\'' + Ministerials[i].Lec_RP.ToString("dd/MM/yyyy");
+                Sheet_DB.Cells[i + aux, 6] = '\'' + Ministerials[i].Ora_RP.ToString("dd/MM/yyyy");
+                Sheet_DB.Cells[i + aux, 7] = '\'' + Ministerials[i].Cpt_Aseo.ToString("dd/MM/yyyy");
+            }
+            aux += i++;
+            Sheet_DB.Cells[aux, 1] = "end section";
+            aux++;
+            for (i = 0; i < Generals.Count; i++)
+            {
+                Sheet_DB.Cells[i + aux, 1] = '\'' + Generals[i].Nombre;
+                Sheet_DB.Cells[i + aux, 2] = '\'' + Generals[i].Acom.ToString("dd/MM/yyyy");
+                Sheet_DB.Cells[i + aux, 3] = '\'' + Generals[i].Lec_RP.ToString("dd/MM/yyyy");
+                Sheet_DB.Cells[i + aux, 4] = '\'' + Generals[i].Lec_VyM.ToString("dd/MM/yyyy");
+                Sheet_DB.Cells[i + aux, 5] = '\'' + Generals[i].Ora_VyM.ToString("dd/MM/yyyy");
+            }
+
+            DBBooks.Save();
+            DB_Control(false);
+        }
+
+        public void Persistence_VyM(VyM_Sem sem, DateTime date)
+        {
             for (int i = 0; i < Generals.Count; i++)
             {
                 if (Generals[i].Nombre == sem.Libro_L)
@@ -106,11 +176,11 @@ namespace Project_Insight
                     Generals[i].Ora_VyM = date;
                 }
             }
+            Refresh_Grid();
         }
 
-        public async void Persistence_RP(RP_Sem sem, string date)
+        public void Persistence_RP(RP_Sem sem, DateTime date)
         {
-            await Task.Delay(10);
             for (int i = 0; i < Elders.Count; i++)
             {
                 if (Elders[i].Nombre == sem.Presidente)
@@ -152,28 +222,28 @@ namespace Project_Insight
                     Generals[i].Lec_RP = date;
                 }
             }
+            Refresh_Grid();
         }
 
-        public async void Persistence_AC(AC_Sem sem, string date_vym, string date_rp)
+        public void Persistence_AC(AC_Sem sem, DateTime date_vym, DateTime date_rp)
         {
-            await Task.Delay(10);
             for (int i = 0; i < Elders.Count; i++)
             {
                 if (Elders[i].Nombre == sem.Vym_Cap)
                 {
                     Elders[i].Capitan = date_vym;
                 }
-                else if (Elders[i].Nombre == sem.Rp_Cap)
+                if (Elders[i].Nombre == sem.Rp_Cap)
                 {
                     Elders[i].Capitan = date_rp;
                 }
-                else if (Elders[i].Nombre == sem.Cp_Aseo_VyM)
+                if (Elders[i].Nombre == sem.Cp_Aseo_VyM)
                 {
                     Elders[i].Cpt_Aseo = date_vym;
                 }
-                else if (Elders[i].Nombre == sem.Cp_Aseo_RP)
+                if (Elders[i].Nombre == sem.Cp_Aseo_RP)
                 {
-                    Elders[i].Capitan = date_rp;
+                    Elders[i].Cpt_Aseo = date_rp;
                 }
             }
             for (int i = 0; i < Ministerials.Count; i++)
@@ -182,23 +252,23 @@ namespace Project_Insight
                 {
                     Ministerials[i].Capitan = date_vym;
                 }
-                else if (Ministerials[i].Nombre == sem.Rp_Cap)
+                if (Ministerials[i].Nombre == sem.Rp_Cap)
                 {
                     Ministerials[i].Capitan = date_rp;
                 }
-                else if (Ministerials[i].Nombre == sem.Cp_Aseo_VyM)
+                if (Ministerials[i].Nombre == sem.Cp_Aseo_VyM)
                 {
                     Ministerials[i].Cpt_Aseo = date_vym;
                 }
-                else if (Ministerials[i].Nombre == sem.Cp_Aseo_RP)
+                if (Ministerials[i].Nombre == sem.Cp_Aseo_RP)
                 {
                     Ministerials[i].Cpt_Aseo = date_rp;
                 }
-                else if (Ministerials[i].Nombre == sem.Rp_Der || Ministerials[i].Nombre == sem.Rp_Izq)
+                if (Ministerials[i].Nombre == sem.Rp_Der || Ministerials[i].Nombre == sem.Rp_Izq)
                 {
                     Ministerials[i].Acom = date_rp;
                 }
-                else if (Ministerials[i].Nombre == sem.Vym_Der || Ministerials[i].Nombre == sem.Vym_Izq)
+                if (Ministerials[i].Nombre == sem.Vym_Der || Ministerials[i].Nombre == sem.Vym_Izq)
                 {
                     Ministerials[i].Acom = date_vym;
                 }
@@ -209,13 +279,24 @@ namespace Project_Insight
                 {
                     Generals[i].Acom = date_rp;
                 }
-                else if (Generals[i].Nombre == sem.Vym_Der || Generals[i].Nombre == sem.Vym_Izq)
+                if (Generals[i].Nombre == sem.Vym_Der || Generals[i].Nombre == sem.Vym_Izq)
                 {
                     Generals[i].Acom = date_vym;
                 }
             }
+            Refresh_Grid();
         }
-        
+
+        public void Refresh_Grid()
+        {
+            Eld_Grid.DataSource = Elders;
+            Min_Grid.DataSource = Ministerials;
+            Gen_Grid.DataSource = Generals;
+            Eld_Grid.Refresh();
+            Min_Grid.Refresh();
+            Gen_Grid.Refresh();
+        }
+        /*
         public void Write_CSV()
         {
             StreamWriter writer = new StreamWriter(Path_CSV);
@@ -233,16 +314,16 @@ namespace Project_Insight
             {
                 writer.WriteLine(Generals[i].Nombre + "," + Generals[i].Acom + "," + Generals[i].Lec_RP + "," + Generals[i].Lec_VyM + "," + Generals[i].Ora_VyM);
             }
-            writer.Close();
-            /*Message: "Write Succesfull"*/
+            writer.Close();*/
+        /*Message: "Write Succesfull"
         }
 
         public void Edit_DB()
-        {
-            Eld_Grid.ReadOnly = false;
-            Min_Grid.ReadOnly = false;
-            Gen_Grid.ReadOnly = false;
-        }
+            {
+                Eld_Grid.ReadOnly = false;
+                Min_Grid.ReadOnly = false;
+                Gen_Grid.ReadOnly = false;
+            }
 
         public void Save_DB()
         {
@@ -253,6 +334,6 @@ namespace Project_Insight
             Min_Grid.ReadOnly = true;
             Gen_Grid.ReadOnly = true;
             Write_CSV();
-        }
+        }*/
     }
 }

@@ -39,5 +39,76 @@ namespace Project_Insight
         public string Libro_A { get; set; }
         public string Libro_L { get; set; } //Lector
         public string Oracion { get; set; }
+
+        public void AutoFill()
+        {
+            List<Person> People = new List<Person>();
+            List<string> Asignee = new List<string>
+            {
+                Lectura,
+                SMM1_A,
+                SMM2_A,
+                SMM3_A,
+                SMM4_A
+            };
+
+            if ((Libro_L == null) || (Libro_L == ""))
+            {
+                foreach (DB_Gnr item in DB_Form.Generals)
+                {
+                    Person ps = new Person
+                    {
+                        Name = item.Nombre,
+                        Date = item.Lec_VyM,
+                    };
+                    People.Add(ps);
+                }
+                People.Sort(delegate (Person ps1, Person ps2)
+                {
+                    return DateTime.Compare(ps1.Date, ps2.Date);
+                });
+                for (int i = 0; i < People.Count; i++)
+                {
+                    if (!Asignee.Contains(People[i].Name))
+                    {
+                        Libro_L = People[i].Name;
+                        Asignee.Add(Libro_L);
+                        break;
+                    }
+                }
+            }
+            People.Clear();
+            if ((Oracion == null) || (Oracion == ""))
+            {
+                foreach (DB_Gnr item in DB_Form.Generals)
+                {
+                    Person ps = new Person
+                    {
+                        Name = item.Nombre,
+                        Date = item.Ora_VyM,
+                    };
+                    People.Add(ps);
+                }
+                People.Sort(delegate (Person ps1, Person ps2)
+                {
+                    return DateTime.Compare(ps1.Date, ps2.Date);
+                });
+                for (int i = 0; i < People.Count; i++)
+                {
+                    if (!Asignee.Contains(People[i].Name))
+                    {
+                        Oracion = People[i].Name;
+                        Asignee.Add(Oracion);
+                        break;
+                    }
+                }
+            }
+        }
+
+        public class Person
+        {
+            public string Name;
+            public DateTime Date;
+        }
     }
 }

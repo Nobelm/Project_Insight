@@ -9,23 +9,33 @@ namespace Project_Insight
     public class DB_Eld
     {
         public string Nombre     { get; set; }
-        public string Capitan  { get; set; }
-        public string Pres_RP  { get; set; }
-        public string Lec_RP   { get; set; }
-        public string Ora_RP   { get; set; }
-        public string Atalaya  { get; set; }
-        public string Cpt_Aseo { get; set; }
+        public DateTime Capitan  { get; set; }
+        public DateTime Pres_RP  { get; set; }
+        public DateTime Lec_RP   { get; set; }
+        public DateTime Ora_RP   { get; set; }
+        public DateTime Atalaya  { get; set; }
+        public DateTime Cpt_Aseo { get; set; }
 
 
         public DB_Eld(string _Nombre, string _Capitan, string _Pres_RP, string _Lec_RP, string _Ora_RP, string _Atalaya, string _Cpt_Aseo)
         {
             Nombre   = _Nombre;
-            Capitan  = _Capitan;
-            Pres_RP  = _Pres_RP;
-            Lec_RP   = _Lec_RP;
-            Ora_RP   = _Ora_RP;
-            Atalaya  = _Atalaya;
-            Cpt_Aseo = _Cpt_Aseo;
+            Capitan  = GetDate(_Capitan);
+            Pres_RP  = GetDate(_Pres_RP);
+            Lec_RP   = GetDate(_Lec_RP);
+            Ora_RP   = GetDate(_Ora_RP);
+            Atalaya  = GetDate(_Atalaya);
+            Cpt_Aseo = GetDate(_Cpt_Aseo);
+        }
+
+        public DateTime GetDate(string Str)
+        {
+            DateTime date = new DateTime(2019, 01, 01);
+            if (Str.Contains('/'))
+            {
+                date = Convert.ToDateTime(Str);
+            }
+            return date;
         }
     }
 }

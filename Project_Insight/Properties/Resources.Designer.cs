@@ -81,31 +81,12 @@ namespace Project_Insight.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Jose Luis Mares,0,0,0,0,0,0
-        ///Cesar Mares,0,0,0,0,0,0
-        ///Roberto Meza,0,0,0,0,0,0
-        ///Jose Villeda,0,0,0,0,0,0
-        ///Max Jimenez,0,0,0,0,0,0
-        ///Omar Belin,0,0,0,0,0,0
-        ///Orlando Robert,0,0,0,0,0,0
-        ///end section
-        ///Mario Flores,0,0,0,0,0,0
-        ///Primitivo Martinez,0,0,0,0,0,0
-        ///Axel Jimenez,0,0,0,0,0,0
-        ///Noel Belin,0,0,0,0,0,0
-        ///Hugo Robert,0,0,0,0,0,0
-        ///end section
-        ///Arturo Garcia EspaÃ±a,0,0,0,0
-        ///Antonio Cordova,0,0,0,0
-        ///Saul Garcia,0,0,0,0
-        ///Ronaldo Jaziel Martinez,0,0,0,0
-        ///Claudio Alonso,0,0,0,0
-        ///Adolfo Morales,0,0,0,0
-        ///Juan Rangel, [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static string DB {
+        internal static byte[] DB {
             get {
-                return ResourceManager.GetString("DB", resourceCulture);
+                object obj = ResourceManager.GetObject("DB", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

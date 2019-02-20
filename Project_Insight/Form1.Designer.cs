@@ -41,12 +41,12 @@
             this.txt_NVC_A4 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
+            this.time_14 = new System.Windows.Forms.Label();
             this.time_13 = new System.Windows.Forms.Label();
             this.time_12 = new System.Windows.Forms.Label();
             this.time_11 = new System.Windows.Forms.Label();
             this.time_10 = new System.Windows.Forms.Label();
             this.time_9 = new System.Windows.Forms.Label();
-            this.time_8 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txt_NVC_A3 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@
             this.txt_NVC_A1 = new System.Windows.Forms.TextBox();
             this.txt_NVC1 = new System.Windows.Forms.TextBox();
             this.Seamos_Maestros = new System.Windows.Forms.GroupBox();
-            this.time7_5 = new System.Windows.Forms.Label();
+            this.time_8 = new System.Windows.Forms.Label();
             this.txt_SMM_A4 = new System.Windows.Forms.TextBox();
             this.txt_SMM4 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -127,20 +127,11 @@
             this.txt_Aseo_S_3 = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.txt_Aseo_S_4 = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.txt_Aseo_S_5 = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.txt_Aseo_S_1 = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txt_AC2_S_5 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_S_5 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_S_5 = new System.Windows.Forms.TextBox();
             this.txt_AC2_S_4 = new System.Windows.Forms.TextBox();
             this.txt_AC1_S_4 = new System.Windows.Forms.TextBox();
             this.txt_Cap_S_4 = new System.Windows.Forms.TextBox();
@@ -153,13 +144,9 @@
             this.txt_AC2_S_1 = new System.Windows.Forms.TextBox();
             this.txt_AC1_S_1 = new System.Windows.Forms.TextBox();
             this.txt_Cap_S_1 = new System.Windows.Forms.TextBox();
-            this.txt_Aseo_L_5 = new System.Windows.Forms.TextBox();
             this.txt_Aseo_L_4 = new System.Windows.Forms.TextBox();
             this.txt_Aseo_L_3 = new System.Windows.Forms.TextBox();
             this.txt_Aseo_L_2 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_L_5 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_L_5 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_L_5 = new System.Windows.Forms.TextBox();
             this.txt_AC2_L_4 = new System.Windows.Forms.TextBox();
             this.txt_AC1_L_4 = new System.Windows.Forms.TextBox();
             this.txt_Cap_L_4 = new System.Windows.Forms.TextBox();
@@ -174,11 +161,6 @@
             this.txt_Cap_L_1 = new System.Windows.Forms.TextBox();
             this.txt_Aseo_L_1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.lbl_Dia_S_5 = new System.Windows.Forms.Label();
-            this.label144 = new System.Windows.Forms.Label();
-            this.lbl_Dia_L_5 = new System.Windows.Forms.Label();
-            this.label146 = new System.Windows.Forms.Label();
-            this.label147 = new System.Windows.Forms.Label();
             this.label130 = new System.Windows.Forms.Label();
             this.lbl_Dia_S_4 = new System.Windows.Forms.Label();
             this.label132 = new System.Windows.Forms.Label();
@@ -215,6 +197,25 @@
             this.txt_Command = new System.Windows.Forms.TextBox();
             this.lbl_Week = new System.Windows.Forms.Label();
             this.lbl_Month = new System.Windows.Forms.Label();
+            this.AC_grpbx_wk5 = new System.Windows.Forms.GroupBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.txt_Aseo_S_5 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txt_AC2_S_5 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_S_5 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_S_5 = new System.Windows.Forms.TextBox();
+            this.txt_Aseo_L_5 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_L_5 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_L_5 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_L_5 = new System.Windows.Forms.TextBox();
+            this.lbl_Dia_S_5 = new System.Windows.Forms.Label();
+            this.label144 = new System.Windows.Forms.Label();
+            this.lbl_Dia_L_5 = new System.Windows.Forms.Label();
+            this.label146 = new System.Windows.Forms.Label();
+            this.label147 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPresenter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.protoss_Frame)).BeginInit();
             this.tab_Control.SuspendLayout();
@@ -226,6 +227,7 @@
             this.Tab_RP.SuspendLayout();
             this.RP_1.SuspendLayout();
             this.Tab_AC.SuspendLayout();
+            this.AC_grpbx_wk5.SuspendLayout();
             this.SuspendLayout();
             // 
             // log_txtBx
@@ -298,12 +300,12 @@
             this.Nuestra_Vida.Controls.Add(this.txt_NVC_A4);
             this.Nuestra_Vida.Controls.Add(this.label18);
             this.Nuestra_Vida.Controls.Add(this.label41);
+            this.Nuestra_Vida.Controls.Add(this.time_14);
             this.Nuestra_Vida.Controls.Add(this.time_13);
             this.Nuestra_Vida.Controls.Add(this.time_12);
             this.Nuestra_Vida.Controls.Add(this.time_11);
             this.Nuestra_Vida.Controls.Add(this.time_10);
             this.Nuestra_Vida.Controls.Add(this.time_9);
-            this.Nuestra_Vida.Controls.Add(this.time_8);
             this.Nuestra_Vida.Controls.Add(this.label14);
             this.Nuestra_Vida.Controls.Add(this.txt_NVC_A3);
             this.Nuestra_Vida.Controls.Add(this.label25);
@@ -364,69 +366,69 @@
             // 
             // time_13
             // 
+            this.time_14.AutoSize = true;
+            this.time_14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time_14.ForeColor = System.Drawing.Color.Coral;
+            this.time_14.Location = new System.Drawing.Point(15, 174);
+            this.time_14.Name = "time_13";
+            this.time_14.Size = new System.Drawing.Size(34, 13);
+            this.time_14.TabIndex = 155;
+            this.time_14.Text = "00.00";
+            // 
+            // time_12
+            // 
             this.time_13.AutoSize = true;
             this.time_13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time_13.ForeColor = System.Drawing.Color.Coral;
-            this.time_13.Location = new System.Drawing.Point(15, 174);
-            this.time_13.Name = "time_13";
+            this.time_13.Location = new System.Drawing.Point(15, 144);
+            this.time_13.Name = "time_12";
             this.time_13.Size = new System.Drawing.Size(34, 13);
-            this.time_13.TabIndex = 155;
+            this.time_13.TabIndex = 154;
             this.time_13.Text = "00.00";
             // 
-            // time_12
+            // time_11
             // 
             this.time_12.AutoSize = true;
             this.time_12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time_12.ForeColor = System.Drawing.Color.Coral;
-            this.time_12.Location = new System.Drawing.Point(15, 144);
-            this.time_12.Name = "time_12";
+            this.time_12.Location = new System.Drawing.Point(15, 114);
+            this.time_12.Name = "time_11";
             this.time_12.Size = new System.Drawing.Size(34, 13);
-            this.time_12.TabIndex = 154;
+            this.time_12.TabIndex = 152;
             this.time_12.Text = "00.00";
             // 
-            // time_11
+            // time_10
             // 
             this.time_11.AutoSize = true;
             this.time_11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time_11.ForeColor = System.Drawing.Color.Coral;
-            this.time_11.Location = new System.Drawing.Point(15, 114);
-            this.time_11.Name = "time_11";
+            this.time_11.Location = new System.Drawing.Point(15, 84);
+            this.time_11.Name = "time_10";
             this.time_11.Size = new System.Drawing.Size(34, 13);
-            this.time_11.TabIndex = 152;
+            this.time_11.TabIndex = 151;
             this.time_11.Text = "00.00";
             // 
-            // time_10
+            // time_9
             // 
             this.time_10.AutoSize = true;
             this.time_10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time_10.ForeColor = System.Drawing.Color.Coral;
-            this.time_10.Location = new System.Drawing.Point(15, 84);
-            this.time_10.Name = "time_10";
+            this.time_10.Location = new System.Drawing.Point(15, 54);
+            this.time_10.Name = "time_9";
             this.time_10.Size = new System.Drawing.Size(34, 13);
-            this.time_10.TabIndex = 151;
+            this.time_10.TabIndex = 150;
             this.time_10.Text = "00.00";
             // 
-            // time_9
+            // time_8
             // 
             this.time_9.AutoSize = true;
             this.time_9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time_9.ForeColor = System.Drawing.Color.Coral;
-            this.time_9.Location = new System.Drawing.Point(15, 54);
-            this.time_9.Name = "time_9";
+            this.time_9.Location = new System.Drawing.Point(15, 28);
+            this.time_9.Name = "time_8";
             this.time_9.Size = new System.Drawing.Size(34, 13);
-            this.time_9.TabIndex = 150;
+            this.time_9.TabIndex = 138;
             this.time_9.Text = "00.00";
-            // 
-            // time_8
-            // 
-            this.time_8.AutoSize = true;
-            this.time_8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time_8.ForeColor = System.Drawing.Color.Coral;
-            this.time_8.Location = new System.Drawing.Point(15, 28);
-            this.time_8.Name = "time_8";
-            this.time_8.Size = new System.Drawing.Size(34, 13);
-            this.time_8.TabIndex = 138;
-            this.time_8.Text = "00.00";
             // 
             // label14
             // 
@@ -513,7 +515,7 @@
             // Seamos_Maestros
             // 
             this.Seamos_Maestros.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Seamos_Maestros.Controls.Add(this.time7_5);
+            this.Seamos_Maestros.Controls.Add(this.time_8);
             this.Seamos_Maestros.Controls.Add(this.txt_SMM_A4);
             this.Seamos_Maestros.Controls.Add(this.txt_SMM4);
             this.Seamos_Maestros.Controls.Add(this.label19);
@@ -540,13 +542,13 @@
             // 
             // time7_5
             // 
-            this.time7_5.AutoSize = true;
-            this.time7_5.ForeColor = System.Drawing.Color.Coral;
-            this.time7_5.Location = new System.Drawing.Point(16, 117);
-            this.time7_5.Name = "time7_5";
-            this.time7_5.Size = new System.Drawing.Size(34, 13);
-            this.time7_5.TabIndex = 141;
-            this.time7_5.Text = "00.00";
+            this.time_8.AutoSize = true;
+            this.time_8.ForeColor = System.Drawing.Color.Coral;
+            this.time_8.Location = new System.Drawing.Point(16, 117);
+            this.time_8.Name = "time7_5";
+            this.time_8.Size = new System.Drawing.Size(34, 13);
+            this.time_8.TabIndex = 141;
+            this.time_8.Text = "00.00";
             // 
             // txt_SMM_A4
             // 
@@ -1163,26 +1165,18 @@
             // Tab_AC
             // 
             this.Tab_AC.BackColor = System.Drawing.Color.DimGray;
+            this.Tab_AC.Controls.Add(this.AC_grpbx_wk5);
             this.Tab_AC.Controls.Add(this.label46);
             this.Tab_AC.Controls.Add(this.txt_Aseo_S_2);
             this.Tab_AC.Controls.Add(this.label39);
             this.Tab_AC.Controls.Add(this.txt_Aseo_S_3);
             this.Tab_AC.Controls.Add(this.label38);
             this.Tab_AC.Controls.Add(this.txt_Aseo_S_4);
-            this.Tab_AC.Controls.Add(this.label37);
-            this.Tab_AC.Controls.Add(this.txt_Aseo_S_5);
             this.Tab_AC.Controls.Add(this.label32);
             this.Tab_AC.Controls.Add(this.txt_Aseo_S_1);
-            this.Tab_AC.Controls.Add(this.label23);
             this.Tab_AC.Controls.Add(this.label21);
             this.Tab_AC.Controls.Add(this.label20);
             this.Tab_AC.Controls.Add(this.label9);
-            this.Tab_AC.Controls.Add(this.label4);
-            this.Tab_AC.Controls.Add(this.label10);
-            this.Tab_AC.Controls.Add(this.label11);
-            this.Tab_AC.Controls.Add(this.txt_AC2_S_5);
-            this.Tab_AC.Controls.Add(this.txt_AC1_S_5);
-            this.Tab_AC.Controls.Add(this.txt_Cap_S_5);
             this.Tab_AC.Controls.Add(this.txt_AC2_S_4);
             this.Tab_AC.Controls.Add(this.txt_AC1_S_4);
             this.Tab_AC.Controls.Add(this.txt_Cap_S_4);
@@ -1195,13 +1189,9 @@
             this.Tab_AC.Controls.Add(this.txt_AC2_S_1);
             this.Tab_AC.Controls.Add(this.txt_AC1_S_1);
             this.Tab_AC.Controls.Add(this.txt_Cap_S_1);
-            this.Tab_AC.Controls.Add(this.txt_Aseo_L_5);
             this.Tab_AC.Controls.Add(this.txt_Aseo_L_4);
             this.Tab_AC.Controls.Add(this.txt_Aseo_L_3);
             this.Tab_AC.Controls.Add(this.txt_Aseo_L_2);
-            this.Tab_AC.Controls.Add(this.txt_AC2_L_5);
-            this.Tab_AC.Controls.Add(this.txt_AC1_L_5);
-            this.Tab_AC.Controls.Add(this.txt_Cap_L_5);
             this.Tab_AC.Controls.Add(this.txt_AC2_L_4);
             this.Tab_AC.Controls.Add(this.txt_AC1_L_4);
             this.Tab_AC.Controls.Add(this.txt_Cap_L_4);
@@ -1216,11 +1206,6 @@
             this.Tab_AC.Controls.Add(this.txt_Cap_L_1);
             this.Tab_AC.Controls.Add(this.txt_Aseo_L_1);
             this.Tab_AC.Controls.Add(this.label3);
-            this.Tab_AC.Controls.Add(this.lbl_Dia_S_5);
-            this.Tab_AC.Controls.Add(this.label144);
-            this.Tab_AC.Controls.Add(this.lbl_Dia_L_5);
-            this.Tab_AC.Controls.Add(this.label146);
-            this.Tab_AC.Controls.Add(this.label147);
             this.Tab_AC.Controls.Add(this.label130);
             this.Tab_AC.Controls.Add(this.lbl_Dia_S_4);
             this.Tab_AC.Controls.Add(this.label132);
@@ -1309,22 +1294,6 @@
             this.txt_Aseo_S_4.Size = new System.Drawing.Size(227, 20);
             this.txt_Aseo_S_4.TabIndex = 230;
             // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(473, 556);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(85, 13);
-            this.label37.TabIndex = 229;
-            this.label37.Text = "Capitan de Aseo";
-            // 
-            // txt_Aseo_S_5
-            // 
-            this.txt_Aseo_S_5.Location = new System.Drawing.Point(577, 552);
-            this.txt_Aseo_S_5.Name = "txt_Aseo_S_5";
-            this.txt_Aseo_S_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_Aseo_S_5.TabIndex = 228;
-            // 
             // label32
             // 
             this.label32.AutoSize = true;
@@ -1340,15 +1309,6 @@
             this.txt_Aseo_S_1.Name = "txt_Aseo_S_1";
             this.txt_Aseo_S_1.Size = new System.Drawing.Size(227, 20);
             this.txt_Aseo_S_1.TabIndex = 226;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(31, 555);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(85, 13);
-            this.label23.TabIndex = 225;
-            this.label23.Text = "Capitan de Aseo";
             // 
             // label21
             // 
@@ -1376,54 +1336,6 @@
             this.label9.Size = new System.Drawing.Size(85, 13);
             this.label9.TabIndex = 222;
             this.label9.Text = "Capitan de Aseo";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(471, 635);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 13);
-            this.label4.TabIndex = 221;
-            this.label4.Text = "Acomodador 2";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(471, 609);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 13);
-            this.label10.TabIndex = 220;
-            this.label10.Text = "Acomodador 1";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(471, 582);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(43, 13);
-            this.label11.TabIndex = 219;
-            this.label11.Text = "Capitan";
-            // 
-            // txt_AC2_S_5
-            // 
-            this.txt_AC2_S_5.Location = new System.Drawing.Point(577, 631);
-            this.txt_AC2_S_5.Name = "txt_AC2_S_5";
-            this.txt_AC2_S_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC2_S_5.TabIndex = 218;
-            // 
-            // txt_AC1_S_5
-            // 
-            this.txt_AC1_S_5.Location = new System.Drawing.Point(577, 605);
-            this.txt_AC1_S_5.Name = "txt_AC1_S_5";
-            this.txt_AC1_S_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC1_S_5.TabIndex = 217;
-            // 
-            // txt_Cap_S_5
-            // 
-            this.txt_Cap_S_5.Location = new System.Drawing.Point(577, 578);
-            this.txt_Cap_S_5.Name = "txt_Cap_S_5";
-            this.txt_Cap_S_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_Cap_S_5.TabIndex = 216;
             // 
             // txt_AC2_S_4
             // 
@@ -1509,13 +1421,6 @@
             this.txt_Cap_S_1.Size = new System.Drawing.Size(227, 20);
             this.txt_Cap_S_1.TabIndex = 204;
             // 
-            // txt_Aseo_L_5
-            // 
-            this.txt_Aseo_L_5.Location = new System.Drawing.Point(125, 552);
-            this.txt_Aseo_L_5.Name = "txt_Aseo_L_5";
-            this.txt_Aseo_L_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_Aseo_L_5.TabIndex = 203;
-            // 
             // txt_Aseo_L_4
             // 
             this.txt_Aseo_L_4.Location = new System.Drawing.Point(125, 423);
@@ -1536,27 +1441,6 @@
             this.txt_Aseo_L_2.Name = "txt_Aseo_L_2";
             this.txt_Aseo_L_2.Size = new System.Drawing.Size(227, 20);
             this.txt_Aseo_L_2.TabIndex = 200;
-            // 
-            // txt_AC2_L_5
-            // 
-            this.txt_AC2_L_5.Location = new System.Drawing.Point(125, 631);
-            this.txt_AC2_L_5.Name = "txt_AC2_L_5";
-            this.txt_AC2_L_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC2_L_5.TabIndex = 199;
-            // 
-            // txt_AC1_L_5
-            // 
-            this.txt_AC1_L_5.Location = new System.Drawing.Point(125, 605);
-            this.txt_AC1_L_5.Name = "txt_AC1_L_5";
-            this.txt_AC1_L_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC1_L_5.TabIndex = 198;
-            // 
-            // txt_Cap_L_5
-            // 
-            this.txt_Cap_L_5.Location = new System.Drawing.Point(125, 578);
-            this.txt_Cap_L_5.Name = "txt_Cap_L_5";
-            this.txt_Cap_L_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_Cap_L_5.TabIndex = 197;
             // 
             // txt_AC2_L_4
             // 
@@ -1657,51 +1541,6 @@
             this.label3.Size = new System.Drawing.Size(85, 13);
             this.label3.TabIndex = 183;
             this.label3.Text = "Capitan de Aseo";
-            // 
-            // lbl_Dia_S_5
-            // 
-            this.lbl_Dia_S_5.AutoSize = true;
-            this.lbl_Dia_S_5.Location = new System.Drawing.Point(473, 532);
-            this.lbl_Dia_S_5.Name = "lbl_Dia_S_5";
-            this.lbl_Dia_S_5.Size = new System.Drawing.Size(26, 13);
-            this.lbl_Dia_S_5.TabIndex = 182;
-            this.lbl_Dia_S_5.Text = "Dia:";
-            // 
-            // label144
-            // 
-            this.label144.AutoSize = true;
-            this.label144.Location = new System.Drawing.Point(31, 635);
-            this.label144.Name = "label144";
-            this.label144.Size = new System.Drawing.Size(76, 13);
-            this.label144.TabIndex = 170;
-            this.label144.Text = "Acomodador 2";
-            // 
-            // lbl_Dia_L_5
-            // 
-            this.lbl_Dia_L_5.AutoSize = true;
-            this.lbl_Dia_L_5.Location = new System.Drawing.Point(31, 532);
-            this.lbl_Dia_L_5.Name = "lbl_Dia_L_5";
-            this.lbl_Dia_L_5.Size = new System.Drawing.Size(26, 13);
-            this.lbl_Dia_L_5.TabIndex = 175;
-            this.lbl_Dia_L_5.Text = "Dia:";
-            // 
-            // label146
-            // 
-            this.label146.AutoSize = true;
-            this.label146.Location = new System.Drawing.Point(31, 609);
-            this.label146.Name = "label146";
-            this.label146.Size = new System.Drawing.Size(76, 13);
-            this.label146.TabIndex = 169;
-            this.label146.Text = "Acomodador 1";
-            // 
-            // label147
-            // 
-            this.label147.AutoSize = true;
-            this.label147.Location = new System.Drawing.Point(31, 582);
-            this.label147.Name = "label147";
-            this.label147.Size = new System.Drawing.Size(43, 13);
-            this.label147.TabIndex = 168;
-            this.label147.Text = "Capitan";
             // 
             // label130
             // 
@@ -2034,6 +1873,178 @@
             this.lbl_Month.TabIndex = 93;
             this.lbl_Month.Text = "Mes: ";
             // 
+            // AC_grpbx_wk5
+            // 
+            this.AC_grpbx_wk5.Controls.Add(this.label37);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_Aseo_S_5);
+            this.AC_grpbx_wk5.Controls.Add(this.label23);
+            this.AC_grpbx_wk5.Controls.Add(this.label4);
+            this.AC_grpbx_wk5.Controls.Add(this.label10);
+            this.AC_grpbx_wk5.Controls.Add(this.label11);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_AC2_S_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_AC1_S_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_Cap_S_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_Aseo_L_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_AC2_L_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_AC1_L_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_Cap_L_5);
+            this.AC_grpbx_wk5.Controls.Add(this.lbl_Dia_S_5);
+            this.AC_grpbx_wk5.Controls.Add(this.label144);
+            this.AC_grpbx_wk5.Controls.Add(this.lbl_Dia_L_5);
+            this.AC_grpbx_wk5.Controls.Add(this.label146);
+            this.AC_grpbx_wk5.Controls.Add(this.label147);
+            this.AC_grpbx_wk5.Location = new System.Drawing.Point(6, 527);
+            this.AC_grpbx_wk5.Name = "AC_grpbx_wk5";
+            this.AC_grpbx_wk5.Size = new System.Drawing.Size(815, 139);
+            this.AC_grpbx_wk5.TabIndex = 236;
+            this.AC_grpbx_wk5.TabStop = false;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(463, 34);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(85, 13);
+            this.label37.TabIndex = 247;
+            this.label37.Text = "Capitan de Aseo";
+            // 
+            // txt_Aseo_S_5
+            // 
+            this.txt_Aseo_S_5.Location = new System.Drawing.Point(567, 30);
+            this.txt_Aseo_S_5.Name = "txt_Aseo_S_5";
+            this.txt_Aseo_S_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_Aseo_S_5.TabIndex = 246;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(21, 33);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(85, 13);
+            this.label23.TabIndex = 245;
+            this.label23.Text = "Capitan de Aseo";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(461, 113);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 13);
+            this.label4.TabIndex = 244;
+            this.label4.Text = "Acomodador 2";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(461, 87);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(76, 13);
+            this.label10.TabIndex = 243;
+            this.label10.Text = "Acomodador 1";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(461, 60);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 13);
+            this.label11.TabIndex = 242;
+            this.label11.Text = "Capitan";
+            // 
+            // txt_AC2_S_5
+            // 
+            this.txt_AC2_S_5.Location = new System.Drawing.Point(567, 109);
+            this.txt_AC2_S_5.Name = "txt_AC2_S_5";
+            this.txt_AC2_S_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC2_S_5.TabIndex = 241;
+            // 
+            // txt_AC1_S_5
+            // 
+            this.txt_AC1_S_5.Location = new System.Drawing.Point(567, 83);
+            this.txt_AC1_S_5.Name = "txt_AC1_S_5";
+            this.txt_AC1_S_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC1_S_5.TabIndex = 240;
+            // 
+            // txt_Cap_S_5
+            // 
+            this.txt_Cap_S_5.Location = new System.Drawing.Point(567, 56);
+            this.txt_Cap_S_5.Name = "txt_Cap_S_5";
+            this.txt_Cap_S_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_Cap_S_5.TabIndex = 239;
+            // 
+            // txt_Aseo_L_5
+            // 
+            this.txt_Aseo_L_5.Location = new System.Drawing.Point(115, 30);
+            this.txt_Aseo_L_5.Name = "txt_Aseo_L_5";
+            this.txt_Aseo_L_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_Aseo_L_5.TabIndex = 238;
+            // 
+            // txt_AC2_L_5
+            // 
+            this.txt_AC2_L_5.Location = new System.Drawing.Point(115, 109);
+            this.txt_AC2_L_5.Name = "txt_AC2_L_5";
+            this.txt_AC2_L_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC2_L_5.TabIndex = 237;
+            // 
+            // txt_AC1_L_5
+            // 
+            this.txt_AC1_L_5.Location = new System.Drawing.Point(115, 83);
+            this.txt_AC1_L_5.Name = "txt_AC1_L_5";
+            this.txt_AC1_L_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC1_L_5.TabIndex = 236;
+            // 
+            // txt_Cap_L_5
+            // 
+            this.txt_Cap_L_5.Location = new System.Drawing.Point(115, 56);
+            this.txt_Cap_L_5.Name = "txt_Cap_L_5";
+            this.txt_Cap_L_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_Cap_L_5.TabIndex = 235;
+            // 
+            // lbl_Dia_S_5
+            // 
+            this.lbl_Dia_S_5.AutoSize = true;
+            this.lbl_Dia_S_5.Location = new System.Drawing.Point(463, 10);
+            this.lbl_Dia_S_5.Name = "lbl_Dia_S_5";
+            this.lbl_Dia_S_5.Size = new System.Drawing.Size(26, 13);
+            this.lbl_Dia_S_5.TabIndex = 234;
+            this.lbl_Dia_S_5.Text = "Dia:";
+            // 
+            // label144
+            // 
+            this.label144.AutoSize = true;
+            this.label144.Location = new System.Drawing.Point(21, 113);
+            this.label144.Name = "label144";
+            this.label144.Size = new System.Drawing.Size(76, 13);
+            this.label144.TabIndex = 232;
+            this.label144.Text = "Acomodador 2";
+            // 
+            // lbl_Dia_L_5
+            // 
+            this.lbl_Dia_L_5.AutoSize = true;
+            this.lbl_Dia_L_5.Location = new System.Drawing.Point(21, 10);
+            this.lbl_Dia_L_5.Name = "lbl_Dia_L_5";
+            this.lbl_Dia_L_5.Size = new System.Drawing.Size(26, 13);
+            this.lbl_Dia_L_5.TabIndex = 233;
+            this.lbl_Dia_L_5.Text = "Dia:";
+            // 
+            // label146
+            // 
+            this.label146.AutoSize = true;
+            this.label146.Location = new System.Drawing.Point(21, 87);
+            this.label146.Name = "label146";
+            this.label146.Size = new System.Drawing.Size(76, 13);
+            this.label146.TabIndex = 231;
+            this.label146.Text = "Acomodador 1";
+            // 
+            // label147
+            // 
+            this.label147.AutoSize = true;
+            this.label147.Location = new System.Drawing.Point(21, 60);
+            this.label147.Name = "label147";
+            this.label147.Size = new System.Drawing.Size(43, 13);
+            this.label147.TabIndex = 230;
+            this.label147.Text = "Capitan";
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2070,6 +2081,8 @@
             this.RP_1.PerformLayout();
             this.Tab_AC.ResumeLayout(false);
             this.Tab_AC.PerformLayout();
+            this.AC_grpbx_wk5.ResumeLayout(false);
+            this.AC_grpbx_wk5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2109,11 +2122,6 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label lbl_Dia_S_5;
-        private System.Windows.Forms.Label label144;
-        private System.Windows.Forms.Label lbl_Dia_L_5;
-        private System.Windows.Forms.Label label146;
-        private System.Windows.Forms.Label label147;
         private System.Windows.Forms.Label label130;
         private System.Windows.Forms.Label lbl_Dia_S_4;
         private System.Windows.Forms.Label label132;
@@ -2148,12 +2156,12 @@
         private System.Windows.Forms.GroupBox Nuestra_Vida;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label time_14;
         private System.Windows.Forms.Label time_13;
         private System.Windows.Forms.Label time_12;
         private System.Windows.Forms.Label time_11;
         private System.Windows.Forms.Label time_10;
         private System.Windows.Forms.Label time_9;
-        private System.Windows.Forms.Label time_8;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txt_NVC_A3;
         private System.Windows.Forms.Label label25;
@@ -2202,9 +2210,6 @@
         private System.Windows.Forms.TextBox txt_NVC_A4;
         private System.Windows.Forms.TextBox txt_PresRP;
         private System.Windows.Forms.TextBox txt_Con_Atly;
-        private System.Windows.Forms.TextBox txt_AC2_L_5;
-        private System.Windows.Forms.TextBox txt_AC1_L_5;
-        private System.Windows.Forms.TextBox txt_Cap_L_5;
         private System.Windows.Forms.TextBox txt_AC2_L_4;
         private System.Windows.Forms.TextBox txt_AC1_L_4;
         private System.Windows.Forms.TextBox txt_Cap_L_4;
@@ -2218,16 +2223,9 @@
         private System.Windows.Forms.TextBox txt_AC1_L_1;
         private System.Windows.Forms.TextBox txt_Cap_L_1;
         private System.Windows.Forms.TextBox txt_Aseo_L_1;
-        private System.Windows.Forms.TextBox txt_Aseo_L_5;
         private System.Windows.Forms.TextBox txt_Aseo_L_4;
         private System.Windows.Forms.TextBox txt_Aseo_L_3;
         private System.Windows.Forms.TextBox txt_Aseo_L_2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txt_AC2_S_5;
-        private System.Windows.Forms.TextBox txt_AC1_S_5;
-        private System.Windows.Forms.TextBox txt_Cap_S_5;
         private System.Windows.Forms.TextBox txt_AC2_S_4;
         private System.Windows.Forms.TextBox txt_AC1_S_4;
         private System.Windows.Forms.TextBox txt_Cap_S_4;
@@ -2244,16 +2242,13 @@
         private System.Windows.Forms.TextBox txt_OraRP;
         private System.Windows.Forms.Label lbl_DateVyM;
         private System.Windows.Forms.Label lbl_DateRP;
-        private System.Windows.Forms.Label time7_5;
+        private System.Windows.Forms.Label time_8;
         private System.Windows.Forms.TextBox txt_SMM_A4;
         private System.Windows.Forms.TextBox txt_SMM4;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox txt_Aseo_S_5;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.TextBox txt_Aseo_S_1;
         private System.Windows.Forms.Label label46;
@@ -2262,6 +2257,25 @@
         private System.Windows.Forms.TextBox txt_Aseo_S_3;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.TextBox txt_Aseo_S_4;
+        private System.Windows.Forms.GroupBox AC_grpbx_wk5;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox txt_Aseo_S_5;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txt_AC2_S_5;
+        private System.Windows.Forms.TextBox txt_AC1_S_5;
+        private System.Windows.Forms.TextBox txt_Cap_S_5;
+        private System.Windows.Forms.TextBox txt_Aseo_L_5;
+        private System.Windows.Forms.TextBox txt_AC2_L_5;
+        private System.Windows.Forms.TextBox txt_AC1_L_5;
+        private System.Windows.Forms.TextBox txt_Cap_L_5;
+        private System.Windows.Forms.Label lbl_Dia_S_5;
+        private System.Windows.Forms.Label label144;
+        private System.Windows.Forms.Label lbl_Dia_L_5;
+        private System.Windows.Forms.Label label146;
+        private System.Windows.Forms.Label label147;
     }
 }
 

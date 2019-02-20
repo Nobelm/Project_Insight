@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AC_Mes.cs" />
-    <Compile Include="DB_Cln.cs" />
     <Compile Include="DB_Eld.cs" />
     <Compile Include="DB_Form.cs">
       <SubType>Form</SubType>
@@ -80,6 +79,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="bin\Debug\DB.csv" />
+    <None Include="bin\Debug\DB.xlsx" />
     <None Include="bin\Debug\Programs.xlsx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
