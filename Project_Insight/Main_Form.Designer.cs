@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.log_txtBx = new System.Windows.Forms.RichTextBox();
-            this.timer_Form2 = new System.Windows.Forms.Timer(this.components);
             this.picPresenter = new System.Windows.Forms.PictureBox();
             this.protoss_Frame = new System.Windows.Forms.PictureBox();
             this.tab_Control = new System.Windows.Forms.TabControl();
@@ -121,6 +120,25 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.Tab_AC = new System.Windows.Forms.TabPage();
+            this.AC_grpbx_wk5 = new System.Windows.Forms.GroupBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.txt_Aseo_S_5 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txt_AC2_S_5 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_S_5 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_S_5 = new System.Windows.Forms.TextBox();
+            this.txt_Aseo_L_5 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_L_5 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_L_5 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_L_5 = new System.Windows.Forms.TextBox();
+            this.lbl_Dia_S_5 = new System.Windows.Forms.Label();
+            this.label144 = new System.Windows.Forms.Label();
+            this.lbl_Dia_L_5 = new System.Windows.Forms.Label();
+            this.label146 = new System.Windows.Forms.Label();
+            this.label147 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.txt_Aseo_S_2 = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
@@ -197,25 +215,8 @@
             this.txt_Command = new System.Windows.Forms.TextBox();
             this.lbl_Week = new System.Windows.Forms.Label();
             this.lbl_Month = new System.Windows.Forms.Label();
-            this.AC_grpbx_wk5 = new System.Windows.Forms.GroupBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.txt_Aseo_S_5 = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txt_AC2_S_5 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_S_5 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_S_5 = new System.Windows.Forms.TextBox();
-            this.txt_Aseo_L_5 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_L_5 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_L_5 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_L_5 = new System.Windows.Forms.TextBox();
-            this.lbl_Dia_S_5 = new System.Windows.Forms.Label();
-            this.label144 = new System.Windows.Forms.Label();
-            this.lbl_Dia_L_5 = new System.Windows.Forms.Label();
-            this.label146 = new System.Windows.Forms.Label();
-            this.label147 = new System.Windows.Forms.Label();
+            this.Loading_pBar = new System.Windows.Forms.ProgressBar();
+            this.Main_Timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picPresenter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.protoss_Frame)).BeginInit();
             this.tab_Control.SuspendLayout();
@@ -241,10 +242,6 @@
             this.log_txtBx.Size = new System.Drawing.Size(272, 332);
             this.log_txtBx.TabIndex = 1;
             this.log_txtBx.Text = "";
-            // 
-            // timer_Form2
-            // 
-            this.timer_Form2.Interval = 200;
             // 
             // picPresenter
             // 
@@ -364,68 +361,68 @@
             this.label41.TabIndex = 131;
             this.label41.Text = "Lector";
             // 
-            // time_13
+            // time_14
             // 
             this.time_14.AutoSize = true;
             this.time_14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time_14.ForeColor = System.Drawing.Color.Coral;
             this.time_14.Location = new System.Drawing.Point(15, 174);
-            this.time_14.Name = "time_13";
+            this.time_14.Name = "time_14";
             this.time_14.Size = new System.Drawing.Size(34, 13);
             this.time_14.TabIndex = 155;
             this.time_14.Text = "00.00";
             // 
-            // time_12
+            // time_13
             // 
             this.time_13.AutoSize = true;
             this.time_13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time_13.ForeColor = System.Drawing.Color.Coral;
             this.time_13.Location = new System.Drawing.Point(15, 144);
-            this.time_13.Name = "time_12";
+            this.time_13.Name = "time_13";
             this.time_13.Size = new System.Drawing.Size(34, 13);
             this.time_13.TabIndex = 154;
             this.time_13.Text = "00.00";
             // 
-            // time_11
+            // time_12
             // 
             this.time_12.AutoSize = true;
             this.time_12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time_12.ForeColor = System.Drawing.Color.Coral;
             this.time_12.Location = new System.Drawing.Point(15, 114);
-            this.time_12.Name = "time_11";
+            this.time_12.Name = "time_12";
             this.time_12.Size = new System.Drawing.Size(34, 13);
             this.time_12.TabIndex = 152;
             this.time_12.Text = "00.00";
             // 
-            // time_10
+            // time_11
             // 
             this.time_11.AutoSize = true;
             this.time_11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time_11.ForeColor = System.Drawing.Color.Coral;
             this.time_11.Location = new System.Drawing.Point(15, 84);
-            this.time_11.Name = "time_10";
+            this.time_11.Name = "time_11";
             this.time_11.Size = new System.Drawing.Size(34, 13);
             this.time_11.TabIndex = 151;
             this.time_11.Text = "00.00";
             // 
-            // time_9
+            // time_10
             // 
             this.time_10.AutoSize = true;
             this.time_10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time_10.ForeColor = System.Drawing.Color.Coral;
             this.time_10.Location = new System.Drawing.Point(15, 54);
-            this.time_10.Name = "time_9";
+            this.time_10.Name = "time_10";
             this.time_10.Size = new System.Drawing.Size(34, 13);
             this.time_10.TabIndex = 150;
             this.time_10.Text = "00.00";
             // 
-            // time_8
+            // time_9
             // 
             this.time_9.AutoSize = true;
             this.time_9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time_9.ForeColor = System.Drawing.Color.Coral;
             this.time_9.Location = new System.Drawing.Point(15, 28);
-            this.time_9.Name = "time_8";
+            this.time_9.Name = "time_9";
             this.time_9.Size = new System.Drawing.Size(34, 13);
             this.time_9.TabIndex = 138;
             this.time_9.Text = "00.00";
@@ -540,12 +537,12 @@
             this.Seamos_Maestros.Text = "Seamos Mejores Maestros";
             this.Seamos_Maestros.Enter += new System.EventHandler(this.Seamos_Maestros_Enter);
             // 
-            // time7_5
+            // time_8
             // 
             this.time_8.AutoSize = true;
             this.time_8.ForeColor = System.Drawing.Color.Coral;
             this.time_8.Location = new System.Drawing.Point(16, 117);
-            this.time_8.Name = "time7_5";
+            this.time_8.Name = "time_8";
             this.time_8.Size = new System.Drawing.Size(34, 13);
             this.time_8.TabIndex = 141;
             this.time_8.Text = "00.00";
@@ -1246,6 +1243,178 @@
             this.Tab_AC.TabIndex = 2;
             this.Tab_AC.Text = "AC";
             // 
+            // AC_grpbx_wk5
+            // 
+            this.AC_grpbx_wk5.Controls.Add(this.label37);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_Aseo_S_5);
+            this.AC_grpbx_wk5.Controls.Add(this.label23);
+            this.AC_grpbx_wk5.Controls.Add(this.label4);
+            this.AC_grpbx_wk5.Controls.Add(this.label10);
+            this.AC_grpbx_wk5.Controls.Add(this.label11);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_AC2_S_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_AC1_S_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_Cap_S_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_Aseo_L_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_AC2_L_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_AC1_L_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_Cap_L_5);
+            this.AC_grpbx_wk5.Controls.Add(this.lbl_Dia_S_5);
+            this.AC_grpbx_wk5.Controls.Add(this.label144);
+            this.AC_grpbx_wk5.Controls.Add(this.lbl_Dia_L_5);
+            this.AC_grpbx_wk5.Controls.Add(this.label146);
+            this.AC_grpbx_wk5.Controls.Add(this.label147);
+            this.AC_grpbx_wk5.Location = new System.Drawing.Point(6, 527);
+            this.AC_grpbx_wk5.Name = "AC_grpbx_wk5";
+            this.AC_grpbx_wk5.Size = new System.Drawing.Size(815, 139);
+            this.AC_grpbx_wk5.TabIndex = 236;
+            this.AC_grpbx_wk5.TabStop = false;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(463, 34);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(85, 13);
+            this.label37.TabIndex = 247;
+            this.label37.Text = "Capitan de Aseo";
+            // 
+            // txt_Aseo_S_5
+            // 
+            this.txt_Aseo_S_5.Location = new System.Drawing.Point(567, 30);
+            this.txt_Aseo_S_5.Name = "txt_Aseo_S_5";
+            this.txt_Aseo_S_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_Aseo_S_5.TabIndex = 246;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(21, 33);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(85, 13);
+            this.label23.TabIndex = 245;
+            this.label23.Text = "Capitan de Aseo";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(461, 113);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 13);
+            this.label4.TabIndex = 244;
+            this.label4.Text = "Acomodador 2";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(461, 87);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(76, 13);
+            this.label10.TabIndex = 243;
+            this.label10.Text = "Acomodador 1";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(461, 60);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 13);
+            this.label11.TabIndex = 242;
+            this.label11.Text = "Capitan";
+            // 
+            // txt_AC2_S_5
+            // 
+            this.txt_AC2_S_5.Location = new System.Drawing.Point(567, 109);
+            this.txt_AC2_S_5.Name = "txt_AC2_S_5";
+            this.txt_AC2_S_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC2_S_5.TabIndex = 241;
+            // 
+            // txt_AC1_S_5
+            // 
+            this.txt_AC1_S_5.Location = new System.Drawing.Point(567, 83);
+            this.txt_AC1_S_5.Name = "txt_AC1_S_5";
+            this.txt_AC1_S_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC1_S_5.TabIndex = 240;
+            // 
+            // txt_Cap_S_5
+            // 
+            this.txt_Cap_S_5.Location = new System.Drawing.Point(567, 56);
+            this.txt_Cap_S_5.Name = "txt_Cap_S_5";
+            this.txt_Cap_S_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_Cap_S_5.TabIndex = 239;
+            // 
+            // txt_Aseo_L_5
+            // 
+            this.txt_Aseo_L_5.Location = new System.Drawing.Point(115, 30);
+            this.txt_Aseo_L_5.Name = "txt_Aseo_L_5";
+            this.txt_Aseo_L_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_Aseo_L_5.TabIndex = 238;
+            // 
+            // txt_AC2_L_5
+            // 
+            this.txt_AC2_L_5.Location = new System.Drawing.Point(115, 109);
+            this.txt_AC2_L_5.Name = "txt_AC2_L_5";
+            this.txt_AC2_L_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC2_L_5.TabIndex = 237;
+            // 
+            // txt_AC1_L_5
+            // 
+            this.txt_AC1_L_5.Location = new System.Drawing.Point(115, 83);
+            this.txt_AC1_L_5.Name = "txt_AC1_L_5";
+            this.txt_AC1_L_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_AC1_L_5.TabIndex = 236;
+            // 
+            // txt_Cap_L_5
+            // 
+            this.txt_Cap_L_5.Location = new System.Drawing.Point(115, 56);
+            this.txt_Cap_L_5.Name = "txt_Cap_L_5";
+            this.txt_Cap_L_5.Size = new System.Drawing.Size(227, 20);
+            this.txt_Cap_L_5.TabIndex = 235;
+            // 
+            // lbl_Dia_S_5
+            // 
+            this.lbl_Dia_S_5.AutoSize = true;
+            this.lbl_Dia_S_5.Location = new System.Drawing.Point(463, 10);
+            this.lbl_Dia_S_5.Name = "lbl_Dia_S_5";
+            this.lbl_Dia_S_5.Size = new System.Drawing.Size(26, 13);
+            this.lbl_Dia_S_5.TabIndex = 234;
+            this.lbl_Dia_S_5.Text = "Dia:";
+            // 
+            // label144
+            // 
+            this.label144.AutoSize = true;
+            this.label144.Location = new System.Drawing.Point(21, 113);
+            this.label144.Name = "label144";
+            this.label144.Size = new System.Drawing.Size(76, 13);
+            this.label144.TabIndex = 232;
+            this.label144.Text = "Acomodador 2";
+            // 
+            // lbl_Dia_L_5
+            // 
+            this.lbl_Dia_L_5.AutoSize = true;
+            this.lbl_Dia_L_5.Location = new System.Drawing.Point(21, 10);
+            this.lbl_Dia_L_5.Name = "lbl_Dia_L_5";
+            this.lbl_Dia_L_5.Size = new System.Drawing.Size(26, 13);
+            this.lbl_Dia_L_5.TabIndex = 233;
+            this.lbl_Dia_L_5.Text = "Dia:";
+            // 
+            // label146
+            // 
+            this.label146.AutoSize = true;
+            this.label146.Location = new System.Drawing.Point(21, 87);
+            this.label146.Name = "label146";
+            this.label146.Size = new System.Drawing.Size(76, 13);
+            this.label146.TabIndex = 231;
+            this.label146.Text = "Acomodador 1";
+            // 
+            // label147
+            // 
+            this.label147.AutoSize = true;
+            this.label147.Location = new System.Drawing.Point(21, 60);
+            this.label147.Name = "label147";
+            this.label147.Size = new System.Drawing.Size(43, 13);
+            this.label147.TabIndex = 230;
+            this.label147.Text = "Capitan";
+            // 
             // label46
             // 
             this.label46.AutoSize = true;
@@ -1873,177 +2042,17 @@
             this.lbl_Month.TabIndex = 93;
             this.lbl_Month.Text = "Mes: ";
             // 
-            // AC_grpbx_wk5
+            // Loading_pBar
             // 
-            this.AC_grpbx_wk5.Controls.Add(this.label37);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_Aseo_S_5);
-            this.AC_grpbx_wk5.Controls.Add(this.label23);
-            this.AC_grpbx_wk5.Controls.Add(this.label4);
-            this.AC_grpbx_wk5.Controls.Add(this.label10);
-            this.AC_grpbx_wk5.Controls.Add(this.label11);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_AC2_S_5);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_AC1_S_5);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_Cap_S_5);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_Aseo_L_5);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_AC2_L_5);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_AC1_L_5);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_Cap_L_5);
-            this.AC_grpbx_wk5.Controls.Add(this.lbl_Dia_S_5);
-            this.AC_grpbx_wk5.Controls.Add(this.label144);
-            this.AC_grpbx_wk5.Controls.Add(this.lbl_Dia_L_5);
-            this.AC_grpbx_wk5.Controls.Add(this.label146);
-            this.AC_grpbx_wk5.Controls.Add(this.label147);
-            this.AC_grpbx_wk5.Location = new System.Drawing.Point(6, 527);
-            this.AC_grpbx_wk5.Name = "AC_grpbx_wk5";
-            this.AC_grpbx_wk5.Size = new System.Drawing.Size(815, 139);
-            this.AC_grpbx_wk5.TabIndex = 236;
-            this.AC_grpbx_wk5.TabStop = false;
+            this.Loading_pBar.Location = new System.Drawing.Point(166, 10);
+            this.Loading_pBar.Name = "Loading_pBar";
+            this.Loading_pBar.Size = new System.Drawing.Size(680, 13);
+            this.Loading_pBar.TabIndex = 94;
+            this.Loading_pBar.Visible = false;
             // 
-            // label37
+            // Main_Timer
             // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(463, 34);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(85, 13);
-            this.label37.TabIndex = 247;
-            this.label37.Text = "Capitan de Aseo";
-            // 
-            // txt_Aseo_S_5
-            // 
-            this.txt_Aseo_S_5.Location = new System.Drawing.Point(567, 30);
-            this.txt_Aseo_S_5.Name = "txt_Aseo_S_5";
-            this.txt_Aseo_S_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_Aseo_S_5.TabIndex = 246;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(21, 33);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(85, 13);
-            this.label23.TabIndex = 245;
-            this.label23.Text = "Capitan de Aseo";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(461, 113);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 13);
-            this.label4.TabIndex = 244;
-            this.label4.Text = "Acomodador 2";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(461, 87);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 13);
-            this.label10.TabIndex = 243;
-            this.label10.Text = "Acomodador 1";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(461, 60);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(43, 13);
-            this.label11.TabIndex = 242;
-            this.label11.Text = "Capitan";
-            // 
-            // txt_AC2_S_5
-            // 
-            this.txt_AC2_S_5.Location = new System.Drawing.Point(567, 109);
-            this.txt_AC2_S_5.Name = "txt_AC2_S_5";
-            this.txt_AC2_S_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC2_S_5.TabIndex = 241;
-            // 
-            // txt_AC1_S_5
-            // 
-            this.txt_AC1_S_5.Location = new System.Drawing.Point(567, 83);
-            this.txt_AC1_S_5.Name = "txt_AC1_S_5";
-            this.txt_AC1_S_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC1_S_5.TabIndex = 240;
-            // 
-            // txt_Cap_S_5
-            // 
-            this.txt_Cap_S_5.Location = new System.Drawing.Point(567, 56);
-            this.txt_Cap_S_5.Name = "txt_Cap_S_5";
-            this.txt_Cap_S_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_Cap_S_5.TabIndex = 239;
-            // 
-            // txt_Aseo_L_5
-            // 
-            this.txt_Aseo_L_5.Location = new System.Drawing.Point(115, 30);
-            this.txt_Aseo_L_5.Name = "txt_Aseo_L_5";
-            this.txt_Aseo_L_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_Aseo_L_5.TabIndex = 238;
-            // 
-            // txt_AC2_L_5
-            // 
-            this.txt_AC2_L_5.Location = new System.Drawing.Point(115, 109);
-            this.txt_AC2_L_5.Name = "txt_AC2_L_5";
-            this.txt_AC2_L_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC2_L_5.TabIndex = 237;
-            // 
-            // txt_AC1_L_5
-            // 
-            this.txt_AC1_L_5.Location = new System.Drawing.Point(115, 83);
-            this.txt_AC1_L_5.Name = "txt_AC1_L_5";
-            this.txt_AC1_L_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_AC1_L_5.TabIndex = 236;
-            // 
-            // txt_Cap_L_5
-            // 
-            this.txt_Cap_L_5.Location = new System.Drawing.Point(115, 56);
-            this.txt_Cap_L_5.Name = "txt_Cap_L_5";
-            this.txt_Cap_L_5.Size = new System.Drawing.Size(227, 20);
-            this.txt_Cap_L_5.TabIndex = 235;
-            // 
-            // lbl_Dia_S_5
-            // 
-            this.lbl_Dia_S_5.AutoSize = true;
-            this.lbl_Dia_S_5.Location = new System.Drawing.Point(463, 10);
-            this.lbl_Dia_S_5.Name = "lbl_Dia_S_5";
-            this.lbl_Dia_S_5.Size = new System.Drawing.Size(26, 13);
-            this.lbl_Dia_S_5.TabIndex = 234;
-            this.lbl_Dia_S_5.Text = "Dia:";
-            // 
-            // label144
-            // 
-            this.label144.AutoSize = true;
-            this.label144.Location = new System.Drawing.Point(21, 113);
-            this.label144.Name = "label144";
-            this.label144.Size = new System.Drawing.Size(76, 13);
-            this.label144.TabIndex = 232;
-            this.label144.Text = "Acomodador 2";
-            // 
-            // lbl_Dia_L_5
-            // 
-            this.lbl_Dia_L_5.AutoSize = true;
-            this.lbl_Dia_L_5.Location = new System.Drawing.Point(21, 10);
-            this.lbl_Dia_L_5.Name = "lbl_Dia_L_5";
-            this.lbl_Dia_L_5.Size = new System.Drawing.Size(26, 13);
-            this.lbl_Dia_L_5.TabIndex = 233;
-            this.lbl_Dia_L_5.Text = "Dia:";
-            // 
-            // label146
-            // 
-            this.label146.AutoSize = true;
-            this.label146.Location = new System.Drawing.Point(21, 87);
-            this.label146.Name = "label146";
-            this.label146.Size = new System.Drawing.Size(76, 13);
-            this.label146.TabIndex = 231;
-            this.label146.Text = "Acomodador 1";
-            // 
-            // label147
-            // 
-            this.label147.AutoSize = true;
-            this.label147.Location = new System.Drawing.Point(21, 60);
-            this.label147.Name = "label147";
-            this.label147.Size = new System.Drawing.Size(43, 13);
-            this.label147.TabIndex = 230;
-            this.label147.Text = "Capitan";
+            this.Main_Timer.Tick += new System.EventHandler(this.Main_Timer_Tick);
             // 
             // Main_Form
             // 
@@ -2051,6 +2060,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(1144, 713);
+            this.Controls.Add(this.Loading_pBar);
             this.Controls.Add(this.lbl_Month);
             this.Controls.Add(this.lbl_Week);
             this.Controls.Add(this.txt_Command);
@@ -2093,7 +2103,6 @@
         private System.Windows.Forms.PictureBox picPresenter;
         private System.Windows.Forms.RichTextBox log_txtBx;
         private System.Windows.Forms.PictureBox protoss_Frame;
-        private System.Windows.Forms.Timer timer_Form2;
         private System.Windows.Forms.TabControl tab_Control;
         private System.Windows.Forms.TabPage Tab_VyM;
         private System.Windows.Forms.MonthCalendar m_calendar;
@@ -2276,6 +2285,8 @@
         private System.Windows.Forms.Label lbl_Dia_L_5;
         private System.Windows.Forms.Label label146;
         private System.Windows.Forms.Label label147;
+        private System.Windows.Forms.ProgressBar Loading_pBar;
+        private System.Windows.Forms.Timer Main_Timer;
     }
 }
 

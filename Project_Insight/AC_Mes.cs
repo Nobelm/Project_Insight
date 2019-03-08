@@ -86,6 +86,14 @@ namespace Project_Insight
             Asignee_rp.Add(sem_rp.Lector);
             Asignee_rp.Add(sem_rp.Oracion);
 
+            /*Seeting for multi type fill*/
+            int higher_count_eld_mins = (DB_Form.Elders.Count > DB_Form.Ministerials.Count) ? DB_Form.Elders.Count : DB_Form.Ministerials.Count;
+            int higher_count_all = (higher_count_eld_mins > DB_Form.Generals.Count) ? higher_count_eld_mins : DB_Form.Generals.Count;
+            for (int i = 0; i < higher_count_eld_mins; i++)
+            {
+
+            }
+
             foreach (DB_Eld item in DB_Form.Elders)
             {
                 Person ps = new Person

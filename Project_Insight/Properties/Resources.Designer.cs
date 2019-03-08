@@ -181,6 +181,17 @@ namespace Project_Insight.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Geoplazas
+        ///true
+        ///.
+        /// </summary>
+        internal static string Project_Insight_Config {
+            get {
+                return ResourceManager.GetString("Project_Insight_Config", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap protoss_Frame {

@@ -29,20 +29,23 @@ namespace Project_Insight
         public static List<DB_Mns> Ministerials = new List<DB_Mns>();
         public static List<DB_Gnr> Generals = new List<DB_Gnr>();
 
+        public delegate void Updater();
+
         public string Path_DB = Application.StartupPath + "\\\\DB.xlsx";
-        CultureInfo en = new CultureInfo("es-MX");
 
         public DB_Form()
         {
+            CultureInfo en = new CultureInfo("es-MX");
             Thread.CurrentThread.CurrentCulture = en;
             InitializeComponent();
+            Event_Handler.DB_EXCEL_LOAD += DB_Control;
         }
 
         private void DB_Form_Load(object sender, EventArgs e)
         {
-            DB_Control(false);
+            Thread DB_open_thread = new Thread(() => Open_DB());
+            DB_open_thread.Start();
         }
-
 
         private void DB_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -55,24 +58,31 @@ namespace Project_Insight
 
         public void DB_Control(bool save)
         {
-            if (!db_open)
-            {
-                db_open = true;
-                DBApp = new Excel.Application();
-                DBBooks = (Excel.Workbook)DBApp.Workbooks.Open(Path_DB, 0, false, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
-                DBSheets = DBBooks.Worksheets;
-                Sheet_DB = (Excel.Worksheet)DBSheets.get_Item(1);
-                range_1 = Sheet_DB.get_Range("A1", "G137");
-            }
             if (save)
             {
                 Write_DB();
             }
             else
             {
-                cellValue_1 = (System.Object[,])range_1.get_Value();
                 Read_DB();
             }
+        }
+
+        public void Open_DB()
+        {
+            if (Thread.CurrentThread.Name == null)
+            {
+                Thread.CurrentThread.Name = "DB_Open_Thread";
+                Thread.CurrentThread.Priority = ThreadPriority.BelowNormal;
+            }
+            db_open = true;
+            DBApp = new Excel.Application();
+            DBBooks = DBApp.Workbooks.Open(Path_DB, 0, false, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
+            DBSheets = DBBooks.Worksheets;
+            Sheet_DB = (Excel.Worksheet)DBSheets.get_Item(1);
+            range_1 = Sheet_DB.get_Range("A1", "G137");
+            cellValue_1 = range_1.get_Value();
+            Event_Handler.Db_Excel_Load(false);
         }
 
         public void Read_DB()
@@ -127,8 +137,8 @@ namespace Project_Insight
             for (i = 0; i < Elders.Count; i++)
             {
                 Sheet_DB.Cells[i + aux, 1] = '\'' + Elders[i].Nombre;
-                Sheet_DB.Cells[i + aux, 2] = '\'' + Elders[i].Capitan.ToString("dd/MM/yyyy", en);
-                Sheet_DB.Cells[i + aux, 3] = '\'' + Elders[i].Pres_RP.ToString("dd/MM/yyyy", en);
+                Sheet_DB.Cells[i + aux, 2] = '\'' + Elders[i].Capitan.ToString("dd/MM/yyyy");
+                Sheet_DB.Cells[i + aux, 3] = '\'' + Elders[i].Pres_RP.ToString("dd/MM/yyyy");
                 Sheet_DB.Cells[i + aux, 4] = '\'' + Elders[i].Lec_RP.ToString("dd/MM/yyyy");
                 Sheet_DB.Cells[i + aux, 5] = '\'' + Elders[i].Ora_RP.ToString("dd/MM/yyyy");
                 Sheet_DB.Cells[i + aux, 6] = '\'' + Elders[i].Atalaya .ToString("dd/MM/yyyy");
@@ -289,51 +299,20 @@ namespace Project_Insight
 
         public void Refresh_Grid()
         {
-            Eld_Grid.DataSource = Elders;
-            Min_Grid.DataSource = Ministerials;
-            Gen_Grid.DataSource = Generals;
-            Eld_Grid.Refresh();
-            Min_Grid.Refresh();
-            Gen_Grid.Refresh();
+            if (Eld_Grid.InvokeRequired)
+            {
+                Updater updater = Refresh_Grid;
+                Invoke(updater);
+            }
+            else
+            {
+                Eld_Grid.DataSource = Elders;
+                Min_Grid.DataSource = Ministerials;
+                Gen_Grid.DataSource = Generals;
+                Eld_Grid.Refresh();
+                Min_Grid.Refresh();
+                Gen_Grid.Refresh();
+            }
         }
-        /*
-        public void Write_CSV()
-        {
-            StreamWriter writer = new StreamWriter(Path_CSV);
-            for (int i = 0; i < Elders.Count; i++)
-            {
-                writer.WriteLine(Elders[i].Nombre + "," + Elders[i].Capitan + "," + Elders[i].Pres_RP + "," + Elders[i].Lec_RP + "," + Elders[i].Ora_RP + "," + Elders[i].Atalaya + "," + Elders[i].Cpt_Aseo);
-            }
-            writer.WriteLine("end section");
-            for (int i = 0; i < Ministerials.Count; i++)
-            {
-                writer.WriteLine(Ministerials[i].Nombre + "," + Ministerials[i].Capitan + "," + Ministerials[i].Acom + "," + Ministerials[i].Pres_RP + "," + Ministerials[i].Lec_RP + "," + Ministerials[i].Ora_RP + "," + Ministerials[i].Cpt_Aseo);
-            }
-            writer.WriteLine("end section");
-            for (int i = 0; i < Generals.Count; i++)
-            {
-                writer.WriteLine(Generals[i].Nombre + "," + Generals[i].Acom + "," + Generals[i].Lec_RP + "," + Generals[i].Lec_VyM + "," + Generals[i].Ora_VyM);
-            }
-            writer.Close();*/
-        /*Message: "Write Succesfull"
-        }
-
-        public void Edit_DB()
-            {
-                Eld_Grid.ReadOnly = false;
-                Min_Grid.ReadOnly = false;
-                Gen_Grid.ReadOnly = false;
-            }
-
-        public void Save_DB()
-        {
-            Elders = Eld_Grid.DataSource as List<DB_Eld>;
-            Ministerials = Min_Grid.DataSource as List<DB_Mns>;
-            Generals = Gen_Grid.DataSource as List<DB_Gnr>;
-            Eld_Grid.ReadOnly = true;
-            Min_Grid.ReadOnly = true;
-            Gen_Grid.ReadOnly = true;
-            Write_CSV();
-        }*/
     }
 }

@@ -12,6 +12,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.Globalization;
 using System.Threading;
 using System.Runtime.CompilerServices;
+using System.IO;
 
 /*Developed by AGR-Systems Science and Tech Division*/
 
@@ -19,7 +20,7 @@ namespace Project_Insight
 {
     public partial class Main_Form : Form
     {
-        public enum p
+        public enum P
         {
             Executor,
             Oracle,
@@ -32,8 +33,6 @@ namespace Project_Insight
             Artanis
         };
 
-        public static int A = 1, B = 2, C = 3, D = 4, E = 5, F = 6, G = 7, H = 8;
-        public static int actual_presenter = 10;
         private Excel.Application objApp;
         private Excel.Workbook objBooks = null;
         private Excel.Sheets objSheets;
@@ -43,69 +42,76 @@ namespace Project_Insight
         private Excel.Range range_1;
         private Excel.Range range_2;
         private Excel.Range range_3;
-        public static bool excel_ready = false;
-        private DateTime start_time = new DateTime(DateTime.Today.Year, 1, 1, 7, 00, 00);
-        private DateTime date;
-        private object[,] cellValue_1 = null;
-        private object[,] cellValue_2 = null;
-        private object[,] cellValue_3 = null;
-        public static object[,] cellValue_4 = null;
-        public static string[] str_stack = new string[50];
-        public static int[] int_stack = new int[50];
-        public static bool busy_trace = false;
-        public static bool pending_trace = false;
         public static short iterator_stack = 0;
-        //public static string message_form2 = null;
-        //public static bool pending_refresh_DB = false;
+        public static short m_semana = 1;
+        public static short presenter_RP = 3;
+        public static short presenter_AC = 6;
+        public static short Conv_Wk = 0;
+        public static int A = 1, B = 2, C = 3, D = 4, E = 5, F = 6, G = 7, H = 8;
+        public static int actual_presenter = 10;
         public static int m_dia = 1;
         public static int m_mes = 1;
         public static int m_año = DateTime.Today.Year;
-        public static short m_semana = 1;
-        public static DateTime[,] meetings_days = new DateTime[5, 2];
-        public static string[] guard_cbx_names = new string[10];
         public static int date_checksum = 0;
-        public static string[] Command_history = new string[10];
-        public static string[] month = new string[] { "ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic" };
         public static int command_iterator = 0;
-        DB_Form DB_Form = new DB_Form();
-        //public static bool DB_form_show = false;
-        public static string Path = "";
+        public static int loading_delta = 1;
+        public static int loading = 0;
+        public static int tab_meeting = 0;
+        public static bool excel_ready = false;
+        public static bool busy_trace = false;
+        public static bool pending_trace = false;
+        public static bool week_five_exist = false;
+        public static bool UI_running = false;
         public static bool is_new_instance = false;
+        public static bool is_room_B_enabled = false;
+        public static DateTime start_time = new DateTime(DateTime.Today.Year, 1, 1, 7, 00, 00);
+        public static DateTime date;
+        public static DateTime[,] meetings_days = new DateTime[5, 2];
+        private object[,] cellValue_1 = null;
+        private object[,] cellValue_2 = null;
+        private object[,] cellValue_3 = null;
+        public static string File_Path = "";
+        public static string Config_Path = "";
+        public static string aux_command;
+        public static string Conv_Name = "";
+        public static string Cong_Name = "";
+        public static string[] str_stack = new string[50];
+        public static string[] Command_history = new string[10];
+        public static string[] Months = new string[] { "ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic" };
+        DB_Form DB_Form = new DB_Form();
         public static VyM_Mes VyM_mes = new VyM_Mes();
         public static RP_Mes RP_mes = new RP_Mes();
         public static AC_Mes AC_mes = new AC_Mes();
         IDictionary<string, object> Dict_vym = new Dictionary<string, object>();
-        IDictionary<object, object> Dict_vym_time = new Dictionary<object, object>();
         IDictionary<string, object> Dict_rp = new Dictionary<string, object>();
         IDictionary<string, object> Dict_ac = new Dictionary<string, object>();
-        public static int tab_meeting = 0;
-        public static string aux_command;
-        //public static bool selected_txt = false;
-        public static int loading_delta = 1;
-        public static int loading = 0;
-        public static bool week_five_exist = false;
-        public static bool UI_running = false;
-        public static short Conv_Wk = 0;
-        public static string Conv_Name = "";
-        public static bool Save_DB = false;
-        public static bool Show_DB = false;
-        public static short presenter_RP = 3;
-        public static short presenter_AC = 6;
+        StreamReader Reader_config;
+        StreamWriter SW_config;
+        
+
+        public delegate void Updater_Notify(string Str);
+        public delegate void Updater_Warn(string Str);
 
 
-
+        /*----------------System Functions------------------*/
         public Main_Form()
         {
             CultureInfo en = new CultureInfo("es-MX");
             Thread.CurrentThread.CurrentCulture = en;
             InitializeComponent();
+            if (Thread.CurrentThread.Name == null)
+            {
+                Thread.CurrentThread.Name = "MainThread";
+                //Thread.CurrentThread.Priority = ThreadPriority.AboveNormal;
+            }
+            //Event_Handler.WEEK_READ_AFTER_SAVE += Week_Handler;
         }
 
         private void Main_Form_Load(object sender, EventArgs e)
         {
             Notify("Project Insight 2.0");
             Notify("UI up and ready \nWelcome back Hierarch!");
-            Presenter(p.Executor);
+            Presenter(P.Executor);
             Autocomplete_dictionary();
             txt_Command.Focus();
         }
@@ -204,8 +210,13 @@ namespace Project_Insight
             Application.Exit();
         }
 
+        private void Main_Timer_Tick(object sender, EventArgs e)
+        {
+
+        }
+
         /*--------------------------------------- Traces and UI functions ---------------------------------------*/
-        public async void Presenter(p ID_Presenter)
+        public async void Presenter(P ID_Presenter)
         {
             if (actual_presenter != (int)ID_Presenter)
             {
@@ -214,47 +225,47 @@ namespace Project_Insight
                 await Task.Delay(300);
                 switch (ID_Presenter)
                 {
-                    case p.Executor:
+                    case P.Executor:
                         {
                             picPresenter.Image = Project_Insight.Properties.Resources.Executor;
                             break;
                         }
-                    case p.FenixZealot:
+                    case P.FenixZealot:
                         {
                             picPresenter.Image = Project_Insight.Properties.Resources.FenixZealot;
                             break;
                         }
-                    case p.FenixDragoon:
+                    case P.FenixDragoon:
                         {
                             picPresenter.Image = Project_Insight.Properties.Resources.FenixDragoon;
                             break;
                         }
-                    case p.Selendis:
+                    case P.Selendis:
                         {
                             picPresenter.Image = Project_Insight.Properties.Resources.Selendis;
                             break;
                         }
-                    case p.Oracle:
+                    case P.Oracle:
                         {
                             picPresenter.Image = Project_Insight.Properties.Resources.Oracle;
                             break;
                         }
-                    case p.DarkTemplar:
+                    case P.DarkTemplar:
                         {
                             picPresenter.Image = Project_Insight.Properties.Resources.DarkTemplar;
                             break;
                         }
-                    case p.HunterKiller:
+                    case P.HunterKiller:
                         {
                             picPresenter.Image = Project_Insight.Properties.Resources.HunterKiller;
                             break;
                         }
-                    case p.Hybrid:
+                    case P.Hybrid:
                         {
                             picPresenter.Image = Project_Insight.Properties.Resources.Hybrid;
                             break;
                         }
-                    case p.Artanis:
+                    case P.Artanis:
                         {
                             picPresenter.Image = Project_Insight.Properties.Resources.Artanis;
                             break;
@@ -263,134 +274,78 @@ namespace Project_Insight
             }
         }
 
-        public async void Notify(string data, [CallerLineNumber] int lineNumber = 0)
+        public async void Notify(string data)
         {
-            if (!busy_trace)
+            if (log_txtBx.InvokeRequired)
             {
-                busy_trace = true;
-                var array = data.ToCharArray();
-                log_txtBx.SelectionColor = Color.Orange;
-                //log_txtBx.AppendText("L-" + lineNumber + ": ");
-                for (int i = 0; i <= array.Length - 1; i++)
-                {
-                    log_txtBx.AppendText(array[i].ToString());
-                    await Task.Delay(5);
-                }
-                log_txtBx.AppendText("\n");
-                log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                log_txtBx.ScrollToCaret();
-                busy_trace = false;
-                if (pending_trace)
-                {
-                    String_stack("", false, 1, lineNumber);
-                }
+                Updater_Notify updater = Notify;
+                Invoke(updater, data);
             }
             else
             {
-                String_stack(data, true, 1, lineNumber);
+                if (!busy_trace)
+                {
+                    busy_trace = true;
+                    var array = data.ToCharArray();
+                    log_txtBx.SelectionColor = Color.Orange;
+                    for (int i = 0; i <= array.Length - 1; i++)
+                    {
+                        log_txtBx.AppendText(array[i].ToString());
+                        await Task.Delay(5);
+                    }
+                    log_txtBx.AppendText("\n");
+                    log_txtBx.SelectionStart = log_txtBx.Text.Length;
+                    log_txtBx.ScrollToCaret();
+                    busy_trace = false;
+                    if (pending_trace)
+                    {
+                        String_stack("", false, 1);
+                    }
+                }
+                else
+                {
+                    String_stack(data, true, 1);
+                }
+
             }
         }
 
-        public async void Warn(string data, [CallerLineNumber] int lineNumber = 0, [CallerMemberName] string caller = null)
+        public async void Warn(string data)
         {
-            if (!busy_trace)
+            if (log_txtBx.InvokeRequired)
             {
-                busy_trace = true;
-                var array = data.ToCharArray();
-                log_txtBx.SelectionColor = Color.Red;
-                log_txtBx.AppendText("L-" + lineNumber + ": ");
-                if (caller != "String_stack")
-                {
-                    log_txtBx.AppendText("(" + caller + ") ");
-                }
-                for (int i = 0; i <= array.Length - 1; i++)
-                {
-                    log_txtBx.AppendText(array[i].ToString());
-                    await Task.Delay(5);
-                }
-                log_txtBx.AppendText("\n");
-                log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                log_txtBx.ScrollToCaret();
-                busy_trace = false;
-                if (pending_trace)
-                {
-                    String_stack("", false, 2, lineNumber);
-                }
+                Updater_Warn updater = Warn;
+                Invoke(updater, data);
             }
             else
             {
-                String_stack("(" + caller + ") " + data, true, 2, lineNumber);
+                if (!busy_trace)
+                {
+                    busy_trace = true;
+                    var array = data.ToCharArray();
+                    log_txtBx.SelectionColor = Color.Red;
+                    for (int i = 0; i <= array.Length - 1; i++)
+                    {
+                        log_txtBx.AppendText(array[i].ToString());
+                        await Task.Delay(5);
+                    }
+                    log_txtBx.AppendText("\n");
+                    log_txtBx.SelectionStart = log_txtBx.Text.Length;
+                    log_txtBx.ScrollToCaret();
+                    busy_trace = false;
+                    if (pending_trace)
+                    {
+                        String_stack("", false, 2);
+                    }
+                }
+                else
+                {
+                    String_stack(data, true, 2);
+                }
             }
         }
 
-        /*ToDo Needs improvement, flickering*/
-        public async void Loading_Trace()
-        {
-            txt_Command.Enabled = false;
-            string aux = "";
-            int delay = 40;
-            while (busy_trace)
-            {
-                await Task.Delay(500);
-            }
-            busy_trace = true;
-            log_txtBx.SelectionColor = Color.Orange;
-            log_txtBx.AppendText("\nLoading:  ");
-            aux = log_txtBx.Text;
-            log_txtBx.Text = "";
-            log_txtBx.SelectionStart = log_txtBx.Text.Length;
-            log_txtBx.ScrollToCaret();
-            aux += loading.ToString() + " % ...-";
-            log_txtBx.Text = aux;
-            log_txtBx.SelectionStart = log_txtBx.Text.Length;
-            log_txtBx.ScrollToCaret();
-            aux = aux.Substring(0, aux.Length - 7 - loading.ToString().Length);
-            aux = aux.Replace(".-", ".|");
-            while (loading < 100)
-            {
-                aux += loading.ToString() + " % ...\\";
-                log_txtBx.Text = aux;
-                log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                aux = aux.Remove(aux.Length - 7 - loading.ToString().Length);
-                await Task.Delay(delay);
-                aux += loading.ToString() + " % ...|";
-                log_txtBx.Text = aux;
-                log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                aux = aux.Remove(aux.Length - 7 - loading.ToString().Length);
-                await Task.Delay(delay);
-                aux += loading.ToString() + " % .../";
-                log_txtBx.Text = aux;
-                log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                aux = aux.Remove(aux.Length - 7 - loading.ToString().Length);
-                await Task.Delay(delay);
-                aux += loading.ToString() + " % ...-";
-                log_txtBx.Text = aux;
-                log_txtBx.SelectionStart = log_txtBx.Text.Length;
-                aux = aux.Remove(aux.Length - 7 - loading.ToString().Length);
-                await Task.Delay(delay);
-            }
-            aux += loading.ToString() + " % ...\\";
-            log_txtBx.Text = aux;
-            log_txtBx.SelectionStart = log_txtBx.Text.Length;
-            log_txtBx.ScrollToCaret();
-            await Task.Delay(delay);
-            log_txtBx.AppendText("\n");
-            log_txtBx.SelectionColor = Color.Green;
-            log_txtBx.AppendText("Complete!");
-            log_txtBx.AppendText("\n");
-            await Task.Delay(delay);
-            log_txtBx.SelectionStart = log_txtBx.Text.Length;
-            log_txtBx.ScrollToCaret();
-            busy_trace = false;
-            txt_Command.Enabled = true;
-            txt_Command.Select();
-            if (pending_trace)
-            {
-                String_stack("", false, 1, 0);
-            }
-        }
-
-        public void String_stack(string data, bool save, int trace, int line)
+        public void String_stack(string data, bool save, int trace)
         {
             if (save)
             {
@@ -408,7 +363,6 @@ namespace Project_Insight
                         }
                 }
                 str_stack[iterator_stack] = data;
-                int_stack[iterator_stack] = line;
                 pending_trace = true;
                 iterator_stack++;
             }
@@ -418,16 +372,15 @@ namespace Project_Insight
                 str_stack[0] = str_stack[0].Substring(0, str_stack[0].Length - 1);
                 if (notify_warn == 1)
                 {
-                    Notify(str_stack[0], int_stack[0]);
+                    Notify(str_stack[0]);
                 }
                 else if (notify_warn == 2)
                 {
-                    Warn(str_stack[0], int_stack[0]);
+                    Warn(str_stack[0]);
                 }
                 for (int i = 1; i <= str_stack.Length - 1; i++)
                 {
                     str_stack[i - 1] = str_stack[i];
-                    int_stack[i - 1] = int_stack[i];
                 }
                 iterator_stack--;
                 if (iterator_stack == 0)
@@ -436,6 +389,49 @@ namespace Project_Insight
                 }
             }
         }
+
+        /*ToDo*/
+        public void Loading_Trace()
+        {
+            /*txt_Command.Enabled = false;
+            Loading_pBar.Value = 0;
+            Loading_pBar.Visible = true;
+            //Timer_Loading.Enabled = true;
+            int aux_loading = loading;
+            while (loading < 101)
+            {
+                if (aux_loading != loading)
+                {
+                    for (int i = aux_loading; i <= loading; i++)
+                    {
+                        Loading_pBar.PerformStep();
+                        await Task.Delay(20);
+                    }
+                    aux_loading = loading;
+                    if (loading == 100)
+                    {
+                        break;
+                    }
+                }
+                //Write_aux_trace();
+            }
+            Loading_pBar.Visible = false;
+            txt_Command.Enabled = true;
+            txt_Command.Select();
+            if (pending_trace)
+            {
+                String_stack("", false, 1);
+            }*/
+        }
+
+        /* public void Write_aux_trace()
+         {
+             if (aux_stack.Count > 0)
+             {
+                 Notify(aux_stack[0]);
+                 aux_stack.RemoveAt(0);
+             }
+         }*/
 
         /*--------------------------------------- Command functions ---------------------------------------*/
 
@@ -468,9 +464,9 @@ namespace Project_Insight
                         case "new":
                             {
                                 bool month_found = false;
-                                for (int i = 0; i <= month.Length - 1; i++)
+                                for (int i = 0; i <= Months.Length - 1; i++)
                                 {
-                                    if (sup.Contains(month[i]))
+                                    if (sup.Contains(Months[i]))
                                     {
                                         m_mes = i + 1;
                                         month_found = true;
@@ -582,40 +578,26 @@ namespace Project_Insight
                         case "db":
                             {
                                 DB_Form.Show();
-                                Show_DB = true;
-                                break;
-                            }
-                        case "e_db":
-                            {
-                                if (Show_DB)
-                                {
-                                    Notify("Edit DB, Press Enter to edit selected cell");
-                                    Save_DB = true;
-                                    //DB_Form.Edit_DB();
-                                }
-                                else
-                                {
-                                    Warn("Need to show DB in order to edit");
-                                }
-                                break;
-                            }
-                        case "s_db":
-                            {
-                                if (Save_DB)
-                                {
-                                    Save_DB = false;
-                                    //DB_Form.Save_DB();
-                                }
-                                else
-                                {
-                                    Warn("Edit DB before save");
-                                }
                                 break;
                             }
                         case "afil":
                             {
-                                /*Create a new thread for autofill*/
                                 AutoFill_Handler();
+                                break;
+                            }
+                        case "cfg":
+                            {
+                                if (UI_running)
+                                {
+                                    Notify("Entering config control");
+                                    Config_Control();
+                                    Notify("\nCongregation Name: " + Cong_Name);
+                                    Notify("Room B : " + (is_room_B_enabled ? "Enabled" : "Disabled") + "\n");
+                                }
+                                else
+                                {
+                                    Warn("Need to create a new instance or open an existing program");
+                                }
                                 break;
                             }
                         case "test":
@@ -801,15 +783,15 @@ namespace Project_Insight
         {
             if (cmd.Contains("ig") || cmd.Contains("tb"))
             {
-                Presenter(p.Executor);
+                Presenter(P.Executor);
             }
             else if (cmd.Contains("sm"))
             {
-                Presenter(p.Oracle);
+                Presenter(P.Oracle);
             }
             else if (cmd.Contains("nv"))
             {
-                Presenter(p.DarkTemplar);
+                Presenter(P.DarkTemplar);
             }
         }
 
@@ -827,7 +809,8 @@ namespace Project_Insight
         /*New excel file*/
         public void New_Instance()
         {
-            Path = Application.StartupPath + "\\\\Programs.xlsx";
+            Config_Control();
+            File_Path = Application.StartupPath + "\\\\Programs.xlsx";
             Notify("Running new instance");
             is_new_instance = true;
             //tab_Control.Enabled = true;
@@ -840,6 +823,23 @@ namespace Project_Insight
             Time_Handler();
         }
 
+        /*Open config file*/
+        public void Config_Control()
+        {
+            Config_Path = Application.StartupPath + "\\\\Project_Insight_Config.txt";
+            int len = File.ReadAllLines(Config_Path).Length;
+            string[] data = new string[len];
+            Reader_config = new StreamReader(Config_Path);
+
+            for (int i = 0; i < len; i++)
+            {
+                data[i] = Reader_config.ReadLine();
+            }
+            Reader_config.Close();
+            Cong_Name = data[0];
+            bool.TryParse(data[1], out is_room_B_enabled);
+        }
+
         /*Open an existing excel program*/
         public void Known_Instance()
         {
@@ -848,13 +848,13 @@ namespace Project_Insight
                 Filter = "Excel files (*.xlsx, *.xls)|*.xlsx;*.xls",
                 FileName = "",
                 Title = "Load Excel File"
-            };
+            }; 
             if (DialogResult.OK == openExcel.ShowDialog())
             {
                 if (null != openExcel.FileName)
                 {
-                    Path = openExcel.FileName;
-                    Opening_Excel(Path);
+                    File_Path = openExcel.FileName;
+                    Opening_Excel(File_Path);
                     VyM_Handler(false);
                     Get_Meetings();
                     Week_Handler();
@@ -903,7 +903,7 @@ namespace Project_Insight
                 range_3 = Sheet_AC.get_Range("A1", "H70");
                 cellValue_3 = (System.Object[,])range_3.get_Value();
 
-                Notify("Opening path: " + path);
+                Notify("Opening excel Main file");
                 excel_ready = true;
             }
             else
@@ -941,7 +941,7 @@ namespace Project_Insight
         /*Add DateTime of the month meetings in the array*/
         public void Get_Meetings()
         {
-            Notify("Getting meetings for month [" + month[m_mes - 1].ToString() + "]");
+            Notify("Getting meetings for month [" + Months[m_mes - 1].ToString() + "]");
             int days = DateTime.DaysInMonth(2018, m_mes);
             int i = -1;
             int check = 0;
@@ -1012,9 +1012,14 @@ namespace Project_Insight
 
         private void Process_save(int save)
         {
+            if (Thread.CurrentThread.Name == null)
+            {
+                Thread.CurrentThread.Name = "SaveThread";
+                //Thread.CurrentThread.Priority = ThreadPriority.BelowNormal;
+            }
             string FileName = meetings_days[0, 0].ToString("MMMM");
             loading = 1;
-            Opening_Excel(Path);
+            Opening_Excel(File_Path);
             loading += 4;
             Pre_save_info();
             if (save == 4)
@@ -1048,10 +1053,10 @@ namespace Project_Insight
                 string createfolder = "c:\\Project_Insight";
                 System.IO.Directory.CreateDirectory(createfolder);
                 objBooks.SaveAs(createfolder + "\\" + FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, false, false, Excel.XlSaveAsAccessMode.xlNoChange, Excel.XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
-                Path = createfolder + "\\" + FileName;
+                File_Path = createfolder + "\\" + FileName;
                 //PDF Implementation TBD
                 //objBooks.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, Path);
-                Notify("Saved path: " + Path);
+                Notify("Saved path: " + File_Path);
             }
             else
             {
@@ -1064,9 +1069,10 @@ namespace Project_Insight
                 objBooks.Close(0);
                 objApp.Quit();
             }
-            //DB_Form.Write_CSV();
-            Notify("Saved date: [" + m_dia.ToString() + "-" + m_mes.ToString() + "-" + m_año.ToString() + "]");
-            //Check_time(this, null);
+            DB_Form.DB_Control(true);
+            Notify("Save successful!");
+            //Event_Handler.Week_Read_after_save();
+            //Week_Handler();
             loading = 100;
         }
 
@@ -1103,6 +1109,8 @@ namespace Project_Insight
         public void VyM_Save_Week(VyM_Sem sem, short num_sem)
         {
             short primary_cell = Get_vym_cell(num_sem);
+            Sheet_VyM.PageSetup.LeftHeader = "&16&B" + Cong_Name;
+            
             Sheet_VyM.Cells[primary_cell, A] = sem.Fecha.ToUpper();
             if (num_sem != Conv_Wk)
             {
@@ -1110,7 +1118,12 @@ namespace Project_Insight
                 {
                     Sheet_VyM.Cells[primary_cell, D] = sem.Sem_Biblia.ToUpper();
                     Sheet_VyM.Cells[primary_cell, G] = sem.Presidente;
+                    if (!sem.Discurso.Contains("min"))
+                    {
+                        sem.Discurso += "(10 mins.)";
+                    }
                     Sheet_VyM.Cells[primary_cell + 6, C] = sem.Discurso;
+                    Set_Font(Sheet_VyM.get_Range("C" + (primary_cell + 6)));
                     Sheet_VyM.Cells[primary_cell + 6, G] = sem.Discurso_A;
                     Sheet_VyM.Cells[primary_cell + 7, G] = sem.Perlas;
                     Sheet_VyM.Cells[primary_cell + 8, G] = sem.Lectura;
@@ -1124,14 +1137,18 @@ namespace Project_Insight
                         aux_range = Sheet_VyM.get_Range(a + (primary_cell + 23).ToString(), g + (primary_cell + 23).ToString());
                         aux_range.RowHeight = 6;
                         Sheet_VyM.Cells[primary_cell + 14, C] = sem.SMM4;
+                        Set_Font(Sheet_VyM.get_Range("C" + (primary_cell + 14)));
                         Sheet_VyM.Cells[primary_cell + 14, G] = sem.SMM4_A;
 
                     }
                     Sheet_VyM.Cells[primary_cell + 11, C] = sem.SMM1;
+                    Set_Font(Sheet_VyM.get_Range("C" + (primary_cell + 11)));
                     Sheet_VyM.Cells[primary_cell + 11, G] = sem.SMM1_A;
                     Sheet_VyM.Cells[primary_cell + 12, C] = sem.SMM2;
+                    Set_Font(Sheet_VyM.get_Range("C" + (primary_cell + 12)));
                     Sheet_VyM.Cells[primary_cell + 12, G] = sem.SMM2_A;
                     Sheet_VyM.Cells[primary_cell + 13, C] = sem.SMM3;
+                    Set_Font(Sheet_VyM.get_Range("C" + (primary_cell + 13)));
                     Sheet_VyM.Cells[primary_cell + 13, G] = sem.SMM3_A;
                     Sheet_VyM.Cells[primary_cell + 17, C] = sem.NVC1;
                     Sheet_VyM.Cells[primary_cell + 17, G] = sem.NVC1_A;
@@ -1143,21 +1160,21 @@ namespace Project_Insight
                     DB_Form.Persistence_VyM(sem, meetings_days[num_sem - 1, 0]);
 
                     string[] Time_data = Get_time_from_week(sem);
-                    Sheet_VyM.Cells[primary_cell + 1, A] = Time_data[0];
-                    Sheet_VyM.Cells[primary_cell + 2, A] = Time_data[1];
-                    Sheet_VyM.Cells[primary_cell + 5, A] = Time_data[2];
-                    Sheet_VyM.Cells[primary_cell + 6, A] = Time_data[3];
-                    Sheet_VyM.Cells[primary_cell + 7, A] = Time_data[4];
-                    Sheet_VyM.Cells[primary_cell + 10, A] = Time_data[5];
-                    Sheet_VyM.Cells[primary_cell + 11, A] = Time_data[6];
-                    Sheet_VyM.Cells[primary_cell + 12, A] = Time_data[7];
-                    Sheet_VyM.Cells[primary_cell + 13, A] = Time_data[8];
-                    Sheet_VyM.Cells[primary_cell + 15, A] = Time_data[9];
-                    Sheet_VyM.Cells[primary_cell + 16, A] = Time_data[10];
-                    Sheet_VyM.Cells[primary_cell + 17, A] = Time_data[11];
-                    Sheet_VyM.Cells[primary_cell + 18, A] = Time_data[12];
-                    Sheet_VyM.Cells[primary_cell + 19, A] = Time_data[13];
-                    Sheet_VyM.Cells[primary_cell + 20, A] = Time_data[14];
+                    Sheet_VyM.Cells[primary_cell + 2, A] = Time_data[0];
+                    Sheet_VyM.Cells[primary_cell + 3, A] = Time_data[1];
+                    Sheet_VyM.Cells[primary_cell + 6, A] = Time_data[2];
+                    Sheet_VyM.Cells[primary_cell + 7, A] = Time_data[3];
+                    Sheet_VyM.Cells[primary_cell + 8, A] = Time_data[4];
+                    Sheet_VyM.Cells[primary_cell + 11, A] = Time_data[5];
+                    Sheet_VyM.Cells[primary_cell + 12, A] = Time_data[6];
+                    Sheet_VyM.Cells[primary_cell + 13, A] = Time_data[7];
+                    Sheet_VyM.Cells[primary_cell + 14, A] = Time_data[8];
+                    Sheet_VyM.Cells[primary_cell + 16, A] = Time_data[9];
+                    Sheet_VyM.Cells[primary_cell + 17, A] = Time_data[10];
+                    Sheet_VyM.Cells[primary_cell + 18, A] = Time_data[11];
+                    Sheet_VyM.Cells[primary_cell + 19, A] = Time_data[12];
+                    Sheet_VyM.Cells[primary_cell + 20, A] = Time_data[13];
+                    Sheet_VyM.Cells[primary_cell + 21, A] = Time_data[14];
                 }
             }
             else
@@ -1270,7 +1287,6 @@ namespace Project_Insight
                     Sheet_RP.Cells[primary_cell + 10, E] = sem.Ttl_Sal;
                     Sheet_RP.Cells[primary_cell + 10, H] = sem.Cong_Sal;
                     DB_Form.Persistence_RP(sem, meetings_days[num_sem-1, 1]);
-                    //meetings_days[0, 0].ToString("dddd, dd MMMM");
                 }
             }
             else
@@ -1480,9 +1496,9 @@ namespace Project_Insight
             if (cellvalue != null)
             {
                 bool month_found = false;
-                for (int i = 0; i <= month.Length - 1; i++)
+                for (int i = 0; i <= Months.Length - 1; i++)
                 {
-                    if (cellvalue.ToString().ToLower().Contains(month[i]))
+                    if (cellvalue.ToString().ToLower().Contains(Months[i]))
                     {
                         m_mes = i + 1;
                         month_found = true;
@@ -1614,19 +1630,19 @@ namespace Project_Insight
         }
         private void General_Info_Enter(object sender, EventArgs e)
         {
-            Presenter(p.Executor);
+            Presenter(P.Executor);
             Notify("Overview");
         }
 
         private void Tesoros_Biblia_Enter(object sender, EventArgs e)
         {
-            Presenter(p.DarkTemplar);
+            Presenter(P.DarkTemplar);
             Notify("Section 'Tesoros de la Biblia'");
         }
 
         private void Seamos_Maestros_Enter(object sender, EventArgs e)
         {
-            Presenter(p.Selendis);
+            Presenter(P.Selendis);
             Notify("Section 'Seamos Mejores Maestros'");
         }
 
@@ -1644,7 +1660,7 @@ namespace Project_Insight
             }
             if (tab_Control.SelectedIndex == 0)
             {
-                Presenter(p.Executor);
+                Presenter(P.Executor);
                 tab_meeting = 0;
                 autocomplete.AddRange(Dict_vym.Keys.ToArray());
                 Notify("\"Vida y Ministerio\" meeting");
@@ -1656,7 +1672,7 @@ namespace Project_Insight
                 {
                     presenter_RP = 3;
                 }
-                Presenter((p)presenter_RP);
+                Presenter((P)presenter_RP);
                 tab_meeting = 1;
                 autocomplete.AddRange(Dict_rp.Keys.ToArray());
                 Notify("\"Reunion Publica y Analisis de La Atalaya\" meeting");
@@ -1669,7 +1685,7 @@ namespace Project_Insight
                 {
                     presenter_AC = 6;
                 }
-                Presenter((p)presenter_AC);
+                Presenter((P)presenter_AC);
                 tab_meeting = 2;
                 autocomplete.AddRange(Dict_ac.Keys.ToArray());
                 Notify("\"Acomodadores\" Section");
@@ -1678,9 +1694,100 @@ namespace Project_Insight
             txt_Command.AutoCompleteCustomSource = autocomplete;
         }
 
+        /*ToDo*/
         private void Txt_TextChanged(object sender, EventArgs e)
         {
-
+            TextBox txbx = (TextBox)sender;
+            VyM_Sem sem;
+            switch (m_semana)
+            {
+                case 1:
+                    {
+                        sem = VyM_mes.Semana1;
+                        break;
+                    }
+                case 2:
+                    {
+                        sem = VyM_mes.Semana2;
+                        break;
+                    }
+                case 3:
+                    {
+                        sem = VyM_mes.Semana3;
+                        break;
+                    }
+                case 4:
+                    {
+                        sem = VyM_mes.Semana4;
+                        break;
+                    }
+                default:
+                    {
+                        sem = VyM_mes.Semana5;
+                        break;
+                    }
+            }
+            switch (txbx.Name)
+            {
+                case "txt_SMM1":
+                    {
+                        sem.SMM1 = txbx.Text;
+                        break;
+                    }
+                case "txt_SMM2":
+                    {
+                        sem.SMM2 = txbx.Text;
+                        break;
+                    }
+                case "txt_SMM3":
+                    {
+                        sem.SMM3 = txbx.Text;
+                        break;
+                    }
+                case "txt_SMM4":
+                    {
+                        sem.SMM4 = txbx.Text;
+                        break;
+                    }
+                case "txt_NVC1":
+                    {
+                        sem.NVC1 = txbx.Text;
+                        break;
+                    }
+                case "txt_NVC2":
+                    {
+                        sem.NVC2 = txbx.Text;
+                        break;
+                    }
+            }
+            switch (m_semana)
+            {
+                case 1:
+                    {
+                        VyM_mes.Semana1 = sem;
+                        break;
+                    }
+                case 2:
+                    {
+                        VyM_mes.Semana2 = sem;
+                        break;
+                    }
+                case 3:
+                    {
+                        VyM_mes.Semana3 = sem;
+                        break;
+                    }
+                case 4:
+                    {
+                        VyM_mes.Semana4 = sem;
+                        break;
+                    }
+                default:
+                    {
+                        VyM_mes.Semana5 = sem;
+                        break;
+                    }
+            }
             Time_Handler();
         }
 
@@ -1838,12 +1945,11 @@ namespace Project_Insight
             }
         }
 
-        /*ToDo*/
+        /*Autofill handler*/
         public void AutoFill_Handler()
         {
             Notify("Executing AutoFill_Handler");
             Pre_save_info();
-            /*Use Sem object to compare fields that are null or empty, create functions to perform autofill in 5 weeks*/
             switch (tab_meeting)
             {
                 case 0:
@@ -2022,7 +2128,7 @@ namespace Project_Insight
                         }
                         Random rnd = new Random();
                         int rnd_pr = rnd.Next(3, 5);
-                        Presenter((p)rnd_pr);
+                        Presenter((P)rnd_pr);
                         lun = 1;
                         break;
                     }

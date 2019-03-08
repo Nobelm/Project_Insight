@@ -26,12 +26,16 @@ namespace Project_Insight
         public string Lectura { get; set; }
         public string SMM1 { get; set; }
         public string SMM1_A { get; set; }
+        public string SMM1_B { get; set; }
         public string SMM2 { get; set; }
         public string SMM2_A { get; set; }
+        public string SMM2_B { get; set; }
         public string SMM3 { get; set; }
         public string SMM3_A { get; set; }
+        public string SMM3_B { get; set; }
         public string SMM4 { get; set; }
         public string SMM4_A { get; set; }
+        public string SMM4_B { get; set; }
         public string NVC1 { get; set; }
         public string NVC1_A { get; set; }
         public string NVC2 { get; set; }
@@ -47,22 +51,55 @@ namespace Project_Insight
             {
                 Lectura,
                 SMM1_A,
+                SMM1_B,
                 SMM2_A,
+                SMM2_B,
                 SMM3_A,
-                SMM4_A
+                SMM3_B,
+                SMM4_A,
+                SMM4_B
             };
 
-            if ((Libro_L == null) || (Libro_L == ""))
+            Libro_L = Asignee_Handler(Libro_L, ref Asignee, "Libro_L");
+            Oracion = Asignee_Handler(Oracion, ref Asignee, "Oracion");
+        }
+
+        public string Asignee_Handler(string Field, ref List<string> Asignee, string iterator)
+        {
+            string Final_Asigned = "";
+            List<Person> People = new List<Person>();
+            if ((Field == null) || (Field == ""))
             {
-                foreach (DB_Gnr item in DB_Form.Generals)
+                switch (iterator)
                 {
-                    Person ps = new Person
-                    {
-                        Name = item.Nombre,
-                        Date = item.Lec_VyM,
-                    };
-                    People.Add(ps);
+                    case "Libro_L":
+                        {
+                            foreach (DB_Gnr item in DB_Form.Generals)
+                            {
+                                Person ps = new Person
+                                {
+                                    Name = item.Nombre,
+                                    Date = item.Lec_VyM
+                                };
+                                People.Add(ps);
+                            }
+                            break;
+                        }
+                    case "Oracion":
+                        {
+                            foreach (DB_Gnr item in DB_Form.Generals)
+                            {
+                                Person ps = new Person
+                                {
+                                    Name = item.Nombre,
+                                    Date = item.Ora_VyM,
+                                };
+                                People.Add(ps);
+                            }
+                            break;
+                        }
                 }
+
                 People.Sort(delegate (Person ps1, Person ps2)
                 {
                     return DateTime.Compare(ps1.Date, ps2.Date);
@@ -71,38 +108,18 @@ namespace Project_Insight
                 {
                     if (!Asignee.Contains(People[i].Name))
                     {
-                        Libro_L = People[i].Name;
-                        Asignee.Add(Libro_L);
+                        Final_Asigned = People[i].Name;
+                        Asignee.Add(Final_Asigned);
                         break;
                     }
                 }
+            }
+            else
+            {
+                Final_Asigned = Field;
             }
             People.Clear();
-            if ((Oracion == null) || (Oracion == ""))
-            {
-                foreach (DB_Gnr item in DB_Form.Generals)
-                {
-                    Person ps = new Person
-                    {
-                        Name = item.Nombre,
-                        Date = item.Ora_VyM,
-                    };
-                    People.Add(ps);
-                }
-                People.Sort(delegate (Person ps1, Person ps2)
-                {
-                    return DateTime.Compare(ps1.Date, ps2.Date);
-                });
-                for (int i = 0; i < People.Count; i++)
-                {
-                    if (!Asignee.Contains(People[i].Name))
-                    {
-                        Oracion = People[i].Name;
-                        Asignee.Add(Oracion);
-                        break;
-                    }
-                }
-            }
+            return Final_Asigned;
         }
 
         public class Person
