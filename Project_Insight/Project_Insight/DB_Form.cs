@@ -15,11 +15,10 @@ namespace Project_Insight
 {
     public partial class DB_Form : Form
     {
-        public List<DB_Eld> Elders = new List<DB_Eld>();
-        public List<DB_Mns> Ministerials = new List<DB_Mns>();
-        public List<DB_Gnr> Generals = new List<DB_Gnr>();
+        public static List<DB_Eld> Elders = new List<DB_Eld>();
+        public static List<DB_Mns> Ministerials = new List<DB_Mns>();
+        public static List<DB_Gnr> Generals = new List<DB_Gnr>();
         //public List<DB_Cln> Cleaners = new List <DB_Cln>();
-
         public string Path_CSV = Application.StartupPath + "\\\\DB.csv";
 
         public DB_Form()
@@ -33,7 +32,6 @@ namespace Project_Insight
         {
             Read_CSV();
         }
-
 
         private void DB_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -92,18 +90,18 @@ namespace Project_Insight
             /*Message: "Read Succesfull"*/
         }
 
-        public async void Persistence_VyM(VyM_Sem sem, String date)
+        public async void Persistence_VyM(VyM_Sem sem, string date)
         {
             await Task.Delay(10);
             for (int i = 0; i < Generals.Count; i++)
             {
                 if (Generals[i].Nombre == sem.Libro_L)
                 {
-                    Generals[i].Lec_VyM = date;
+                    Generals[i].Libro_L = date;
                 }
                 else if (Generals[i].Nombre == sem.Oracion)
                 {
-                    Generals[i].Ora_VyM = date;
+                    Generals[i].Oracion_VyM = date;
                 }
             }
         }
@@ -231,7 +229,7 @@ namespace Project_Insight
             writer.WriteLine("end section");
             for (int i = 0; i < Generals.Count; i++)
             {
-                writer.WriteLine(Generals[i].Nombre + "," + Generals[i].Acom + "," + Generals[i].Lec_RP + "," + Generals[i].Lec_VyM + "," + Generals[i].Ora_VyM);
+                writer.WriteLine(Generals[i].Nombre + "," + Generals[i].Acom + "," + Generals[i].Lec_RP + "," + Generals[i].Libro_L + "," + Generals[i].Oracion_VyM);
             }
             writer.Close();
             /*Message: "Write Succesfull"*/
@@ -253,6 +251,82 @@ namespace Project_Insight
             Min_Grid.ReadOnly = true;
             Gen_Grid.ReadOnly = true;
             Write_CSV();
+        }
+
+        public static string[] Get_VyM_Assigned(string ID)
+        {
+            string[] Str_name = new string[3];
+            DateTime[] min_num = new DateTime[3];
+            if (ID == "Libro_L")
+            {
+                min_num[0] = Convert.ToDateTime(Generals[0].Libro_L);
+                for (int i = 0; i < Generals.Count; i++)
+                {
+                    if (0 > DateTime.Compare(Convert.ToDateTime(Generals[i].Libro_L), min_num[0]))
+                    {
+                        min_num[2] = min_num[1];
+                        min_num[1] = min_num[0];
+                        min_num[0] = Convert.ToDateTime(Generals[i].Libro_L);
+                        Str_name[2] = Str_name[1];
+                        Str_name[1] = Str_name[0];
+                        Str_name[0] = Generals[i].Nombre;
+                    }
+                    else if ((min_num[1] != null) && (0 > DateTime.Compare(Convert.ToDateTime(Generals[i].Libro_L), min_num[1])))
+                    {
+                        min_num[2] = min_num[1];
+                        min_num[1] = Convert.ToDateTime(Generals[i].Libro_L);
+                        Str_name[2] = Str_name[1];
+                        Str_name[1] = Generals[i].Nombre;
+                    }
+                    else if ((min_num[2] != null) && (0 > DateTime.Compare(Convert.ToDateTime(Generals[i].Libro_L), min_num[2])))
+                    {
+                        min_num[2] = Convert.ToDateTime(Generals[i].Libro_L);
+                        Str_name[2] = Generals[i].Nombre;
+                    }
+                }
+            }
+            else if(ID == "Oracion")
+            {
+                min_num[0] = Convert.ToDateTime(Generals[0].Oracion_VyM);
+                for (int i = 0; i < Generals.Count; i++)
+                {
+                    if (0 > DateTime.Compare(Convert.ToDateTime(Generals[i].Oracion_VyM), min_num[0]))
+                    {
+                        min_num[2] = min_num[1];
+                        min_num[1] = min_num[0];
+                        min_num[0] = Convert.ToDateTime(Generals[i].Oracion_VyM);
+                        Str_name[2] = Str_name[1];
+                        Str_name[1] = Str_name[0];
+                        Str_name[0] = Generals[i].Nombre;
+                    }
+                    else if ((min_num[1] != null) && (0 > DateTime.Compare(Convert.ToDateTime(Generals[i].Oracion_VyM), min_num[1])))
+                    {
+                        min_num[2] = min_num[1];
+                        min_num[1] = Convert.ToDateTime(Generals[i].Oracion_VyM);
+                        Str_name[2] = Str_name[1];
+                        Str_name[1] = Generals[i].Nombre;
+                    }
+                    else if ((min_num[2] != null) && (0 > DateTime.Compare(Convert.ToDateTime(Generals[i].Oracion_VyM), min_num[2])))
+                    {
+                        min_num[2] = Convert.ToDateTime(Generals[i].Oracion_VyM);
+                        Str_name[2] = Generals[i].Nombre;
+                    }
+                }
+            }
+            return Str_name;
+        }
+
+        public void Get_Generals_Elements(DB_Gnr gnr)
+        {
+
+        }
+
+        public static string[] Get_RP_Assigned(string ID)
+        {
+            string[] Str_name = new string[3];
+            DateTime[] min_num = new DateTime[3];
+
+            return Str_name;
         }
     }
 }

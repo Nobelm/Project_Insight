@@ -68,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RP_Mes.cs" />
     <Compile Include="VyM_Mes.cs" />
+    <EmbeddedResource Include="DB_Form.es-MX.resx">
+      <DependentUpon>DB_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DB_Form.resx">
       <DependentUpon>DB_Form.cs</DependentUpon>
     </EmbeddedResource>

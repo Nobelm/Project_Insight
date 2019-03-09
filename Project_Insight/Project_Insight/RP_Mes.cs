@@ -29,5 +29,11 @@ namespace Project_Insight
         public string Discu_Sal { get; set; }
         public string Ttl_Sal { get; set; }
         public string Cong_Sal { get; set; }
+
+        public void Autofill()
+        {
+            string[] str_name = new string[3];
+
+        }
     }
 }
