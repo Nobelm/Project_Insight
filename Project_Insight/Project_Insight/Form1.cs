@@ -106,6 +106,7 @@ namespace Project_Insight
             Presenter(p.Executor);
             Autocomplete_dictionary();
             txt_Command.Focus();
+
         }
 
         public void Autocomplete_dictionary()
