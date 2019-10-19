@@ -1,0 +1,27 @@
+List of commands:
+"new"  + month (only first 3 chars)
+"open" -> popups an OpenFileDialog
+"exit" -> Close all the application
+"save" + Specify "vym", "rp", "ac", "all"
+"tab"  + Specify "vym", "rp", "ac"
+"week" + valid int (between 1 to 4 or 5 if applies)
+"conv" + name of the convention (set current week as convention)
+	   + "false" to set normal a convention week.
+"afil" -> Autofill the fields
+"help" -> To display all the current commands
+"vst"  + "true" or "false" to set current week for the visit of superintendent
+"cfg"  + "read" -> display the current configuration file
+	   + "write" -> enters in configuration mode.
+"hw"   -> Execute Heavensward feature, recovering all the meeting information
+		  from wol.jw.org, process it and set it on the program
+"rest" -> Open Resitricted Format
+
+-- In configuration mode --
+"cong"  + Set the congregation name
+"roomb" + "true" or "false" to set the room B status
+"vymh"  + valid int in format "HH:mm" to set time for vym meeting
+"rph"   + valid int in format "HH:mm" to set time for rp meeting
+"vymd"  + valid day of the week to set date for vym meeting
+"rpd"   + valid day of the week to set date for rp meeting
+"ac"	+ "true" or "false" to set if all AC are the same all week
+"exit"  -> Exit the configuration mode
