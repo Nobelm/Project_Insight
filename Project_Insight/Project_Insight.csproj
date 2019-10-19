@@ -34,6 +34,15 @@
     <LangVersion>default</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel1">
+      <HintPath>..\..\..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.Office.Interop.Excel\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.Office.Interop.Outlook\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Outlook.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,31 +57,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AC_Mes.cs" />
-    <Compile Include="DB_Cln.cs" />
-    <Compile Include="DB_Eld.cs" />
-    <Compile Include="DB_Form.cs">
+    <Compile Include="DB_Handler.cs" />
+    <Compile Include="Heavensward.cs" />
+    <Compile Include="Main_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DB_Form.Designer.cs">
-      <DependentUpon>DB_Form.cs</DependentUpon>
+    <Compile Include="Main_Form.Designer.cs">
+      <DependentUpon>Main_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="DB_Gnr.cs" />
-    <Compile Include="DB_Mns.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Males.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RP_Mes.cs" />
     <Compile Include="VyM_Mes.cs" />
-    <EmbeddedResource Include="DB_Form.resx">
-      <DependentUpon>DB_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Main_Form.es-MX.resx">
+      <DependentUpon>Main_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Main_Form.resx">
+      <DependentUpon>Main_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,6 +82,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="bin\Debug\DB.csv" />
+    <None Include="bin\Debug\DB.xlsx" />
     <None Include="bin\Debug\Programs.xlsx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -159,13 +162,19 @@
     <None Include="Resources\Artanis.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DB.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\FenixZealot.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Project_Insight_Config.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Commands_Helper.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Bible_Books.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

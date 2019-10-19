@@ -19,7 +19,7 @@ namespace Project_Insight.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -71,6 +71,87 @@ namespace Project_Insight.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Génesis
+        ///Éxodo
+        ///Levítico
+        ///Números
+        ///Deuteronomio
+        ///Josué
+        ///Jueces
+        ///Rut
+        ///1 Samuel
+        ///2 Samuel
+        ///1 Reyes
+        ///2 Reyes
+        ///1 Crónicas
+        ///2 Crónicas
+        ///Esdras
+        ///Nehemías
+        ///Ester
+        ///Job
+        ///Salmos
+        ///Proverbios
+        ///Eclesiastés
+        ///El Cantar de los Cantares
+        ///Isaías
+        ///Jeremías
+        ///Lamentaciones
+        ///Ezequiel
+        ///Daniel
+        ///Oseas
+        ///Joel
+        ///Amós
+        ///Abdías
+        ///Jonás
+        ///Miqueas
+        ///Nahúm
+        ///Habacuc
+        ///Sofonías
+        ///Ageo
+        ///Zacarías
+        ///Malaquías
+        ///Mateo
+        ///Marcos
+        ///Lucas
+        ///Juan
+        ///Hechos
+        ///Romanos
+        ///1 Corintios
+        ///2 Corintios
+        ///Gálatas
+        ///Efesios
+        ///Filipenses
+        ///Colosenses
+        ///1 Tesalonicenses
+        ///2 Tesalonicen [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Bible_Books {
+            get {
+                return ResourceManager.GetString("Bible_Books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of commands:
+        ///&quot;new&quot;  + month (only first 3 chars)
+        ///&quot;open&quot; -&gt; popups an OpenFileDialog
+        ///&quot;exit&quot; -&gt; Close all the application
+        ///&quot;save&quot; + Specify &quot;vym&quot;, &quot;rp&quot;, &quot;ac&quot;, &quot;all&quot;
+        ///&quot;tab&quot;  + Specify &quot;vym&quot;, &quot;rp&quot;, &quot;ac&quot;
+        ///&quot;week&quot; + valid int (between 1 to 4 or 5 if applies)
+        ///&quot;conv&quot; + name of the convention (set current week as convention)
+        ///	   + &quot;false&quot; to set normal a convention week.
+        ///&quot;afil&quot; -&gt; Autofill the fields
+        ///&quot;help&quot; -&gt; To display all the current commands
+        ///&quot;vst&quot;  + &quot;true&quot; or &quot;false&quot; to set current week for the visi [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Commands_Helper {
+            get {
+                return ResourceManager.GetString("Commands_Helper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap DarkTemplar {
@@ -81,31 +162,12 @@ namespace Project_Insight.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Jose Luis Mares,0,0,0,0,0,0
-        ///Cesar Mares,0,0,0,0,0,0
-        ///Roberto Meza,0,0,0,0,0,0
-        ///Jose Villeda,0,0,0,0,0,0
-        ///Max Jimenez,0,0,0,0,0,0
-        ///Omar Belin,0,0,0,0,0,0
-        ///Orlando Robert,0,0,0,0,0,0
-        ///end section
-        ///Mario Flores,0,0,0,0,0,0
-        ///Primitivo Martinez,0,0,0,0,0,0
-        ///Axel Jimenez,0,0,0,0,0,0
-        ///Noel Belin,0,0,0,0,0,0
-        ///Hugo Robert,0,0,0,0,0,0
-        ///end section
-        ///Arturo Garcia EspaÃ±a,0,0,0,0
-        ///Antonio Cordova,0,0,0,0
-        ///Saul Garcia,0,0,0,0
-        ///Ronaldo Jaziel Martinez,0,0,0,0
-        ///Claudio Alonso,0,0,0,0
-        ///Adolfo Morales,0,0,0,0
-        ///Juan Rangel, [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static string DB {
+        internal static byte[] DB {
             get {
-                return ResourceManager.GetString("DB", resourceCulture);
+                object obj = ResourceManager.GetObject("DB", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -200,6 +262,21 @@ namespace Project_Insight.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Geoplazas Qro.
+        ///True
+        ///19:00
+        ///19:00
+        ///Tuesday
+        ///Saturday
+        ///True.
+        /// </summary>
+        internal static string Project_Insight_Config {
+            get {
+                return ResourceManager.GetString("Project_Insight_Config", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap protoss_Frame {
@@ -216,15 +293,6 @@ namespace Project_Insight.Properties {
             get {
                 object obj = ResourceManager.GetObject("Selendis", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string String {
-            get {
-                return ResourceManager.GetString("String", resourceCulture);
             }
         }
     }

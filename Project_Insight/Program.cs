@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*Developed by AGR-Systems Science and Tech Division*/
 namespace Project_Insight
 {
     internal static class Program
