@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AC_Mes.cs" />
-    <Compile Include="DB_Handler.cs" />
+    <Compile Include="Persistence.cs" />
     <Compile Include="Heavensward.cs" />
     <Compile Include="Main_Form.cs">
       <SubType>Form</SubType>
@@ -69,6 +70,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RP_Mes.cs" />
+    <Compile Include="Helix.cs" />
     <Compile Include="VyM_Mes.cs" />
     <EmbeddedResource Include="Main_Form.es-MX.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
@@ -175,6 +177,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Bible_Books.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Google.Cloud.Firestore" Version="1.0.0-beta19" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,7 +18,7 @@ namespace Project_Insight
 
     public class RP_Sem
     {
-        public string Fecha { get; set; }
+        public DateTime Fecha { get; set; }
         public string Titulo { get; set; }
         public string Presidente { get; set; }
         public string Congregacion { get; set; }
@@ -31,10 +31,12 @@ namespace Project_Insight
         public string Ttl_Sal { get; set; }
         public string Cong_Sal { get; set; }
         public bool HW_Data { get; set; }
+        public bool Conv_Week { get; set; }
+        public bool Vst_Week { get; set; }
         public short Num_of_Week { get; set; }
         public void Clear()
         {
-            Fecha = "";
+            //Fecha = "";
             Titulo = "";
             Presidente = "";
             Congregacion = "";
@@ -46,6 +48,20 @@ namespace Project_Insight
             Discu_Sal = "";
             Ttl_Sal = "";
             Cong_Sal = "";
+        }
+
+        public List<string> Get_Asignee_List()
+        {
+            List<string> Asignee = new List<string>
+            {
+                Presidente,
+                Discursante,
+                Conductor,
+                Lector,
+                Oracion,
+                Discu_Sal
+            };
+            return Asignee;
         }
 
         public void AutoFill()
@@ -178,20 +194,6 @@ namespace Project_Insight
                 }
             }
             People.Clear();
-        }
-
-        public List<string> Get_Asignee_List()
-        {
-            List<string> Asignee = new List<string>
-            {
-                Presidente,
-                Discursante,
-                Conductor,
-                Lector,
-                Oracion,
-                Discu_Sal
-            };
-            return Asignee;
         }
 
         public class Person

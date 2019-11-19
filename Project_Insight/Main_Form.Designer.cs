@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.Log_txtBx = new System.Windows.Forms.RichTextBox();
             this.picPresenter = new System.Windows.Forms.PictureBox();
             this.protoss_Frame = new System.Windows.Forms.PictureBox();
@@ -134,80 +135,80 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.txt_AC2_S_5 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_S_5 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_S_5 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_rp_5 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_rp_5 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_rp_5 = new System.Windows.Forms.TextBox();
             this.txt_Aseo_5 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_L_5 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_L_5 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_L_5 = new System.Windows.Forms.TextBox();
-            this.lbl_Dia_S_5 = new System.Windows.Forms.Label();
+            this.txt_AC2_vym_5 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_vym_5 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_vym_5 = new System.Windows.Forms.TextBox();
+            this.lbl_Dia_RP_5 = new System.Windows.Forms.Label();
             this.label144 = new System.Windows.Forms.Label();
-            this.lbl_Dia_L_5 = new System.Windows.Forms.Label();
+            this.lbl_Dia_VyM_5 = new System.Windows.Forms.Label();
             this.label146 = new System.Windows.Forms.Label();
             this.label147 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txt_AC2_S_4 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_S_4 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_S_4 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_S_3 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_S_3 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_S_3 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_S_2 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_S_2 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_S_2 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_S_1 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_S_1 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_S_1 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_rp_4 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_rp_4 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_rp_4 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_rp_3 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_rp_3 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_rp_3 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_rp_2 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_rp_2 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_rp_2 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_rp_1 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_rp_1 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_rp_1 = new System.Windows.Forms.TextBox();
             this.txt_Aseo_4 = new System.Windows.Forms.TextBox();
             this.txt_Aseo_3 = new System.Windows.Forms.TextBox();
             this.txt_Aseo_2 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_L_4 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_L_4 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_L_4 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_L_3 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_L_3 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_L_3 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_L_2 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_L_2 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_L_2 = new System.Windows.Forms.TextBox();
-            this.txt_AC2_L_1 = new System.Windows.Forms.TextBox();
-            this.txt_AC1_L_1 = new System.Windows.Forms.TextBox();
-            this.txt_Cap_L_1 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_vym_4 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_vym_4 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_vym_4 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_vym_3 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_vym_3 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_vym_3 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_vym_2 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_vym_2 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_vym_2 = new System.Windows.Forms.TextBox();
+            this.txt_AC2_vym_1 = new System.Windows.Forms.TextBox();
+            this.txt_AC1_vym_1 = new System.Windows.Forms.TextBox();
+            this.txt_Cap_vym_1 = new System.Windows.Forms.TextBox();
             this.txt_Aseo_1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label130 = new System.Windows.Forms.Label();
-            this.lbl_Dia_S_4 = new System.Windows.Forms.Label();
+            this.lbl_Dia_RP_4 = new System.Windows.Forms.Label();
             this.label132 = new System.Windows.Forms.Label();
             this.label133 = new System.Windows.Forms.Label();
             this.label135 = new System.Windows.Forms.Label();
-            this.lbl_Dia_L_4 = new System.Windows.Forms.Label();
+            this.lbl_Dia_VyM_4 = new System.Windows.Forms.Label();
             this.label137 = new System.Windows.Forms.Label();
             this.label138 = new System.Windows.Forms.Label();
             this.label121 = new System.Windows.Forms.Label();
-            this.lbl_Dia_S_3 = new System.Windows.Forms.Label();
+            this.lbl_Dia_RP_3 = new System.Windows.Forms.Label();
             this.label123 = new System.Windows.Forms.Label();
             this.label124 = new System.Windows.Forms.Label();
             this.label126 = new System.Windows.Forms.Label();
-            this.lbl_Dia_L_3 = new System.Windows.Forms.Label();
+            this.lbl_Dia_VyM_3 = new System.Windows.Forms.Label();
             this.label128 = new System.Windows.Forms.Label();
             this.label129 = new System.Windows.Forms.Label();
             this.label112 = new System.Windows.Forms.Label();
-            this.lbl_Dia_S_2 = new System.Windows.Forms.Label();
+            this.lbl_Dia_RP_2 = new System.Windows.Forms.Label();
             this.label114 = new System.Windows.Forms.Label();
             this.label115 = new System.Windows.Forms.Label();
             this.label117 = new System.Windows.Forms.Label();
-            this.lbl_Dia_L_2 = new System.Windows.Forms.Label();
+            this.lbl_Dia_VyM_2 = new System.Windows.Forms.Label();
             this.label119 = new System.Windows.Forms.Label();
             this.label120 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lbl_Dia_S_1 = new System.Windows.Forms.Label();
+            this.lbl_Dia_RP_1 = new System.Windows.Forms.Label();
             this.label110 = new System.Windows.Forms.Label();
             this.label111 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
-            this.lbl_Dia_L_1 = new System.Windows.Forms.Label();
+            this.lbl_Dia_VyM_1 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.Status_Tab = new System.Windows.Forms.TabPage();
@@ -227,6 +228,8 @@
             this.lbl_Month = new System.Windows.Forms.Label();
             this.Main_Timer = new System.Windows.Forms.Timer(this.components);
             this.LoadingBar = new System.Windows.Forms.ProgressBar();
+            this.PerformanceCounter = new System.Diagnostics.PerformanceCounter();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.picPresenter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.protoss_Frame)).BeginInit();
             this.tab_Control.SuspendLayout();
@@ -241,6 +244,8 @@
             this.AC_grpbx_wk5.SuspendLayout();
             this.Status_Tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Male_Status_GridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PerformanceCounter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // Log_txtBx
@@ -958,65 +963,65 @@
             this.Tab_AC.Controls.Add(this.label21);
             this.Tab_AC.Controls.Add(this.label20);
             this.Tab_AC.Controls.Add(this.label9);
-            this.Tab_AC.Controls.Add(this.txt_AC2_S_4);
-            this.Tab_AC.Controls.Add(this.txt_AC1_S_4);
-            this.Tab_AC.Controls.Add(this.txt_Cap_S_4);
-            this.Tab_AC.Controls.Add(this.txt_AC2_S_3);
-            this.Tab_AC.Controls.Add(this.txt_AC1_S_3);
-            this.Tab_AC.Controls.Add(this.txt_Cap_S_3);
-            this.Tab_AC.Controls.Add(this.txt_AC2_S_2);
-            this.Tab_AC.Controls.Add(this.txt_AC1_S_2);
-            this.Tab_AC.Controls.Add(this.txt_Cap_S_2);
-            this.Tab_AC.Controls.Add(this.txt_AC2_S_1);
-            this.Tab_AC.Controls.Add(this.txt_AC1_S_1);
-            this.Tab_AC.Controls.Add(this.txt_Cap_S_1);
+            this.Tab_AC.Controls.Add(this.txt_AC2_rp_4);
+            this.Tab_AC.Controls.Add(this.txt_AC1_rp_4);
+            this.Tab_AC.Controls.Add(this.txt_Cap_rp_4);
+            this.Tab_AC.Controls.Add(this.txt_AC2_rp_3);
+            this.Tab_AC.Controls.Add(this.txt_AC1_rp_3);
+            this.Tab_AC.Controls.Add(this.txt_Cap_rp_3);
+            this.Tab_AC.Controls.Add(this.txt_AC2_rp_2);
+            this.Tab_AC.Controls.Add(this.txt_AC1_rp_2);
+            this.Tab_AC.Controls.Add(this.txt_Cap_rp_2);
+            this.Tab_AC.Controls.Add(this.txt_AC2_rp_1);
+            this.Tab_AC.Controls.Add(this.txt_AC1_rp_1);
+            this.Tab_AC.Controls.Add(this.txt_Cap_rp_1);
             this.Tab_AC.Controls.Add(this.txt_Aseo_4);
             this.Tab_AC.Controls.Add(this.txt_Aseo_3);
             this.Tab_AC.Controls.Add(this.txt_Aseo_2);
-            this.Tab_AC.Controls.Add(this.txt_AC2_L_4);
-            this.Tab_AC.Controls.Add(this.txt_AC1_L_4);
-            this.Tab_AC.Controls.Add(this.txt_Cap_L_4);
-            this.Tab_AC.Controls.Add(this.txt_AC2_L_3);
-            this.Tab_AC.Controls.Add(this.txt_AC1_L_3);
-            this.Tab_AC.Controls.Add(this.txt_Cap_L_3);
-            this.Tab_AC.Controls.Add(this.txt_AC2_L_2);
-            this.Tab_AC.Controls.Add(this.txt_AC1_L_2);
-            this.Tab_AC.Controls.Add(this.txt_Cap_L_2);
-            this.Tab_AC.Controls.Add(this.txt_AC2_L_1);
-            this.Tab_AC.Controls.Add(this.txt_AC1_L_1);
-            this.Tab_AC.Controls.Add(this.txt_Cap_L_1);
+            this.Tab_AC.Controls.Add(this.txt_AC2_vym_4);
+            this.Tab_AC.Controls.Add(this.txt_AC1_vym_4);
+            this.Tab_AC.Controls.Add(this.txt_Cap_vym_4);
+            this.Tab_AC.Controls.Add(this.txt_AC2_vym_3);
+            this.Tab_AC.Controls.Add(this.txt_AC1_vym_3);
+            this.Tab_AC.Controls.Add(this.txt_Cap_vym_3);
+            this.Tab_AC.Controls.Add(this.txt_AC2_vym_2);
+            this.Tab_AC.Controls.Add(this.txt_AC1_vym_2);
+            this.Tab_AC.Controls.Add(this.txt_Cap_vym_2);
+            this.Tab_AC.Controls.Add(this.txt_AC2_vym_1);
+            this.Tab_AC.Controls.Add(this.txt_AC1_vym_1);
+            this.Tab_AC.Controls.Add(this.txt_Cap_vym_1);
             this.Tab_AC.Controls.Add(this.txt_Aseo_1);
             this.Tab_AC.Controls.Add(this.label3);
             this.Tab_AC.Controls.Add(this.label130);
-            this.Tab_AC.Controls.Add(this.lbl_Dia_S_4);
+            this.Tab_AC.Controls.Add(this.lbl_Dia_RP_4);
             this.Tab_AC.Controls.Add(this.label132);
             this.Tab_AC.Controls.Add(this.label133);
             this.Tab_AC.Controls.Add(this.label135);
-            this.Tab_AC.Controls.Add(this.lbl_Dia_L_4);
+            this.Tab_AC.Controls.Add(this.lbl_Dia_VyM_4);
             this.Tab_AC.Controls.Add(this.label137);
             this.Tab_AC.Controls.Add(this.label138);
             this.Tab_AC.Controls.Add(this.label121);
-            this.Tab_AC.Controls.Add(this.lbl_Dia_S_3);
+            this.Tab_AC.Controls.Add(this.lbl_Dia_RP_3);
             this.Tab_AC.Controls.Add(this.label123);
             this.Tab_AC.Controls.Add(this.label124);
             this.Tab_AC.Controls.Add(this.label126);
-            this.Tab_AC.Controls.Add(this.lbl_Dia_L_3);
+            this.Tab_AC.Controls.Add(this.lbl_Dia_VyM_3);
             this.Tab_AC.Controls.Add(this.label128);
             this.Tab_AC.Controls.Add(this.label129);
             this.Tab_AC.Controls.Add(this.label112);
-            this.Tab_AC.Controls.Add(this.lbl_Dia_S_2);
+            this.Tab_AC.Controls.Add(this.lbl_Dia_RP_2);
             this.Tab_AC.Controls.Add(this.label114);
             this.Tab_AC.Controls.Add(this.label115);
             this.Tab_AC.Controls.Add(this.label117);
-            this.Tab_AC.Controls.Add(this.lbl_Dia_L_2);
+            this.Tab_AC.Controls.Add(this.lbl_Dia_VyM_2);
             this.Tab_AC.Controls.Add(this.label119);
             this.Tab_AC.Controls.Add(this.label120);
             this.Tab_AC.Controls.Add(this.label1);
-            this.Tab_AC.Controls.Add(this.lbl_Dia_S_1);
+            this.Tab_AC.Controls.Add(this.lbl_Dia_RP_1);
             this.Tab_AC.Controls.Add(this.label110);
             this.Tab_AC.Controls.Add(this.label111);
             this.Tab_AC.Controls.Add(this.label45);
-            this.Tab_AC.Controls.Add(this.lbl_Dia_L_1);
+            this.Tab_AC.Controls.Add(this.lbl_Dia_VyM_1);
             this.Tab_AC.Controls.Add(this.label44);
             this.Tab_AC.Controls.Add(this.label43);
             this.Tab_AC.ForeColor = System.Drawing.Color.Coral;
@@ -1029,16 +1034,16 @@
             this.AC_grpbx_wk5.Controls.Add(this.label4);
             this.AC_grpbx_wk5.Controls.Add(this.label10);
             this.AC_grpbx_wk5.Controls.Add(this.label11);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_AC2_S_5);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_AC1_S_5);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_Cap_S_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_AC2_rp_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_AC1_rp_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_Cap_rp_5);
             this.AC_grpbx_wk5.Controls.Add(this.txt_Aseo_5);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_AC2_L_5);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_AC1_L_5);
-            this.AC_grpbx_wk5.Controls.Add(this.txt_Cap_L_5);
-            this.AC_grpbx_wk5.Controls.Add(this.lbl_Dia_S_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_AC2_vym_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_AC1_vym_5);
+            this.AC_grpbx_wk5.Controls.Add(this.txt_Cap_vym_5);
+            this.AC_grpbx_wk5.Controls.Add(this.lbl_Dia_RP_5);
             this.AC_grpbx_wk5.Controls.Add(this.label144);
-            this.AC_grpbx_wk5.Controls.Add(this.lbl_Dia_L_5);
+            this.AC_grpbx_wk5.Controls.Add(this.lbl_Dia_VyM_5);
             this.AC_grpbx_wk5.Controls.Add(this.label146);
             this.AC_grpbx_wk5.Controls.Add(this.label147);
             resources.ApplyResources(this.AC_grpbx_wk5, "AC_grpbx_wk5");
@@ -1071,21 +1076,21 @@
             // 
             // txt_AC2_S_5
             // 
-            this.txt_AC2_S_5.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_S_5, "txt_AC2_S_5");
-            this.txt_AC2_S_5.Name = "txt_AC2_S_5";
+            this.txt_AC2_rp_5.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC2_rp_5, "txt_AC2_S_5");
+            this.txt_AC2_rp_5.Name = "txt_AC2_S_5";
             // 
             // txt_AC1_S_5
             // 
-            this.txt_AC1_S_5.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_S_5, "txt_AC1_S_5");
-            this.txt_AC1_S_5.Name = "txt_AC1_S_5";
+            this.txt_AC1_rp_5.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC1_rp_5, "txt_AC1_S_5");
+            this.txt_AC1_rp_5.Name = "txt_AC1_S_5";
             // 
             // txt_Cap_S_5
             // 
-            this.txt_Cap_S_5.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_S_5, "txt_Cap_S_5");
-            this.txt_Cap_S_5.Name = "txt_Cap_S_5";
+            this.txt_Cap_rp_5.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_Cap_rp_5, "txt_Cap_S_5");
+            this.txt_Cap_rp_5.Name = "txt_Cap_S_5";
             // 
             // txt_Aseo_5
             // 
@@ -1095,27 +1100,27 @@
             // 
             // txt_AC2_L_5
             // 
-            this.txt_AC2_L_5.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_L_5, "txt_AC2_L_5");
-            this.txt_AC2_L_5.Name = "txt_AC2_L_5";
+            this.txt_AC2_vym_5.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC2_vym_5, "txt_AC2_L_5");
+            this.txt_AC2_vym_5.Name = "txt_AC2_L_5";
             // 
             // txt_AC1_L_5
             // 
-            this.txt_AC1_L_5.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_L_5, "txt_AC1_L_5");
-            this.txt_AC1_L_5.Name = "txt_AC1_L_5";
+            this.txt_AC1_vym_5.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC1_vym_5, "txt_AC1_L_5");
+            this.txt_AC1_vym_5.Name = "txt_AC1_L_5";
             // 
             // txt_Cap_L_5
             // 
-            this.txt_Cap_L_5.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_L_5, "txt_Cap_L_5");
-            this.txt_Cap_L_5.Name = "txt_Cap_L_5";
+            this.txt_Cap_vym_5.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_Cap_vym_5, "txt_Cap_L_5");
+            this.txt_Cap_vym_5.Name = "txt_Cap_L_5";
             // 
-            // lbl_Dia_S_5
+            // lbl_Dia_RP_5
             // 
-            resources.ApplyResources(this.lbl_Dia_S_5, "lbl_Dia_S_5");
-            this.lbl_Dia_S_5.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Dia_S_5.Name = "lbl_Dia_S_5";
+            resources.ApplyResources(this.lbl_Dia_RP_5, "lbl_Dia_RP_5");
+            this.lbl_Dia_RP_5.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Dia_RP_5.Name = "lbl_Dia_RP_5";
             // 
             // label144
             // 
@@ -1123,11 +1128,11 @@
             this.label144.ForeColor = System.Drawing.Color.Black;
             this.label144.Name = "label144";
             // 
-            // lbl_Dia_L_5
+            // lbl_Dia_VyM_5
             // 
-            resources.ApplyResources(this.lbl_Dia_L_5, "lbl_Dia_L_5");
-            this.lbl_Dia_L_5.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Dia_L_5.Name = "lbl_Dia_L_5";
+            resources.ApplyResources(this.lbl_Dia_VyM_5, "lbl_Dia_VyM_5");
+            this.lbl_Dia_VyM_5.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Dia_VyM_5.Name = "lbl_Dia_VyM_5";
             // 
             // label146
             // 
@@ -1161,75 +1166,75 @@
             // 
             // txt_AC2_S_4
             // 
-            this.txt_AC2_S_4.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_S_4, "txt_AC2_S_4");
-            this.txt_AC2_S_4.Name = "txt_AC2_S_4";
+            this.txt_AC2_rp_4.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC2_rp_4, "txt_AC2_S_4");
+            this.txt_AC2_rp_4.Name = "txt_AC2_S_4";
             // 
             // txt_AC1_S_4
             // 
-            this.txt_AC1_S_4.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_S_4, "txt_AC1_S_4");
-            this.txt_AC1_S_4.Name = "txt_AC1_S_4";
+            this.txt_AC1_rp_4.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC1_rp_4, "txt_AC1_S_4");
+            this.txt_AC1_rp_4.Name = "txt_AC1_S_4";
             // 
             // txt_Cap_S_4
             // 
-            this.txt_Cap_S_4.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_S_4, "txt_Cap_S_4");
-            this.txt_Cap_S_4.Name = "txt_Cap_S_4";
+            this.txt_Cap_rp_4.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_Cap_rp_4, "txt_Cap_S_4");
+            this.txt_Cap_rp_4.Name = "txt_Cap_S_4";
             // 
             // txt_AC2_S_3
             // 
-            this.txt_AC2_S_3.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_S_3, "txt_AC2_S_3");
-            this.txt_AC2_S_3.Name = "txt_AC2_S_3";
+            this.txt_AC2_rp_3.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC2_rp_3, "txt_AC2_S_3");
+            this.txt_AC2_rp_3.Name = "txt_AC2_S_3";
             // 
             // txt_AC1_S_3
             // 
-            this.txt_AC1_S_3.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_S_3, "txt_AC1_S_3");
-            this.txt_AC1_S_3.Name = "txt_AC1_S_3";
+            this.txt_AC1_rp_3.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC1_rp_3, "txt_AC1_S_3");
+            this.txt_AC1_rp_3.Name = "txt_AC1_S_3";
             // 
             // txt_Cap_S_3
             // 
-            this.txt_Cap_S_3.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_S_3, "txt_Cap_S_3");
-            this.txt_Cap_S_3.Name = "txt_Cap_S_3";
+            this.txt_Cap_rp_3.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_Cap_rp_3, "txt_Cap_S_3");
+            this.txt_Cap_rp_3.Name = "txt_Cap_S_3";
             // 
             // txt_AC2_S_2
             // 
-            this.txt_AC2_S_2.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_S_2, "txt_AC2_S_2");
-            this.txt_AC2_S_2.Name = "txt_AC2_S_2";
+            this.txt_AC2_rp_2.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC2_rp_2, "txt_AC2_S_2");
+            this.txt_AC2_rp_2.Name = "txt_AC2_S_2";
             // 
             // txt_AC1_S_2
             // 
-            this.txt_AC1_S_2.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_S_2, "txt_AC1_S_2");
-            this.txt_AC1_S_2.Name = "txt_AC1_S_2";
+            this.txt_AC1_rp_2.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC1_rp_2, "txt_AC1_S_2");
+            this.txt_AC1_rp_2.Name = "txt_AC1_S_2";
             // 
             // txt_Cap_S_2
             // 
-            this.txt_Cap_S_2.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_S_2, "txt_Cap_S_2");
-            this.txt_Cap_S_2.Name = "txt_Cap_S_2";
+            this.txt_Cap_rp_2.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_Cap_rp_2, "txt_Cap_S_2");
+            this.txt_Cap_rp_2.Name = "txt_Cap_S_2";
             // 
             // txt_AC2_S_1
             // 
-            this.txt_AC2_S_1.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_S_1, "txt_AC2_S_1");
-            this.txt_AC2_S_1.Name = "txt_AC2_S_1";
+            this.txt_AC2_rp_1.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC2_rp_1, "txt_AC2_S_1");
+            this.txt_AC2_rp_1.Name = "txt_AC2_S_1";
             // 
             // txt_AC1_S_1
             // 
-            this.txt_AC1_S_1.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_S_1, "txt_AC1_S_1");
-            this.txt_AC1_S_1.Name = "txt_AC1_S_1";
+            this.txt_AC1_rp_1.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC1_rp_1, "txt_AC1_S_1");
+            this.txt_AC1_rp_1.Name = "txt_AC1_S_1";
             // 
             // txt_Cap_S_1
             // 
-            this.txt_Cap_S_1.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_S_1, "txt_Cap_S_1");
-            this.txt_Cap_S_1.Name = "txt_Cap_S_1";
+            this.txt_Cap_rp_1.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_Cap_rp_1, "txt_Cap_S_1");
+            this.txt_Cap_rp_1.Name = "txt_Cap_S_1";
             // 
             // txt_Aseo_4
             // 
@@ -1251,75 +1256,75 @@
             // 
             // txt_AC2_L_4
             // 
-            this.txt_AC2_L_4.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_L_4, "txt_AC2_L_4");
-            this.txt_AC2_L_4.Name = "txt_AC2_L_4";
+            this.txt_AC2_vym_4.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC2_vym_4, "txt_AC2_L_4");
+            this.txt_AC2_vym_4.Name = "txt_AC2_L_4";
             // 
             // txt_AC1_L_4
             // 
-            this.txt_AC1_L_4.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_L_4, "txt_AC1_L_4");
-            this.txt_AC1_L_4.Name = "txt_AC1_L_4";
+            this.txt_AC1_vym_4.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC1_vym_4, "txt_AC1_L_4");
+            this.txt_AC1_vym_4.Name = "txt_AC1_L_4";
             // 
             // txt_Cap_L_4
             // 
-            this.txt_Cap_L_4.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_L_4, "txt_Cap_L_4");
-            this.txt_Cap_L_4.Name = "txt_Cap_L_4";
+            this.txt_Cap_vym_4.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_Cap_vym_4, "txt_Cap_L_4");
+            this.txt_Cap_vym_4.Name = "txt_Cap_L_4";
             // 
             // txt_AC2_L_3
             // 
-            this.txt_AC2_L_3.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_L_3, "txt_AC2_L_3");
-            this.txt_AC2_L_3.Name = "txt_AC2_L_3";
+            this.txt_AC2_vym_3.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC2_vym_3, "txt_AC2_L_3");
+            this.txt_AC2_vym_3.Name = "txt_AC2_L_3";
             // 
             // txt_AC1_L_3
             // 
-            this.txt_AC1_L_3.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_L_3, "txt_AC1_L_3");
-            this.txt_AC1_L_3.Name = "txt_AC1_L_3";
+            this.txt_AC1_vym_3.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC1_vym_3, "txt_AC1_L_3");
+            this.txt_AC1_vym_3.Name = "txt_AC1_L_3";
             // 
             // txt_Cap_L_3
             // 
-            this.txt_Cap_L_3.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_L_3, "txt_Cap_L_3");
-            this.txt_Cap_L_3.Name = "txt_Cap_L_3";
+            this.txt_Cap_vym_3.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_Cap_vym_3, "txt_Cap_L_3");
+            this.txt_Cap_vym_3.Name = "txt_Cap_L_3";
             // 
             // txt_AC2_L_2
             // 
-            this.txt_AC2_L_2.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_L_2, "txt_AC2_L_2");
-            this.txt_AC2_L_2.Name = "txt_AC2_L_2";
+            this.txt_AC2_vym_2.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC2_vym_2, "txt_AC2_L_2");
+            this.txt_AC2_vym_2.Name = "txt_AC2_L_2";
             // 
             // txt_AC1_L_2
             // 
-            this.txt_AC1_L_2.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_L_2, "txt_AC1_L_2");
-            this.txt_AC1_L_2.Name = "txt_AC1_L_2";
+            this.txt_AC1_vym_2.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC1_vym_2, "txt_AC1_L_2");
+            this.txt_AC1_vym_2.Name = "txt_AC1_L_2";
             // 
             // txt_Cap_L_2
             // 
-            this.txt_Cap_L_2.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_L_2, "txt_Cap_L_2");
-            this.txt_Cap_L_2.Name = "txt_Cap_L_2";
+            this.txt_Cap_vym_2.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_Cap_vym_2, "txt_Cap_L_2");
+            this.txt_Cap_vym_2.Name = "txt_Cap_L_2";
             // 
             // txt_AC2_L_1
             // 
-            this.txt_AC2_L_1.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_L_1, "txt_AC2_L_1");
-            this.txt_AC2_L_1.Name = "txt_AC2_L_1";
+            this.txt_AC2_vym_1.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC2_vym_1, "txt_AC2_L_1");
+            this.txt_AC2_vym_1.Name = "txt_AC2_L_1";
             // 
             // txt_AC1_L_1
             // 
-            this.txt_AC1_L_1.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_L_1, "txt_AC1_L_1");
-            this.txt_AC1_L_1.Name = "txt_AC1_L_1";
+            this.txt_AC1_vym_1.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_AC1_vym_1, "txt_AC1_L_1");
+            this.txt_AC1_vym_1.Name = "txt_AC1_L_1";
             // 
             // txt_Cap_L_1
             // 
-            this.txt_Cap_L_1.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_L_1, "txt_Cap_L_1");
-            this.txt_Cap_L_1.Name = "txt_Cap_L_1";
+            this.txt_Cap_vym_1.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.txt_Cap_vym_1, "txt_Cap_L_1");
+            this.txt_Cap_vym_1.Name = "txt_Cap_L_1";
             // 
             // txt_Aseo_1
             // 
@@ -1339,11 +1344,11 @@
             this.label130.ForeColor = System.Drawing.Color.Black;
             this.label130.Name = "label130";
             // 
-            // lbl_Dia_S_4
+            // lbl_Dia_RP_4
             // 
-            resources.ApplyResources(this.lbl_Dia_S_4, "lbl_Dia_S_4");
-            this.lbl_Dia_S_4.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Dia_S_4.Name = "lbl_Dia_S_4";
+            resources.ApplyResources(this.lbl_Dia_RP_4, "lbl_Dia_RP_4");
+            this.lbl_Dia_RP_4.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Dia_RP_4.Name = "lbl_Dia_RP_4";
             // 
             // label132
             // 
@@ -1363,11 +1368,11 @@
             this.label135.ForeColor = System.Drawing.Color.Black;
             this.label135.Name = "label135";
             // 
-            // lbl_Dia_L_4
+            // lbl_Dia_VyM_4
             // 
-            resources.ApplyResources(this.lbl_Dia_L_4, "lbl_Dia_L_4");
-            this.lbl_Dia_L_4.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Dia_L_4.Name = "lbl_Dia_L_4";
+            resources.ApplyResources(this.lbl_Dia_VyM_4, "lbl_Dia_VyM_4");
+            this.lbl_Dia_VyM_4.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Dia_VyM_4.Name = "lbl_Dia_VyM_4";
             // 
             // label137
             // 
@@ -1387,11 +1392,11 @@
             this.label121.ForeColor = System.Drawing.Color.Black;
             this.label121.Name = "label121";
             // 
-            // lbl_Dia_S_3
+            // lbl_Dia_RP_3
             // 
-            resources.ApplyResources(this.lbl_Dia_S_3, "lbl_Dia_S_3");
-            this.lbl_Dia_S_3.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Dia_S_3.Name = "lbl_Dia_S_3";
+            resources.ApplyResources(this.lbl_Dia_RP_3, "lbl_Dia_RP_3");
+            this.lbl_Dia_RP_3.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Dia_RP_3.Name = "lbl_Dia_RP_3";
             // 
             // label123
             // 
@@ -1411,11 +1416,11 @@
             this.label126.ForeColor = System.Drawing.Color.Black;
             this.label126.Name = "label126";
             // 
-            // lbl_Dia_L_3
+            // lbl_Dia_VyM_3
             // 
-            resources.ApplyResources(this.lbl_Dia_L_3, "lbl_Dia_L_3");
-            this.lbl_Dia_L_3.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Dia_L_3.Name = "lbl_Dia_L_3";
+            resources.ApplyResources(this.lbl_Dia_VyM_3, "lbl_Dia_VyM_3");
+            this.lbl_Dia_VyM_3.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Dia_VyM_3.Name = "lbl_Dia_VyM_3";
             // 
             // label128
             // 
@@ -1435,11 +1440,11 @@
             this.label112.ForeColor = System.Drawing.Color.Black;
             this.label112.Name = "label112";
             // 
-            // lbl_Dia_S_2
+            // lbl_Dia_RP_2
             // 
-            resources.ApplyResources(this.lbl_Dia_S_2, "lbl_Dia_S_2");
-            this.lbl_Dia_S_2.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Dia_S_2.Name = "lbl_Dia_S_2";
+            resources.ApplyResources(this.lbl_Dia_RP_2, "lbl_Dia_RP_2");
+            this.lbl_Dia_RP_2.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Dia_RP_2.Name = "lbl_Dia_RP_2";
             // 
             // label114
             // 
@@ -1459,11 +1464,11 @@
             this.label117.ForeColor = System.Drawing.Color.Black;
             this.label117.Name = "label117";
             // 
-            // lbl_Dia_L_2
+            // lbl_Dia_VyM_2
             // 
-            resources.ApplyResources(this.lbl_Dia_L_2, "lbl_Dia_L_2");
-            this.lbl_Dia_L_2.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Dia_L_2.Name = "lbl_Dia_L_2";
+            resources.ApplyResources(this.lbl_Dia_VyM_2, "lbl_Dia_VyM_2");
+            this.lbl_Dia_VyM_2.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Dia_VyM_2.Name = "lbl_Dia_VyM_2";
             // 
             // label119
             // 
@@ -1483,11 +1488,11 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Name = "label1";
             // 
-            // lbl_Dia_S_1
+            // lbl_Dia_RP_1
             // 
-            resources.ApplyResources(this.lbl_Dia_S_1, "lbl_Dia_S_1");
-            this.lbl_Dia_S_1.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Dia_S_1.Name = "lbl_Dia_S_1";
+            resources.ApplyResources(this.lbl_Dia_RP_1, "lbl_Dia_RP_1");
+            this.lbl_Dia_RP_1.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Dia_RP_1.Name = "lbl_Dia_RP_1";
             // 
             // label110
             // 
@@ -1507,11 +1512,11 @@
             this.label45.ForeColor = System.Drawing.Color.Black;
             this.label45.Name = "label45";
             // 
-            // lbl_Dia_L_1
+            // lbl_Dia_VyM_1
             // 
-            resources.ApplyResources(this.lbl_Dia_L_1, "lbl_Dia_L_1");
-            this.lbl_Dia_L_1.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Dia_L_1.Name = "lbl_Dia_L_1";
+            resources.ApplyResources(this.lbl_Dia_VyM_1, "lbl_Dia_VyM_1");
+            this.lbl_Dia_VyM_1.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Dia_VyM_1.Name = "lbl_Dia_VyM_1";
             // 
             // label44
             // 
@@ -1664,11 +1669,19 @@
             this.LoadingBar.Name = "LoadingBar";
             this.LoadingBar.Step = 1;
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            resources.ApplyResources(this.chart1, "chart1");
+            this.chart1.Name = "chart1";
+            // 
             // Main_Form
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.LoadingBar);
             this.Controls.Add(this.lbl_Month);
             this.Controls.Add(this.lbl_Week);
@@ -1704,6 +1717,7 @@
             this.Status_Tab.ResumeLayout(false);
             this.Status_Tab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Male_Status_GridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1743,34 +1757,34 @@
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label130;
-        private System.Windows.Forms.Label lbl_Dia_S_4;
+        private System.Windows.Forms.Label lbl_Dia_RP_4;
         private System.Windows.Forms.Label label132;
         private System.Windows.Forms.Label label133;
         private System.Windows.Forms.Label label135;
-        private System.Windows.Forms.Label lbl_Dia_L_4;
+        private System.Windows.Forms.Label lbl_Dia_VyM_4;
         private System.Windows.Forms.Label label137;
         private System.Windows.Forms.Label label138;
         private System.Windows.Forms.Label label121;
-        private System.Windows.Forms.Label lbl_Dia_S_3;
+        private System.Windows.Forms.Label lbl_Dia_RP_3;
         private System.Windows.Forms.Label label123;
         private System.Windows.Forms.Label label124;
         private System.Windows.Forms.Label label126;
-        private System.Windows.Forms.Label lbl_Dia_L_3;
+        private System.Windows.Forms.Label lbl_Dia_VyM_3;
         private System.Windows.Forms.Label label128;
         private System.Windows.Forms.Label label129;
         private System.Windows.Forms.Label label112;
-        private System.Windows.Forms.Label lbl_Dia_S_2;
+        private System.Windows.Forms.Label lbl_Dia_RP_2;
         private System.Windows.Forms.Label label114;
         private System.Windows.Forms.Label label115;
         private System.Windows.Forms.Label label117;
-        private System.Windows.Forms.Label lbl_Dia_L_2;
+        private System.Windows.Forms.Label lbl_Dia_VyM_2;
         private System.Windows.Forms.Label label119;
         private System.Windows.Forms.Label label120;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbl_Dia_S_1;
+        private System.Windows.Forms.Label lbl_Dia_RP_1;
         private System.Windows.Forms.Label label110;
         private System.Windows.Forms.Label label111;
-        private System.Windows.Forms.Label lbl_Dia_L_1;
+        private System.Windows.Forms.Label lbl_Dia_VyM_1;
         private System.Windows.Forms.TextBox txt_Command;
         private System.Windows.Forms.GroupBox RP_1;
         private System.Windows.Forms.GroupBox Nuestra_Vida;
@@ -1827,33 +1841,33 @@
         private System.Windows.Forms.TextBox txt_NVC_A4;
         private System.Windows.Forms.TextBox txt_PresRP;
         private System.Windows.Forms.TextBox txt_Con_Atly;
-        private System.Windows.Forms.TextBox txt_AC2_L_4;
-        private System.Windows.Forms.TextBox txt_AC1_L_4;
-        private System.Windows.Forms.TextBox txt_Cap_L_4;
-        private System.Windows.Forms.TextBox txt_AC2_L_3;
-        private System.Windows.Forms.TextBox txt_AC1_L_3;
-        private System.Windows.Forms.TextBox txt_Cap_L_3;
-        private System.Windows.Forms.TextBox txt_AC2_L_2;
-        private System.Windows.Forms.TextBox txt_AC1_L_2;
-        private System.Windows.Forms.TextBox txt_Cap_L_2;
-        private System.Windows.Forms.TextBox txt_AC2_L_1;
-        private System.Windows.Forms.TextBox txt_AC1_L_1;
-        private System.Windows.Forms.TextBox txt_Cap_L_1;
+        private System.Windows.Forms.TextBox txt_AC2_vym_4;
+        private System.Windows.Forms.TextBox txt_AC1_vym_4;
+        private System.Windows.Forms.TextBox txt_Cap_vym_4;
+        private System.Windows.Forms.TextBox txt_AC2_vym_3;
+        private System.Windows.Forms.TextBox txt_AC1_vym_3;
+        private System.Windows.Forms.TextBox txt_Cap_vym_3;
+        private System.Windows.Forms.TextBox txt_AC2_vym_2;
+        private System.Windows.Forms.TextBox txt_AC1_vym_2;
+        private System.Windows.Forms.TextBox txt_Cap_vym_2;
+        private System.Windows.Forms.TextBox txt_AC2_vym_1;
+        private System.Windows.Forms.TextBox txt_AC1_vym_1;
+        private System.Windows.Forms.TextBox txt_Cap_vym_1;
         private System.Windows.Forms.TextBox txt_Aseo_4;
         private System.Windows.Forms.TextBox txt_Aseo_3;
         private System.Windows.Forms.TextBox txt_Aseo_2;
-        private System.Windows.Forms.TextBox txt_AC2_S_4;
-        private System.Windows.Forms.TextBox txt_AC1_S_4;
-        private System.Windows.Forms.TextBox txt_Cap_S_4;
-        private System.Windows.Forms.TextBox txt_AC2_S_3;
-        private System.Windows.Forms.TextBox txt_AC1_S_3;
-        private System.Windows.Forms.TextBox txt_Cap_S_3;
-        private System.Windows.Forms.TextBox txt_AC2_S_2;
-        private System.Windows.Forms.TextBox txt_AC1_S_2;
-        private System.Windows.Forms.TextBox txt_Cap_S_2;
-        private System.Windows.Forms.TextBox txt_AC2_S_1;
-        private System.Windows.Forms.TextBox txt_AC1_S_1;
-        private System.Windows.Forms.TextBox txt_Cap_S_1;
+        private System.Windows.Forms.TextBox txt_AC2_rp_4;
+        private System.Windows.Forms.TextBox txt_AC1_rp_4;
+        private System.Windows.Forms.TextBox txt_Cap_rp_4;
+        private System.Windows.Forms.TextBox txt_AC2_rp_3;
+        private System.Windows.Forms.TextBox txt_AC1_rp_3;
+        private System.Windows.Forms.TextBox txt_Cap_rp_3;
+        private System.Windows.Forms.TextBox txt_AC2_rp_2;
+        private System.Windows.Forms.TextBox txt_AC1_rp_2;
+        private System.Windows.Forms.TextBox txt_Cap_rp_2;
+        private System.Windows.Forms.TextBox txt_AC2_rp_1;
+        private System.Windows.Forms.TextBox txt_AC1_rp_1;
+        private System.Windows.Forms.TextBox txt_Cap_rp_1;
         private System.Windows.Forms.TextBox txt_Lect_Atly;
         private System.Windows.Forms.TextBox txt_OraRP;
         private System.Windows.Forms.Label lbl_DateVyM;
@@ -1870,16 +1884,16 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txt_AC2_S_5;
-        private System.Windows.Forms.TextBox txt_AC1_S_5;
-        private System.Windows.Forms.TextBox txt_Cap_S_5;
+        private System.Windows.Forms.TextBox txt_AC2_rp_5;
+        private System.Windows.Forms.TextBox txt_AC1_rp_5;
+        private System.Windows.Forms.TextBox txt_Cap_rp_5;
         private System.Windows.Forms.TextBox txt_Aseo_5;
-        private System.Windows.Forms.TextBox txt_AC2_L_5;
-        private System.Windows.Forms.TextBox txt_AC1_L_5;
-        private System.Windows.Forms.TextBox txt_Cap_L_5;
-        private System.Windows.Forms.Label lbl_Dia_S_5;
+        private System.Windows.Forms.TextBox txt_AC2_vym_5;
+        private System.Windows.Forms.TextBox txt_AC1_vym_5;
+        private System.Windows.Forms.TextBox txt_Cap_vym_5;
+        private System.Windows.Forms.Label lbl_Dia_RP_5;
         private System.Windows.Forms.Label label144;
-        private System.Windows.Forms.Label lbl_Dia_L_5;
+        private System.Windows.Forms.Label lbl_Dia_VyM_5;
         private System.Windows.Forms.Label label146;
         private System.Windows.Forms.Label label147;
         private System.Windows.Forms.Timer Main_Timer;
@@ -1908,6 +1922,8 @@
         private System.Windows.Forms.CheckBox Chk_Capitan;
         private System.Windows.Forms.CheckBox Chk_Atalaya;
         private System.Windows.Forms.Button Edit_Rule_Btn;
+        private System.Diagnostics.PerformanceCounter PerformanceCounter;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
 

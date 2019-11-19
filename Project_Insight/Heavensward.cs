@@ -38,7 +38,48 @@ namespace Project_Insight
         public static List<HW_Oracle_Request> HW_Oracle_Requests_List = new List<HW_Oracle_Request>();
         public static Timer Heavensward_Timer;
         private static bool Initial_Check = false;
-        public static string AGR_Pass = "AdvancedGeneralResearch";
+        //public static string AGR_Pass = "AdvancedGeneralResearch";
+        public static List<string> Assignment_VyM_List = new List<string>
+            {
+               "Presidente",
+               "Consejero_Aux",
+               "Discurso_A",
+               "Perlas",
+               "Lectura_A",
+               "Lectura_B",
+               "SMM1_A",
+               "SMM1_B",
+               "SMM2_A",
+               "SMM2_B",
+               "SMM3_A",
+               "SMM3_B",
+               "SMM4_A",
+               "SMM4_B",
+               "NVC1_A",
+               "NVC2_A",
+               "Libro_A",
+               "Libro_L",
+               "Oracion",
+            };
+        public static List<string> Assignment_RP_List = new List<string>
+            {
+               "Presidente",
+               "Discursante",
+               "Conductor",
+               "Lector",
+               "Oracion",
+               "Discu_Sal"
+            };
+
+        public static List<string> Assignment_AC_List = new List<string>
+        {
+               "Vym_Cap",
+               "Vym_Izq",
+               "Vym_Der",
+               "Rp_Cap",
+               "Rp_Izq",
+               "Rp_Der"
+        };
 
         public static void Start_Heavensward()
         {
@@ -102,6 +143,7 @@ namespace Project_Insight
         {
             public VyM_Sem hw_oracle_vym;
             public RP_Sem hw_oracle_rp;
+            public AC_Sem hw_oracle_ac;
         }
         
         public static void HW_Bridge(DateTime inc_date, int tab, int week)
@@ -136,10 +178,10 @@ namespace Project_Insight
         private static void Access_Heaven(HW_request info)
         {
             Hw_inProgress = true;
-            Main_Form.Notify("Retrieve information from wol.jw.org");
             string fecha = info.date.ToString("yyyy/MM/dd");
             string url = "https://wol.jw.org/es/wol/dt/r4/lp-s/" + fecha;
             month = info.date.ToString("MMMM");
+            Main_Form.Notify("Gather information from wol.jw.org for " + fecha);
             /*Aux_RP_Sem.Clear();
             Aux_VyM_Sem.Clear();*/
             switch (info.week)
@@ -190,7 +232,7 @@ namespace Project_Insight
                     using (Stream stream = response.GetResponseStream())
                     using (StreamReader reader = new StreamReader(stream))
                     {
-                        string raw;// = reader.ReadToEnd();
+                        string raw;// = reader.ReadToEnd(); //Test
                         CleanUp();
                         Main_Form.Notify("Connection Successfull. Reading info");
                         while ((raw = reader.ReadLine()) != null)
@@ -541,41 +583,100 @@ namespace Project_Insight
         private static void Heavensward_Oracle_Handler(HW_Oracle_Request request)
         {
             Hw_oracle_inProgress = true;
-            Main_Form.Notify("Accesing to Heavensward Oracle Network");
-            /*string asignee = "Noel Belin";
-            List<string> VyM_Asignee = request.hw_oracle_vym.Get_Asignee_List();
-
-            if(VyM_Asignee.Count >= 0)
+            string asignee = "Noel Belin";
+            bool asignee_found = false;
+            string asig = "";
+            string date = "";
+            //Main_Form.Notify("Search for Noel Belin in week: " + request.hw_oracle_vym.Num_of_Week.ToString());
+            if (request.hw_oracle_vym != null)
             {
-                for (int i = 0; i < VyM_Asignee.Count; i++)
+                List<string> VyM_Asignee = request.hw_oracle_vym.Get_Asignee_List();
+                if (VyM_Asignee.Count > 0)
                 {
-                    if (VyM_Asignee[i].Contains(asignee))
+                    for (int i = 0; i < VyM_Asignee.Count; i++)
                     {
-                        
+                        if (VyM_Asignee[i].Contains(asignee))
+                        {
+                            Main_Form.Notify("Noel Belin Found in " + Assignment_VyM_List[i] + ", date " + request.hw_oracle_vym.Fecha.ToString("dddd, dd MMMM, yyyy"));
+                            asig = Assignment_VyM_List[i];
+                            date = request.hw_oracle_vym.Fecha.ToString("dddd, dd MMMM"); ;
+                            asignee_found = true;
+                        }
                     }
                 }
-            }*/
-            try
+            }
+            else if (request.hw_oracle_rp != null)
             {
-                string url_local = "https://us-central1-agr-connected-services.cloudfunctions.net/function-1";
-                string modifier = "?message=hola";
-                using (var client = new WebClient())
-                using (client.OpenRead(url_local))
+                List<string> RP_Asignee = request.hw_oracle_rp.Get_Asignee_List();
+                if (RP_Asignee.Count > 0)
                 {
-                    Main_Form.Notify("Welcome to AGR Connected Services!");
-                }
-                HttpWebRequest Oracle_Request = (HttpWebRequest)WebRequest.Create(url_local + modifier);
-                using (HttpWebResponse response = (HttpWebResponse)Oracle_Request.GetResponse())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    string raw = reader.ReadToEnd();
-                    Main_Form.Notify(raw);
+                    for (int i = 0; i < RP_Asignee.Count; i++)
+                    {
+                        if (RP_Asignee[i].Contains(asignee))
+                        {
+                            Main_Form.Notify("Noel Belin Found in " + Assignment_RP_List[i] + ", date " + request.hw_oracle_rp.Fecha.ToString("dddd, dd MMMM, yyyy"));
+                            asig = Assignment_RP_List[i];
+                            date = request.hw_oracle_rp.Fecha.ToString("dddd, dd MMMM");
+                            asignee_found = true;
+                        }
+                    }
                 }
             }
-            catch
+            else if (request.hw_oracle_ac != null)
             {
-                Main_Form.Warn("Connection: Denied!");
+                List<string> AC_Asignee = request.hw_oracle_ac.Get_Asignee_List();
+                if (AC_Asignee.Count > 0)
+                {
+                    for (int i = 0; i < AC_Asignee.Count; i++)
+                    {
+                        if (AC_Asignee[i].Contains(asignee))
+                        {
+                            string fecha;
+                            if (i < 3)
+                            {
+                                fecha = request.hw_oracle_ac.Fecha_VyM.ToString("dddd, dd MMMM, yyyy");
+                            }
+                            else
+                            {
+                                fecha = request.hw_oracle_ac.Fecha_RP.ToString("dddd, dd MMMM, yyyy");
+                            }
+                            Main_Form.Notify("Noel Belin Found in " + Assignment_AC_List[i] + ", date " + fecha);
+                            asig = Assignment_AC_List[i];
+                            date = fecha;
+                            asignee_found = true;
+                        }
+                    }
+                }
+            }
+
+            if (asignee_found)
+            {
+                date = date.Replace(" ", "+");
+                try
+                {
+                    Main_Form.Notify("Accesing to Heavensward Oracle Network");
+                    string url_local = "https://us-central1-agr-connected-services.cloudfunctions.net/Heavensward_Oracle";
+                    string modifier1 = "?rw=write";
+                    string modifier2 = "&asig=" + asig;
+                    string modifier3 = "&date=" + date;
+                    /*using (var client = new WebClient())
+                    using (client.OpenRead(url_local))
+                    {
+                        Main_Form.Notify("Welcome to AGR Connected Services!");
+                    }*/
+                    HttpWebRequest Oracle_Request = (HttpWebRequest)WebRequest.Create(url_local + modifier1 + modifier2 + modifier3);
+                    using (HttpWebResponse response = (HttpWebResponse)Oracle_Request.GetResponse())
+                    using (Stream stream = response.GetResponseStream())
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string raw = reader.ReadToEnd();
+                        Main_Form.Notify(raw);
+                    }
+                }
+                catch
+                {
+                    Main_Form.Warn("Connection: Denied!");
+                }
             }
             HW_Oracle_Requests_List.RemoveAt(0);
             Hw_oracle_inProgress = false;

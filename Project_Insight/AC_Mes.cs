@@ -19,18 +19,36 @@ namespace Project_Insight
 
     public class AC_Sem
     {
-        public string Aseo    { get; set; }
-        public string Vym_Cap { get; set; }
-        public string Vym_Izq { get; set; }
-        public string Vym_Der { get; set; }
-        public string Rp_Cap  { get; set; }
-        public string Rp_Izq  { get; set; }
-        public string Rp_Der  { get; set; }
+        public DateTime Fecha_VyM { get; set; }
+        public DateTime Fecha_RP  { get; set; }
+        public string Aseo      { get; set; }
+        public string Vym_Cap   { get; set; }
+        public string Vym_Izq   { get; set; }
+        public string Vym_Der   { get; set; }
+        public string Rp_Cap    { get; set; }
+        public string Rp_Izq    { get; set; }
+        public string Rp_Der    { get; set; }
+        public bool Conv_Week   { get; set; }
+        public bool Vst_Week    { get; set; }
         public short Num_of_Week { get; set; }
+
+         public List<string> Get_Asignee_List()
+        {
+            List<string> Asignee = new List<string>
+            {
+                Vym_Cap,
+                Vym_Izq,
+                Vym_Der,
+                Rp_Cap,
+                Rp_Izq,
+                Rp_Der
+            };
+            return Asignee;
+        }
 
         public void AutoFill()
         {
-            while (DB_Handler.attending_persistance)
+            while (Persistence.attending_persistance)
             {
                 Thread.Sleep(100);
             }

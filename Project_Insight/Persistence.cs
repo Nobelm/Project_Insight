@@ -16,7 +16,7 @@ using System.Diagnostics;
 
 namespace Project_Insight
 {
-    public class DB_Handler
+    public class Persistence
     {
         public static Excel.Application DBApp;
         public static Excel.Workbook DBBooks = null;
@@ -37,6 +37,7 @@ namespace Project_Insight
         public static List<DB_Request> DB_Requests_List = new List<DB_Request>();
         public static List<Males> Male_Status_List = new List<Males>();
         public static Timer Database_Timer;
+        public static List<Persistence_Request> Persistence_Requests_List = new List<Persistence_Request>();
 
         public enum DB_Request
         {
@@ -44,12 +45,19 @@ namespace Project_Insight
             write
         }
 
+        public class Persistence_Request
+        {
+            public VyM_Sem persistence_vym;
+            public RP_Sem persistence_rp;
+            public AC_Sem persistence_ac;
+        }
+
         /*-------------------- Initialize methods -------------------- */
         public static void Start_DataBase()
         {
             if (Thread.CurrentThread.Name == null)
             {
-                Thread.CurrentThread.Name = "Database";
+                Thread.CurrentThread.Name = "Persistence";
                 Thread.CurrentThread.Priority = ThreadPriority.BelowNormal;
             }
             Database_Timer = new Timer(
@@ -64,7 +72,7 @@ namespace Project_Insight
         {
             if (Thread.CurrentThread.Name == null)
             {
-                Thread.CurrentThread.Name = "Database";
+                Thread.CurrentThread.Name = "Persistence";
                 Thread.CurrentThread.Priority = ThreadPriority.BelowNormal;
             }
             if (DB_Requests_List.Count > 0 && !attending_db_request && DB_Allowed)
@@ -76,9 +84,14 @@ namespace Project_Insight
                 }
                 else
                 {
-                    Main_Form.Warn("Database functions disabled");
+                    Main_Form.Warn("Persistence functions disabled");
                     DB_Requests_List.RemoveAt(0);
                 }
+            }
+            if (Persistence_Requests_List.Count > 0 && !attending_persistance && DB_Allowed)
+            {
+                Persistence_Hub(Persistence_Requests_List[0]);
+                Persistence_Requests_List.RemoveAt(0);
             }
             if (!Initial_Check)
             {
@@ -98,7 +111,7 @@ namespace Project_Insight
             else
             {
                 Main_Form.Warn("Initial Check: Database file missing");
-                Main_Form.Warn("Disabling Database features");
+                Main_Form.Warn("Disabling Persistence features");
                 DB_Allowed = false;
             }
         }
@@ -320,7 +333,30 @@ namespace Project_Insight
             }
         }
 
-        public static void Persistence_VyM(VyM_Sem sem, DateTime date)
+        public static void Persistence_Hub(Persistence_Request request)
+        {
+            attending_persistance = true;
+            string req = "";
+            if (request.persistence_vym != null)
+            {
+                req = "VyM week: " + request.persistence_vym.Num_of_Week;  
+                Persistence_VyM(request.persistence_vym);
+            }
+            if (request.persistence_rp != null)
+            {
+                req = "RP week: " + request.persistence_rp.Num_of_Week;
+                Persistence_RP(request.persistence_rp);
+            }
+            if (request.persistence_ac != null)
+            {
+                req = "AC week: " + request.persistence_ac.Num_of_Week;
+                Persistence_AC(request.persistence_ac);
+            }
+            Main_Form.Notify("Persistence Request for: " + req);
+            attending_persistance = false;
+        }
+
+        public static void Persistence_VyM(VyM_Sem sem)
         {
             if (DB_Allowed)
             {
@@ -329,18 +365,18 @@ namespace Project_Insight
                 {
                     if (Main_Form.Male_List[i].Name.Equals(sem.Libro_L) && Main_Form.Male_List[i].Lector.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Lector = date.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Lector = sem.Fecha.ToString("dd/MM/yyyy");
                     }
                     else if (Main_Form.Male_List[i].Name.Equals(sem.Oracion) && Main_Form.Male_List[i].Oracion.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Oracion = date.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Oracion = sem.Fecha.ToString("dd/MM/yyyy");
                     }
                 }
                 attending_persistance = false;
             }
         }
 
-        public static void Persistence_RP(RP_Sem sem, DateTime date)
+        public static void Persistence_RP(RP_Sem sem)
         {
             if(DB_Allowed)
             {
@@ -349,26 +385,26 @@ namespace Project_Insight
                 {
                     if (Main_Form.Male_List[i].Name.Equals(sem.Presidente) && Main_Form.Male_List[i].Pres_RP.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Pres_RP = date.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Pres_RP = sem.Fecha.ToString("dd/MM/yyyy");
                     }
                     else if (Main_Form.Male_List[i].Name.Equals(sem.Conductor) && Main_Form.Male_List[i].Atalaya.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Atalaya = date.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Atalaya = sem.Fecha.ToString("dd/MM/yyyy");
                     }
                     else if (Main_Form.Male_List[i].Name.Equals(sem.Lector) && Main_Form.Male_List[i].Lector.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Lector = date.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Lector = sem.Fecha.ToString("dd/MM/yyyy");
                     }
                     else if (Main_Form.Male_List[i].Name.Equals(sem.Oracion) && Main_Form.Male_List[i].Oracion.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Oracion = date.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Oracion = sem.Fecha.ToString("dd/MM/yyyy");
                     }
                 }
                 attending_persistance = false;
             }
         }
 
-        public static void Persistence_AC(AC_Sem sem, DateTime date_vym, DateTime date_rp)
+        public static void Persistence_AC(AC_Sem sem)
         {
             if (DB_Allowed)
             {
@@ -377,27 +413,27 @@ namespace Project_Insight
                 {
                     if (Main_Form.Male_List[i].Name.Equals(sem.Vym_Cap) && Main_Form.Male_List[i].Capitan.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Capitan = date_vym.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Capitan = sem.Fecha_VyM.ToString("dd/MM/yyyy");
                     }
                     else if (Main_Form.Male_List[i].Name.Equals(sem.Rp_Cap) && Main_Form.Male_List[i].Capitan.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Capitan = date_rp.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Capitan = sem.Fecha_VyM.ToString("dd/MM/yyyy");
                     }
                     else if (Main_Form.Male_List[i].Name.Equals(sem.Vym_Der) && Main_Form.Male_List[i].Acomodador.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Acomodador = date_rp.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Acomodador = sem.Fecha_VyM.ToString("dd/MM/yyyy");
                     }
                     else if (Main_Form.Male_List[i].Name.Equals(sem.Vym_Izq) && Main_Form.Male_List[i].Acomodador.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Acomodador = date_rp.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Acomodador = sem.Fecha_RP.ToString("dd/MM/yyyy");
                     }
                     else if (Main_Form.Male_List[i].Name.Equals(sem.Rp_Der) && Main_Form.Male_List[i].Acomodador.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Acomodador = date_rp.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Acomodador = sem.Fecha_RP.ToString("dd/MM/yyyy");
                     }
                     else if (Main_Form.Male_List[i].Name.Equals(sem.Rp_Izq) && Main_Form.Male_List[i].Acomodador.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Acomodador = date_rp.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Acomodador = sem.Fecha_RP.ToString("dd/MM/yyyy");
                     }
                 }
                 attending_persistance = false;

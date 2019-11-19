@@ -18,7 +18,7 @@ namespace Project_Insight
 
     public class VyM_Sem
     {
-        public string Fecha { get; set; }
+        public DateTime Fecha { get; set; }
         public string Sem_Biblia { get; set; }
         public string Presidente { get; set; }
         public string Consejero_Aux { get; set; }
@@ -49,10 +49,12 @@ namespace Project_Insight
         public string Libro_L { get; set; } //Lector
         public string Oracion { get; set; }
         public bool HW_Data { get; set; }
+        public bool Conv_Week { get; set; }
+        public bool Vst_Week { get; set; }
         public short Num_of_Week { get; set; }
         public void Clear()
         {
-            Fecha = "";
+           // Fecha = "";
             Sem_Biblia = "";
             Presidente = "";
             Consejero_Aux = "";
@@ -111,6 +113,8 @@ namespace Project_Insight
                 NVC1_A,
                 NVC2_A,
                 Libro_A,
+                Libro_L,
+                Oracion,
             };
 
             return Asignee;

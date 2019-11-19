@@ -125,7 +125,7 @@
     <value>864, 171</value>
   </data>
   <data name="Log_txtBx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>272, 360</value>
+    <value>365, 493</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Log_txtBx.TabIndex" type="System.Int32, mscorlib">
@@ -144,10 +144,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Log_txtBx.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="picPresenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1008, 585</value>
+    <value>1083, 719</value>
   </data>
   <data name="picPresenter.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 115</value>
@@ -169,7 +169,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;picPresenter.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="protoss_Frame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1453,7 +1453,7 @@
 </value>
   </data>
   <data name="protoss_Frame.Location" type="System.Drawing.Point, System.Drawing">
-    <value>991, 563</value>
+    <value>1066, 697</value>
   </data>
   <data name="protoss_Frame.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 153</value>
@@ -1474,7 +1474,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;protoss_Frame.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="txt_NVC3.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4103,31 +4103,31 @@ Lectura Semanal</value>
   <data name="&gt;&gt;txt_Cap_L_5.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="lbl_Dia_S_5.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lbl_Dia_RP_5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbl_Dia_S_5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbl_Dia_RP_5.Location" type="System.Drawing.Point, System.Drawing">
     <value>463, 10</value>
   </data>
-  <data name="lbl_Dia_S_5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lbl_Dia_RP_5.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 13</value>
   </data>
-  <data name="lbl_Dia_S_5.TabIndex" type="System.Int32, mscorlib">
+  <data name="lbl_Dia_RP_5.TabIndex" type="System.Int32, mscorlib">
     <value>234</value>
   </data>
-  <data name="lbl_Dia_S_5.Text" xml:space="preserve">
+  <data name="lbl_Dia_RP_5.Text" xml:space="preserve">
     <value>Dia:</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_5.Name" xml:space="preserve">
-    <value>lbl_Dia_S_5</value>
+  <data name="&gt;&gt;lbl_Dia_RP_5.Name" xml:space="preserve">
+    <value>lbl_Dia_RP_5</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_5.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_5.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_5.Parent" xml:space="preserve">
     <value>AC_grpbx_wk5</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_5.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
   <data name="label144.AutoSize" type="System.Boolean, mscorlib">
@@ -4157,31 +4157,31 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label144.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="lbl_Dia_L_5.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lbl_Dia_VyM_5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbl_Dia_L_5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbl_Dia_VyM_5.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 10</value>
   </data>
-  <data name="lbl_Dia_L_5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lbl_Dia_VyM_5.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 13</value>
   </data>
-  <data name="lbl_Dia_L_5.TabIndex" type="System.Int32, mscorlib">
+  <data name="lbl_Dia_VyM_5.TabIndex" type="System.Int32, mscorlib">
     <value>233</value>
   </data>
-  <data name="lbl_Dia_L_5.Text" xml:space="preserve">
+  <data name="lbl_Dia_VyM_5.Text" xml:space="preserve">
     <value>Dia:</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_5.Name" xml:space="preserve">
-    <value>lbl_Dia_L_5</value>
+  <data name="&gt;&gt;lbl_Dia_VyM_5.Name" xml:space="preserve">
+    <value>lbl_Dia_VyM_5</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_5.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_5.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_5.Parent" xml:space="preserve">
     <value>AC_grpbx_wk5</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_5.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
   <data name="label146.AutoSize" type="System.Boolean, mscorlib">
@@ -4985,31 +4985,31 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label130.ZOrder" xml:space="preserve">
     <value>33</value>
   </data>
-  <data name="lbl_Dia_S_4.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lbl_Dia_RP_4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbl_Dia_S_4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbl_Dia_RP_4.Location" type="System.Drawing.Point, System.Drawing">
     <value>471, 402</value>
   </data>
-  <data name="lbl_Dia_S_4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lbl_Dia_RP_4.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 13</value>
   </data>
-  <data name="lbl_Dia_S_4.TabIndex" type="System.Int32, mscorlib">
+  <data name="lbl_Dia_RP_4.TabIndex" type="System.Int32, mscorlib">
     <value>166</value>
   </data>
-  <data name="lbl_Dia_S_4.Text" xml:space="preserve">
+  <data name="lbl_Dia_RP_4.Text" xml:space="preserve">
     <value>Dia:</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_4.Name" xml:space="preserve">
-    <value>lbl_Dia_S_4</value>
+  <data name="&gt;&gt;lbl_Dia_RP_4.Name" xml:space="preserve">
+    <value>lbl_Dia_RP_4</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_4.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_4.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_4.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_4.ZOrder" xml:space="preserve">
     <value>34</value>
   </data>
   <data name="label132.AutoSize" type="System.Boolean, mscorlib">
@@ -5093,31 +5093,31 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label135.ZOrder" xml:space="preserve">
     <value>37</value>
   </data>
-  <data name="lbl_Dia_L_4.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lbl_Dia_VyM_4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbl_Dia_L_4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbl_Dia_VyM_4.Location" type="System.Drawing.Point, System.Drawing">
     <value>31, 402</value>
   </data>
-  <data name="lbl_Dia_L_4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lbl_Dia_VyM_4.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 13</value>
   </data>
-  <data name="lbl_Dia_L_4.TabIndex" type="System.Int32, mscorlib">
+  <data name="lbl_Dia_VyM_4.TabIndex" type="System.Int32, mscorlib">
     <value>159</value>
   </data>
-  <data name="lbl_Dia_L_4.Text" xml:space="preserve">
+  <data name="lbl_Dia_VyM_4.Text" xml:space="preserve">
     <value>Dia:</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_4.Name" xml:space="preserve">
-    <value>lbl_Dia_L_4</value>
+  <data name="&gt;&gt;lbl_Dia_VyM_4.Name" xml:space="preserve">
+    <value>lbl_Dia_VyM_4</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_4.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_4.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_4.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_4.ZOrder" xml:space="preserve">
     <value>38</value>
   </data>
   <data name="label137.AutoSize" type="System.Boolean, mscorlib">
@@ -5201,31 +5201,31 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label121.ZOrder" xml:space="preserve">
     <value>41</value>
   </data>
-  <data name="lbl_Dia_S_3.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lbl_Dia_RP_3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbl_Dia_S_3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbl_Dia_RP_3.Location" type="System.Drawing.Point, System.Drawing">
     <value>471, 276</value>
   </data>
-  <data name="lbl_Dia_S_3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lbl_Dia_RP_3.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 13</value>
   </data>
-  <data name="lbl_Dia_S_3.TabIndex" type="System.Int32, mscorlib">
+  <data name="lbl_Dia_RP_3.TabIndex" type="System.Int32, mscorlib">
     <value>150</value>
   </data>
-  <data name="lbl_Dia_S_3.Text" xml:space="preserve">
+  <data name="lbl_Dia_RP_3.Text" xml:space="preserve">
     <value>Dia:</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_3.Name" xml:space="preserve">
-    <value>lbl_Dia_S_3</value>
+  <data name="&gt;&gt;lbl_Dia_RP_3.Name" xml:space="preserve">
+    <value>lbl_Dia_RP_3</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_3.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_3.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_3.ZOrder" xml:space="preserve">
     <value>42</value>
   </data>
   <data name="label123.AutoSize" type="System.Boolean, mscorlib">
@@ -5309,31 +5309,31 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label126.ZOrder" xml:space="preserve">
     <value>45</value>
   </data>
-  <data name="lbl_Dia_L_3.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lbl_Dia_VyM_3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbl_Dia_L_3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbl_Dia_VyM_3.Location" type="System.Drawing.Point, System.Drawing">
     <value>31, 276</value>
   </data>
-  <data name="lbl_Dia_L_3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lbl_Dia_VyM_3.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 13</value>
   </data>
-  <data name="lbl_Dia_L_3.TabIndex" type="System.Int32, mscorlib">
+  <data name="lbl_Dia_VyM_3.TabIndex" type="System.Int32, mscorlib">
     <value>143</value>
   </data>
-  <data name="lbl_Dia_L_3.Text" xml:space="preserve">
+  <data name="lbl_Dia_VyM_3.Text" xml:space="preserve">
     <value>Dia:</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_3.Name" xml:space="preserve">
-    <value>lbl_Dia_L_3</value>
+  <data name="&gt;&gt;lbl_Dia_VyM_3.Name" xml:space="preserve">
+    <value>lbl_Dia_VyM_3</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_3.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_3.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_3.ZOrder" xml:space="preserve">
     <value>46</value>
   </data>
   <data name="label128.AutoSize" type="System.Boolean, mscorlib">
@@ -5417,31 +5417,31 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label112.ZOrder" xml:space="preserve">
     <value>49</value>
   </data>
-  <data name="lbl_Dia_S_2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lbl_Dia_RP_2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbl_Dia_S_2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbl_Dia_RP_2.Location" type="System.Drawing.Point, System.Drawing">
     <value>471, 145</value>
   </data>
-  <data name="lbl_Dia_S_2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lbl_Dia_RP_2.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 13</value>
   </data>
-  <data name="lbl_Dia_S_2.TabIndex" type="System.Int32, mscorlib">
+  <data name="lbl_Dia_RP_2.TabIndex" type="System.Int32, mscorlib">
     <value>134</value>
   </data>
-  <data name="lbl_Dia_S_2.Text" xml:space="preserve">
+  <data name="lbl_Dia_RP_2.Text" xml:space="preserve">
     <value>Dia:</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_2.Name" xml:space="preserve">
-    <value>lbl_Dia_S_2</value>
+  <data name="&gt;&gt;lbl_Dia_RP_2.Name" xml:space="preserve">
+    <value>lbl_Dia_RP_2</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_2.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_2.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_2.ZOrder" xml:space="preserve">
     <value>50</value>
   </data>
   <data name="label114.AutoSize" type="System.Boolean, mscorlib">
@@ -5525,31 +5525,31 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label117.ZOrder" xml:space="preserve">
     <value>53</value>
   </data>
-  <data name="lbl_Dia_L_2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lbl_Dia_VyM_2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbl_Dia_L_2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbl_Dia_VyM_2.Location" type="System.Drawing.Point, System.Drawing">
     <value>31, 145</value>
   </data>
-  <data name="lbl_Dia_L_2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lbl_Dia_VyM_2.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 13</value>
   </data>
-  <data name="lbl_Dia_L_2.TabIndex" type="System.Int32, mscorlib">
+  <data name="lbl_Dia_VyM_2.TabIndex" type="System.Int32, mscorlib">
     <value>127</value>
   </data>
-  <data name="lbl_Dia_L_2.Text" xml:space="preserve">
+  <data name="lbl_Dia_VyM_2.Text" xml:space="preserve">
     <value>Dia:</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_2.Name" xml:space="preserve">
-    <value>lbl_Dia_L_2</value>
+  <data name="&gt;&gt;lbl_Dia_VyM_2.Name" xml:space="preserve">
+    <value>lbl_Dia_VyM_2</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_2.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_2.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_2.ZOrder" xml:space="preserve">
     <value>54</value>
   </data>
   <data name="label119.AutoSize" type="System.Boolean, mscorlib">
@@ -5633,31 +5633,31 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>57</value>
   </data>
-  <data name="lbl_Dia_S_1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lbl_Dia_RP_1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbl_Dia_S_1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbl_Dia_RP_1.Location" type="System.Drawing.Point, System.Drawing">
     <value>471, 12</value>
   </data>
-  <data name="lbl_Dia_S_1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lbl_Dia_RP_1.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 13</value>
   </data>
-  <data name="lbl_Dia_S_1.TabIndex" type="System.Int32, mscorlib">
+  <data name="lbl_Dia_RP_1.TabIndex" type="System.Int32, mscorlib">
     <value>118</value>
   </data>
-  <data name="lbl_Dia_S_1.Text" xml:space="preserve">
+  <data name="lbl_Dia_RP_1.Text" xml:space="preserve">
     <value>Dia:</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_1.Name" xml:space="preserve">
-    <value>lbl_Dia_S_1</value>
+  <data name="&gt;&gt;lbl_Dia_RP_1.Name" xml:space="preserve">
+    <value>lbl_Dia_RP_1</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_1.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_1.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_S_1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_RP_1.ZOrder" xml:space="preserve">
     <value>58</value>
   </data>
   <data name="label110.AutoSize" type="System.Boolean, mscorlib">
@@ -5741,31 +5741,31 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label45.ZOrder" xml:space="preserve">
     <value>61</value>
   </data>
-  <data name="lbl_Dia_L_1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lbl_Dia_VyM_1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbl_Dia_L_1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbl_Dia_VyM_1.Location" type="System.Drawing.Point, System.Drawing">
     <value>31, 12</value>
   </data>
-  <data name="lbl_Dia_L_1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lbl_Dia_VyM_1.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 13</value>
   </data>
-  <data name="lbl_Dia_L_1.TabIndex" type="System.Int32, mscorlib">
+  <data name="lbl_Dia_VyM_1.TabIndex" type="System.Int32, mscorlib">
     <value>111</value>
   </data>
-  <data name="lbl_Dia_L_1.Text" xml:space="preserve">
+  <data name="lbl_Dia_VyM_1.Text" xml:space="preserve">
     <value>Dia:</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_1.Name" xml:space="preserve">
-    <value>lbl_Dia_L_1</value>
+  <data name="&gt;&gt;lbl_Dia_VyM_1.Name" xml:space="preserve">
+    <value>lbl_Dia_VyM_1</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_1.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_1.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;lbl_Dia_L_1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbl_Dia_VyM_1.ZOrder" xml:space="preserve">
     <value>62</value>
   </data>
   <data name="label44.AutoSize" type="System.Boolean, mscorlib">
@@ -6192,10 +6192,10 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tab_Control.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="m_calendar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>864, 3</value>
+    <value>911, -3</value>
   </data>
   <data name="m_calendar.ShowWeekNumbers" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6213,13 +6213,13 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_calendar.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="txt_Command.Location" type="System.Drawing.Point, System.Drawing">
-    <value>864, 537</value>
+    <value>864, 667</value>
   </data>
   <data name="txt_Command.Size" type="System.Drawing.Size, System.Drawing">
-    <value>272, 20</value>
+    <value>365, 20</value>
   </data>
   <data name="txt_Command.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -6234,13 +6234,13 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txt_Command.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="lbl_Week.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lbl_Week.Location" type="System.Drawing.Point, System.Drawing">
-    <value>861, 619</value>
+    <value>908, 792</value>
   </data>
   <data name="lbl_Week.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
@@ -6261,13 +6261,13 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lbl_Week.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lbl_Month.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lbl_Month.Location" type="System.Drawing.Point, System.Drawing">
-    <value>861, 602</value>
+    <value>908, 775</value>
   </data>
   <data name="lbl_Month.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 13</value>
@@ -6288,7 +6288,7 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lbl_Month.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="Main_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -6315,6 +6315,33 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LoadingBar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="PerformanceCounter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
+  </metadata>
+  <data name="chart1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 721</value>
+  </data>
+  <data name="chart1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 129</value>
+  </data>
+  <data name="chart1.TabIndex" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="chart1.Text" xml:space="preserve">
+    <value>chart1</value>
+  </data>
+  <data name="&gt;&gt;chart1.Name" xml:space="preserve">
+    <value>chart1</value>
+  </data>
+  <data name="&gt;&gt;chart1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataVisualization.Charting.Chart, System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</value>
+  </data>
+  <data name="&gt;&gt;chart1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chart1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -6324,7 +6351,7 @@ Lectura Semanal</value>
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1145, 713</value>
+    <value>1234, 862</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Project Insight</value>
@@ -6334,6 +6361,12 @@ Lectura Semanal</value>
   </data>
   <data name="&gt;&gt;Main_Timer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PerformanceCounter.Name" xml:space="preserve">
+    <value>PerformanceCounter</value>
+  </data>
+  <data name="&gt;&gt;PerformanceCounter.Type" xml:space="preserve">
+    <value>System.Diagnostics.PerformanceCounter, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Main_Form</value>
