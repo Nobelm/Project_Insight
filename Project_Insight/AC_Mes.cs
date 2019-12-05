@@ -48,7 +48,7 @@ namespace Project_Insight
 
         public void AutoFill()
         {
-            while (Persistence.attending_persistance)
+            while (Persistence.Persistence_Requests_List.Count > 0)
             {
                 Thread.Sleep(100);
             }

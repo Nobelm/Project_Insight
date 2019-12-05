@@ -30,15 +30,14 @@ namespace Project_Insight
         private static bool Hw_oracle_inProgress = false;
         private static bool month_found = false;
         private static bool WT_found = false;
+        public static bool Close_Heavensward = false;
         private static VyM_Mes VyM_mes = new VyM_Mes();
         private static VyM_Sem Aux_VyM_Sem = new VyM_Sem();
         private static RP_Mes RP_mes = new RP_Mes();
         private static RP_Sem Aux_RP_Sem = new RP_Sem();
         public static List<HW_request> HW_Requests_List = new List<HW_request>();
         public static List<HW_Oracle_Request> HW_Oracle_Requests_List = new List<HW_Oracle_Request>();
-        public static Timer Heavensward_Timer;
         private static bool Initial_Check = false;
-        //public static string AGR_Pass = "AdvancedGeneralResearch";
         public static List<string> Assignment_VyM_List = new List<string>
             {
                "Presidente",
@@ -87,12 +86,6 @@ namespace Project_Insight
             {
                 Thread.CurrentThread.Name = "Heavensward";
             }
-            Heavensward_Timer = new Timer(
-                new TimerCallback(HW_Timer_Tick),
-                null,
-                1000, //Time which pass after its creation in ms
-                1000  //Period
-                );
             string raw = Properties.Resources.Bible_Books;
             Bible_Books = raw.Split('\n');
             for (int i = 0; i < Bible_Books.Length -1; i++)
@@ -109,26 +102,28 @@ namespace Project_Insight
             RP_mes.Semana3.Num_of_Week = 3;
             RP_mes.Semana4.Num_of_Week = 4;
             RP_mes.Semana5.Num_of_Week = 5;
+
+            HW_Thread_Handler();
         }
 
-        private static void HW_Timer_Tick(object sender)
+        private static void HW_Thread_Handler()
         {
-            if (Thread.CurrentThread.Name == null)
+            while (true)
             {
-                Thread.CurrentThread.Name = "Heavensward";
-            }
-            if (!Initial_Check)
-            {
-                Initial_Check = true;
-                Initial_Heavensward_Check();
-            }
-            if ((HW_Requests_List.Count > 0) && !Hw_inProgress)
-            {
-                Access_Heaven(HW_Requests_List[0]);
-            }
-            if ((HW_Oracle_Requests_List.Count > 0) && !Hw_oracle_inProgress)
-            {
-                Heavensward_Oracle_Handler(HW_Oracle_Requests_List[0]);
+                if (!Initial_Check)
+                {
+                    Initial_Check = true;
+                    Initial_Heavensward_Check();
+                }
+                if ((HW_Requests_List.Count > 0) && !Hw_inProgress)
+                {
+                    Access_Heaven(HW_Requests_List[0]);
+                }
+                if ((HW_Oracle_Requests_List.Count > 0) && !Hw_oracle_inProgress)
+                {
+                    Heavensward_Oracle_Handler(HW_Oracle_Requests_List[0]);
+                }
+                Thread.Sleep(1000);
             }
         }
 
@@ -182,8 +177,6 @@ namespace Project_Insight
             string url = "https://wol.jw.org/es/wol/dt/r4/lp-s/" + fecha;
             month = info.date.ToString("MMMM");
             Main_Form.Notify("Gather information from wol.jw.org for " + fecha);
-            /*Aux_RP_Sem.Clear();
-            Aux_VyM_Sem.Clear();*/
             switch (info.week)
             {
                 case 1:
@@ -225,6 +218,7 @@ namespace Project_Insight
             }
             else
             {
+                for(int i = 1; i <= Main_Form.Set_number_weeks)
                 try
                 {
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -271,7 +265,7 @@ namespace Project_Insight
                 Main_Form.HW_request.Add(request);
             }
             else
-                if ((Aux_RP_Sem.HW_Data == true) && (tab == 1))
+            if ((Aux_RP_Sem.HW_Data == true) && (tab == 1))
             {
                 Main_Form.Notify("Insert previously saved data for RP");
                 Main_Form.Hw_requested_info request = new Main_Form.Hw_requested_info
@@ -587,11 +581,10 @@ namespace Project_Insight
             bool asignee_found = false;
             string asig = "";
             string date = "";
-            //Main_Form.Notify("Search for Noel Belin in week: " + request.hw_oracle_vym.Num_of_Week.ToString());
             if (request.hw_oracle_vym != null)
             {
                 List<string> VyM_Asignee = request.hw_oracle_vym.Get_Asignee_List();
-                if (VyM_Asignee.Count > 0)
+                if (VyM_Asignee[0] != null)
                 {
                     for (int i = 0; i < VyM_Asignee.Count; i++)
                     {
@@ -608,7 +601,7 @@ namespace Project_Insight
             else if (request.hw_oracle_rp != null)
             {
                 List<string> RP_Asignee = request.hw_oracle_rp.Get_Asignee_List();
-                if (RP_Asignee.Count > 0)
+                if (RP_Asignee[0] != null)
                 {
                     for (int i = 0; i < RP_Asignee.Count; i++)
                     {
@@ -625,7 +618,7 @@ namespace Project_Insight
             else if (request.hw_oracle_ac != null)
             {
                 List<string> AC_Asignee = request.hw_oracle_ac.Get_Asignee_List();
-                if (AC_Asignee.Count > 0)
+                if (AC_Asignee[0] != null)
                 {
                     for (int i = 0; i < AC_Asignee.Count; i++)
                     {
@@ -659,11 +652,6 @@ namespace Project_Insight
                     string modifier1 = "?rw=write";
                     string modifier2 = "&asig=" + asig;
                     string modifier3 = "&date=" + date;
-                    /*using (var client = new WebClient())
-                    using (client.OpenRead(url_local))
-                    {
-                        Main_Form.Notify("Welcome to AGR Connected Services!");
-                    }*/
                     HttpWebRequest Oracle_Request = (HttpWebRequest)WebRequest.Create(url_local + modifier1 + modifier2 + modifier3);
                     using (HttpWebResponse response = (HttpWebResponse)Oracle_Request.GetResponse())
                     using (Stream stream = response.GetResponseStream())

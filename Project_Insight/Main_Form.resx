@@ -144,7 +144,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Log_txtBx.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="picPresenter.Location" type="System.Drawing.Point, System.Drawing">
     <value>1083, 719</value>
@@ -169,7 +169,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;picPresenter.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="protoss_Frame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1474,7 +1474,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;protoss_Frame.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="txt_NVC3.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3956,67 +3956,67 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="txt_AC2_S_5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC2_rp_5.Location" type="System.Drawing.Point, System.Drawing">
     <value>567, 109</value>
   </data>
-  <data name="txt_AC2_S_5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC2_rp_5.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC2_S_5.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC2_rp_5.TabIndex" type="System.Int32, mscorlib">
     <value>241</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_5.Name" xml:space="preserve">
-    <value>txt_AC2_S_5</value>
+  <data name="&gt;&gt;txt_AC2_rp_5.Name" xml:space="preserve">
+    <value>txt_AC2_rp_5</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_5.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_5.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_5.Parent" xml:space="preserve">
     <value>AC_grpbx_wk5</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_5.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="txt_AC1_S_5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC1_rp_5.Location" type="System.Drawing.Point, System.Drawing">
     <value>567, 83</value>
   </data>
-  <data name="txt_AC1_S_5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC1_rp_5.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC1_S_5.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC1_rp_5.TabIndex" type="System.Int32, mscorlib">
     <value>240</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_5.Name" xml:space="preserve">
-    <value>txt_AC1_S_5</value>
+  <data name="&gt;&gt;txt_AC1_rp_5.Name" xml:space="preserve">
+    <value>txt_AC1_rp_5</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_5.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_5.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_5.Parent" xml:space="preserve">
     <value>AC_grpbx_wk5</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_5.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="txt_Cap_S_5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_Cap_rp_5.Location" type="System.Drawing.Point, System.Drawing">
     <value>567, 56</value>
   </data>
-  <data name="txt_Cap_S_5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_Cap_rp_5.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_Cap_S_5.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_Cap_rp_5.TabIndex" type="System.Int32, mscorlib">
     <value>239</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_5.Name" xml:space="preserve">
-    <value>txt_Cap_S_5</value>
+  <data name="&gt;&gt;txt_Cap_rp_5.Name" xml:space="preserve">
+    <value>txt_Cap_rp_5</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_5.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_5.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_5.Parent" xml:space="preserve">
     <value>AC_grpbx_wk5</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_5.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="txt_Aseo_5.Location" type="System.Drawing.Point, System.Drawing">
@@ -4040,67 +4040,67 @@ Lectura Semanal</value>
   <data name="&gt;&gt;txt_Aseo_5.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="txt_AC2_L_5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC2_vym_5.Location" type="System.Drawing.Point, System.Drawing">
     <value>115, 109</value>
   </data>
-  <data name="txt_AC2_L_5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC2_vym_5.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC2_L_5.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC2_vym_5.TabIndex" type="System.Int32, mscorlib">
     <value>237</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_5.Name" xml:space="preserve">
-    <value>txt_AC2_L_5</value>
+  <data name="&gt;&gt;txt_AC2_vym_5.Name" xml:space="preserve">
+    <value>txt_AC2_vym_5</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_5.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_5.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_5.Parent" xml:space="preserve">
     <value>AC_grpbx_wk5</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_5.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="txt_AC1_L_5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC1_vym_5.Location" type="System.Drawing.Point, System.Drawing">
     <value>115, 83</value>
   </data>
-  <data name="txt_AC1_L_5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC1_vym_5.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC1_L_5.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC1_vym_5.TabIndex" type="System.Int32, mscorlib">
     <value>236</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_5.Name" xml:space="preserve">
-    <value>txt_AC1_L_5</value>
+  <data name="&gt;&gt;txt_AC1_vym_5.Name" xml:space="preserve">
+    <value>txt_AC1_vym_5</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_5.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_5.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_5.Parent" xml:space="preserve">
     <value>AC_grpbx_wk5</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_5.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="txt_Cap_L_5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_Cap_vym_5.Location" type="System.Drawing.Point, System.Drawing">
     <value>115, 56</value>
   </data>
-  <data name="txt_Cap_L_5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_Cap_vym_5.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_Cap_L_5.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_Cap_vym_5.TabIndex" type="System.Int32, mscorlib">
     <value>235</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_5.Name" xml:space="preserve">
-    <value>txt_Cap_L_5</value>
+  <data name="&gt;&gt;txt_Cap_vym_5.Name" xml:space="preserve">
+    <value>txt_Cap_vym_5</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_5.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_5.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_5.Parent" xml:space="preserve">
     <value>AC_grpbx_wk5</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_5.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="lbl_Dia_RP_5.AutoSize" type="System.Boolean, mscorlib">
@@ -4340,256 +4340,256 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="txt_AC2_S_4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC2_rp_4.Location" type="System.Drawing.Point, System.Drawing">
     <value>575, 500</value>
   </data>
-  <data name="txt_AC2_S_4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC2_rp_4.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC2_S_4.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC2_rp_4.TabIndex" type="System.Int32, mscorlib">
     <value>215</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_4.Name" xml:space="preserve">
-    <value>txt_AC2_S_4</value>
+  <data name="&gt;&gt;txt_AC2_rp_4.Name" xml:space="preserve">
+    <value>txt_AC2_rp_4</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_4.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_4.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_4.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_4.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="txt_AC1_S_4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC1_rp_4.Location" type="System.Drawing.Point, System.Drawing">
     <value>575, 474</value>
   </data>
-  <data name="txt_AC1_S_4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC1_rp_4.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC1_S_4.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC1_rp_4.TabIndex" type="System.Int32, mscorlib">
     <value>214</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_4.Name" xml:space="preserve">
-    <value>txt_AC1_S_4</value>
+  <data name="&gt;&gt;txt_AC1_rp_4.Name" xml:space="preserve">
+    <value>txt_AC1_rp_4</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_4.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_4.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_4.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_4.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="txt_Cap_S_4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_Cap_rp_4.Location" type="System.Drawing.Point, System.Drawing">
     <value>575, 448</value>
   </data>
-  <data name="txt_Cap_S_4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_Cap_rp_4.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_Cap_S_4.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_Cap_rp_4.TabIndex" type="System.Int32, mscorlib">
     <value>213</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_4.Name" xml:space="preserve">
-    <value>txt_Cap_S_4</value>
+  <data name="&gt;&gt;txt_Cap_rp_4.Name" xml:space="preserve">
+    <value>txt_Cap_rp_4</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_4.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_4.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_4.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_4.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="txt_AC2_S_3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC2_rp_3.Location" type="System.Drawing.Point, System.Drawing">
     <value>575, 374</value>
   </data>
-  <data name="txt_AC2_S_3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC2_rp_3.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC2_S_3.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC2_rp_3.TabIndex" type="System.Int32, mscorlib">
     <value>212</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_3.Name" xml:space="preserve">
-    <value>txt_AC2_S_3</value>
+  <data name="&gt;&gt;txt_AC2_rp_3.Name" xml:space="preserve">
+    <value>txt_AC2_rp_3</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_3.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_3.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_3.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_3.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="txt_AC1_S_3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC1_rp_3.Location" type="System.Drawing.Point, System.Drawing">
     <value>575, 348</value>
   </data>
-  <data name="txt_AC1_S_3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC1_rp_3.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC1_S_3.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC1_rp_3.TabIndex" type="System.Int32, mscorlib">
     <value>211</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_3.Name" xml:space="preserve">
-    <value>txt_AC1_S_3</value>
+  <data name="&gt;&gt;txt_AC1_rp_3.Name" xml:space="preserve">
+    <value>txt_AC1_rp_3</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_3.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_3.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_3.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_3.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="txt_Cap_S_3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_Cap_rp_3.Location" type="System.Drawing.Point, System.Drawing">
     <value>575, 322</value>
   </data>
-  <data name="txt_Cap_S_3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_Cap_rp_3.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_Cap_S_3.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_Cap_rp_3.TabIndex" type="System.Int32, mscorlib">
     <value>210</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_3.Name" xml:space="preserve">
-    <value>txt_Cap_S_3</value>
+  <data name="&gt;&gt;txt_Cap_rp_3.Name" xml:space="preserve">
+    <value>txt_Cap_rp_3</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_3.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_3.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_3.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_3.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="txt_AC2_S_2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC2_rp_2.Location" type="System.Drawing.Point, System.Drawing">
     <value>575, 244</value>
   </data>
-  <data name="txt_AC2_S_2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC2_rp_2.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC2_S_2.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC2_rp_2.TabIndex" type="System.Int32, mscorlib">
     <value>209</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_2.Name" xml:space="preserve">
-    <value>txt_AC2_S_2</value>
+  <data name="&gt;&gt;txt_AC2_rp_2.Name" xml:space="preserve">
+    <value>txt_AC2_rp_2</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_2.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_2.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_2.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="txt_AC1_S_2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC1_rp_2.Location" type="System.Drawing.Point, System.Drawing">
     <value>575, 218</value>
   </data>
-  <data name="txt_AC1_S_2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC1_rp_2.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC1_S_2.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC1_rp_2.TabIndex" type="System.Int32, mscorlib">
     <value>208</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_2.Name" xml:space="preserve">
-    <value>txt_AC1_S_2</value>
+  <data name="&gt;&gt;txt_AC1_rp_2.Name" xml:space="preserve">
+    <value>txt_AC1_rp_2</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_2.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_2.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_2.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="txt_Cap_S_2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_Cap_rp_2.Location" type="System.Drawing.Point, System.Drawing">
     <value>575, 192</value>
   </data>
-  <data name="txt_Cap_S_2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_Cap_rp_2.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_Cap_S_2.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_Cap_rp_2.TabIndex" type="System.Int32, mscorlib">
     <value>207</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_2.Name" xml:space="preserve">
-    <value>txt_Cap_S_2</value>
+  <data name="&gt;&gt;txt_Cap_rp_2.Name" xml:space="preserve">
+    <value>txt_Cap_rp_2</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_2.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_2.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_2.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="txt_AC2_S_1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC2_rp_1.Location" type="System.Drawing.Point, System.Drawing">
     <value>575, 110</value>
   </data>
-  <data name="txt_AC2_S_1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC2_rp_1.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC2_S_1.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC2_rp_1.TabIndex" type="System.Int32, mscorlib">
     <value>206</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_1.Name" xml:space="preserve">
-    <value>txt_AC2_S_1</value>
+  <data name="&gt;&gt;txt_AC2_rp_1.Name" xml:space="preserve">
+    <value>txt_AC2_rp_1</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_1.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_1.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_S_1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_rp_1.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="txt_AC1_S_1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC1_rp_1.Location" type="System.Drawing.Point, System.Drawing">
     <value>575, 84</value>
   </data>
-  <data name="txt_AC1_S_1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC1_rp_1.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC1_S_1.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC1_rp_1.TabIndex" type="System.Int32, mscorlib">
     <value>205</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_1.Name" xml:space="preserve">
-    <value>txt_AC1_S_1</value>
+  <data name="&gt;&gt;txt_AC1_rp_1.Name" xml:space="preserve">
+    <value>txt_AC1_rp_1</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_1.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_1.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_S_1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_rp_1.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="txt_Cap_S_1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_Cap_rp_1.Location" type="System.Drawing.Point, System.Drawing">
     <value>575, 58</value>
   </data>
-  <data name="txt_Cap_S_1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_Cap_rp_1.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_Cap_S_1.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_Cap_rp_1.TabIndex" type="System.Int32, mscorlib">
     <value>204</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_1.Name" xml:space="preserve">
-    <value>txt_Cap_S_1</value>
+  <data name="&gt;&gt;txt_Cap_rp_1.Name" xml:space="preserve">
+    <value>txt_Cap_rp_1</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_1.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_1.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_S_1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_rp_1.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
   <data name="txt_Aseo_4.Location" type="System.Drawing.Point, System.Drawing">
@@ -4655,256 +4655,256 @@ Lectura Semanal</value>
   <data name="&gt;&gt;txt_Aseo_2.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
-  <data name="txt_AC2_L_4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC2_vym_4.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 501</value>
   </data>
-  <data name="txt_AC2_L_4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC2_vym_4.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC2_L_4.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC2_vym_4.TabIndex" type="System.Int32, mscorlib">
     <value>196</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_4.Name" xml:space="preserve">
-    <value>txt_AC2_L_4</value>
+  <data name="&gt;&gt;txt_AC2_vym_4.Name" xml:space="preserve">
+    <value>txt_AC2_vym_4</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_4.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_4.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_4.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_4.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
-  <data name="txt_AC1_L_4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC1_vym_4.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 475</value>
   </data>
-  <data name="txt_AC1_L_4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC1_vym_4.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC1_L_4.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC1_vym_4.TabIndex" type="System.Int32, mscorlib">
     <value>195</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_4.Name" xml:space="preserve">
-    <value>txt_AC1_L_4</value>
+  <data name="&gt;&gt;txt_AC1_vym_4.Name" xml:space="preserve">
+    <value>txt_AC1_vym_4</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_4.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_4.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_4.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_4.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
-  <data name="txt_Cap_L_4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_Cap_vym_4.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 449</value>
   </data>
-  <data name="txt_Cap_L_4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_Cap_vym_4.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_Cap_L_4.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_Cap_vym_4.TabIndex" type="System.Int32, mscorlib">
     <value>194</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_4.Name" xml:space="preserve">
-    <value>txt_Cap_L_4</value>
+  <data name="&gt;&gt;txt_Cap_vym_4.Name" xml:space="preserve">
+    <value>txt_Cap_vym_4</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_4.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_4.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_4.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_4.ZOrder" xml:space="preserve">
     <value>21</value>
   </data>
-  <data name="txt_AC2_L_3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC2_vym_3.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 375</value>
   </data>
-  <data name="txt_AC2_L_3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC2_vym_3.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC2_L_3.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC2_vym_3.TabIndex" type="System.Int32, mscorlib">
     <value>193</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_3.Name" xml:space="preserve">
-    <value>txt_AC2_L_3</value>
+  <data name="&gt;&gt;txt_AC2_vym_3.Name" xml:space="preserve">
+    <value>txt_AC2_vym_3</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_3.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_3.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_3.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_3.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
-  <data name="txt_AC1_L_3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC1_vym_3.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 349</value>
   </data>
-  <data name="txt_AC1_L_3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC1_vym_3.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC1_L_3.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC1_vym_3.TabIndex" type="System.Int32, mscorlib">
     <value>192</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_3.Name" xml:space="preserve">
-    <value>txt_AC1_L_3</value>
+  <data name="&gt;&gt;txt_AC1_vym_3.Name" xml:space="preserve">
+    <value>txt_AC1_vym_3</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_3.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_3.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_3.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_3.ZOrder" xml:space="preserve">
     <value>23</value>
   </data>
-  <data name="txt_Cap_L_3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_Cap_vym_3.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 323</value>
   </data>
-  <data name="txt_Cap_L_3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_Cap_vym_3.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_Cap_L_3.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_Cap_vym_3.TabIndex" type="System.Int32, mscorlib">
     <value>191</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_3.Name" xml:space="preserve">
-    <value>txt_Cap_L_3</value>
+  <data name="&gt;&gt;txt_Cap_vym_3.Name" xml:space="preserve">
+    <value>txt_Cap_vym_3</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_3.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_3.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_3.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_3.ZOrder" xml:space="preserve">
     <value>24</value>
   </data>
-  <data name="txt_AC2_L_2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC2_vym_2.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 245</value>
   </data>
-  <data name="txt_AC2_L_2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC2_vym_2.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC2_L_2.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC2_vym_2.TabIndex" type="System.Int32, mscorlib">
     <value>190</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_2.Name" xml:space="preserve">
-    <value>txt_AC2_L_2</value>
+  <data name="&gt;&gt;txt_AC2_vym_2.Name" xml:space="preserve">
+    <value>txt_AC2_vym_2</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_2.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_2.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_2.ZOrder" xml:space="preserve">
     <value>25</value>
   </data>
-  <data name="txt_AC1_L_2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC1_vym_2.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 219</value>
   </data>
-  <data name="txt_AC1_L_2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC1_vym_2.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC1_L_2.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC1_vym_2.TabIndex" type="System.Int32, mscorlib">
     <value>189</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_2.Name" xml:space="preserve">
-    <value>txt_AC1_L_2</value>
+  <data name="&gt;&gt;txt_AC1_vym_2.Name" xml:space="preserve">
+    <value>txt_AC1_vym_2</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_2.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_2.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_2.ZOrder" xml:space="preserve">
     <value>26</value>
   </data>
-  <data name="txt_Cap_L_2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_Cap_vym_2.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 193</value>
   </data>
-  <data name="txt_Cap_L_2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_Cap_vym_2.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_Cap_L_2.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_Cap_vym_2.TabIndex" type="System.Int32, mscorlib">
     <value>188</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_2.Name" xml:space="preserve">
-    <value>txt_Cap_L_2</value>
+  <data name="&gt;&gt;txt_Cap_vym_2.Name" xml:space="preserve">
+    <value>txt_Cap_vym_2</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_2.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_2.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_2.ZOrder" xml:space="preserve">
     <value>27</value>
   </data>
-  <data name="txt_AC2_L_1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC2_vym_1.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 111</value>
   </data>
-  <data name="txt_AC2_L_1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC2_vym_1.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC2_L_1.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC2_vym_1.TabIndex" type="System.Int32, mscorlib">
     <value>187</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_1.Name" xml:space="preserve">
-    <value>txt_AC2_L_1</value>
+  <data name="&gt;&gt;txt_AC2_vym_1.Name" xml:space="preserve">
+    <value>txt_AC2_vym_1</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_1.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_1.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC2_L_1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC2_vym_1.ZOrder" xml:space="preserve">
     <value>28</value>
   </data>
-  <data name="txt_AC1_L_1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_AC1_vym_1.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 85</value>
   </data>
-  <data name="txt_AC1_L_1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_AC1_vym_1.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_AC1_L_1.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_AC1_vym_1.TabIndex" type="System.Int32, mscorlib">
     <value>186</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_1.Name" xml:space="preserve">
-    <value>txt_AC1_L_1</value>
+  <data name="&gt;&gt;txt_AC1_vym_1.Name" xml:space="preserve">
+    <value>txt_AC1_vym_1</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_1.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_1.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_AC1_L_1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_AC1_vym_1.ZOrder" xml:space="preserve">
     <value>29</value>
   </data>
-  <data name="txt_Cap_L_1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txt_Cap_vym_1.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 59</value>
   </data>
-  <data name="txt_Cap_L_1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txt_Cap_vym_1.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 20</value>
   </data>
-  <data name="txt_Cap_L_1.TabIndex" type="System.Int32, mscorlib">
+  <data name="txt_Cap_vym_1.TabIndex" type="System.Int32, mscorlib">
     <value>185</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_1.Name" xml:space="preserve">
-    <value>txt_Cap_L_1</value>
+  <data name="&gt;&gt;txt_Cap_vym_1.Name" xml:space="preserve">
+    <value>txt_Cap_vym_1</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_1.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_1.Parent" xml:space="preserve">
     <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;txt_Cap_L_1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txt_Cap_vym_1.ZOrder" xml:space="preserve">
     <value>30</value>
   </data>
   <data name="txt_Aseo_1.Location" type="System.Drawing.Point, System.Drawing">
@@ -5850,7 +5850,7 @@ Lectura Semanal</value>
     <value>2</value>
   </data>
   <data name="Edit_Rule_Btn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>744, 622</value>
+    <value>741, 737</value>
   </data>
   <data name="Edit_Rule_Btn.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -5883,7 +5883,7 @@ Lectura Semanal</value>
     <value>NoControl</value>
   </data>
   <data name="Chk_Oracion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>654, 626</value>
+    <value>651, 741</value>
   </data>
   <data name="Chk_Oracion.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 17</value>
@@ -5916,7 +5916,7 @@ Lectura Semanal</value>
     <value>NoControl</value>
   </data>
   <data name="Chk_PresRp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>533, 626</value>
+    <value>530, 741</value>
   </data>
   <data name="Chk_PresRp.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 17</value>
@@ -5949,7 +5949,7 @@ Lectura Semanal</value>
     <value>NoControl</value>
   </data>
   <data name="Chk_Lector.Location" type="System.Drawing.Point, System.Drawing">
-    <value>450, 626</value>
+    <value>447, 741</value>
   </data>
   <data name="Chk_Lector.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 17</value>
@@ -5982,7 +5982,7 @@ Lectura Semanal</value>
     <value>NoControl</value>
   </data>
   <data name="Chk_Acomodador.Location" type="System.Drawing.Point, System.Drawing">
-    <value>337, 626</value>
+    <value>334, 741</value>
   </data>
   <data name="Chk_Acomodador.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 17</value>
@@ -6015,7 +6015,7 @@ Lectura Semanal</value>
     <value>NoControl</value>
   </data>
   <data name="Chk_Capitan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>248, 626</value>
+    <value>245, 741</value>
   </data>
   <data name="Chk_Capitan.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 17</value>
@@ -6045,7 +6045,7 @@ Lectura Semanal</value>
     <value>False</value>
   </data>
   <data name="Chk_Atalaya.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 626</value>
+    <value>157, 741</value>
   </data>
   <data name="Chk_Atalaya.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 17</value>
@@ -6078,7 +6078,7 @@ Lectura Semanal</value>
     <value>Publicadores</value>
   </data>
   <data name="Rules_cmbx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 626</value>
+    <value>3, 741</value>
   </data>
   <data name="Rules_cmbx.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -6102,7 +6102,7 @@ Lectura Semanal</value>
     <value>True</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 605</value>
+    <value>30, 720</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -6129,7 +6129,7 @@ Lectura Semanal</value>
     <value>3, 3</value>
   </data>
   <data name="Male_Status_GridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>821, 594</value>
+    <value>821, 714</value>
   </data>
   <data name="Male_Status_GridView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -6150,7 +6150,7 @@ Lectura Semanal</value>
     <value>4, 22</value>
   </data>
   <data name="Status_Tab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>827, 666</value>
+    <value>827, 780</value>
   </data>
   <data name="Status_Tab.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -6177,7 +6177,7 @@ Lectura Semanal</value>
     <value>12, 12</value>
   </data>
   <data name="tab_Control.Size" type="System.Drawing.Size, System.Drawing">
-    <value>835, 692</value>
+    <value>835, 806</value>
   </data>
   <data name="tab_Control.TabIndex" type="System.Int32, mscorlib">
     <value>81</value>
@@ -6192,7 +6192,7 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tab_Control.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="m_calendar.Location" type="System.Drawing.Point, System.Drawing">
     <value>911, -3</value>
@@ -6213,7 +6213,7 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_calendar.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="txt_Command.Location" type="System.Drawing.Point, System.Drawing">
     <value>864, 667</value>
@@ -6234,7 +6234,7 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txt_Command.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="lbl_Week.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6261,7 +6261,7 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lbl_Week.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="lbl_Month.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6288,7 +6288,7 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lbl_Month.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <metadata name="Main_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -6315,33 +6315,6 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LoadingBar.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="PerformanceCounter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>132, 17</value>
-  </metadata>
-  <data name="chart1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 721</value>
-  </data>
-  <data name="chart1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 129</value>
-  </data>
-  <data name="chart1.TabIndex" type="System.Int32, mscorlib">
-    <value>95</value>
-  </data>
-  <data name="chart1.Text" xml:space="preserve">
-    <value>chart1</value>
-  </data>
-  <data name="&gt;&gt;chart1.Name" xml:space="preserve">
-    <value>chart1</value>
-  </data>
-  <data name="&gt;&gt;chart1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataVisualization.Charting.Chart, System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</value>
-  </data>
-  <data name="&gt;&gt;chart1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;chart1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -6361,12 +6334,6 @@ Lectura Semanal</value>
   </data>
   <data name="&gt;&gt;Main_Timer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PerformanceCounter.Name" xml:space="preserve">
-    <value>PerformanceCounter</value>
-  </data>
-  <data name="&gt;&gt;PerformanceCounter.Type" xml:space="preserve">
-    <value>System.Diagnostics.PerformanceCounter, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Main_Form</value>

@@ -31,10 +31,10 @@ namespace Project_Insight
         private static object[,] cellValue_1 = null;
         private static object[,] cellValue_2 = null;
         private static object[,] cellValue_3 = null;
-        public static Timer Helix_Timer;
         public static List<Helix_Request> List_Helix_Requests = new List<Helix_Request>();
         private static bool Attending_Helix_Request = false;
         public static bool excel_ready = false;
+        public static bool Close_Helix = false;
         private static bool Initial_Check = false;
         public static int loading_delta = 1;
         public static int loading = 0;
@@ -58,12 +58,25 @@ namespace Project_Insight
                 Thread.CurrentThread.Name = "Helix";
                 Thread.CurrentThread.Priority = ThreadPriority.BelowNormal;
             }
-            Helix_Timer = new Timer(
-               new TimerCallback(Helix_Timer_Handler),
-               null,
-               1000, //Time which pass after its creation in ms
-               1000  //Period
-               );
+            Helix_Thread_Handler();
+        }
+
+        public static void Helix_Thread_Handler()
+        {
+            while (true)
+            {
+                if (List_Helix_Requests.Count > 0 && !Attending_Helix_Request)
+                {
+                    Attending_Helix_Request = true;
+                    Helix_Hub(List_Helix_Requests[0]);
+                }
+                if (!Initial_Check)
+                {
+                    Initial_Check = true;
+                    Initial_Helix_Check();
+                }
+                Thread.Sleep(1000);
+            }
         }
 
         public static void Initial_Helix_Check()
@@ -78,25 +91,6 @@ namespace Project_Insight
                 Main_Form.Warn("Initial Check: Main file missing");
                 Main_Form.Warn("Disabling Main features");
                 Main_Form.Main_Allowed = false;
-            }
-        }
-
-        public static void Helix_Timer_Handler(object sender)
-        {
-            if (Thread.CurrentThread.Name == null)
-            {
-                Thread.CurrentThread.Name = "Helix";
-                Thread.CurrentThread.Priority = ThreadPriority.BelowNormal;
-            }
-            if (List_Helix_Requests.Count > 0 && !Attending_Helix_Request)
-            {
-                Attending_Helix_Request = true;
-                Helix_Hub(List_Helix_Requests[0]);
-            }
-            if (!Initial_Check)
-            {
-                Initial_Check = true;
-                Initial_Helix_Check();
             }
         }
 

@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.Log_txtBx = new System.Windows.Forms.RichTextBox();
             this.picPresenter = new System.Windows.Forms.PictureBox();
             this.protoss_Frame = new System.Windows.Forms.PictureBox();
@@ -228,8 +227,6 @@
             this.lbl_Month = new System.Windows.Forms.Label();
             this.Main_Timer = new System.Windows.Forms.Timer(this.components);
             this.LoadingBar = new System.Windows.Forms.ProgressBar();
-            this.PerformanceCounter = new System.Diagnostics.PerformanceCounter();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.picPresenter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.protoss_Frame)).BeginInit();
             this.tab_Control.SuspendLayout();
@@ -244,8 +241,6 @@
             this.AC_grpbx_wk5.SuspendLayout();
             this.Status_Tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Male_Status_GridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PerformanceCounter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // Log_txtBx
@@ -1074,23 +1069,23 @@
             this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Name = "label11";
             // 
-            // txt_AC2_S_5
+            // txt_AC2_rp_5
             // 
             this.txt_AC2_rp_5.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_rp_5, "txt_AC2_S_5");
-            this.txt_AC2_rp_5.Name = "txt_AC2_S_5";
+            resources.ApplyResources(this.txt_AC2_rp_5, "txt_AC2_rp_5");
+            this.txt_AC2_rp_5.Name = "txt_AC2_rp_5";
             // 
-            // txt_AC1_S_5
+            // txt_AC1_rp_5
             // 
             this.txt_AC1_rp_5.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_rp_5, "txt_AC1_S_5");
-            this.txt_AC1_rp_5.Name = "txt_AC1_S_5";
+            resources.ApplyResources(this.txt_AC1_rp_5, "txt_AC1_rp_5");
+            this.txt_AC1_rp_5.Name = "txt_AC1_rp_5";
             // 
-            // txt_Cap_S_5
+            // txt_Cap_rp_5
             // 
             this.txt_Cap_rp_5.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_rp_5, "txt_Cap_S_5");
-            this.txt_Cap_rp_5.Name = "txt_Cap_S_5";
+            resources.ApplyResources(this.txt_Cap_rp_5, "txt_Cap_rp_5");
+            this.txt_Cap_rp_5.Name = "txt_Cap_rp_5";
             // 
             // txt_Aseo_5
             // 
@@ -1098,23 +1093,23 @@
             resources.ApplyResources(this.txt_Aseo_5, "txt_Aseo_5");
             this.txt_Aseo_5.Name = "txt_Aseo_5";
             // 
-            // txt_AC2_L_5
+            // txt_AC2_vym_5
             // 
             this.txt_AC2_vym_5.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_vym_5, "txt_AC2_L_5");
-            this.txt_AC2_vym_5.Name = "txt_AC2_L_5";
+            resources.ApplyResources(this.txt_AC2_vym_5, "txt_AC2_vym_5");
+            this.txt_AC2_vym_5.Name = "txt_AC2_vym_5";
             // 
-            // txt_AC1_L_5
+            // txt_AC1_vym_5
             // 
             this.txt_AC1_vym_5.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_vym_5, "txt_AC1_L_5");
-            this.txt_AC1_vym_5.Name = "txt_AC1_L_5";
+            resources.ApplyResources(this.txt_AC1_vym_5, "txt_AC1_vym_5");
+            this.txt_AC1_vym_5.Name = "txt_AC1_vym_5";
             // 
-            // txt_Cap_L_5
+            // txt_Cap_vym_5
             // 
             this.txt_Cap_vym_5.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_vym_5, "txt_Cap_L_5");
-            this.txt_Cap_vym_5.Name = "txt_Cap_L_5";
+            resources.ApplyResources(this.txt_Cap_vym_5, "txt_Cap_vym_5");
+            this.txt_Cap_vym_5.Name = "txt_Cap_vym_5";
             // 
             // lbl_Dia_RP_5
             // 
@@ -1164,77 +1159,77 @@
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Name = "label9";
             // 
-            // txt_AC2_S_4
+            // txt_AC2_rp_4
             // 
             this.txt_AC2_rp_4.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_rp_4, "txt_AC2_S_4");
-            this.txt_AC2_rp_4.Name = "txt_AC2_S_4";
+            resources.ApplyResources(this.txt_AC2_rp_4, "txt_AC2_rp_4");
+            this.txt_AC2_rp_4.Name = "txt_AC2_rp_4";
             // 
-            // txt_AC1_S_4
+            // txt_AC1_rp_4
             // 
             this.txt_AC1_rp_4.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_rp_4, "txt_AC1_S_4");
-            this.txt_AC1_rp_4.Name = "txt_AC1_S_4";
+            resources.ApplyResources(this.txt_AC1_rp_4, "txt_AC1_rp_4");
+            this.txt_AC1_rp_4.Name = "txt_AC1_rp_4";
             // 
-            // txt_Cap_S_4
+            // txt_Cap_rp_4
             // 
             this.txt_Cap_rp_4.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_rp_4, "txt_Cap_S_4");
-            this.txt_Cap_rp_4.Name = "txt_Cap_S_4";
+            resources.ApplyResources(this.txt_Cap_rp_4, "txt_Cap_rp_4");
+            this.txt_Cap_rp_4.Name = "txt_Cap_rp_4";
             // 
-            // txt_AC2_S_3
+            // txt_AC2_rp_3
             // 
             this.txt_AC2_rp_3.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_rp_3, "txt_AC2_S_3");
-            this.txt_AC2_rp_3.Name = "txt_AC2_S_3";
+            resources.ApplyResources(this.txt_AC2_rp_3, "txt_AC2_rp_3");
+            this.txt_AC2_rp_3.Name = "txt_AC2_rp_3";
             // 
-            // txt_AC1_S_3
+            // txt_AC1_rp_3
             // 
             this.txt_AC1_rp_3.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_rp_3, "txt_AC1_S_3");
-            this.txt_AC1_rp_3.Name = "txt_AC1_S_3";
+            resources.ApplyResources(this.txt_AC1_rp_3, "txt_AC1_rp_3");
+            this.txt_AC1_rp_3.Name = "txt_AC1_rp_3";
             // 
-            // txt_Cap_S_3
+            // txt_Cap_rp_3
             // 
             this.txt_Cap_rp_3.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_rp_3, "txt_Cap_S_3");
-            this.txt_Cap_rp_3.Name = "txt_Cap_S_3";
+            resources.ApplyResources(this.txt_Cap_rp_3, "txt_Cap_rp_3");
+            this.txt_Cap_rp_3.Name = "txt_Cap_rp_3";
             // 
-            // txt_AC2_S_2
+            // txt_AC2_rp_2
             // 
             this.txt_AC2_rp_2.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_rp_2, "txt_AC2_S_2");
-            this.txt_AC2_rp_2.Name = "txt_AC2_S_2";
+            resources.ApplyResources(this.txt_AC2_rp_2, "txt_AC2_rp_2");
+            this.txt_AC2_rp_2.Name = "txt_AC2_rp_2";
             // 
-            // txt_AC1_S_2
+            // txt_AC1_rp_2
             // 
             this.txt_AC1_rp_2.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_rp_2, "txt_AC1_S_2");
-            this.txt_AC1_rp_2.Name = "txt_AC1_S_2";
+            resources.ApplyResources(this.txt_AC1_rp_2, "txt_AC1_rp_2");
+            this.txt_AC1_rp_2.Name = "txt_AC1_rp_2";
             // 
-            // txt_Cap_S_2
+            // txt_Cap_rp_2
             // 
             this.txt_Cap_rp_2.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_rp_2, "txt_Cap_S_2");
-            this.txt_Cap_rp_2.Name = "txt_Cap_S_2";
+            resources.ApplyResources(this.txt_Cap_rp_2, "txt_Cap_rp_2");
+            this.txt_Cap_rp_2.Name = "txt_Cap_rp_2";
             // 
-            // txt_AC2_S_1
+            // txt_AC2_rp_1
             // 
             this.txt_AC2_rp_1.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_rp_1, "txt_AC2_S_1");
-            this.txt_AC2_rp_1.Name = "txt_AC2_S_1";
+            resources.ApplyResources(this.txt_AC2_rp_1, "txt_AC2_rp_1");
+            this.txt_AC2_rp_1.Name = "txt_AC2_rp_1";
             // 
-            // txt_AC1_S_1
+            // txt_AC1_rp_1
             // 
             this.txt_AC1_rp_1.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_rp_1, "txt_AC1_S_1");
-            this.txt_AC1_rp_1.Name = "txt_AC1_S_1";
+            resources.ApplyResources(this.txt_AC1_rp_1, "txt_AC1_rp_1");
+            this.txt_AC1_rp_1.Name = "txt_AC1_rp_1";
             // 
-            // txt_Cap_S_1
+            // txt_Cap_rp_1
             // 
             this.txt_Cap_rp_1.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_rp_1, "txt_Cap_S_1");
-            this.txt_Cap_rp_1.Name = "txt_Cap_S_1";
+            resources.ApplyResources(this.txt_Cap_rp_1, "txt_Cap_rp_1");
+            this.txt_Cap_rp_1.Name = "txt_Cap_rp_1";
             // 
             // txt_Aseo_4
             // 
@@ -1254,77 +1249,77 @@
             resources.ApplyResources(this.txt_Aseo_2, "txt_Aseo_2");
             this.txt_Aseo_2.Name = "txt_Aseo_2";
             // 
-            // txt_AC2_L_4
+            // txt_AC2_vym_4
             // 
             this.txt_AC2_vym_4.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_vym_4, "txt_AC2_L_4");
-            this.txt_AC2_vym_4.Name = "txt_AC2_L_4";
+            resources.ApplyResources(this.txt_AC2_vym_4, "txt_AC2_vym_4");
+            this.txt_AC2_vym_4.Name = "txt_AC2_vym_4";
             // 
-            // txt_AC1_L_4
+            // txt_AC1_vym_4
             // 
             this.txt_AC1_vym_4.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_vym_4, "txt_AC1_L_4");
-            this.txt_AC1_vym_4.Name = "txt_AC1_L_4";
+            resources.ApplyResources(this.txt_AC1_vym_4, "txt_AC1_vym_4");
+            this.txt_AC1_vym_4.Name = "txt_AC1_vym_4";
             // 
-            // txt_Cap_L_4
+            // txt_Cap_vym_4
             // 
             this.txt_Cap_vym_4.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_vym_4, "txt_Cap_L_4");
-            this.txt_Cap_vym_4.Name = "txt_Cap_L_4";
+            resources.ApplyResources(this.txt_Cap_vym_4, "txt_Cap_vym_4");
+            this.txt_Cap_vym_4.Name = "txt_Cap_vym_4";
             // 
-            // txt_AC2_L_3
+            // txt_AC2_vym_3
             // 
             this.txt_AC2_vym_3.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_vym_3, "txt_AC2_L_3");
-            this.txt_AC2_vym_3.Name = "txt_AC2_L_3";
+            resources.ApplyResources(this.txt_AC2_vym_3, "txt_AC2_vym_3");
+            this.txt_AC2_vym_3.Name = "txt_AC2_vym_3";
             // 
-            // txt_AC1_L_3
+            // txt_AC1_vym_3
             // 
             this.txt_AC1_vym_3.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_vym_3, "txt_AC1_L_3");
-            this.txt_AC1_vym_3.Name = "txt_AC1_L_3";
+            resources.ApplyResources(this.txt_AC1_vym_3, "txt_AC1_vym_3");
+            this.txt_AC1_vym_3.Name = "txt_AC1_vym_3";
             // 
-            // txt_Cap_L_3
+            // txt_Cap_vym_3
             // 
             this.txt_Cap_vym_3.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_vym_3, "txt_Cap_L_3");
-            this.txt_Cap_vym_3.Name = "txt_Cap_L_3";
+            resources.ApplyResources(this.txt_Cap_vym_3, "txt_Cap_vym_3");
+            this.txt_Cap_vym_3.Name = "txt_Cap_vym_3";
             // 
-            // txt_AC2_L_2
+            // txt_AC2_vym_2
             // 
             this.txt_AC2_vym_2.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_vym_2, "txt_AC2_L_2");
-            this.txt_AC2_vym_2.Name = "txt_AC2_L_2";
+            resources.ApplyResources(this.txt_AC2_vym_2, "txt_AC2_vym_2");
+            this.txt_AC2_vym_2.Name = "txt_AC2_vym_2";
             // 
-            // txt_AC1_L_2
+            // txt_AC1_vym_2
             // 
             this.txt_AC1_vym_2.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_vym_2, "txt_AC1_L_2");
-            this.txt_AC1_vym_2.Name = "txt_AC1_L_2";
+            resources.ApplyResources(this.txt_AC1_vym_2, "txt_AC1_vym_2");
+            this.txt_AC1_vym_2.Name = "txt_AC1_vym_2";
             // 
-            // txt_Cap_L_2
+            // txt_Cap_vym_2
             // 
             this.txt_Cap_vym_2.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_vym_2, "txt_Cap_L_2");
-            this.txt_Cap_vym_2.Name = "txt_Cap_L_2";
+            resources.ApplyResources(this.txt_Cap_vym_2, "txt_Cap_vym_2");
+            this.txt_Cap_vym_2.Name = "txt_Cap_vym_2";
             // 
-            // txt_AC2_L_1
+            // txt_AC2_vym_1
             // 
             this.txt_AC2_vym_1.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC2_vym_1, "txt_AC2_L_1");
-            this.txt_AC2_vym_1.Name = "txt_AC2_L_1";
+            resources.ApplyResources(this.txt_AC2_vym_1, "txt_AC2_vym_1");
+            this.txt_AC2_vym_1.Name = "txt_AC2_vym_1";
             // 
-            // txt_AC1_L_1
+            // txt_AC1_vym_1
             // 
             this.txt_AC1_vym_1.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_AC1_vym_1, "txt_AC1_L_1");
-            this.txt_AC1_vym_1.Name = "txt_AC1_L_1";
+            resources.ApplyResources(this.txt_AC1_vym_1, "txt_AC1_vym_1");
+            this.txt_AC1_vym_1.Name = "txt_AC1_vym_1";
             // 
-            // txt_Cap_L_1
+            // txt_Cap_vym_1
             // 
             this.txt_Cap_vym_1.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.txt_Cap_vym_1, "txt_Cap_L_1");
-            this.txt_Cap_vym_1.Name = "txt_Cap_L_1";
+            resources.ApplyResources(this.txt_Cap_vym_1, "txt_Cap_vym_1");
+            this.txt_Cap_vym_1.Name = "txt_Cap_vym_1";
             // 
             // txt_Aseo_1
             // 
@@ -1669,19 +1664,11 @@
             this.LoadingBar.Name = "LoadingBar";
             this.LoadingBar.Step = 1;
             // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            resources.ApplyResources(this.chart1, "chart1");
-            this.chart1.Name = "chart1";
-            // 
             // Main_Form
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.Controls.Add(this.chart1);
             this.Controls.Add(this.LoadingBar);
             this.Controls.Add(this.lbl_Month);
             this.Controls.Add(this.lbl_Week);
@@ -1717,7 +1704,6 @@
             this.Status_Tab.ResumeLayout(false);
             this.Status_Tab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Male_Status_GridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1922,8 +1908,6 @@
         private System.Windows.Forms.CheckBox Chk_Capitan;
         private System.Windows.Forms.CheckBox Chk_Atalaya;
         private System.Windows.Forms.Button Edit_Rule_Btn;
-        private System.Diagnostics.PerformanceCounter PerformanceCounter;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
 

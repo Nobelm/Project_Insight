@@ -162,16 +162,6 @@ namespace Project_Insight.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] DB {
-            get {
-                object obj = ResourceManager.GetObject("DB", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Executor {
@@ -252,23 +242,34 @@ namespace Project_Insight.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Programs {
-            get {
-                object obj = ResourceManager.GetObject("Programs", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Geoplazas Qro.
         ///True
         ///19:00
         ///19:00
         ///Tuesday
         ///Saturday
-        ///True.
+        ///False
+        ///Elders
+        ///Allowed
+        ///Allowed
+        ///Non_Status
+        ///Allowed
+        ///Allowed
+        ///Allowed
+        ///Ministerials
+        ///Non_Status
+        ///Allowed
+        ///Allowed
+        ///Allowed
+        ///Allowed
+        ///Allowed
+        ///Generals
+        ///Non_Status
+        ///Non_Status
+        ///Allowed
+        ///Allowed
+        ///Non_Status
+        ///Non_Status.
         /// </summary>
         internal static string Project_Insight_Config {
             get {
@@ -293,6 +294,26 @@ namespace Project_Insight.Properties {
             get {
                 object obj = ResourceManager.GetObject("Selendis", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ¿Conoce usted bien a Dios?	
+        ///¿Sera usted sobreviviente de los últimos días? 	
+        ///Avancemos con la organizacion unida de Jehova	
+        ///El mundo que nos rodea prueba que Dios existe	
+        ///Ayuda practica para las familias	
+        ///¿Que aprendemos del Diluvio de los dıas de Noe?	
+        ///Imitemos al “Padre de tiernas misericordias”	
+        ///Vivamos para hacer la voluntad de Dios, no la nuestra	
+        ///Nunca permitamos que se nos embote el oıdo	
+        ///Conduciendonos honradamente en todo tiempo	
+        ///‘No ser parte del mundo’... a semejanza de Cristo	
+        ///El resp [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Speech_list {
+            get {
+                return ResourceManager.GetString("Speech_list", resourceCulture);
             }
         }
     }

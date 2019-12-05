@@ -114,6 +114,9 @@ namespace Project_Insight
         public static Males Rule_Elders = new Males();
         public static Males Rule_Ministerials = new Males();
         public static Males Rule_Generals = new Males();
+        public static Thread Persistence_thread = new Thread(() => Persistence.Start_DataBase());
+        public static Thread Heavensward_thread = new Thread(() => Heavensward.Start_Heavensward());
+        public static Thread Helix_thread = new Thread(() => Helix.Start_Helix());
 
 
         /*----------------System Functions------------------*/
@@ -133,7 +136,7 @@ namespace Project_Insight
         private void Main_Form_Load(object sender, EventArgs e)
         {
             Notify("Project Insight");
-            Notify("UI up and ready \n\n ----- Welcome back Hierarch! -----\n");
+            Notify("UI up and ready \n\n ------- Welcome back Hierarch! -------\n");
             Presenter(P.Executor);
             Autocomplete_dictionary();
             txt_Command.Focus();
@@ -144,14 +147,12 @@ namespace Project_Insight
 
         private void Run_Threads()
         {
-            Thread DB_thread = new Thread(() => Persistence.Start_DataBase());
-            DB_thread.Start();
+            Persistence_thread.Start();
 
-            Thread heavensward = new Thread(() => Heavensward.Start_Heavensward());
-            heavensward.Start();
+            Heavensward_thread.Start();
 
-            Thread Helix_thread = new Thread(() => Helix.Start_Helix());
             Helix_thread.Start();
+
         }
 
         public static void Set_number_weeks()
@@ -171,6 +172,16 @@ namespace Project_Insight
             AC_mes.Semana3.Num_of_Week = 3;
             AC_mes.Semana4.Num_of_Week = 4;
             AC_mes.Semana5.Num_of_Week = 5;
+            VyM_mes.Semana1.HW_Data = false;
+            VyM_mes.Semana2.HW_Data = false;
+            VyM_mes.Semana3.HW_Data = false;
+            VyM_mes.Semana4.HW_Data = false;
+            VyM_mes.Semana5.HW_Data = false;
+            RP_mes.Semana1.HW_Data = false;
+            RP_mes.Semana2.HW_Data = false;
+            RP_mes.Semana3.HW_Data = false;
+            RP_mes.Semana4.HW_Data = false;
+            RP_mes.Semana5.HW_Data = false;
         }
 
         public void Autocomplete_dictionary()
@@ -255,9 +266,12 @@ namespace Project_Insight
 
         public void Main_Form_FormClosed(object sender, FormClosedEventArgs e)
         {
-
-            Persistence.Close_DB();
+            //Heavensward.Close_Heavensward = true;
+            Heavensward_thread.Abort();
+            Persistence_thread.Abort();
+            Helix_thread.Abort();
             Helix.Close_Ex();
+            Persistence.Close_DB();
             Application.Exit();
         }
 
@@ -329,16 +343,13 @@ namespace Project_Insight
 
         public static void Notify(string data)
         {
-            if (!Heavensward_month_in_progress)
+            Trace trace = new Trace
             {
-                Trace trace = new Trace
-                {
-                    Current_Thread = Thread.CurrentThread.Name,
-                    Info = data,
-                    Type = 1
-                };
-                Info_trace.Add(trace);
-            }
+                Current_Thread = Thread.CurrentThread.Name,
+                Info = data,
+                Type = 1
+            };
+            Info_trace.Add(trace);
         }
 
         public static void Warn(string data)
@@ -376,7 +387,7 @@ namespace Project_Insight
                             Log_txtBx.ScrollToCaret();
                         }
                     }
-                    await Task.Delay(10);
+                    await Task.Delay(1);
                     Log_txtBx.AppendText("\n");
                     Log_txtBx.SelectionStart = Log_txtBx.Text.Length;
                     Log_txtBx.ScrollToCaret();
@@ -429,7 +440,7 @@ namespace Project_Insight
                     string Str = txt_Command.Text;
                     string cmd = Str;
                     string sup = "";
-                    int index = 0;
+                    int index;
                     if (cmd.Length > 4)
                     {
                         index = cmd.IndexOf(" ");
@@ -460,6 +471,10 @@ namespace Project_Insight
                                                 m_mes = i + 1;
                                                 month_found = true;
                                                 Notify("New file for month " + Months[i]);
+                                                if (m_mes == 1)
+                                                {
+                                                    m_año++;
+                                                }
                                                 Persistence.DB_Requests_List.Add(Persistence.DB_Request.read);
                                                 break;
                                             }
@@ -574,18 +589,6 @@ namespace Project_Insight
                                     if (UI_running)
                                     {
                                         tab_Control.SelectedIndex = 3;
-                                    }
-                                    else
-                                    {
-                                        Warn("Need to create a new instance or open an existing program");
-                                    }
-                                    break;
-                                }
-                            case "db":
-                                {
-                                    if (UI_running)
-                                    {
-                                        tab_Control.SelectedIndex = 4;
                                     }
                                     else
                                     {
@@ -721,24 +724,6 @@ namespace Project_Insight
                                     {
                                         Notify("Request Heavensward info");
                                         Heavensward_All_Info();
-                                        /*
-                                        sup = sup.ToLower();
-                                        if (sup.Contains("all"))
-                                        {
-                                            Notify("Request Heavensward info");
-                                            Heavensward_All_Info();
-                                        }
-                                        else
-                                        {
-                                            if (current_tab == 0)
-                                            {
-                                                Heavensward.HW_Bridge(meetings_days[m_semana - 1, 0], current_tab, m_semana);
-                                            }
-                                            else if (current_tab == 1)
-                                            {
-                                                Heavensward.HW_Bridge(meetings_days[m_semana - 1, 1], current_tab, m_semana);
-                                            }
-                                        }*/
                                     }
                                     else
                                     {
@@ -757,9 +742,6 @@ namespace Project_Insight
                                 }
                             case "test":
                                 {
-                                    Heavensward.HW_Oracle_Request request = new Heavensward.HW_Oracle_Request();
-                                    request.hw_oracle_vym = VyM_mes.Semana1;
-                                    Heavensward.HW_Oracle_Requests_List.Add(request);
                                     break;
                                 }
                             default:
@@ -1200,7 +1182,7 @@ namespace Project_Insight
                 Writer_config.WriteLine(RP_Day);
                 Writer_config.WriteLine(Ac_same_all_week.ToString());
                 Writer_config.WriteLine(Rule_Elders.Name);
-
+                /*ToDo*/
                 Writer_config.Close();
                 Config_Control(true);
             }
@@ -1696,18 +1678,22 @@ namespace Project_Insight
                         Persistence.Persistence_Request request = new Persistence.Persistence_Request();
                         AC_mes.Semana1.AutoFill();
                         request.persistence_ac = AC_mes.Semana1;
+                        Persistence.Persistence_Requests_List.Add(request);
                         AC_mes.Semana2.AutoFill();
                         request.persistence_ac = AC_mes.Semana2;
+                        Persistence.Persistence_Requests_List.Add(request);
                         AC_mes.Semana3.AutoFill();
                         request.persistence_ac = AC_mes.Semana3;
+                        Persistence.Persistence_Requests_List.Add(request);
                         AC_mes.Semana4.AutoFill();
                         request.persistence_ac = AC_mes.Semana4;
+                        Persistence.Persistence_Requests_List.Add(request);
                         if (week_five_exist)
                         {
                             AC_mes.Semana5.AutoFill();
                             request.persistence_ac = AC_mes.Semana5;
+                            Persistence.Persistence_Requests_List.Add(request);
                         }
-                        Persistence.Persistence_Requests_List.Add(request);
                         break;
                     }
             }
@@ -1720,21 +1706,17 @@ namespace Project_Insight
             string retval = str;
             if (int.TryParse(str, out int num))
             {
-                string Speech_Path = Application.StartupPath + "\\\\Speech_List.txt";
-                int len = File.ReadAllLines(Speech_Path).Length;
-                string[] data = new string[len];
-
-                StreamReader Reader_Speech = new StreamReader(Speech_Path);
-                for (int i = 0; i < len; i++)
-                {
-                    data[i] = Reader_Speech.ReadLine();
-                }
-                Reader_Speech.Close();
+                int len;
+                string[] Speech_list;
+                string raw = Properties.Resources.Speech_list;
+                Speech_list = raw.Split('\n');
+                len = Speech_list.Length;
                 num--;
-                if ((num < len) && (num >= 0))
+                if ((num < len) && (num > 0))
                 {
-                    retval = data[num];
-                    Notify("Selected speech number: " + (num++).ToString());
+                    retval = Speech_list[num];
+                    num++;
+                    Notify("Selected speech number: " + num.ToString());
                 }
                 else
                 {
@@ -2418,9 +2400,8 @@ namespace Project_Insight
                             break;
                         }
                 }
-                Pending_Week_Handler_Refresh = true;
             }
-            else if (HW_request[0].rp_sem != null)
+            if (HW_request[0].rp_sem != null)
             {
                 Pre_save_info();
                 switch (HW_request[0].rp_sem.Num_of_Week)
@@ -2451,8 +2432,8 @@ namespace Project_Insight
                             break;
                         }
                 }
-                Pending_Week_Handler_Refresh = true;
             }
+            Pending_Week_Handler_Refresh = true;
             HW_request.RemoveAt(0);
         }
 
@@ -2494,7 +2475,7 @@ namespace Project_Insight
             {
                 Heavensward.HW_Bridge(meetings_days[sem - 1, 0], current_tab, sem);
             }
-            Notify("Month information successfull");
+            Notify("Heavensward information successful");
         }
 
         /*--------------------------------------- State Database Handlers  ---------------------------------------*/
@@ -2666,8 +2647,10 @@ namespace Project_Insight
                         {
                             if (DateTime.TryParse(cell.Value.ToString(), out DateTime date))
                             {
+                                string male = Male_List[cell.RowIndex].Name;
+                                string header = cell.OwningColumn.HeaderText;
                                 Male_Status_GridView.CurrentCell.Style.BackColor = Color.LightGreen;
-                                Notify("DateTime updated Successful");
+                                Notify("DateTime updated for " + male + " at " + header);
                             }
                             else
                             {
@@ -2857,7 +2840,6 @@ namespace Project_Insight
             }
         }
 
-        //@ToDo
         public Males Run_Rules(Males local_rule)
         {
             local_rule.Atalaya    = Check_CheckBox_Modifications(Chk_Atalaya);
@@ -2881,8 +2863,5 @@ namespace Project_Insight
 
         /*--------------------------------------- Performance Counter Handlers  ---------------------------------------*/
 
-        public void Perf_Counter_Init()
-        {
-        }
     }
 }
