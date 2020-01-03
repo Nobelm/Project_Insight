@@ -332,7 +332,7 @@ namespace Project_Insight
                         Sheet_VyM.Cells[primary_cell + 13, C] = sem.SMM3;
                         Set_Font(Sheet_VyM.get_Range("C" + (primary_cell + 13)));
                         Sheet_VyM.Cells[primary_cell + 13, G] = sem.SMM3_A;
-                        if (Main_Form.is_room_B_enabled)
+                        if (Main_Form.Room_B_enabled)
                         {
                             Sheet_VyM.Cells[primary_cell + 13, F] = sem.SMM3_B;
                         }
@@ -354,7 +354,7 @@ namespace Project_Insight
                         Sheet_VyM.Cells[primary_cell + 14, C] = sem.SMM4;
                         Set_Font(Sheet_VyM.get_Range("C" + (primary_cell + 14)));
                         Sheet_VyM.Cells[primary_cell + 14, G] = sem.SMM4_A;
-                        if (Main_Form.is_room_B_enabled)
+                        if (Main_Form.Room_B_enabled)
                         {
                             Sheet_VyM.Cells[primary_cell + 14, F] = sem.SMM4_B;
                         }
@@ -366,7 +366,7 @@ namespace Project_Insight
                         aux_range.Cells.Clear();
                         increment_smm++;
                     }
-                    if (Main_Form.is_room_B_enabled)
+                    if (Main_Form.Room_B_enabled)
                     {
                         Sheet_VyM.Cells[primary_cell + 8, F] = sem.Lectura_B;
                         Sheet_VyM.Cells[primary_cell + 10, F] = "Sala auxiliar";

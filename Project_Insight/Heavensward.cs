@@ -12,6 +12,7 @@ namespace Project_Insight
 {
     public class Heavensward
     {
+        private static int current_week = 0;
         private static int tdb_attend = 0;
         private static int smm_attend = 0;
         private static int nvc_attend = 0;
@@ -26,18 +27,19 @@ namespace Project_Insight
         public static string[] Nvc_keys = { "nv_11", "nv_21" };
         private static bool pending_break = false;
         private static bool break_reader = false;
-        public static bool Hw_inProgress = false;
         private static bool Hw_oracle_inProgress = false;
         private static bool month_found = false;
         private static bool WT_found = false;
-        public static bool Close_Heavensward = false;
-        private static VyM_Mes VyM_mes = new VyM_Mes();
-        private static VyM_Sem Aux_VyM_Sem = new VyM_Sem();
-        private static RP_Mes RP_mes = new RP_Mes();
-        private static RP_Sem Aux_RP_Sem = new RP_Sem();
-        public static List<HW_request> HW_Requests_List = new List<HW_request>();
-        public static List<HW_Oracle_Request> HW_Oracle_Requests_List = new List<HW_Oracle_Request>();
         private static bool Initial_Check = false;
+        public static bool Hw_inProgress = false;
+        public static bool Close_Heavensward = false;
+        public static bool Request_Heavensward = false;
+        private static VyM_Mes VyM_mes_HW_Local = new VyM_Mes();
+        private static VyM_Sem Aux_VyM_Sem = new VyM_Sem();
+        private static RP_Mes RP_mes_HW_Local = new RP_Mes();
+        private static RP_Sem Aux_RP_Sem = new RP_Sem();
+        public static List<int> HW_Requests_List = new List<int>();
+        public static List<HW_Oracle_Request> HW_Oracle_Requests_List = new List<HW_Oracle_Request>();
         public static List<string> Assignment_VyM_List = new List<string>
             {
                "Presidente",
@@ -92,16 +94,16 @@ namespace Project_Insight
             {
                 Bible_Books[i] = Bible_Books[i].Remove(Bible_Books[i].Length - 1);
             }
-            VyM_mes.Semana1.Num_of_Week = 1;
-            VyM_mes.Semana2.Num_of_Week = 2;
-            VyM_mes.Semana3.Num_of_Week = 3;
-            VyM_mes.Semana4.Num_of_Week = 4;
-            VyM_mes.Semana5.Num_of_Week = 5;
-            RP_mes.Semana1.Num_of_Week = 1;
-            RP_mes.Semana2.Num_of_Week = 2;
-            RP_mes.Semana3.Num_of_Week = 3;
-            RP_mes.Semana4.Num_of_Week = 4;
-            RP_mes.Semana5.Num_of_Week = 5;
+            VyM_mes_HW_Local.Semana1.Num_of_Week = 1;
+            VyM_mes_HW_Local.Semana2.Num_of_Week = 2;
+            VyM_mes_HW_Local.Semana3.Num_of_Week = 3;
+            VyM_mes_HW_Local.Semana4.Num_of_Week = 4;
+            VyM_mes_HW_Local.Semana5.Num_of_Week = 5;
+            RP_mes_HW_Local.Semana1.Num_of_Week = 1;
+            RP_mes_HW_Local.Semana2.Num_of_Week = 2;
+            RP_mes_HW_Local.Semana3.Num_of_Week = 3;
+            RP_mes_HW_Local.Semana4.Num_of_Week = 4;
+            RP_mes_HW_Local.Semana5.Num_of_Week = 5;
 
             HW_Thread_Handler();
         }
@@ -115,9 +117,9 @@ namespace Project_Insight
                     Initial_Check = true;
                     Initial_Heavensward_Check();
                 }
-                if ((HW_Requests_List.Count > 0) && !Hw_inProgress)
+                if (Request_Heavensward && !Hw_inProgress)
                 {
-                    Access_Heaven(HW_Requests_List[0]);
+                    Access_Heaven();
                 }
                 if ((HW_Oracle_Requests_List.Count > 0) && !Hw_oracle_inProgress)
                 {
@@ -140,17 +142,6 @@ namespace Project_Insight
             public RP_Sem hw_oracle_rp;
             public AC_Sem hw_oracle_ac;
         }
-        
-        public static void HW_Bridge(DateTime inc_date, int tab, int week)
-        {
-            HW_request request = new HW_request
-            {
-                date = inc_date,
-                tab = tab,
-                week = week
-            };
-            HW_Requests_List.Add(request);
-        }
 
         private static void Initial_Heavensward_Check()
         {
@@ -170,113 +161,90 @@ namespace Project_Insight
 
         /*-------------------- Attending request -------------------- */
 
-        private static void Access_Heaven(HW_request info)
+        private static void Access_Heaven()
         {
             Hw_inProgress = true;
-            string fecha = info.date.ToString("yyyy/MM/dd");
-            string url = "https://wol.jw.org/es/wol/dt/r4/lp-s/" + fecha;
-            month = info.date.ToString("MMMM");
-            Main_Form.Notify("Gather information from wol.jw.org for " + fecha);
-            switch (info.week)
+            int max_sem = 4;
+            if (Main_Form.week_five_exist)
+            {
+                max_sem = 5;
+            }
+            Main_Form.Notify("Gather information from heavensward for " + month);
+            for (current_week = 1; current_week <= max_sem; current_week++)
+            {
+                Copy_Main_Week();
+                if (!Aux_VyM_Sem.HW_Data && !Aux_RP_Sem.HW_Data)
+                {
+                    string fecha = Main_Form.meetings_days[current_week - 1, 0].ToString("yyyy/MM/dd");
+                    string url = "https://wol.jw.org/es/wol/dt/r4/lp-s/" + fecha;
+                    month = Main_Form.meetings_days[current_week - 1, 0].ToString("MMMM");
+                    try
+                    {
+                        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                        using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                        using (Stream stream = response.GetResponseStream())
+                        using (StreamReader reader = new StreamReader(stream))
+                        {
+                            string raw;// = reader.ReadToEnd(); //Test --Do Not Delete Comment!--
+                            CleanUp();
+                            //Main_Form.Notify("Connection Successfull. Reading info");
+                            while ((raw = reader.ReadLine()) != null)
+                            {
+                                if (break_reader)
+                                {
+                                    break;
+                                }
+                                String_Handler(raw);
+                            }
+                            Main_Form.Notify("Information successfully recieved from wol.jw.org for " + fecha);
+                        }
+                    }
+                    catch
+                    {
+                        Main_Form.Warn("Unable to connect to wol.jw.org at " + fecha + "\n");
+                    }
+                }
+            }
+            Return_Values_From_Heavensward();
+            Main_Form.Heavensward_request_complete = true;
+            Hw_inProgress = false;
+            Request_Heavensward = false;
+        }
+
+        private static void Copy_Main_Week()
+        {
+            switch (current_week)
             {
                 case 1:
                     {
-                        Aux_VyM_Sem = VyM_mes.Semana1;
-                        Aux_RP_Sem = RP_mes.Semana1;
+                        Aux_VyM_Sem = Main_Form.VyM_mes.Semana1;
+                        Aux_RP_Sem = Main_Form.RP_mes.Semana1;
                         break;
                     }
                 case 2:
                     {
-                        Aux_VyM_Sem = VyM_mes.Semana2;
-                        Aux_RP_Sem = RP_mes.Semana2;
+                        Aux_VyM_Sem = Main_Form.VyM_mes.Semana2;
+                        Aux_RP_Sem = Main_Form.RP_mes.Semana2;
                         break;
                     }
                 case 3:
                     {
-                        Aux_VyM_Sem = VyM_mes.Semana3;
-                        Aux_RP_Sem = RP_mes.Semana3;
+                        Aux_VyM_Sem = Main_Form.VyM_mes.Semana3;
+                        Aux_RP_Sem = Main_Form.RP_mes.Semana3;
                         break;
                     }
                 case 4:
                     {
-                        Aux_VyM_Sem = VyM_mes.Semana4;
-                        Aux_RP_Sem = RP_mes.Semana4;
+                        Aux_VyM_Sem = Main_Form.VyM_mes.Semana4;
+                        Aux_RP_Sem = Main_Form.RP_mes.Semana4;
                         break;
                     }
                 case 5:
                     {
-                        Aux_VyM_Sem = VyM_mes.Semana5;
-                        Aux_RP_Sem = RP_mes.Semana5;
+                        Aux_VyM_Sem = Main_Form.VyM_mes.Semana5;
+                        Aux_RP_Sem = Main_Form.RP_mes.Semana5;
                         break;
                     }
-            }
-            if (Aux_VyM_Sem.HW_Data && Aux_RP_Sem.HW_Data)
-            {
-                Insert_previously_Saved(info.tab);
-                HW_Requests_List.RemoveAt(0);
-                Hw_inProgress = false;
-            }
-            else
-            {
-                for(int i = 1; i <= Main_Form.Set_number_weeks)
-                try
-                {
-                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                    using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                    using (Stream stream = response.GetResponseStream())
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        string raw;// = reader.ReadToEnd(); //Test
-                        CleanUp();
-                        Main_Form.Notify("Connection Successfull. Reading info");
-                        while ((raw = reader.ReadLine()) != null)
-                        {
-                            if (break_reader)
-                            {
-                                break;
-                            }
-                            if (info.tab == 0 || info.tab == 1)
-                            {
-                                String_Handler(raw);
-                            }
-                        }
-                        Main_Form.Notify("Information successfully recieved from wol.jw.org");
-                    }
-                }
-                catch
-                {
-                    Main_Form.Warn("Unable to connect to wol.jw.org\n");
-                    Insert_previously_Saved(info.tab);
-                }
-                HW_Requests_List.RemoveAt(0);
-                Hw_inProgress = false;
-            }
-        }
-
-        private static void Insert_previously_Saved(int tab)
-        {
-            if ((Aux_VyM_Sem.HW_Data == true) && (tab == 0))
-            {
-                Main_Form.Notify("Insert previously saved data for VyM");
-                Main_Form.Hw_requested_info request = new Main_Form.Hw_requested_info
-                {
-                    vym_sem = Aux_VyM_Sem,
-                };
-                Main_Form.HW_request.Add(request);
-            }
-            else
-            if ((Aux_RP_Sem.HW_Data == true) && (tab == 1))
-            {
-                Main_Form.Notify("Insert previously saved data for RP");
-                Main_Form.Hw_requested_info request = new Main_Form.Hw_requested_info
-                {
-                    rp_sem = Aux_RP_Sem
-                };
-                Main_Form.HW_request.Add(request);
-            }
-            else
-            {
-                Main_Form.Warn("No info available");
             }
         }
 
@@ -407,11 +375,6 @@ namespace Project_Insight
             if (break_reader)
             {
                 Save_VyM_Information();
-                Main_Form.Hw_requested_info request = new Main_Form.Hw_requested_info
-                {
-                    vym_sem = Aux_VyM_Sem,
-                };
-                Main_Form.HW_request.Add(request);
             }
         }
 
@@ -447,11 +410,6 @@ namespace Project_Insight
                 if (final_value != "")
                 {
                     Aux_RP_Sem.Titulo_Atalaya = final_value;
-                    Main_Form.Hw_requested_info request = new Main_Form.Hw_requested_info
-                    {
-                        rp_sem = Aux_RP_Sem
-                    };
-                    Main_Form.HW_request.Add(request);
                     Save_RP_Information();
                 }
                 break_reader = true;
@@ -498,77 +456,101 @@ namespace Project_Insight
             return retval;
         }
 
+        /*Store info into local variables*/
         private static void Save_VyM_Information()
         {
-            switch (Aux_VyM_Sem.Num_of_Week)
+            switch (current_week)
             {
                 case 1:
                     {
-                        VyM_mes.Semana1 = Aux_VyM_Sem;
-                        VyM_mes.Semana1.HW_Data = true;
+                        VyM_mes_HW_Local.Semana1 = Aux_VyM_Sem;
+                        VyM_mes_HW_Local.Semana1.HW_Data = true;
                         break;
                     }
                 case 2:
                     {
-                        VyM_mes.Semana2 = Aux_VyM_Sem;
-                        VyM_mes.Semana2.HW_Data = true;
+                        VyM_mes_HW_Local.Semana2 = Aux_VyM_Sem;
+                        VyM_mes_HW_Local.Semana2.HW_Data = true;
                         break;
                     }
                 case 3:
                     {
-                        VyM_mes.Semana3 = Aux_VyM_Sem;
-                        VyM_mes.Semana3.HW_Data = true;
+                        VyM_mes_HW_Local.Semana3 = Aux_VyM_Sem;
+                        VyM_mes_HW_Local.Semana3.HW_Data = true;
                         break;
                     }
                 case 4:
                     {
-                        VyM_mes.Semana4 = Aux_VyM_Sem;
-                        VyM_mes.Semana4.HW_Data = true;
+                        VyM_mes_HW_Local.Semana4 = Aux_VyM_Sem;
+                        VyM_mes_HW_Local.Semana4.HW_Data = true;
                         break;
                     }
                 case 5:
                     {
-                        VyM_mes.Semana5 = Aux_VyM_Sem;
-                        VyM_mes.Semana5.HW_Data = true;
+                        VyM_mes_HW_Local.Semana5 = Aux_VyM_Sem;
+                        VyM_mes_HW_Local.Semana5.HW_Data = true;
                         break;
                     }
             }
         }
 
+        /*Store info into local variables*/
         private static void Save_RP_Information()
         {
-            switch (Aux_RP_Sem.Num_of_Week)
+            switch (current_week)
             {
                 case 1:
                     {
-                        RP_mes.Semana1 = Aux_RP_Sem;
-                        RP_mes.Semana1.HW_Data = true;
+                        RP_mes_HW_Local.Semana1 = Aux_RP_Sem;
+                        RP_mes_HW_Local.Semana1.HW_Data = true;
                         break;
                     }
                 case 2:
                     {
-                        RP_mes.Semana2 = Aux_RP_Sem;
-                        RP_mes.Semana2.HW_Data = true;
+                        RP_mes_HW_Local.Semana2 = Aux_RP_Sem;
+                        RP_mes_HW_Local.Semana2.HW_Data = true;
                         break;
                     }
                 case 3:
                     {
-                        RP_mes.Semana3 = Aux_RP_Sem;
-                        RP_mes.Semana3.HW_Data = true;
+                        RP_mes_HW_Local.Semana3 = Aux_RP_Sem;
+                        RP_mes_HW_Local.Semana3.HW_Data = true;
                         break;
                     }
                 case 4:
                     {
-                        RP_mes.Semana4 = Aux_RP_Sem;
-                        RP_mes.Semana4.HW_Data = true;
+                        RP_mes_HW_Local.Semana4 = Aux_RP_Sem;
+                        RP_mes_HW_Local.Semana4.HW_Data = true;
                         break;
                     }
                 case 5:
                     {
-                        RP_mes.Semana5 = Aux_RP_Sem;
-                        RP_mes.Semana5.HW_Data = true;
+                        RP_mes_HW_Local.Semana5 = Aux_RP_Sem;
+                        RP_mes_HW_Local.Semana5.HW_Data = true;
                         break;
                     }
+            }
+        }
+
+        private static void Return_Values_From_Heavensward()
+        {
+            Main_Form.Notify("Storing info from Heavensward into Main");
+            Main_Form.VyM_mes.Semana1.Save_Heavensward_Info(VyM_mes_HW_Local.Semana1);
+            Main_Form.RP_mes.Semana1.Save_Heavensward_Info(RP_mes_HW_Local.Semana1);
+
+            Main_Form.VyM_mes.Semana2.Save_Heavensward_Info(VyM_mes_HW_Local.Semana2);
+            Main_Form.RP_mes.Semana2.Save_Heavensward_Info(RP_mes_HW_Local.Semana2);
+
+            Main_Form.VyM_mes.Semana3.Save_Heavensward_Info(VyM_mes_HW_Local.Semana3);
+            Main_Form.RP_mes.Semana3.Save_Heavensward_Info(RP_mes_HW_Local.Semana3);
+
+            Main_Form.VyM_mes.Semana4.Save_Heavensward_Info(VyM_mes_HW_Local.Semana4);
+            Main_Form.RP_mes.Semana4.Save_Heavensward_Info(RP_mes_HW_Local.Semana4);
+
+            if (Main_Form.week_five_exist)
+            {
+                Main_Form.VyM_mes.Semana5.Save_Heavensward_Info(VyM_mes_HW_Local.Semana5);
+                Main_Form.RP_mes.Semana5.Save_Heavensward_Info(RP_mes_HW_Local.Semana5);
             }
         }
 
@@ -577,7 +559,7 @@ namespace Project_Insight
         private static void Heavensward_Oracle_Handler(HW_Oracle_Request request)
         {
             Hw_oracle_inProgress = true;
-            string asignee = "Noel Belin";
+            string asignee = Properties.Settings.Default.Heavensward_User;
             bool asignee_found = false;
             string asig = "";
             string date = "";

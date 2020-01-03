@@ -125,7 +125,7 @@
     <value>864, 171</value>
   </data>
   <data name="Log_txtBx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>365, 493</value>
+    <value>383, 493</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Log_txtBx.TabIndex" type="System.Int32, mscorlib">
@@ -144,10 +144,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Log_txtBx.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="picPresenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1083, 719</value>
+    <value>1108, 719</value>
   </data>
   <data name="picPresenter.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 115</value>
@@ -169,7 +169,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;picPresenter.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="protoss_Frame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1453,7 +1453,7 @@
 </value>
   </data>
   <data name="protoss_Frame.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1066, 697</value>
+    <value>1091, 697</value>
   </data>
   <data name="protoss_Frame.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 153</value>
@@ -1474,7 +1474,397 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;protoss_Frame.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;Tab_VyM.Name" xml:space="preserve">
+    <value>Tab_VyM</value>
+  </data>
+  <data name="&gt;&gt;Tab_VyM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tab_VyM.Parent" xml:space="preserve">
+    <value>tab_Control</value>
+  </data>
+  <data name="&gt;&gt;Tab_VyM.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Tab_RP.Name" xml:space="preserve">
+    <value>Tab_RP</value>
+  </data>
+  <data name="&gt;&gt;Tab_RP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tab_RP.Parent" xml:space="preserve">
+    <value>tab_Control</value>
+  </data>
+  <data name="&gt;&gt;Tab_RP.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Tab_AC.Name" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;Tab_AC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tab_AC.Parent" xml:space="preserve">
+    <value>tab_Control</value>
+  </data>
+  <data name="&gt;&gt;Tab_AC.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;Status_Tab.Name" xml:space="preserve">
+    <value>Status_Tab</value>
+  </data>
+  <data name="&gt;&gt;Status_Tab.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Status_Tab.Parent" xml:space="preserve">
+    <value>tab_Control</value>
+  </data>
+  <data name="&gt;&gt;Status_Tab.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tab_Control.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tab_Control.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="tab_Control.Size" type="System.Drawing.Size, System.Drawing">
+    <value>835, 806</value>
+  </data>
+  <data name="tab_Control.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="&gt;&gt;tab_Control.Name" xml:space="preserve">
+    <value>tab_Control</value>
+  </data>
+  <data name="&gt;&gt;tab_Control.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tab_Control.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tab_Control.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;Nuestra_Vida.Name" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;Nuestra_Vida.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Nuestra_Vida.Parent" xml:space="preserve">
+    <value>Tab_VyM</value>
+  </data>
+  <data name="&gt;&gt;Nuestra_Vida.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Seamos_Maestros.Name" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;Seamos_Maestros.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Seamos_Maestros.Parent" xml:space="preserve">
+    <value>Tab_VyM</value>
+  </data>
+  <data name="&gt;&gt;Seamos_Maestros.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Tesoros_Biblia.Name" xml:space="preserve">
+    <value>Tesoros_Biblia</value>
+  </data>
+  <data name="&gt;&gt;Tesoros_Biblia.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tesoros_Biblia.Parent" xml:space="preserve">
+    <value>Tab_VyM</value>
+  </data>
+  <data name="&gt;&gt;Tesoros_Biblia.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;General_Info.Name" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;General_Info.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;General_Info.Parent" xml:space="preserve">
+    <value>Tab_VyM</value>
+  </data>
+  <data name="&gt;&gt;General_Info.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Tab_VyM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="Tab_VyM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="Tab_VyM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>827, 780</value>
+  </data>
+  <data name="Tab_VyM.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="Tab_VyM.Text" xml:space="preserve">
+    <value>VyM</value>
+  </data>
+  <data name="&gt;&gt;Tab_VyM.Name" xml:space="preserve">
+    <value>Tab_VyM</value>
+  </data>
+  <data name="&gt;&gt;Tab_VyM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tab_VyM.Parent" xml:space="preserve">
+    <value>tab_Control</value>
+  </data>
+  <data name="&gt;&gt;Tab_VyM.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC3.Name" xml:space="preserve">
+    <value>txt_NVC3</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC3.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label41.Name" xml:space="preserve">
+    <value>label41</value>
+  </data>
+  <data name="&gt;&gt;label41.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label41.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;label41.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txt_Ora2VyM.Name" xml:space="preserve">
+    <value>txt_Ora2VyM</value>
+  </data>
+  <data name="&gt;&gt;txt_Ora2VyM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Ora2VyM.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;txt_Ora2VyM.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A4.Name" xml:space="preserve">
+    <value>txt_NVC_A4</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A4.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A4.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;time_14.Name" xml:space="preserve">
+    <value>time_14</value>
+  </data>
+  <data name="&gt;&gt;time_14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_14.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;time_14.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;time_13.Name" xml:space="preserve">
+    <value>time_13</value>
+  </data>
+  <data name="&gt;&gt;time_13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_13.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;time_13.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;time_12.Name" xml:space="preserve">
+    <value>time_12</value>
+  </data>
+  <data name="&gt;&gt;time_12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_12.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;time_12.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;time_11.Name" xml:space="preserve">
+    <value>time_11</value>
+  </data>
+  <data name="&gt;&gt;time_11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_11.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;time_11.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="&gt;&gt;time_10.Name" xml:space="preserve">
+    <value>time_10</value>
+  </data>
+  <data name="&gt;&gt;time_10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_10.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;time_10.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;time_9.Name" xml:space="preserve">
+    <value>time_9</value>
+  </data>
+  <data name="&gt;&gt;time_9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_9.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;time_9.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A3.Name" xml:space="preserve">
+    <value>txt_NVC_A3</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A3.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A3.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;label22.Name" xml:space="preserve">
+    <value>label22</value>
+  </data>
+  <data name="&gt;&gt;label22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A2.Name" xml:space="preserve">
+    <value>txt_NVC_A2</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A2.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A2.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC2.Name" xml:space="preserve">
+    <value>txt_NVC2</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC2.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC2.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A1.Name" xml:space="preserve">
+    <value>txt_NVC_A1</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A1.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC_A1.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC1.Name" xml:space="preserve">
+    <value>txt_NVC1</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC1.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;txt_NVC1.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="Nuestra_Vida.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="Nuestra_Vida.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 463</value>
+  </data>
+  <data name="Nuestra_Vida.Size" type="System.Drawing.Size, System.Drawing">
+    <value>814, 200</value>
+  </data>
+  <data name="Nuestra_Vida.TabIndex" type="System.Int32, mscorlib">
+    <value>138</value>
+  </data>
+  <data name="Nuestra_Vida.Text" xml:space="preserve">
+    <value>Nuestra Vida Cristiana</value>
+  </data>
+  <data name="&gt;&gt;Nuestra_Vida.Name" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;Nuestra_Vida.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Nuestra_Vida.Parent" xml:space="preserve">
+    <value>Tab_VyM</value>
+  </data>
+  <data name="&gt;&gt;Nuestra_Vida.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="txt_NVC3.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1977,32 +2367,269 @@
   <data name="&gt;&gt;txt_NVC1.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
-  <data name="Nuestra_Vida.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
+  <data name="&gt;&gt;txt_SMM_B4.Name" xml:space="preserve">
+    <value>txt_SMM_B4</value>
   </data>
-  <data name="Nuestra_Vida.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 463</value>
+  <data name="&gt;&gt;txt_SMM_B4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Nuestra_Vida.Size" type="System.Drawing.Size, System.Drawing">
-    <value>814, 200</value>
+  <data name="&gt;&gt;txt_SMM_B4.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
   </data>
-  <data name="Nuestra_Vida.TabIndex" type="System.Int32, mscorlib">
-    <value>138</value>
+  <data name="&gt;&gt;txt_SMM_B4.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="Nuestra_Vida.Text" xml:space="preserve">
-    <value>Nuestra Vida Cristiana</value>
+  <data name="&gt;&gt;txt_SMM_B1.Name" xml:space="preserve">
+    <value>txt_SMM_B1</value>
   </data>
-  <data name="&gt;&gt;Nuestra_Vida.Name" xml:space="preserve">
-    <value>Nuestra_Vida</value>
+  <data name="&gt;&gt;txt_SMM_B1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Nuestra_Vida.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_SMM_B1.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_B1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_B3.Name" xml:space="preserve">
+    <value>txt_SMM_B3</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_B3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_B3.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_B3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_B2.Name" xml:space="preserve">
+    <value>txt_SMM_B2</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_B2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_B2.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_B2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;time_8.Name" xml:space="preserve">
+    <value>time_8</value>
+  </data>
+  <data name="&gt;&gt;time_8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_8.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;time_8.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A4.Name" xml:space="preserve">
+    <value>txt_SMM_A4</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A4.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A4.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM4.Name" xml:space="preserve">
+    <value>txt_SMM4</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM4.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM4.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
+  </data>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;time_7.Name" xml:space="preserve">
+    <value>time_7</value>
+  </data>
+  <data name="&gt;&gt;time_7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_7.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;time_7.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;time_6.Name" xml:space="preserve">
+    <value>time_6</value>
+  </data>
+  <data name="&gt;&gt;time_6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_6.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;time_6.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;time_5.Name" xml:space="preserve">
+    <value>time_5</value>
+  </data>
+  <data name="&gt;&gt;time_5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_5.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;time_5.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A3.Name" xml:space="preserve">
+    <value>txt_SMM_A3</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A3.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A3.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM3.Name" xml:space="preserve">
+    <value>txt_SMM3</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM3.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM3.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A2.Name" xml:space="preserve">
+    <value>txt_SMM_A2</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A2.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A2.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM2.Name" xml:space="preserve">
+    <value>txt_SMM2</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM2.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM2.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A1.Name" xml:space="preserve">
+    <value>txt_SMM_A1</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A1.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM_A1.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM1.Name" xml:space="preserve">
+    <value>txt_SMM1</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM1.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;txt_SMM1.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="Seamos_Maestros.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 261</value>
+  </data>
+  <data name="Seamos_Maestros.Size" type="System.Drawing.Size, System.Drawing">
+    <value>814, 196</value>
+  </data>
+  <data name="Seamos_Maestros.TabIndex" type="System.Int32, mscorlib">
+    <value>137</value>
+  </data>
+  <data name="Seamos_Maestros.Text" xml:space="preserve">
+    <value>Seamos Mejores Maestros</value>
+  </data>
+  <data name="&gt;&gt;Seamos_Maestros.Name" xml:space="preserve">
+    <value>Seamos_Maestros</value>
+  </data>
+  <data name="&gt;&gt;Seamos_Maestros.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Nuestra_Vida.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Seamos_Maestros.Parent" xml:space="preserve">
     <value>Tab_VyM</value>
   </data>
-  <data name="&gt;&gt;Nuestra_Vida.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;Seamos_Maestros.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="txt_SMM_B4.Location" type="System.Drawing.Point, System.Drawing">
     <value>382, 152</value>
@@ -2484,29 +3111,161 @@
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
-  <data name="Seamos_Maestros.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 261</value>
+  <data name="&gt;&gt;txt_TdlB_3.Name" xml:space="preserve">
+    <value>txt_TdlB_3</value>
   </data>
-  <data name="Seamos_Maestros.Size" type="System.Drawing.Size, System.Drawing">
-    <value>814, 196</value>
+  <data name="&gt;&gt;txt_TdlB_3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Seamos_Maestros.TabIndex" type="System.Int32, mscorlib">
-    <value>137</value>
+  <data name="&gt;&gt;txt_TdlB_3.Parent" xml:space="preserve">
+    <value>Tesoros_Biblia</value>
   </data>
-  <data name="Seamos_Maestros.Text" xml:space="preserve">
-    <value>Seamos Mejores Maestros</value>
+  <data name="&gt;&gt;txt_TdlB_3.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;Seamos_Maestros.Name" xml:space="preserve">
-    <value>Seamos_Maestros</value>
+  <data name="&gt;&gt;txt_TdlB_B3.Name" xml:space="preserve">
+    <value>txt_TdlB_B3</value>
   </data>
-  <data name="&gt;&gt;Seamos_Maestros.Type" xml:space="preserve">
+  <data name="&gt;&gt;txt_TdlB_B3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_B3.Parent" xml:space="preserve">
+    <value>Tesoros_Biblia</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_B3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;time_4.Name" xml:space="preserve">
+    <value>time_4</value>
+  </data>
+  <data name="&gt;&gt;time_4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_4.Parent" xml:space="preserve">
+    <value>Tesoros_Biblia</value>
+  </data>
+  <data name="&gt;&gt;time_4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;time_3.Name" xml:space="preserve">
+    <value>time_3</value>
+  </data>
+  <data name="&gt;&gt;time_3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_3.Parent" xml:space="preserve">
+    <value>Tesoros_Biblia</value>
+  </data>
+  <data name="&gt;&gt;time_3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;time_2.Name" xml:space="preserve">
+    <value>time_2</value>
+  </data>
+  <data name="&gt;&gt;time_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_2.Parent" xml:space="preserve">
+    <value>Tesoros_Biblia</value>
+  </data>
+  <data name="&gt;&gt;time_2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_A3.Name" xml:space="preserve">
+    <value>txt_TdlB_A3</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_A3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_A3.Parent" xml:space="preserve">
+    <value>Tesoros_Biblia</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_A3.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_A2.Name" xml:space="preserve">
+    <value>txt_TdlB_A2</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_A2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_A2.Parent" xml:space="preserve">
+    <value>Tesoros_Biblia</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_A2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>Tesoros_Biblia</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_A1.Name" xml:space="preserve">
+    <value>txt_TdlB_A1</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_A1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_A1.Parent" xml:space="preserve">
+    <value>Tesoros_Biblia</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_A1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_1.Name" xml:space="preserve">
+    <value>txt_TdlB_1</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_1.Parent" xml:space="preserve">
+    <value>Tesoros_Biblia</value>
+  </data>
+  <data name="&gt;&gt;txt_TdlB_1.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>Tesoros_Biblia</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="Tesoros_Biblia.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 137</value>
+  </data>
+  <data name="Tesoros_Biblia.Size" type="System.Drawing.Size, System.Drawing">
+    <value>815, 118</value>
+  </data>
+  <data name="Tesoros_Biblia.TabIndex" type="System.Int32, mscorlib">
+    <value>136</value>
+  </data>
+  <data name="Tesoros_Biblia.Text" xml:space="preserve">
+    <value>Tesoros de la Biblia</value>
+  </data>
+  <data name="&gt;&gt;Tesoros_Biblia.Name" xml:space="preserve">
+    <value>Tesoros_Biblia</value>
+  </data>
+  <data name="&gt;&gt;Tesoros_Biblia.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Seamos_Maestros.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Tesoros_Biblia.Parent" xml:space="preserve">
     <value>Tab_VyM</value>
   </data>
-  <data name="&gt;&gt;Seamos_Maestros.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;Tesoros_Biblia.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="txt_TdlB_3.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 85</value>
@@ -2769,29 +3528,173 @@
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="Tesoros_Biblia.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 137</value>
+  <data name="&gt;&gt;txt_ConAux.Name" xml:space="preserve">
+    <value>txt_ConAux</value>
   </data>
-  <data name="Tesoros_Biblia.Size" type="System.Drawing.Size, System.Drawing">
-    <value>815, 118</value>
+  <data name="&gt;&gt;txt_ConAux.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Tesoros_Biblia.TabIndex" type="System.Int32, mscorlib">
-    <value>136</value>
+  <data name="&gt;&gt;txt_ConAux.Parent" xml:space="preserve">
+    <value>General_Info</value>
   </data>
-  <data name="Tesoros_Biblia.Text" xml:space="preserve">
-    <value>Tesoros de la Biblia</value>
+  <data name="&gt;&gt;txt_ConAux.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;Tesoros_Biblia.Name" xml:space="preserve">
-    <value>Tesoros_Biblia</value>
+  <data name="&gt;&gt;label47.Name" xml:space="preserve">
+    <value>label47</value>
   </data>
-  <data name="&gt;&gt;Tesoros_Biblia.Type" xml:space="preserve">
+  <data name="&gt;&gt;label47.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label47.Parent" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;label47.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Alert_Label_VyM.Name" xml:space="preserve">
+    <value>Alert_Label_VyM</value>
+  </data>
+  <data name="&gt;&gt;Alert_Label_VyM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Alert_Label_VyM.Parent" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;Alert_Label_VyM.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lbl_DateVyM.Name" xml:space="preserve">
+    <value>lbl_DateVyM</value>
+  </data>
+  <data name="&gt;&gt;lbl_DateVyM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_DateVyM.Parent" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;lbl_DateVyM.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;time_0.Name" xml:space="preserve">
+    <value>time_0</value>
+  </data>
+  <data name="&gt;&gt;time_0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_0.Parent" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;time_0.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;time_1.Name" xml:space="preserve">
+    <value>time_1</value>
+  </data>
+  <data name="&gt;&gt;time_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;time_1.Parent" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;time_1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;txt_Lec_Sem.Name" xml:space="preserve">
+    <value>txt_Lec_Sem</value>
+  </data>
+  <data name="&gt;&gt;txt_Lec_Sem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Lec_Sem.Parent" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;txt_Lec_Sem.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;txt_Pres.Name" xml:space="preserve">
+    <value>txt_Pres</value>
+  </data>
+  <data name="&gt;&gt;txt_Pres.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Pres.Parent" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;txt_Pres.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="General_Info.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 9</value>
+  </data>
+  <data name="General_Info.Size" type="System.Drawing.Size, System.Drawing">
+    <value>814, 122</value>
+  </data>
+  <data name="General_Info.TabIndex" type="System.Int32, mscorlib">
+    <value>135</value>
+  </data>
+  <data name="General_Info.Text" xml:space="preserve">
+    <value>Informacion General</value>
+  </data>
+  <data name="&gt;&gt;General_Info.Name" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;General_Info.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Tesoros_Biblia.Parent" xml:space="preserve">
+  <data name="&gt;&gt;General_Info.Parent" xml:space="preserve">
     <value>Tab_VyM</value>
   </data>
-  <data name="&gt;&gt;Tesoros_Biblia.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;General_Info.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="txt_ConAux.Location" type="System.Drawing.Point, System.Drawing">
     <value>595, 77</value>
@@ -3107,59 +4010,383 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="General_Info.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 9</value>
-  </data>
-  <data name="General_Info.Size" type="System.Drawing.Size, System.Drawing">
-    <value>814, 122</value>
-  </data>
-  <data name="General_Info.TabIndex" type="System.Int32, mscorlib">
-    <value>135</value>
-  </data>
-  <data name="General_Info.Text" xml:space="preserve">
-    <value>Informacion General</value>
-  </data>
-  <data name="&gt;&gt;General_Info.Name" xml:space="preserve">
-    <value>General_Info</value>
-  </data>
-  <data name="&gt;&gt;General_Info.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;General_Info.Parent" xml:space="preserve">
-    <value>Tab_VyM</value>
-  </data>
-  <data name="&gt;&gt;General_Info.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="Tab_VyM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="Tab_VyM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="Tab_VyM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>827, 666</value>
-  </data>
-  <data name="Tab_VyM.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="Tab_VyM.Text" xml:space="preserve">
-    <value>VyM</value>
-  </data>
-  <data name="&gt;&gt;Tab_VyM.Name" xml:space="preserve">
-    <value>Tab_VyM</value>
-  </data>
-  <data name="&gt;&gt;Tab_VyM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tab_VyM.Parent" xml:space="preserve">
-    <value>tab_Control</value>
-  </data>
-  <data name="&gt;&gt;Tab_VyM.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="Tab_RP.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;RP_1.Name" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;RP_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RP_1.Parent" xml:space="preserve">
+    <value>Tab_RP</value>
+  </data>
+  <data name="&gt;&gt;RP_1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Tab_RP.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="Tab_RP.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="Tab_RP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>827, 780</value>
+  </data>
+  <data name="Tab_RP.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Tab_RP.Text" xml:space="preserve">
+    <value>RP</value>
+  </data>
+  <data name="&gt;&gt;Tab_RP.Name" xml:space="preserve">
+    <value>Tab_RP</value>
+  </data>
+  <data name="&gt;&gt;Tab_RP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tab_RP.Parent" xml:space="preserve">
+    <value>tab_Control</value>
+  </data>
+  <data name="&gt;&gt;Tab_RP.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Alert_Label_RP.Name" xml:space="preserve">
+    <value>Alert_Label_RP</value>
+  </data>
+  <data name="&gt;&gt;Alert_Label_RP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Alert_Label_RP.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;Alert_Label_RP.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lbl_DateRP.Name" xml:space="preserve">
+    <value>lbl_DateRP</value>
+  </data>
+  <data name="&gt;&gt;lbl_DateRP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_DateRP.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;lbl_DateRP.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txt_OraRP.Name" xml:space="preserve">
+    <value>txt_OraRP</value>
+  </data>
+  <data name="&gt;&gt;txt_OraRP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_OraRP.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_OraRP.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txt_Lect_Atly.Name" xml:space="preserve">
+    <value>txt_Lect_Atly</value>
+  </data>
+  <data name="&gt;&gt;txt_Lect_Atly.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Lect_Atly.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Lect_Atly.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txt_Con_Atly.Name" xml:space="preserve">
+    <value>txt_Con_Atly</value>
+  </data>
+  <data name="&gt;&gt;txt_Con_Atly.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Con_Atly.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Con_Atly.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txt_PresRP.Name" xml:space="preserve">
+    <value>txt_PresRP</value>
+  </data>
+  <data name="&gt;&gt;txt_PresRP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_PresRP.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_PresRP.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txt_Sal_Title.Name" xml:space="preserve">
+    <value>txt_Sal_Title</value>
+  </data>
+  <data name="&gt;&gt;txt_Sal_Title.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Sal_Title.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Sal_Title.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label42.Name" xml:space="preserve">
+    <value>label42</value>
+  </data>
+  <data name="&gt;&gt;label42.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label42.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;label42.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label24.Name" xml:space="preserve">
+    <value>label24</value>
+  </data>
+  <data name="&gt;&gt;label24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;txt_RP_Disc.Name" xml:space="preserve">
+    <value>txt_RP_Disc</value>
+  </data>
+  <data name="&gt;&gt;txt_RP_Disc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_RP_Disc.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_RP_Disc.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label36.Name" xml:space="preserve">
+    <value>label36</value>
+  </data>
+  <data name="&gt;&gt;label36.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label36.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;label36.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label26.Name" xml:space="preserve">
+    <value>label26</value>
+  </data>
+  <data name="&gt;&gt;label26.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;txt_Sal_Disc.Name" xml:space="preserve">
+    <value>txt_Sal_Disc</value>
+  </data>
+  <data name="&gt;&gt;txt_Sal_Disc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Sal_Disc.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Sal_Disc.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;txt_RP_Speech.Name" xml:space="preserve">
+    <value>txt_RP_Speech</value>
+  </data>
+  <data name="&gt;&gt;txt_RP_Speech.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_RP_Speech.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_RP_Speech.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;label27.Name" xml:space="preserve">
+    <value>label27</value>
+  </data>
+  <data name="&gt;&gt;label27.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;txt_RP_Cong.Name" xml:space="preserve">
+    <value>txt_RP_Cong</value>
+  </data>
+  <data name="&gt;&gt;txt_RP_Cong.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_RP_Cong.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_RP_Cong.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;label28.Name" xml:space="preserve">
+    <value>label28</value>
+  </data>
+  <data name="&gt;&gt;label28.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label28.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;label34.Name" xml:space="preserve">
+    <value>label34</value>
+  </data>
+  <data name="&gt;&gt;label34.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label34.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;label31.Name" xml:space="preserve">
+    <value>label31</value>
+  </data>
+  <data name="&gt;&gt;label31.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label31.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;label31.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;txt_Sal_Cong.Name" xml:space="preserve">
+    <value>txt_Sal_Cong</value>
+  </data>
+  <data name="&gt;&gt;txt_Sal_Cong.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Sal_Cong.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Sal_Cong.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;label30.Name" xml:space="preserve">
+    <value>label30</value>
+  </data>
+  <data name="&gt;&gt;label30.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label30.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;label35.Name" xml:space="preserve">
+    <value>label35</value>
+  </data>
+  <data name="&gt;&gt;label35.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label35.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;txt_Title_Atly.Name" xml:space="preserve">
+    <value>txt_Title_Atly</value>
+  </data>
+  <data name="&gt;&gt;txt_Title_Atly.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Title_Atly.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Title_Atly.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;label29.Name" xml:space="preserve">
+    <value>label29</value>
+  </data>
+  <data name="&gt;&gt;label29.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;label33.Name" xml:space="preserve">
+    <value>label33</value>
+  </data>
+  <data name="&gt;&gt;label33.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label33.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;label40.Name" xml:space="preserve">
+    <value>label40</value>
+  </data>
+  <data name="&gt;&gt;label40.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label40.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;label40.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="RP_1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="RP_1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>798, 326</value>
+  </data>
+  <data name="RP_1.TabIndex" type="System.Int32, mscorlib">
+    <value>184</value>
+  </data>
+  <data name="RP_1.Text" xml:space="preserve">
+    <value>Fecha: </value>
+  </data>
+  <data name="&gt;&gt;RP_1.Name" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;RP_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RP_1.Parent" xml:space="preserve">
+    <value>Tab_RP</value>
+  </data>
+  <data name="&gt;&gt;RP_1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="Alert_Label_RP.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3797,56 +5024,1025 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label40.ZOrder" xml:space="preserve">
     <value>25</value>
   </data>
-  <data name="RP_1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
+  <data name="&gt;&gt;AC_grpbx_wk5.Name" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
   </data>
-  <data name="RP_1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>798, 326</value>
-  </data>
-  <data name="RP_1.TabIndex" type="System.Int32, mscorlib">
-    <value>184</value>
-  </data>
-  <data name="RP_1.Text" xml:space="preserve">
-    <value>Fecha: </value>
-  </data>
-  <data name="&gt;&gt;RP_1.Name" xml:space="preserve">
-    <value>RP_1</value>
-  </data>
-  <data name="&gt;&gt;RP_1.Type" xml:space="preserve">
+  <data name="&gt;&gt;AC_grpbx_wk5.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;RP_1.Parent" xml:space="preserve">
-    <value>Tab_RP</value>
+  <data name="&gt;&gt;AC_grpbx_wk5.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;RP_1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;AC_grpbx_wk5.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="Tab_RP.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label20.Name" xml:space="preserve">
+    <value>label20</value>
+  </data>
+  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_4.Name" xml:space="preserve">
+    <value>txt_AC2_rp_4</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_4.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_4.Name" xml:space="preserve">
+    <value>txt_AC1_rp_4</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_4.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_4.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_4.Name" xml:space="preserve">
+    <value>txt_Cap_rp_4</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_4.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_4.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_3.Name" xml:space="preserve">
+    <value>txt_AC2_rp_3</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_3.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_3.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_3.Name" xml:space="preserve">
+    <value>txt_AC1_rp_3</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_3.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_3.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_3.Name" xml:space="preserve">
+    <value>txt_Cap_rp_3</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_3.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_3.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_2.Name" xml:space="preserve">
+    <value>txt_AC2_rp_2</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_2.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_2.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_2.Name" xml:space="preserve">
+    <value>txt_AC1_rp_2</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_2.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_2.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_2.Name" xml:space="preserve">
+    <value>txt_Cap_rp_2</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_2.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_2.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_1.Name" xml:space="preserve">
+    <value>txt_AC2_rp_1</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_1.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_1.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_1.Name" xml:space="preserve">
+    <value>txt_AC1_rp_1</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_1.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_1.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_1.Name" xml:space="preserve">
+    <value>txt_Cap_rp_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_1.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_1.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_4.Name" xml:space="preserve">
+    <value>txt_Aseo_4</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_4.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_4.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_3.Name" xml:space="preserve">
+    <value>txt_Aseo_3</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_3.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_3.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_2.Name" xml:space="preserve">
+    <value>txt_Aseo_2</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_2.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_2.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_4.Name" xml:space="preserve">
+    <value>txt_AC2_vym_4</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_4.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_4.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_4.Name" xml:space="preserve">
+    <value>txt_AC1_vym_4</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_4.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_4.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_4.Name" xml:space="preserve">
+    <value>txt_Cap_vym_4</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_4.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_4.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_3.Name" xml:space="preserve">
+    <value>txt_AC2_vym_3</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_3.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_3.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_3.Name" xml:space="preserve">
+    <value>txt_AC1_vym_3</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_3.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_3.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_3.Name" xml:space="preserve">
+    <value>txt_Cap_vym_3</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_3.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_3.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_2.Name" xml:space="preserve">
+    <value>txt_AC2_vym_2</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_2.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_2.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_2.Name" xml:space="preserve">
+    <value>txt_AC1_vym_2</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_2.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_2.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_2.Name" xml:space="preserve">
+    <value>txt_Cap_vym_2</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_2.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_2.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_1.Name" xml:space="preserve">
+    <value>txt_AC2_vym_1</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_1.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_1.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_1.Name" xml:space="preserve">
+    <value>txt_AC1_vym_1</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_1.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_1.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_1.Name" xml:space="preserve">
+    <value>txt_Cap_vym_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_1.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_1.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_1.Name" xml:space="preserve">
+    <value>txt_Aseo_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_1.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_1.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;label130.Name" xml:space="preserve">
+    <value>label130</value>
+  </data>
+  <data name="&gt;&gt;label130.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label130.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label130.ZOrder" xml:space="preserve">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_4.Name" xml:space="preserve">
+    <value>lbl_Dia_RP_4</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_4.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_4.ZOrder" xml:space="preserve">
+    <value>34</value>
+  </data>
+  <data name="&gt;&gt;label132.Name" xml:space="preserve">
+    <value>label132</value>
+  </data>
+  <data name="&gt;&gt;label132.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label132.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label132.ZOrder" xml:space="preserve">
+    <value>35</value>
+  </data>
+  <data name="&gt;&gt;label133.Name" xml:space="preserve">
+    <value>label133</value>
+  </data>
+  <data name="&gt;&gt;label133.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label133.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label133.ZOrder" xml:space="preserve">
+    <value>36</value>
+  </data>
+  <data name="&gt;&gt;label135.Name" xml:space="preserve">
+    <value>label135</value>
+  </data>
+  <data name="&gt;&gt;label135.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label135.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label135.ZOrder" xml:space="preserve">
+    <value>37</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_4.Name" xml:space="preserve">
+    <value>lbl_Dia_VyM_4</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_4.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_4.ZOrder" xml:space="preserve">
+    <value>38</value>
+  </data>
+  <data name="&gt;&gt;label137.Name" xml:space="preserve">
+    <value>label137</value>
+  </data>
+  <data name="&gt;&gt;label137.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label137.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label137.ZOrder" xml:space="preserve">
+    <value>39</value>
+  </data>
+  <data name="&gt;&gt;label138.Name" xml:space="preserve">
+    <value>label138</value>
+  </data>
+  <data name="&gt;&gt;label138.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label138.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label138.ZOrder" xml:space="preserve">
+    <value>40</value>
+  </data>
+  <data name="&gt;&gt;label121.Name" xml:space="preserve">
+    <value>label121</value>
+  </data>
+  <data name="&gt;&gt;label121.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label121.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label121.ZOrder" xml:space="preserve">
+    <value>41</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_3.Name" xml:space="preserve">
+    <value>lbl_Dia_RP_3</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_3.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_3.ZOrder" xml:space="preserve">
+    <value>42</value>
+  </data>
+  <data name="&gt;&gt;label123.Name" xml:space="preserve">
+    <value>label123</value>
+  </data>
+  <data name="&gt;&gt;label123.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label123.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label123.ZOrder" xml:space="preserve">
+    <value>43</value>
+  </data>
+  <data name="&gt;&gt;label124.Name" xml:space="preserve">
+    <value>label124</value>
+  </data>
+  <data name="&gt;&gt;label124.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label124.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label124.ZOrder" xml:space="preserve">
+    <value>44</value>
+  </data>
+  <data name="&gt;&gt;label126.Name" xml:space="preserve">
+    <value>label126</value>
+  </data>
+  <data name="&gt;&gt;label126.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label126.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label126.ZOrder" xml:space="preserve">
+    <value>45</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_3.Name" xml:space="preserve">
+    <value>lbl_Dia_VyM_3</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_3.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_3.ZOrder" xml:space="preserve">
+    <value>46</value>
+  </data>
+  <data name="&gt;&gt;label128.Name" xml:space="preserve">
+    <value>label128</value>
+  </data>
+  <data name="&gt;&gt;label128.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label128.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label128.ZOrder" xml:space="preserve">
+    <value>47</value>
+  </data>
+  <data name="&gt;&gt;label129.Name" xml:space="preserve">
+    <value>label129</value>
+  </data>
+  <data name="&gt;&gt;label129.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label129.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label129.ZOrder" xml:space="preserve">
+    <value>48</value>
+  </data>
+  <data name="&gt;&gt;label112.Name" xml:space="preserve">
+    <value>label112</value>
+  </data>
+  <data name="&gt;&gt;label112.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label112.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label112.ZOrder" xml:space="preserve">
+    <value>49</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_2.Name" xml:space="preserve">
+    <value>lbl_Dia_RP_2</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_2.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_2.ZOrder" xml:space="preserve">
+    <value>50</value>
+  </data>
+  <data name="&gt;&gt;label114.Name" xml:space="preserve">
+    <value>label114</value>
+  </data>
+  <data name="&gt;&gt;label114.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label114.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label114.ZOrder" xml:space="preserve">
+    <value>51</value>
+  </data>
+  <data name="&gt;&gt;label115.Name" xml:space="preserve">
+    <value>label115</value>
+  </data>
+  <data name="&gt;&gt;label115.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label115.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label115.ZOrder" xml:space="preserve">
+    <value>52</value>
+  </data>
+  <data name="&gt;&gt;label117.Name" xml:space="preserve">
+    <value>label117</value>
+  </data>
+  <data name="&gt;&gt;label117.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label117.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label117.ZOrder" xml:space="preserve">
+    <value>53</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_2.Name" xml:space="preserve">
+    <value>lbl_Dia_VyM_2</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_2.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_2.ZOrder" xml:space="preserve">
+    <value>54</value>
+  </data>
+  <data name="&gt;&gt;label119.Name" xml:space="preserve">
+    <value>label119</value>
+  </data>
+  <data name="&gt;&gt;label119.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label119.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label119.ZOrder" xml:space="preserve">
+    <value>55</value>
+  </data>
+  <data name="&gt;&gt;label120.Name" xml:space="preserve">
+    <value>label120</value>
+  </data>
+  <data name="&gt;&gt;label120.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label120.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label120.ZOrder" xml:space="preserve">
+    <value>56</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>57</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_1.Name" xml:space="preserve">
+    <value>lbl_Dia_RP_1</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_1.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_1.ZOrder" xml:space="preserve">
+    <value>58</value>
+  </data>
+  <data name="&gt;&gt;label110.Name" xml:space="preserve">
+    <value>label110</value>
+  </data>
+  <data name="&gt;&gt;label110.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label110.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label110.ZOrder" xml:space="preserve">
+    <value>59</value>
+  </data>
+  <data name="&gt;&gt;label111.Name" xml:space="preserve">
+    <value>label111</value>
+  </data>
+  <data name="&gt;&gt;label111.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label111.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label111.ZOrder" xml:space="preserve">
+    <value>60</value>
+  </data>
+  <data name="&gt;&gt;label45.Name" xml:space="preserve">
+    <value>label45</value>
+  </data>
+  <data name="&gt;&gt;label45.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label45.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label45.ZOrder" xml:space="preserve">
+    <value>61</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_1.Name" xml:space="preserve">
+    <value>lbl_Dia_VyM_1</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_1.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_1.ZOrder" xml:space="preserve">
+    <value>62</value>
+  </data>
+  <data name="&gt;&gt;label44.Name" xml:space="preserve">
+    <value>label44</value>
+  </data>
+  <data name="&gt;&gt;label44.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label44.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label44.ZOrder" xml:space="preserve">
+    <value>63</value>
+  </data>
+  <data name="&gt;&gt;label43.Name" xml:space="preserve">
+    <value>label43</value>
+  </data>
+  <data name="&gt;&gt;label43.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label43.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;label43.ZOrder" xml:space="preserve">
+    <value>64</value>
+  </data>
+  <data name="Tab_AC.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="Tab_RP.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="Tab_AC.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="Tab_RP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>827, 666</value>
+  <data name="Tab_AC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>827, 780</value>
   </data>
-  <data name="Tab_RP.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="Tab_AC.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="Tab_RP.Text" xml:space="preserve">
-    <value>RP</value>
+  <data name="Tab_AC.Text" xml:space="preserve">
+    <value>AC</value>
   </data>
-  <data name="&gt;&gt;Tab_RP.Name" xml:space="preserve">
-    <value>Tab_RP</value>
+  <data name="&gt;&gt;Tab_AC.Name" xml:space="preserve">
+    <value>Tab_AC</value>
   </data>
-  <data name="&gt;&gt;Tab_RP.Type" xml:space="preserve">
+  <data name="&gt;&gt;Tab_AC.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Tab_RP.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Tab_AC.Parent" xml:space="preserve">
     <value>tab_Control</value>
   </data>
-  <data name="&gt;&gt;Tab_RP.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Tab_AC.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label23.Name" xml:space="preserve">
+    <value>label23</value>
+  </data>
+  <data name="&gt;&gt;label23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_5.Name" xml:space="preserve">
+    <value>txt_AC2_rp_5</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_5.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_rp_5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_5.Name" xml:space="preserve">
+    <value>txt_AC1_rp_5</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_5.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_rp_5.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_5.Name" xml:space="preserve">
+    <value>txt_Cap_rp_5</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_5.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_rp_5.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_5.Name" xml:space="preserve">
+    <value>txt_Aseo_5</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_5.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;txt_Aseo_5.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_5.Name" xml:space="preserve">
+    <value>txt_AC2_vym_5</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_5.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;txt_AC2_vym_5.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_5.Name" xml:space="preserve">
+    <value>txt_AC1_vym_5</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_5.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;txt_AC1_vym_5.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_5.Name" xml:space="preserve">
+    <value>txt_Cap_vym_5</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_5.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;txt_Cap_vym_5.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_5.Name" xml:space="preserve">
+    <value>lbl_Dia_RP_5</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_5.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_RP_5.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label144.Name" xml:space="preserve">
+    <value>label144</value>
+  </data>
+  <data name="&gt;&gt;label144.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label144.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;label144.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_5.Name" xml:space="preserve">
+    <value>lbl_Dia_VyM_5</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_5.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;lbl_Dia_VyM_5.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;label146.Name" xml:space="preserve">
+    <value>label146</value>
+  </data>
+  <data name="&gt;&gt;label146.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label146.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;label146.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;label147.Name" xml:space="preserve">
+    <value>label147</value>
+  </data>
+  <data name="&gt;&gt;label147.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label147.Parent" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;label147.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="AC_grpbx_wk5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 527</value>
+  </data>
+  <data name="AC_grpbx_wk5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>815, 139</value>
+  </data>
+  <data name="AC_grpbx_wk5.TabIndex" type="System.Int32, mscorlib">
+    <value>236</value>
+  </data>
+  <data name="&gt;&gt;AC_grpbx_wk5.Name" xml:space="preserve">
+    <value>AC_grpbx_wk5</value>
+  </data>
+  <data name="&gt;&gt;AC_grpbx_wk5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AC_grpbx_wk5.Parent" xml:space="preserve">
+    <value>Tab_AC</value>
+  </data>
+  <data name="&gt;&gt;AC_grpbx_wk5.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label23.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4237,27 +6433,6 @@ Lectura Semanal</value>
   </data>
   <data name="&gt;&gt;label147.ZOrder" xml:space="preserve">
     <value>15</value>
-  </data>
-  <data name="AC_grpbx_wk5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 527</value>
-  </data>
-  <data name="AC_grpbx_wk5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>815, 139</value>
-  </data>
-  <data name="AC_grpbx_wk5.TabIndex" type="System.Int32, mscorlib">
-    <value>236</value>
-  </data>
-  <data name="&gt;&gt;AC_grpbx_wk5.Name" xml:space="preserve">
-    <value>AC_grpbx_wk5</value>
-  </data>
-  <data name="&gt;&gt;AC_grpbx_wk5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AC_grpbx_wk5.Parent" xml:space="preserve">
-    <value>Tab_AC</value>
-  </data>
-  <data name="&gt;&gt;AC_grpbx_wk5.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="label21.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5822,32 +7997,149 @@ Lectura Semanal</value>
   <data name="&gt;&gt;label43.ZOrder" xml:space="preserve">
     <value>64</value>
   </data>
-  <data name="Tab_AC.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;Edit_Rule_Btn.Name" xml:space="preserve">
+    <value>Edit_Rule_Btn</value>
+  </data>
+  <data name="&gt;&gt;Edit_Rule_Btn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Edit_Rule_Btn.Parent" xml:space="preserve">
+    <value>Status_Tab</value>
+  </data>
+  <data name="&gt;&gt;Edit_Rule_Btn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Chk_Oracion.Name" xml:space="preserve">
+    <value>Chk_Oracion</value>
+  </data>
+  <data name="&gt;&gt;Chk_Oracion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Chk_Oracion.Parent" xml:space="preserve">
+    <value>Status_Tab</value>
+  </data>
+  <data name="&gt;&gt;Chk_Oracion.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Chk_PresRp.Name" xml:space="preserve">
+    <value>Chk_PresRp</value>
+  </data>
+  <data name="&gt;&gt;Chk_PresRp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Chk_PresRp.Parent" xml:space="preserve">
+    <value>Status_Tab</value>
+  </data>
+  <data name="&gt;&gt;Chk_PresRp.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;Chk_Lector.Name" xml:space="preserve">
+    <value>Chk_Lector</value>
+  </data>
+  <data name="&gt;&gt;Chk_Lector.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Chk_Lector.Parent" xml:space="preserve">
+    <value>Status_Tab</value>
+  </data>
+  <data name="&gt;&gt;Chk_Lector.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;Chk_Acomodador.Name" xml:space="preserve">
+    <value>Chk_Acomodador</value>
+  </data>
+  <data name="&gt;&gt;Chk_Acomodador.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Chk_Acomodador.Parent" xml:space="preserve">
+    <value>Status_Tab</value>
+  </data>
+  <data name="&gt;&gt;Chk_Acomodador.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;Chk_Capitan.Name" xml:space="preserve">
+    <value>Chk_Capitan</value>
+  </data>
+  <data name="&gt;&gt;Chk_Capitan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Chk_Capitan.Parent" xml:space="preserve">
+    <value>Status_Tab</value>
+  </data>
+  <data name="&gt;&gt;Chk_Capitan.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;Chk_Atalaya.Name" xml:space="preserve">
+    <value>Chk_Atalaya</value>
+  </data>
+  <data name="&gt;&gt;Chk_Atalaya.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Chk_Atalaya.Parent" xml:space="preserve">
+    <value>Status_Tab</value>
+  </data>
+  <data name="&gt;&gt;Chk_Atalaya.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;Rules_cmbx.Name" xml:space="preserve">
+    <value>Rules_cmbx</value>
+  </data>
+  <data name="&gt;&gt;Rules_cmbx.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Rules_cmbx.Parent" xml:space="preserve">
+    <value>Status_Tab</value>
+  </data>
+  <data name="&gt;&gt;Rules_cmbx.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>Status_Tab</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;Male_Status_GridView.Name" xml:space="preserve">
+    <value>Male_Status_GridView</value>
+  </data>
+  <data name="&gt;&gt;Male_Status_GridView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Male_Status_GridView.Parent" xml:space="preserve">
+    <value>Status_Tab</value>
+  </data>
+  <data name="&gt;&gt;Male_Status_GridView.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="Status_Tab.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="Tab_AC.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="Status_Tab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>827, 780</value>
   </data>
-  <data name="Tab_AC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>827, 666</value>
+  <data name="Status_Tab.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="Tab_AC.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="Status_Tab.Text" xml:space="preserve">
+    <value>Status</value>
   </data>
-  <data name="Tab_AC.Text" xml:space="preserve">
-    <value>AC</value>
+  <data name="&gt;&gt;Status_Tab.Name" xml:space="preserve">
+    <value>Status_Tab</value>
   </data>
-  <data name="&gt;&gt;Tab_AC.Name" xml:space="preserve">
-    <value>Tab_AC</value>
-  </data>
-  <data name="&gt;&gt;Tab_AC.Type" xml:space="preserve">
+  <data name="&gt;&gt;Status_Tab.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Tab_AC.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Status_Tab.Parent" xml:space="preserve">
     <value>tab_Control</value>
   </data>
-  <data name="&gt;&gt;Tab_AC.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;Status_Tab.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="Edit_Rule_Btn.Location" type="System.Drawing.Point, System.Drawing">
     <value>741, 737</value>
@@ -6146,54 +8438,6 @@ Lectura Semanal</value>
   <data name="&gt;&gt;Male_Status_GridView.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="Status_Tab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="Status_Tab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>827, 780</value>
-  </data>
-  <data name="Status_Tab.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="Status_Tab.Text" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="&gt;&gt;Status_Tab.Name" xml:space="preserve">
-    <value>Status_Tab</value>
-  </data>
-  <data name="&gt;&gt;Status_Tab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Status_Tab.Parent" xml:space="preserve">
-    <value>tab_Control</value>
-  </data>
-  <data name="&gt;&gt;Status_Tab.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tab_Control.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tab_Control.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="tab_Control.Size" type="System.Drawing.Size, System.Drawing">
-    <value>835, 806</value>
-  </data>
-  <data name="tab_Control.TabIndex" type="System.Int32, mscorlib">
-    <value>81</value>
-  </data>
-  <data name="&gt;&gt;tab_Control.Name" xml:space="preserve">
-    <value>tab_Control</value>
-  </data>
-  <data name="&gt;&gt;tab_Control.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tab_Control.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tab_Control.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="m_calendar.Location" type="System.Drawing.Point, System.Drawing">
     <value>911, -3</value>
   </data>
@@ -6213,13 +8457,13 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_calendar.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="txt_Command.Location" type="System.Drawing.Point, System.Drawing">
     <value>864, 667</value>
   </data>
   <data name="txt_Command.Size" type="System.Drawing.Size, System.Drawing">
-    <value>365, 20</value>
+    <value>383, 20</value>
   </data>
   <data name="txt_Command.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -6234,13 +8478,13 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txt_Command.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="lbl_Week.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lbl_Week.Location" type="System.Drawing.Point, System.Drawing">
-    <value>908, 792</value>
+    <value>968, 697</value>
   </data>
   <data name="lbl_Week.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
@@ -6261,13 +8505,13 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lbl_Week.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lbl_Month.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lbl_Month.Location" type="System.Drawing.Point, System.Drawing">
-    <value>908, 775</value>
+    <value>861, 697</value>
   </data>
   <data name="lbl_Month.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 13</value>
@@ -6288,7 +8532,7 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lbl_Month.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="Main_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -6315,6 +8559,240 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LoadingBar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Lbl_Cong_Name.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_Cong_Name.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lbl_Cong_Name.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 16</value>
+  </data>
+  <data name="Lbl_Cong_Name.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 13</value>
+  </data>
+  <data name="Lbl_Cong_Name.TabIndex" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="Lbl_Cong_Name.Text" xml:space="preserve">
+    <value>Congregacion: </value>
+  </data>
+  <data name="&gt;&gt;Lbl_Cong_Name.Name" xml:space="preserve">
+    <value>Lbl_Cong_Name</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Cong_Name.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Cong_Name.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Cong_Name.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="Lbl_AC_Same.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_AC_Same.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lbl_AC_Same.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 112</value>
+  </data>
+  <data name="Lbl_AC_Same.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 13</value>
+  </data>
+  <data name="Lbl_AC_Same.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="Lbl_AC_Same.Text" xml:space="preserve">
+    <value>AC Same Week: </value>
+  </data>
+  <data name="&gt;&gt;Lbl_AC_Same.Name" xml:space="preserve">
+    <value>Lbl_AC_Same</value>
+  </data>
+  <data name="&gt;&gt;Lbl_AC_Same.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lbl_AC_Same.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;Lbl_AC_Same.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Lbl_RP_Day.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_RP_Day.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lbl_RP_Day.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 86</value>
+  </data>
+  <data name="Lbl_RP_Day.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="Lbl_RP_Day.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="Lbl_RP_Day.Text" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="&gt;&gt;Lbl_RP_Day.Name" xml:space="preserve">
+    <value>Lbl_RP_Day</value>
+  </data>
+  <data name="&gt;&gt;Lbl_RP_Day.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lbl_RP_Day.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;Lbl_RP_Day.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Lbl_VyM_Day.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_VyM_Day.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lbl_VyM_Day.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 64</value>
+  </data>
+  <data name="Lbl_VyM_Day.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="Lbl_VyM_Day.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="Lbl_VyM_Day.Text" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="&gt;&gt;Lbl_VyM_Day.Name" xml:space="preserve">
+    <value>Lbl_VyM_Day</value>
+  </data>
+  <data name="&gt;&gt;Lbl_VyM_Day.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lbl_VyM_Day.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;Lbl_VyM_Day.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Lbl_RP_Horary.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_RP_Horary.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lbl_RP_Horary.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 88</value>
+  </data>
+  <data name="Lbl_RP_Horary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
+  </data>
+  <data name="Lbl_RP_Horary.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="Lbl_RP_Horary.Text" xml:space="preserve">
+    <value>RP Horary:</value>
+  </data>
+  <data name="&gt;&gt;Lbl_RP_Horary.Name" xml:space="preserve">
+    <value>Lbl_RP_Horary</value>
+  </data>
+  <data name="&gt;&gt;Lbl_RP_Horary.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lbl_RP_Horary.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;Lbl_RP_Horary.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Lbl_VyM_Horary.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_VyM_Horary.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lbl_VyM_Horary.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 64</value>
+  </data>
+  <data name="Lbl_VyM_Horary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 13</value>
+  </data>
+  <data name="Lbl_VyM_Horary.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="Lbl_VyM_Horary.Text" xml:space="preserve">
+    <value>VyM Horary:</value>
+  </data>
+  <data name="&gt;&gt;Lbl_VyM_Horary.Name" xml:space="preserve">
+    <value>Lbl_VyM_Horary</value>
+  </data>
+  <data name="&gt;&gt;Lbl_VyM_Horary.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lbl_VyM_Horary.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;Lbl_VyM_Horary.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="Lbl_Room_B.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_Room_B.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lbl_Room_B.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 40</value>
+  </data>
+  <data name="Lbl_Room_B.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
+  </data>
+  <data name="Lbl_Room_B.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="Lbl_Room_B.Text" xml:space="preserve">
+    <value>Room B: </value>
+  </data>
+  <data name="&gt;&gt;Lbl_Room_B.Name" xml:space="preserve">
+    <value>Lbl_Room_B</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Room_B.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Room_B.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Room_B.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>860, 715</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 135</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -6324,7 +8802,7 @@ Lectura Semanal</value>
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1234, 862</value>
+    <value>1259, 862</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Project Insight</value>

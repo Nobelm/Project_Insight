@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 /*Developed by AGR-Systems Science and Tech Division*/
 namespace Project_Insight
@@ -196,10 +196,18 @@ namespace Project_Insight
             People.Clear();
         }
 
-        public class Person
+        private class Person
         {
             public string Name;
             public DateTime Date;
+        }
+
+        public void Save_Heavensward_Info(RP_Sem sem)
+        {
+            if (Thread.CurrentThread.Name == "Heavensward")
+            {
+                Titulo_Atalaya = sem.Titulo_Atalaya;
+            }
         }
     }
 }

@@ -227,6 +227,14 @@
             this.lbl_Month = new System.Windows.Forms.Label();
             this.Main_Timer = new System.Windows.Forms.Timer(this.components);
             this.LoadingBar = new System.Windows.Forms.ProgressBar();
+            this.Lbl_Cong_Name = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Lbl_VyM_Day = new System.Windows.Forms.Label();
+            this.Lbl_RP_Horary = new System.Windows.Forms.Label();
+            this.Lbl_VyM_Horary = new System.Windows.Forms.Label();
+            this.Lbl_Room_B = new System.Windows.Forms.Label();
+            this.Lbl_RP_Day = new System.Windows.Forms.Label();
+            this.Lbl_AC_Same = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPresenter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.protoss_Frame)).BeginInit();
             this.tab_Control.SuspendLayout();
@@ -241,6 +249,7 @@
             this.AC_grpbx_wk5.SuspendLayout();
             this.Status_Tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Male_Status_GridView)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Log_txtBx
@@ -1664,11 +1673,68 @@
             this.LoadingBar.Name = "LoadingBar";
             this.LoadingBar.Step = 1;
             // 
+            // Lbl_Cong_Name
+            // 
+            resources.ApplyResources(this.Lbl_Cong_Name, "Lbl_Cong_Name");
+            this.Lbl_Cong_Name.ForeColor = System.Drawing.Color.Coral;
+            this.Lbl_Cong_Name.Name = "Lbl_Cong_Name";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.Lbl_AC_Same);
+            this.groupBox1.Controls.Add(this.Lbl_RP_Day);
+            this.groupBox1.Controls.Add(this.Lbl_VyM_Day);
+            this.groupBox1.Controls.Add(this.Lbl_RP_Horary);
+            this.groupBox1.Controls.Add(this.Lbl_VyM_Horary);
+            this.groupBox1.Controls.Add(this.Lbl_Room_B);
+            this.groupBox1.Controls.Add(this.Lbl_Cong_Name);
+            this.groupBox1.ForeColor = System.Drawing.Color.Coral;
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // Lbl_VyM_Day
+            // 
+            resources.ApplyResources(this.Lbl_VyM_Day, "Lbl_VyM_Day");
+            this.Lbl_VyM_Day.ForeColor = System.Drawing.Color.Coral;
+            this.Lbl_VyM_Day.Name = "Lbl_VyM_Day";
+            // 
+            // Lbl_RP_Horary
+            // 
+            resources.ApplyResources(this.Lbl_RP_Horary, "Lbl_RP_Horary");
+            this.Lbl_RP_Horary.ForeColor = System.Drawing.Color.Coral;
+            this.Lbl_RP_Horary.Name = "Lbl_RP_Horary";
+            // 
+            // Lbl_VyM_Horary
+            // 
+            resources.ApplyResources(this.Lbl_VyM_Horary, "Lbl_VyM_Horary");
+            this.Lbl_VyM_Horary.ForeColor = System.Drawing.Color.Coral;
+            this.Lbl_VyM_Horary.Name = "Lbl_VyM_Horary";
+            // 
+            // Lbl_Room_B
+            // 
+            resources.ApplyResources(this.Lbl_Room_B, "Lbl_Room_B");
+            this.Lbl_Room_B.ForeColor = System.Drawing.Color.Coral;
+            this.Lbl_Room_B.Name = "Lbl_Room_B";
+            // 
+            // Lbl_RP_Day
+            // 
+            resources.ApplyResources(this.Lbl_RP_Day, "Lbl_RP_Day");
+            this.Lbl_RP_Day.ForeColor = System.Drawing.Color.Coral;
+            this.Lbl_RP_Day.Name = "Lbl_RP_Day";
+            // 
+            // Lbl_AC_Same
+            // 
+            resources.ApplyResources(this.Lbl_AC_Same, "Lbl_AC_Same");
+            this.Lbl_AC_Same.ForeColor = System.Drawing.Color.Coral;
+            this.Lbl_AC_Same.Name = "Lbl_AC_Same";
+            // 
             // Main_Form
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.LoadingBar);
             this.Controls.Add(this.lbl_Month);
             this.Controls.Add(this.lbl_Week);
@@ -1704,6 +1770,8 @@
             this.Status_Tab.ResumeLayout(false);
             this.Status_Tab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Male_Status_GridView)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1908,6 +1976,14 @@
         private System.Windows.Forms.CheckBox Chk_Capitan;
         private System.Windows.Forms.CheckBox Chk_Atalaya;
         private System.Windows.Forms.Button Edit_Rule_Btn;
+        private System.Windows.Forms.Label Lbl_Cong_Name;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label Lbl_VyM_Day;
+        private System.Windows.Forms.Label Lbl_RP_Horary;
+        private System.Windows.Forms.Label Lbl_VyM_Horary;
+        private System.Windows.Forms.Label Lbl_Room_B;
+        private System.Windows.Forms.Label Lbl_AC_Same;
+        private System.Windows.Forms.Label Lbl_RP_Day;
     }
 }
 

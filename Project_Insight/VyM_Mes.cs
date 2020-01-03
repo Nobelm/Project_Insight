@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 /*Developed by AGR-Systems Science and Tech Division*/
 namespace Project_Insight
@@ -184,10 +184,27 @@ namespace Project_Insight
             return Final_Asigned;
         }
 
-        public class Person
+        private class Person
         {
             public string Name;
             public DateTime Date;
+        }
+
+        public void Save_Heavensward_Info(VyM_Sem sem)
+        {
+            if (Thread.CurrentThread.Name == "Heavensward")
+            {
+                Sem_Biblia = sem.Sem_Biblia;
+                Discurso = sem.Discurso;
+                Lectura = sem.Lectura;
+                SMM1 = sem.SMM1;
+                SMM2 = sem.SMM2;
+                SMM3 = sem.SMM3;
+                SMM4 = sem.SMM4;
+                NVC1 = sem.NVC1;
+                NVC2 = sem.NVC2;
+                HW_Data = sem.HW_Data;
+            }
         }
     }
 }

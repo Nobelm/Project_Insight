@@ -1,7 +1,102 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Project_Insight.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Heavensward_User" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Noel Belin</Value>
+    </Setting>
+    <Setting Name="Cong_Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Geoplazas Qro.</Value>
+    </Setting>
+    <Setting Name="Room_B_enabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="VyM_horary" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">12/05/2019 19:00:00</Value>
+    </Setting>
+    <Setting Name="RP_horary" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">12/05/2019 19:00:00</Value>
+    </Setting>
+    <Setting Name="VyM_Day" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Tuesday</Value>
+    </Setting>
+    <Setting Name="RP_Day" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Saturday</Value>
+    </Setting>
+    <Setting Name="Ac_same_all_week" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rule_Elders_Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Elders</Value>
+    </Setting>
+    <Setting Name="Rule_Elders_Type" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Rule_Elders_Atalaya" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Allowed</Value>
+    </Setting>
+    <Setting Name="Rule_Elders_Capitan" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Allowed</Value>
+    </Setting>
+    <Setting Name="Rule_Elders_Acomodador" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Non_Status</Value>
+    </Setting>
+    <Setting Name="Rule_Elders_Lector" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Allowed</Value>
+    </Setting>
+    <Setting Name="Rule_Elders_PresRp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Allowed</Value>
+    </Setting>
+    <Setting Name="Rule_Elders_Oracion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Allowed</Value>
+    </Setting>
+    <Setting Name="Rule_Ministerial_Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Ministerials</Value>
+    </Setting>
+    <Setting Name="Rule_Ministerial_Type" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Rule_Ministerial_Atalaya" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Non_Status</Value>
+    </Setting>
+    <Setting Name="Rule_Ministerial_Capitan" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Allowed</Value>
+    </Setting>
+    <Setting Name="Rule_Ministerial_Acomodador" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Allowed</Value>
+    </Setting>
+    <Setting Name="Rule_Ministerial_Lector" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Allowed</Value>
+    </Setting>
+    <Setting Name="Rule_Ministerial_PresRp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Allowed</Value>
+    </Setting>
+    <Setting Name="Rule_Ministerial_Oracion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Allowed</Value>
+    </Setting>
+    <Setting Name="Rule_General_Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Generals</Value>
+    </Setting>
+    <Setting Name="Rule_General_Type" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="Rule_General_Atalaya" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Non_Status</Value>
+    </Setting>
+    <Setting Name="Rule_General_Capitan" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Non_Status</Value>
+    </Setting>
+    <Setting Name="Rule_General_Acomodador" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Allowed</Value>
+    </Setting>
+    <Setting Name="Rule_General_Lector" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Allowed</Value>
+    </Setting>
+    <Setting Name="Rule_General_PresRp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Non_Status</Value>
+    </Setting>
+    <Setting Name="Rule_General_Oracion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Non_Status</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

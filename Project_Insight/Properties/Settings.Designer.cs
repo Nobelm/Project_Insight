@@ -13,13 +13,397 @@ namespace Project_Insight.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.3.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
         public static Settings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Noel Belin")]
+        public string Heavensward_User {
+            get {
+                return ((string)(this["Heavensward_User"]));
+            }
+            set {
+                this["Heavensward_User"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Geoplazas Qro.")]
+        public string Cong_Name {
+            get {
+                return ((string)(this["Cong_Name"]));
+            }
+            set {
+                this["Cong_Name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Room_B_enabled {
+            get {
+                return ((bool)(this["Room_B_enabled"]));
+            }
+            set {
+                this["Room_B_enabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("12/05/2019 19:00:00")]
+        public global::System.DateTime VyM_horary {
+            get {
+                return ((global::System.DateTime)(this["VyM_horary"]));
+            }
+            set {
+                this["VyM_horary"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("12/05/2019 19:00:00")]
+        public global::System.DateTime RP_horary {
+            get {
+                return ((global::System.DateTime)(this["RP_horary"]));
+            }
+            set {
+                this["RP_horary"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Tuesday")]
+        public string VyM_Day {
+            get {
+                return ((string)(this["VyM_Day"]));
+            }
+            set {
+                this["VyM_Day"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Saturday")]
+        public string RP_Day {
+            get {
+                return ((string)(this["RP_Day"]));
+            }
+            set {
+                this["RP_Day"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Ac_same_all_week {
+            get {
+                return ((bool)(this["Ac_same_all_week"]));
+            }
+            set {
+                this["Ac_same_all_week"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Elders")]
+        public string Rule_Elders_Name {
+            get {
+                return ((string)(this["Rule_Elders_Name"]));
+            }
+            set {
+                this["Rule_Elders_Name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Rule_Elders_Type {
+            get {
+                return ((int)(this["Rule_Elders_Type"]));
+            }
+            set {
+                this["Rule_Elders_Type"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allowed")]
+        public string Rule_Elders_Atalaya {
+            get {
+                return ((string)(this["Rule_Elders_Atalaya"]));
+            }
+            set {
+                this["Rule_Elders_Atalaya"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allowed")]
+        public string Rule_Elders_Capitan {
+            get {
+                return ((string)(this["Rule_Elders_Capitan"]));
+            }
+            set {
+                this["Rule_Elders_Capitan"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Non_Status")]
+        public string Rule_Elders_Acomodador {
+            get {
+                return ((string)(this["Rule_Elders_Acomodador"]));
+            }
+            set {
+                this["Rule_Elders_Acomodador"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allowed")]
+        public string Rule_Elders_Lector {
+            get {
+                return ((string)(this["Rule_Elders_Lector"]));
+            }
+            set {
+                this["Rule_Elders_Lector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allowed")]
+        public string Rule_Elders_PresRp {
+            get {
+                return ((string)(this["Rule_Elders_PresRp"]));
+            }
+            set {
+                this["Rule_Elders_PresRp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allowed")]
+        public string Rule_Elders_Oracion {
+            get {
+                return ((string)(this["Rule_Elders_Oracion"]));
+            }
+            set {
+                this["Rule_Elders_Oracion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ministerials")]
+        public string Rule_Ministerial_Name {
+            get {
+                return ((string)(this["Rule_Ministerial_Name"]));
+            }
+            set {
+                this["Rule_Ministerial_Name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int Rule_Ministerial_Type {
+            get {
+                return ((int)(this["Rule_Ministerial_Type"]));
+            }
+            set {
+                this["Rule_Ministerial_Type"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Non_Status")]
+        public string Rule_Ministerial_Atalaya {
+            get {
+                return ((string)(this["Rule_Ministerial_Atalaya"]));
+            }
+            set {
+                this["Rule_Ministerial_Atalaya"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allowed")]
+        public string Rule_Ministerial_Capitan {
+            get {
+                return ((string)(this["Rule_Ministerial_Capitan"]));
+            }
+            set {
+                this["Rule_Ministerial_Capitan"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allowed")]
+        public string Rule_Ministerial_Acomodador {
+            get {
+                return ((string)(this["Rule_Ministerial_Acomodador"]));
+            }
+            set {
+                this["Rule_Ministerial_Acomodador"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allowed")]
+        public string Rule_Ministerial_Lector {
+            get {
+                return ((string)(this["Rule_Ministerial_Lector"]));
+            }
+            set {
+                this["Rule_Ministerial_Lector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allowed")]
+        public string Rule_Ministerial_PresRp {
+            get {
+                return ((string)(this["Rule_Ministerial_PresRp"]));
+            }
+            set {
+                this["Rule_Ministerial_PresRp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allowed")]
+        public string Rule_Ministerial_Oracion {
+            get {
+                return ((string)(this["Rule_Ministerial_Oracion"]));
+            }
+            set {
+                this["Rule_Ministerial_Oracion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Generals")]
+        public string Rule_General_Name {
+            get {
+                return ((string)(this["Rule_General_Name"]));
+            }
+            set {
+                this["Rule_General_Name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int Rule_General_Type {
+            get {
+                return ((int)(this["Rule_General_Type"]));
+            }
+            set {
+                this["Rule_General_Type"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Non_Status")]
+        public string Rule_General_Atalaya {
+            get {
+                return ((string)(this["Rule_General_Atalaya"]));
+            }
+            set {
+                this["Rule_General_Atalaya"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Non_Status")]
+        public string Rule_General_Capitan {
+            get {
+                return ((string)(this["Rule_General_Capitan"]));
+            }
+            set {
+                this["Rule_General_Capitan"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allowed")]
+        public string Rule_General_Acomodador {
+            get {
+                return ((string)(this["Rule_General_Acomodador"]));
+            }
+            set {
+                this["Rule_General_Acomodador"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allowed")]
+        public string Rule_General_Lector {
+            get {
+                return ((string)(this["Rule_General_Lector"]));
+            }
+            set {
+                this["Rule_General_Lector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Non_Status")]
+        public string Rule_General_PresRp {
+            get {
+                return ((string)(this["Rule_General_PresRp"]));
+            }
+            set {
+                this["Rule_General_PresRp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Non_Status")]
+        public string Rule_General_Oracion {
+            get {
+                return ((string)(this["Rule_General_Oracion"]));
+            }
+            set {
+                this["Rule_General_Oracion"] = value;
             }
         }
     }
