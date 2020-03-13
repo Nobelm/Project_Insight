@@ -44,9 +44,7 @@ namespace Project_Insight
 
         public class Persistence_Request
         {
-            public VyM_Sem persistence_vym;
-            public RP_Sem persistence_rp;
-            public AC_Sem persistence_ac;
+            public Insight_Sem persistence_insight;
         }
 
         /*-------------------- Initialize methods -------------------- */
@@ -328,38 +326,68 @@ namespace Project_Insight
         {
             attending_persistance = true;
             string req = "";
-            if (request.persistence_vym != null)
+            if (request.persistence_insight != null)
             {
-                req = "VyM week: " + request.persistence_vym.Num_of_Week;  
-                Persistence_VyM(request.persistence_vym);
-            }
-            if (request.persistence_rp != null)
-            {
-                req = "RP week: " + request.persistence_rp.Num_of_Week;
-                Persistence_RP(request.persistence_rp);
-            }
-            if (request.persistence_ac != null)
-            {
-                req = "AC week: " + request.persistence_ac.Num_of_Week;
-                Persistence_AC(request.persistence_ac);
+                req = "VyM week: " + request.persistence_insight.Num_of_Week;
+                Persistence_Worker(request.persistence_insight);
             }
             Main_Form.Notify("Persistence Request for: " + req);
             attending_persistance = false;
         }
 
-        public static void Persistence_VyM(VyM_Sem sem)
+        public static void Persistence_Worker(Insight_Sem sem)
         {
             if (DB_Allowed)
             {
                 for (int i = 0; i < Main_Form.Male_List.Count; i++)
                 {
-                    if (Main_Form.Male_List[i].Name.Equals(sem.Libro_L) && Main_Form.Male_List[i].Lector.Contains('/'))
+                    if (Main_Form.Male_List[i].Name.Equals(sem.Libro_Lector) && Main_Form.Male_List[i].Lector.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Lector = sem.Fecha.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Lector = sem.Fecha_VyM.ToString("dd/MM/yyyy");
                     }
-                    if (Main_Form.Male_List[i].Name.Equals(sem.Oracion) && Main_Form.Male_List[i].Oracion.Contains('/'))
+                    if (Main_Form.Male_List[i].Name.Equals(sem.Oracion_End_VyM) && Main_Form.Male_List[i].Oracion.Contains('/'))
                     {
-                        Main_Form.Male_List[i].Oracion = sem.Fecha.ToString("dd/MM/yyyy");
+                        Main_Form.Male_List[i].Oracion = sem.Fecha_VyM.ToString("dd/MM/yyyy");
+                    }
+                    if (Main_Form.Male_List[i].Name.Equals(sem.Presidente_RP) && Main_Form.Male_List[i].Pres_RP.Contains('/'))
+                    {
+                        Main_Form.Male_List[i].Pres_RP = sem.Fecha_RP.ToString("dd/MM/yyyy");
+                    }
+                    if (Main_Form.Male_List[i].Name.Equals(sem.Conductor_Atalaya) && Main_Form.Male_List[i].Atalaya.Contains('/'))
+                    {
+                        Main_Form.Male_List[i].Atalaya = sem.Fecha_RP.ToString("dd/MM/yyyy");
+                    }
+                    if (Main_Form.Male_List[i].Name.Equals(sem.Lector_Atalaya) && Main_Form.Male_List[i].Lector.Contains('/'))
+                    {
+                        Main_Form.Male_List[i].Lector = sem.Fecha_RP.ToString("dd/MM/yyyy");
+                    }
+                    if (Main_Form.Male_List[i].Name.Equals(sem.Oracion_End_RP) && Main_Form.Male_List[i].Oracion.Contains('/'))
+                    {
+                        Main_Form.Male_List[i].Oracion = sem.Fecha_RP.ToString("dd/MM/yyyy");
+                    }
+                    if (Main_Form.Male_List[i].Name.Equals(sem.Vym_Cap) && Main_Form.Male_List[i].Capitan.Contains('/'))
+                    {
+                        Main_Form.Male_List[i].Capitan = sem.Fecha_VyM.ToString("dd/MM/yyyy");
+                    }
+                    if (Main_Form.Male_List[i].Name.Equals(sem.Rp_Cap) && Main_Form.Male_List[i].Capitan.Contains('/'))
+                    {
+                        Main_Form.Male_List[i].Capitan = sem.Fecha_RP.ToString("dd/MM/yyyy");
+                    }
+                    if (Main_Form.Male_List[i].Name.Equals(sem.Vym_Der) && Main_Form.Male_List[i].Acomodador.Contains('/'))
+                    {
+                        Main_Form.Male_List[i].Acomodador = sem.Fecha_VyM.ToString("dd/MM/yyyy");
+                    }
+                    if (Main_Form.Male_List[i].Name.Equals(sem.Vym_Izq) && Main_Form.Male_List[i].Acomodador.Contains('/'))
+                    {
+                        Main_Form.Male_List[i].Acomodador = sem.Fecha_VyM.ToString("dd/MM/yyyy");
+                    }
+                    if (Main_Form.Male_List[i].Name.Equals(sem.Rp_Der) && Main_Form.Male_List[i].Acomodador.Contains('/'))
+                    {
+                        Main_Form.Male_List[i].Acomodador = sem.Fecha_RP.ToString("dd/MM/yyyy");
+                    }
+                    if (Main_Form.Male_List[i].Name.Equals(sem.Rp_Izq) && Main_Form.Male_List[i].Acomodador.Contains('/'))
+                    {
+                        Main_Form.Male_List[i].Acomodador = sem.Fecha_RP.ToString("dd/MM/yyyy");
                     }
                 }
             }

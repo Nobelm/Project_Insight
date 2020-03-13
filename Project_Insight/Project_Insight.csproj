@@ -74,6 +74,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AC_Mes.cs" />
+    <Compile Include="Insight_Month.cs" />
+    <Compile Include="Overwatch.cs" />
     <Compile Include="Persistence.cs" />
     <Compile Include="Heavensward.cs" />
     <Compile Include="Main_Form.cs">

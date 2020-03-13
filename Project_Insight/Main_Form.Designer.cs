@@ -211,6 +211,12 @@
             this.label44 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.Status_Tab = new System.Windows.Forms.TabPage();
+            this.Male_Status_GridView = new System.Windows.Forms.DataGridView();
+            this.Tab_Cfg = new System.Windows.Forms.TabPage();
+            this.GrpBox_Cfg = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.Chbx_Wekk_Format = new System.Windows.Forms.CheckBox();
+            this.GrpBx_Rules = new System.Windows.Forms.GroupBox();
             this.Edit_Rule_Btn = new System.Windows.Forms.Button();
             this.Chk_Oracion = new System.Windows.Forms.CheckBox();
             this.Chk_PresRp = new System.Windows.Forms.CheckBox();
@@ -219,22 +225,25 @@
             this.Chk_Capitan = new System.Windows.Forms.CheckBox();
             this.Chk_Atalaya = new System.Windows.Forms.CheckBox();
             this.Rules_cmbx = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.Male_Status_GridView = new System.Windows.Forms.DataGridView();
+            this.Chb_Setters_Same_Week = new System.Windows.Forms.CheckBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.Cbx_RP_Day = new System.Windows.Forms.ComboBox();
+            this.Cbx_VyM_Day = new System.Windows.Forms.ComboBox();
+            this.DateTmPk_RP = new System.Windows.Forms.DateTimePicker();
+            this.label38 = new System.Windows.Forms.Label();
+            this.DateTmPk_VyM = new System.Windows.Forms.DateTimePicker();
+            this.label37 = new System.Windows.Forms.Label();
+            this.Chbx_Auxiliar_Room = new System.Windows.Forms.CheckBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.Txbx_Cong_Name = new System.Windows.Forms.TextBox();
             this.m_calendar = new System.Windows.Forms.MonthCalendar();
             this.txt_Command = new System.Windows.Forms.TextBox();
             this.lbl_Week = new System.Windows.Forms.Label();
             this.lbl_Month = new System.Windows.Forms.Label();
             this.Main_Timer = new System.Windows.Forms.Timer(this.components);
             this.LoadingBar = new System.Windows.Forms.ProgressBar();
-            this.Lbl_Cong_Name = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Lbl_VyM_Day = new System.Windows.Forms.Label();
-            this.Lbl_RP_Horary = new System.Windows.Forms.Label();
-            this.Lbl_VyM_Horary = new System.Windows.Forms.Label();
-            this.Lbl_Room_B = new System.Windows.Forms.Label();
-            this.Lbl_RP_Day = new System.Windows.Forms.Label();
-            this.Lbl_AC_Same = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPresenter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.protoss_Frame)).BeginInit();
             this.tab_Control.SuspendLayout();
@@ -249,6 +258,9 @@
             this.AC_grpbx_wk5.SuspendLayout();
             this.Status_Tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Male_Status_GridView)).BeginInit();
+            this.Tab_Cfg.SuspendLayout();
+            this.GrpBox_Cfg.SuspendLayout();
+            this.GrpBx_Rules.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -279,6 +291,7 @@
             this.tab_Control.Controls.Add(this.Tab_RP);
             this.tab_Control.Controls.Add(this.Tab_AC);
             this.tab_Control.Controls.Add(this.Status_Tab);
+            this.tab_Control.Controls.Add(this.Tab_Cfg);
             resources.ApplyResources(this.tab_Control, "tab_Control");
             this.tab_Control.Name = "tab_Control";
             this.tab_Control.SelectedIndex = 0;
@@ -286,7 +299,7 @@
             // 
             // Tab_VyM
             // 
-            this.Tab_VyM.BackColor = System.Drawing.Color.DarkGray;
+            this.Tab_VyM.BackColor = System.Drawing.Color.MidnightBlue;
             this.Tab_VyM.Controls.Add(this.Nuestra_Vida);
             this.Tab_VyM.Controls.Add(this.Seamos_Maestros);
             this.Tab_VyM.Controls.Add(this.Tesoros_Biblia);
@@ -296,7 +309,7 @@
             // 
             // Nuestra_Vida
             // 
-            this.Nuestra_Vida.BackColor = System.Drawing.Color.DimGray;
+            this.Nuestra_Vida.BackColor = System.Drawing.Color.SteelBlue;
             this.Nuestra_Vida.Controls.Add(this.txt_NVC3);
             this.Nuestra_Vida.Controls.Add(this.label41);
             this.Nuestra_Vida.Controls.Add(this.txt_Ora2VyM);
@@ -432,7 +445,7 @@
             // 
             // Seamos_Maestros
             // 
-            this.Seamos_Maestros.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Seamos_Maestros.BackColor = System.Drawing.Color.SteelBlue;
             this.Seamos_Maestros.Controls.Add(this.txt_SMM_B4);
             this.Seamos_Maestros.Controls.Add(this.txt_SMM_B1);
             this.Seamos_Maestros.Controls.Add(this.txt_SMM_B3);
@@ -585,7 +598,7 @@
             // 
             // Tesoros_Biblia
             // 
-            this.Tesoros_Biblia.BackColor = System.Drawing.Color.DimGray;
+            this.Tesoros_Biblia.BackColor = System.Drawing.Color.SteelBlue;
             this.Tesoros_Biblia.Controls.Add(this.txt_TdlB_3);
             this.Tesoros_Biblia.Controls.Add(this.txt_TdlB_B3);
             this.Tesoros_Biblia.Controls.Add(this.time_4);
@@ -671,7 +684,7 @@
             // 
             // General_Info
             // 
-            this.General_Info.BackColor = System.Drawing.Color.DimGray;
+            this.General_Info.BackColor = System.Drawing.Color.SteelBlue;
             this.General_Info.Controls.Add(this.txt_ConAux);
             this.General_Info.Controls.Add(this.label47);
             this.General_Info.Controls.Add(this.Alert_Label_VyM);
@@ -766,13 +779,13 @@
             // Tab_RP
             // 
             resources.ApplyResources(this.Tab_RP, "Tab_RP");
-            this.Tab_RP.BackColor = System.Drawing.Color.Gray;
+            this.Tab_RP.BackColor = System.Drawing.Color.MidnightBlue;
             this.Tab_RP.Controls.Add(this.RP_1);
             this.Tab_RP.Name = "Tab_RP";
             // 
             // RP_1
             // 
-            this.RP_1.BackColor = System.Drawing.Color.DimGray;
+            this.RP_1.BackColor = System.Drawing.Color.SteelBlue;
             this.RP_1.Controls.Add(this.Alert_Label_RP);
             this.RP_1.Controls.Add(this.lbl_DateRP);
             this.RP_1.Controls.Add(this.txt_OraRP);
@@ -962,7 +975,7 @@
             // 
             // Tab_AC
             // 
-            this.Tab_AC.BackColor = System.Drawing.Color.DimGray;
+            this.Tab_AC.BackColor = System.Drawing.Color.SteelBlue;
             this.Tab_AC.Controls.Add(this.AC_grpbx_wk5);
             this.Tab_AC.Controls.Add(this.label21);
             this.Tab_AC.Controls.Add(this.label20);
@@ -1536,19 +1549,74 @@
             // 
             // Status_Tab
             // 
-            this.Status_Tab.BackColor = System.Drawing.Color.DarkGray;
-            this.Status_Tab.Controls.Add(this.Edit_Rule_Btn);
-            this.Status_Tab.Controls.Add(this.Chk_Oracion);
-            this.Status_Tab.Controls.Add(this.Chk_PresRp);
-            this.Status_Tab.Controls.Add(this.Chk_Lector);
-            this.Status_Tab.Controls.Add(this.Chk_Acomodador);
-            this.Status_Tab.Controls.Add(this.Chk_Capitan);
-            this.Status_Tab.Controls.Add(this.Chk_Atalaya);
-            this.Status_Tab.Controls.Add(this.Rules_cmbx);
-            this.Status_Tab.Controls.Add(this.label13);
+            this.Status_Tab.BackColor = System.Drawing.Color.SteelBlue;
             this.Status_Tab.Controls.Add(this.Male_Status_GridView);
             resources.ApplyResources(this.Status_Tab, "Status_Tab");
             this.Status_Tab.Name = "Status_Tab";
+            // 
+            // Male_Status_GridView
+            // 
+            this.Male_Status_GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.Male_Status_GridView, "Male_Status_GridView");
+            this.Male_Status_GridView.Name = "Male_Status_GridView";
+            this.Male_Status_GridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.Male_Status_GridView_CellBeginEdit);
+            this.Male_Status_GridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Male_Status_GridView_CellEndEdit);
+            this.Male_Status_GridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.Male_Status_GridView_Data_Error);
+            // 
+            // Tab_Cfg
+            // 
+            this.Tab_Cfg.BackColor = System.Drawing.Color.MidnightBlue;
+            this.Tab_Cfg.Controls.Add(this.GrpBox_Cfg);
+            resources.ApplyResources(this.Tab_Cfg, "Tab_Cfg");
+            this.Tab_Cfg.Name = "Tab_Cfg";
+            // 
+            // GrpBox_Cfg
+            // 
+            this.GrpBox_Cfg.BackColor = System.Drawing.Color.SteelBlue;
+            this.GrpBox_Cfg.Controls.Add(this.label13);
+            this.GrpBox_Cfg.Controls.Add(this.Chbx_Wekk_Format);
+            this.GrpBox_Cfg.Controls.Add(this.GrpBx_Rules);
+            this.GrpBox_Cfg.Controls.Add(this.Chb_Setters_Same_Week);
+            this.GrpBox_Cfg.Controls.Add(this.label39);
+            this.GrpBox_Cfg.Controls.Add(this.Cbx_RP_Day);
+            this.GrpBox_Cfg.Controls.Add(this.Cbx_VyM_Day);
+            this.GrpBox_Cfg.Controls.Add(this.DateTmPk_RP);
+            this.GrpBox_Cfg.Controls.Add(this.label38);
+            this.GrpBox_Cfg.Controls.Add(this.DateTmPk_VyM);
+            this.GrpBox_Cfg.Controls.Add(this.label37);
+            this.GrpBox_Cfg.Controls.Add(this.Chbx_Auxiliar_Room);
+            this.GrpBox_Cfg.Controls.Add(this.label32);
+            this.GrpBox_Cfg.Controls.Add(this.label25);
+            this.GrpBox_Cfg.Controls.Add(this.Txbx_Cong_Name);
+            resources.ApplyResources(this.GrpBox_Cfg, "GrpBox_Cfg");
+            this.GrpBox_Cfg.Name = "GrpBox_Cfg";
+            this.GrpBox_Cfg.TabStop = false;
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // Chbx_Wekk_Format
+            // 
+            resources.ApplyResources(this.Chbx_Wekk_Format, "Chbx_Wekk_Format");
+            this.Chbx_Wekk_Format.Name = "Chbx_Wekk_Format";
+            this.Chbx_Wekk_Format.UseVisualStyleBackColor = true;
+            this.Chbx_Wekk_Format.CheckedChanged += new System.EventHandler(this.Chbx_Week_Format_CheckedChanged);
+            // 
+            // GrpBx_Rules
+            // 
+            this.GrpBx_Rules.Controls.Add(this.Edit_Rule_Btn);
+            this.GrpBx_Rules.Controls.Add(this.Chk_Oracion);
+            this.GrpBx_Rules.Controls.Add(this.Chk_PresRp);
+            this.GrpBx_Rules.Controls.Add(this.Chk_Lector);
+            this.GrpBx_Rules.Controls.Add(this.Chk_Acomodador);
+            this.GrpBx_Rules.Controls.Add(this.Chk_Capitan);
+            this.GrpBx_Rules.Controls.Add(this.Chk_Atalaya);
+            this.GrpBx_Rules.Controls.Add(this.Rules_cmbx);
+            resources.ApplyResources(this.GrpBx_Rules, "GrpBx_Rules");
+            this.GrpBx_Rules.Name = "GrpBx_Rules";
+            this.GrpBx_Rules.TabStop = false;
             // 
             // Edit_Rule_Btn
             // 
@@ -1616,19 +1684,97 @@
             this.Rules_cmbx.Name = "Rules_cmbx";
             this.Rules_cmbx.SelectedIndexChanged += new System.EventHandler(this.Rules_cmbx_SelectedIndexChanged);
             // 
-            // label13
+            // Chb_Setters_Same_Week
             // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
+            resources.ApplyResources(this.Chb_Setters_Same_Week, "Chb_Setters_Same_Week");
+            this.Chb_Setters_Same_Week.Name = "Chb_Setters_Same_Week";
+            this.Chb_Setters_Same_Week.UseVisualStyleBackColor = true;
+            this.Chb_Setters_Same_Week.CheckedChanged += new System.EventHandler(this.Chb_Setters_Same_Week_CheckedChanged);
             // 
-            // Male_Status_GridView
+            // label39
             // 
-            this.Male_Status_GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resources.ApplyResources(this.Male_Status_GridView, "Male_Status_GridView");
-            this.Male_Status_GridView.Name = "Male_Status_GridView";
-            this.Male_Status_GridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.Male_Status_GridView_CellBeginEdit);
-            this.Male_Status_GridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Male_Status_GridView_CellEndEdit);
-            this.Male_Status_GridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.Male_Status_GridView_Data_Error);
+            resources.ApplyResources(this.label39, "label39");
+            this.label39.Name = "label39";
+            // 
+            // Cbx_RP_Day
+            // 
+            this.Cbx_RP_Day.FormattingEnabled = true;
+            this.Cbx_RP_Day.Items.AddRange(new object[] {
+            resources.GetString("Cbx_RP_Day.Items"),
+            resources.GetString("Cbx_RP_Day.Items1"),
+            resources.GetString("Cbx_RP_Day.Items2"),
+            resources.GetString("Cbx_RP_Day.Items3"),
+            resources.GetString("Cbx_RP_Day.Items4"),
+            resources.GetString("Cbx_RP_Day.Items5"),
+            resources.GetString("Cbx_RP_Day.Items6")});
+            resources.ApplyResources(this.Cbx_RP_Day, "Cbx_RP_Day");
+            this.Cbx_RP_Day.Name = "Cbx_RP_Day";
+            // 
+            // Cbx_VyM_Day
+            // 
+            this.Cbx_VyM_Day.FormattingEnabled = true;
+            this.Cbx_VyM_Day.Items.AddRange(new object[] {
+            resources.GetString("Cbx_VyM_Day.Items"),
+            resources.GetString("Cbx_VyM_Day.Items1"),
+            resources.GetString("Cbx_VyM_Day.Items2"),
+            resources.GetString("Cbx_VyM_Day.Items3"),
+            resources.GetString("Cbx_VyM_Day.Items4"),
+            resources.GetString("Cbx_VyM_Day.Items5"),
+            resources.GetString("Cbx_VyM_Day.Items6")});
+            resources.ApplyResources(this.Cbx_VyM_Day, "Cbx_VyM_Day");
+            this.Cbx_VyM_Day.Name = "Cbx_VyM_Day";
+            // 
+            // DateTmPk_RP
+            // 
+            resources.ApplyResources(this.DateTmPk_RP, "DateTmPk_RP");
+            this.DateTmPk_RP.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.DateTmPk_RP.MaxDate = new System.DateTime(9998, 1, 1, 0, 0, 0, 0);
+            this.DateTmPk_RP.MinDate = new System.DateTime(2000, 1, 2, 0, 0, 0, 0);
+            this.DateTmPk_RP.Name = "DateTmPk_RP";
+            this.DateTmPk_RP.ShowUpDown = true;
+            this.DateTmPk_RP.Value = new System.DateTime(2000, 1, 8, 0, 0, 0, 0);
+            // 
+            // label38
+            // 
+            resources.ApplyResources(this.label38, "label38");
+            this.label38.Name = "label38";
+            // 
+            // DateTmPk_VyM
+            // 
+            resources.ApplyResources(this.DateTmPk_VyM, "DateTmPk_VyM");
+            this.DateTmPk_VyM.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.DateTmPk_VyM.MaxDate = new System.DateTime(9998, 1, 1, 0, 0, 0, 0);
+            this.DateTmPk_VyM.MinDate = new System.DateTime(2000, 1, 2, 0, 0, 0, 0);
+            this.DateTmPk_VyM.Name = "DateTmPk_VyM";
+            this.DateTmPk_VyM.ShowUpDown = true;
+            this.DateTmPk_VyM.Value = new System.DateTime(2000, 1, 8, 0, 0, 0, 0);
+            // 
+            // label37
+            // 
+            resources.ApplyResources(this.label37, "label37");
+            this.label37.Name = "label37";
+            // 
+            // Chbx_Auxiliar_Room
+            // 
+            resources.ApplyResources(this.Chbx_Auxiliar_Room, "Chbx_Auxiliar_Room");
+            this.Chbx_Auxiliar_Room.Name = "Chbx_Auxiliar_Room";
+            this.Chbx_Auxiliar_Room.UseVisualStyleBackColor = true;
+            this.Chbx_Auxiliar_Room.CheckedChanged += new System.EventHandler(this.Chbx_Auxiliar_Room_CheckedChanged);
+            // 
+            // label32
+            // 
+            resources.ApplyResources(this.label32, "label32");
+            this.label32.Name = "label32";
+            // 
+            // label25
+            // 
+            resources.ApplyResources(this.label25, "label25");
+            this.label25.Name = "label25";
+            // 
+            // Txbx_Cong_Name
+            // 
+            resources.ApplyResources(this.Txbx_Cong_Name, "Txbx_Cong_Name");
+            this.Txbx_Cong_Name.Name = "Txbx_Cong_Name";
             // 
             // m_calendar
             // 
@@ -1652,13 +1798,13 @@
             // lbl_Week
             // 
             resources.ApplyResources(this.lbl_Week, "lbl_Week");
-            this.lbl_Week.ForeColor = System.Drawing.Color.Coral;
+            this.lbl_Week.ForeColor = System.Drawing.Color.Indigo;
             this.lbl_Week.Name = "lbl_Week";
             // 
             // lbl_Month
             // 
             resources.ApplyResources(this.lbl_Month, "lbl_Month");
-            this.lbl_Month.ForeColor = System.Drawing.Color.Coral;
+            this.lbl_Month.ForeColor = System.Drawing.Color.Indigo;
             this.lbl_Month.Name = "lbl_Month";
             // 
             // Main_Timer
@@ -1673,71 +1819,22 @@
             this.LoadingBar.Name = "LoadingBar";
             this.LoadingBar.Step = 1;
             // 
-            // Lbl_Cong_Name
-            // 
-            resources.ApplyResources(this.Lbl_Cong_Name, "Lbl_Cong_Name");
-            this.Lbl_Cong_Name.ForeColor = System.Drawing.Color.Coral;
-            this.Lbl_Cong_Name.Name = "Lbl_Cong_Name";
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Lbl_AC_Same);
-            this.groupBox1.Controls.Add(this.Lbl_RP_Day);
-            this.groupBox1.Controls.Add(this.Lbl_VyM_Day);
-            this.groupBox1.Controls.Add(this.Lbl_RP_Horary);
-            this.groupBox1.Controls.Add(this.Lbl_VyM_Horary);
-            this.groupBox1.Controls.Add(this.Lbl_Room_B);
-            this.groupBox1.Controls.Add(this.Lbl_Cong_Name);
-            this.groupBox1.ForeColor = System.Drawing.Color.Coral;
+            this.groupBox1.Controls.Add(this.lbl_Month);
+            this.groupBox1.Controls.Add(this.lbl_Week);
+            this.groupBox1.ForeColor = System.Drawing.Color.Indigo;
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            // 
-            // Lbl_VyM_Day
-            // 
-            resources.ApplyResources(this.Lbl_VyM_Day, "Lbl_VyM_Day");
-            this.Lbl_VyM_Day.ForeColor = System.Drawing.Color.Coral;
-            this.Lbl_VyM_Day.Name = "Lbl_VyM_Day";
-            // 
-            // Lbl_RP_Horary
-            // 
-            resources.ApplyResources(this.Lbl_RP_Horary, "Lbl_RP_Horary");
-            this.Lbl_RP_Horary.ForeColor = System.Drawing.Color.Coral;
-            this.Lbl_RP_Horary.Name = "Lbl_RP_Horary";
-            // 
-            // Lbl_VyM_Horary
-            // 
-            resources.ApplyResources(this.Lbl_VyM_Horary, "Lbl_VyM_Horary");
-            this.Lbl_VyM_Horary.ForeColor = System.Drawing.Color.Coral;
-            this.Lbl_VyM_Horary.Name = "Lbl_VyM_Horary";
-            // 
-            // Lbl_Room_B
-            // 
-            resources.ApplyResources(this.Lbl_Room_B, "Lbl_Room_B");
-            this.Lbl_Room_B.ForeColor = System.Drawing.Color.Coral;
-            this.Lbl_Room_B.Name = "Lbl_Room_B";
-            // 
-            // Lbl_RP_Day
-            // 
-            resources.ApplyResources(this.Lbl_RP_Day, "Lbl_RP_Day");
-            this.Lbl_RP_Day.ForeColor = System.Drawing.Color.Coral;
-            this.Lbl_RP_Day.Name = "Lbl_RP_Day";
-            // 
-            // Lbl_AC_Same
-            // 
-            resources.ApplyResources(this.Lbl_AC_Same, "Lbl_AC_Same");
-            this.Lbl_AC_Same.ForeColor = System.Drawing.Color.Coral;
-            this.Lbl_AC_Same.Name = "Lbl_AC_Same";
             // 
             // Main_Form
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BackColor = System.Drawing.Color.Teal;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.LoadingBar);
-            this.Controls.Add(this.lbl_Month);
-            this.Controls.Add(this.lbl_Week);
             this.Controls.Add(this.txt_Command);
             this.Controls.Add(this.m_calendar);
             this.Controls.Add(this.tab_Control);
@@ -1768,8 +1865,12 @@
             this.AC_grpbx_wk5.ResumeLayout(false);
             this.AC_grpbx_wk5.PerformLayout();
             this.Status_Tab.ResumeLayout(false);
-            this.Status_Tab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Male_Status_GridView)).EndInit();
+            this.Tab_Cfg.ResumeLayout(false);
+            this.GrpBox_Cfg.ResumeLayout(false);
+            this.GrpBox_Cfg.PerformLayout();
+            this.GrpBx_Rules.ResumeLayout(false);
+            this.GrpBx_Rules.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -1967,23 +2068,32 @@
         private System.Windows.Forms.TextBox txt_NVC3;
         private System.Windows.Forms.DataGridView Male_Status_GridView;
         private System.Windows.Forms.Label Alert_Label_RP;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox Rules_cmbx;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TabPage Tab_Cfg;
+        private System.Windows.Forms.GroupBox GrpBox_Cfg;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox Txbx_Cong_Name;
+        private System.Windows.Forms.CheckBox Chbx_Auxiliar_Room;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.DateTimePicker DateTmPk_RP;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.DateTimePicker DateTmPk_VyM;
+        private System.Windows.Forms.ComboBox Cbx_VyM_Day;
+        private System.Windows.Forms.ComboBox Cbx_RP_Day;
+        private System.Windows.Forms.CheckBox Chb_Setters_Same_Week;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.GroupBox GrpBx_Rules;
+        private System.Windows.Forms.Button Edit_Rule_Btn;
         private System.Windows.Forms.CheckBox Chk_Oracion;
         private System.Windows.Forms.CheckBox Chk_PresRp;
         private System.Windows.Forms.CheckBox Chk_Lector;
         private System.Windows.Forms.CheckBox Chk_Acomodador;
         private System.Windows.Forms.CheckBox Chk_Capitan;
         private System.Windows.Forms.CheckBox Chk_Atalaya;
-        private System.Windows.Forms.Button Edit_Rule_Btn;
-        private System.Windows.Forms.Label Lbl_Cong_Name;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label Lbl_VyM_Day;
-        private System.Windows.Forms.Label Lbl_RP_Horary;
-        private System.Windows.Forms.Label Lbl_VyM_Horary;
-        private System.Windows.Forms.Label Lbl_Room_B;
-        private System.Windows.Forms.Label Lbl_AC_Same;
-        private System.Windows.Forms.Label Lbl_RP_Day;
+        private System.Windows.Forms.ComboBox Rules_cmbx;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox Chbx_Wekk_Format;
     }
 }
 

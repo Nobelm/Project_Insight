@@ -12,7 +12,7 @@ namespace Project_Insight.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -61,7 +61,7 @@ namespace Project_Insight.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12/05/2019 19:00:00")]
+        [global::System.Configuration.DefaultSettingValueAttribute("01/02/2018 19:00:00")]
         public global::System.DateTime VyM_horary {
             get {
                 return ((global::System.DateTime)(this["VyM_horary"]));
@@ -73,7 +73,7 @@ namespace Project_Insight.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12/05/2019 19:00:00")]
+        [global::System.Configuration.DefaultSettingValueAttribute("01/07/2018 21:00:00")]
         public global::System.DateTime RP_horary {
             get {
                 return ((global::System.DateTime)(this["RP_horary"]));
@@ -404,6 +404,18 @@ namespace Project_Insight.Properties {
             }
             set {
                 this["Rule_General_Oracion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Week_Format {
+            get {
+                return ((bool)(this["Week_Format"]));
+            }
+            set {
+                this["Week_Format"] = value;
             }
         }
     }

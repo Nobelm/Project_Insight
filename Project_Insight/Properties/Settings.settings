@@ -12,10 +12,10 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="VyM_horary" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)">12/05/2019 19:00:00</Value>
+      <Value Profile="(Default)">01/02/2018 19:00:00</Value>
     </Setting>
     <Setting Name="RP_horary" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)">12/05/2019 19:00:00</Value>
+      <Value Profile="(Default)">01/07/2018 21:00:00</Value>
     </Setting>
     <Setting Name="VyM_Day" Type="System.String" Scope="User">
       <Value Profile="(Default)">Tuesday</Value>
@@ -97,6 +97,9 @@
     </Setting>
     <Setting Name="Rule_General_Oracion" Type="System.String" Scope="User">
       <Value Profile="(Default)">Non_Status</Value>
+    </Setting>
+    <Setting Name="Week_Format" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

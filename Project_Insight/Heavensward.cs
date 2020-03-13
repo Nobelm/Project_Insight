@@ -34,6 +34,9 @@ namespace Project_Insight
         public static bool Hw_inProgress = false;
         public static bool Close_Heavensward = false;
         public static bool Request_Heavensward = false;
+        private static Insight_Month insight_Month_Local = new Insight_Month();
+        private static Insight_Sem insight_Sem_Local = new Insight_Sem();
+
         private static VyM_Mes VyM_mes_HW_Local = new VyM_Mes();
         private static VyM_Sem Aux_VyM_Sem = new VyM_Sem();
         private static RP_Mes RP_mes_HW_Local = new RP_Mes();
@@ -147,6 +150,12 @@ namespace Project_Insight
         {
             try
             {
+                /*ToDo
+                 * Change Initialization
+                 * Get Random ID
+                 * Write in Firebase
+                 * Give 5 tries to read and compare that value
+                 * */
                 using (var client = new WebClient())
                 using (client.OpenRead("http://clients3.google.com/generate_204"))
                 {
@@ -173,7 +182,7 @@ namespace Project_Insight
             for (current_week = 1; current_week <= max_sem; current_week++)
             {
                 Copy_Main_Week();
-                if (!Aux_VyM_Sem.HW_Data && !Aux_RP_Sem.HW_Data)
+                if (!insight_Sem_Local.HW_Data)
                 {
                     string fecha = Main_Form.meetings_days[current_week - 1, 0].ToString("yyyy/MM/dd");
                     string url = "https://wol.jw.org/es/wol/dt/r4/lp-s/" + fecha;
@@ -217,32 +226,32 @@ namespace Project_Insight
             {
                 case 1:
                     {
-                        Aux_VyM_Sem = Main_Form.VyM_mes.Semana1;
-                        Aux_RP_Sem = Main_Form.RP_mes.Semana1;
+                        insight_Sem_Local = Main_Form.Insight_month.Semana1;
+                        //Aux_RP_Sem = Main_Form.RP_mes.Semana1;
                         break;
                     }
                 case 2:
                     {
-                        Aux_VyM_Sem = Main_Form.VyM_mes.Semana2;
-                        Aux_RP_Sem = Main_Form.RP_mes.Semana2;
+                        insight_Sem_Local = Main_Form.Insight_month.Semana2;
+                        //Aux_RP_Sem = Main_Form.RP_mes.Semana2;
                         break;
                     }
                 case 3:
                     {
-                        Aux_VyM_Sem = Main_Form.VyM_mes.Semana3;
-                        Aux_RP_Sem = Main_Form.RP_mes.Semana3;
+                        insight_Sem_Local = Main_Form.Insight_month.Semana3;
+                        //Aux_RP_Sem = Main_Form.RP_mes.Semana3;
                         break;
                     }
                 case 4:
                     {
-                        Aux_VyM_Sem = Main_Form.VyM_mes.Semana4;
-                        Aux_RP_Sem = Main_Form.RP_mes.Semana4;
+                        insight_Sem_Local = Main_Form.Insight_month.Semana4;
+                        //Aux_RP_Sem = Main_Form.RP_mes.Semana4;
                         break;
                     }
                 case 5:
                     {
-                        Aux_VyM_Sem = Main_Form.VyM_mes.Semana5;
-                        Aux_RP_Sem = Main_Form.RP_mes.Semana5;
+                        insight_Sem_Local = Main_Form.Insight_month.Semana5;
+                        //Aux_RP_Sem = Main_Form.RP_mes.Semana5;
                         break;
                     }
             }
@@ -270,7 +279,7 @@ namespace Project_Insight
                     {
                         if(month_found)
                         {
-                            Aux_VyM_Sem.Sem_Biblia = Analyze_string(str);
+                            insight_Sem_Local.Sem_Biblia = Analyze_string(str);
                             current_meeting = 99;
                         }
                         if (str.Contains(month))
@@ -288,12 +297,12 @@ namespace Project_Insight
                             {
                                 if (tdb_attend == 0)
                                 {
-                                    Aux_VyM_Sem.Discurso = aux;
+                                    insight_Sem_Local.Discurso_VyM = aux;
                                     tdb_attend++;
                                 }
                                 else if(!aux.Contains(find_hidden_perls))
                                 {
-                                    Aux_VyM_Sem.Lectura = aux;
+                                    insight_Sem_Local.Lectura = aux;
                                     current_meeting = 99;
                                 }
 
@@ -312,22 +321,28 @@ namespace Project_Insight
                                 {
                                     case 0:
                                         {
-                                            Aux_VyM_Sem.SMM1 = aux;
+                                            string str_aux = aux.Substring(0, 6);
+                                            if (str_aux.Contains("Video") || str_aux.Contains("Seamos"))
+                                            {
+                                                int index = aux.IndexOf("auditorio. ");
+                                                aux = aux.Substring(0, index + 10);
+                                            }
+                                            insight_Sem_Local.SMM1 = aux;
                                             break;
                                         }
                                     case 1:
                                         {
-                                            Aux_VyM_Sem.SMM2 = aux;
+                                            insight_Sem_Local.SMM2 = aux;
                                             break;
                                         }
                                     case 2:
                                         {
-                                            Aux_VyM_Sem.SMM3 = aux;
+                                            insight_Sem_Local.SMM3 = aux;
                                             break;
                                         }
                                     case 3:
                                         {
-                                            Aux_VyM_Sem.SMM4 = aux;
+                                            insight_Sem_Local.SMM4 = aux;
                                             break;
                                         }
                                 }
@@ -355,12 +370,12 @@ namespace Project_Insight
                             {
                                 if (nvc_attend == 0)
                                 {
-                                    Aux_VyM_Sem.NVC1 = aux;
+                                    insight_Sem_Local.NVC1 = aux;
                                     nvc_attend++;
                                 }
                                 else
                                 {
-                                    Aux_VyM_Sem.NVC2 = aux;
+                                    insight_Sem_Local.NVC2 = aux;
                                 }
                             }
                         }
@@ -374,7 +389,7 @@ namespace Project_Insight
             }
             if (break_reader)
             {
-                Save_VyM_Information();
+                Save_Local_Information();
             }
         }
 
@@ -409,8 +424,8 @@ namespace Project_Insight
                 final_value = final_value.Substring(2); //String have number page at the beginning 
                 if (final_value != "")
                 {
-                    Aux_RP_Sem.Titulo_Atalaya = final_value;
-                    Save_RP_Information();
+                    insight_Sem_Local.Titulo_Atalaya = final_value;
+                    //Save_RP_Information();
                 }
                 break_reader = true;
             }
@@ -457,38 +472,38 @@ namespace Project_Insight
         }
 
         /*Store info into local variables*/
-        private static void Save_VyM_Information()
+        private static void Save_Local_Information()
         {
             switch (current_week)
             {
                 case 1:
                     {
-                        VyM_mes_HW_Local.Semana1 = Aux_VyM_Sem;
-                        VyM_mes_HW_Local.Semana1.HW_Data = true;
+                        insight_Month_Local.Semana1 = insight_Sem_Local;
+                        insight_Month_Local.Semana1.HW_Data = true;
                         break;
                     }
                 case 2:
                     {
-                        VyM_mes_HW_Local.Semana2 = Aux_VyM_Sem;
-                        VyM_mes_HW_Local.Semana2.HW_Data = true;
+                        insight_Month_Local.Semana2 = insight_Sem_Local;
+                        insight_Month_Local.Semana2.HW_Data = true;
                         break;
                     }
                 case 3:
                     {
-                        VyM_mes_HW_Local.Semana3 = Aux_VyM_Sem;
-                        VyM_mes_HW_Local.Semana3.HW_Data = true;
+                        insight_Month_Local.Semana3 = insight_Sem_Local;
+                        insight_Month_Local.Semana3.HW_Data = true;
                         break;
                     }
                 case 4:
                     {
-                        VyM_mes_HW_Local.Semana4 = Aux_VyM_Sem;
-                        VyM_mes_HW_Local.Semana4.HW_Data = true;
+                        insight_Month_Local.Semana4 = insight_Sem_Local;
+                        insight_Month_Local.Semana4.HW_Data = true;
                         break;
                     }
                 case 5:
                     {
-                        VyM_mes_HW_Local.Semana5 = Aux_VyM_Sem;
-                        VyM_mes_HW_Local.Semana5.HW_Data = true;
+                        insight_Month_Local.Semana5 = insight_Sem_Local;
+                        insight_Month_Local.Semana5.HW_Data = true;
                         break;
                     }
             }
@@ -535,26 +550,27 @@ namespace Project_Insight
         private static void Return_Values_From_Heavensward()
         {
             Main_Form.Notify("Storing info from Heavensward into Main");
-            Main_Form.VyM_mes.Semana1.Save_Heavensward_Info(VyM_mes_HW_Local.Semana1);
-            Main_Form.RP_mes.Semana1.Save_Heavensward_Info(RP_mes_HW_Local.Semana1);
+            
+            Main_Form.Insight_month.Semana1.Save_Heavensward_Info(insight_Month_Local.Semana1);
+            //Main_Form.RP_mes.Semana1.Save_Heavensward_Info(RP_mes_HW_Local.Semana1);
 
-            Main_Form.VyM_mes.Semana2.Save_Heavensward_Info(VyM_mes_HW_Local.Semana2);
-            Main_Form.RP_mes.Semana2.Save_Heavensward_Info(RP_mes_HW_Local.Semana2);
+            Main_Form.Insight_month.Semana2.Save_Heavensward_Info(insight_Month_Local.Semana2);
+           //Main_Form.RP_mes.Semana2.Save_Heavensward_Info(RP_mes_HW_Local.Semana2);
 
-            Main_Form.VyM_mes.Semana3.Save_Heavensward_Info(VyM_mes_HW_Local.Semana3);
-            Main_Form.RP_mes.Semana3.Save_Heavensward_Info(RP_mes_HW_Local.Semana3);
+            Main_Form.Insight_month.Semana3.Save_Heavensward_Info(insight_Month_Local.Semana3);
+            //Main_Form.RP_mes.Semana3.Save_Heavensward_Info(RP_mes_HW_Local.Semana3);
 
-            Main_Form.VyM_mes.Semana4.Save_Heavensward_Info(VyM_mes_HW_Local.Semana4);
-            Main_Form.RP_mes.Semana4.Save_Heavensward_Info(RP_mes_HW_Local.Semana4);
+            Main_Form.Insight_month.Semana4.Save_Heavensward_Info(insight_Month_Local.Semana4);
+            //Main_Form.RP_mes.Semana4.Save_Heavensward_Info(RP_mes_HW_Local.Semana4);
 
             if (Main_Form.week_five_exist)
             {
-                Main_Form.VyM_mes.Semana5.Save_Heavensward_Info(VyM_mes_HW_Local.Semana5);
-                Main_Form.RP_mes.Semana5.Save_Heavensward_Info(RP_mes_HW_Local.Semana5);
+                Main_Form.Insight_month.Semana5.Save_Heavensward_Info(insight_Month_Local.Semana5);
+                //Main_Form.RP_mes.Semana5.Save_Heavensward_Info(RP_mes_HW_Local.Semana5);
             }
         }
 
-        /*-------------------------- Heavensward Oracle Handler -------------------------------*/
+        /*----------------------------------- Celestial Aeon Project -----------------------------------*/
 
         private static void Heavensward_Oracle_Handler(HW_Oracle_Request request)
         {

@@ -11,6 +11,7 @@ using System.Threading;
 using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using System.Collections;
 using System.Diagnostics;
 
@@ -25,12 +26,15 @@ namespace Project_Insight
         private static Excel.Worksheet Sheet_VyM;
         private static Excel.Worksheet Sheet_RP;
         private static Excel.Worksheet Sheet_AC;
+        private static Excel.Worksheet Sheet_Week;
         private static Excel.Range range_1;
         private static Excel.Range range_2;
         private static Excel.Range range_3;
+        private static Excel.Range range_main;
         private static object[,] cellValue_1 = null;
         private static object[,] cellValue_2 = null;
         private static object[,] cellValue_3 = null;
+        private static object[,] cellValue_main = null;
         public static List<Helix_Request> List_Helix_Requests = new List<Helix_Request>();
         private static bool Attending_Helix_Request = false;
         public static bool excel_ready = false;
@@ -38,15 +42,13 @@ namespace Project_Insight
         private static bool Initial_Check = false;
         public static int loading_delta = 1;
         public static int loading = 0;
-        public static int A = 1, B = 2, C = 3, D = 4, E = 5, F = 6, G = 7, H = 8;
+        public static int A = 1, B = 2, C = 3, D = 4, E = 5, F = 6, G = 7, H = 8, I = 9, J = 10, K = 11, L = 12, M = 13;
+        private static int cell = 0;
 
         public enum Helix_Request
         {
-            Save_VyM,
-            Save_Rp,
-            Save_Ac,
+            Save,
             Save_Db,
-            Save_All,
             Open_Ex,
             Open_Known_Ins
         };
@@ -99,29 +101,14 @@ namespace Project_Insight
             Main_Form.Notify("Executing Helix Request: " + hx.ToString());
             switch (hx)
             {
-                case Helix_Request.Save_VyM:
+                case Helix_Request.Save:
                     {
-                        Process_save(1);
-                        break;
-                    }
-                case Helix_Request.Save_Rp:
-                    {
-                        Process_save(2);
-                        break;
-                    }
-                case Helix_Request.Save_Ac:
-                    {
-                        Process_save(3);
+                        Gaia_Protocol();
                         break;
                     }
                 case Helix_Request.Save_Db:
                     {
                         Persistence.DB_Requests_List.Add(Persistence.DB_Request.write);
-                        break;
-                    }
-                case Helix_Request.Save_All:
-                    {
-                        Process_save(4);
                         break;
                     }
                 case Helix_Request.Open_Ex:
@@ -149,12 +136,7 @@ namespace Project_Insight
 
         public static void Process_save(int save)
         {
-            if (Thread.CurrentThread.Name == null)
-            {
-                Thread.CurrentThread.Name = "Helix";
-                //Thread.CurrentThread.Priority = ThreadPriority.BelowNormal;
-            }
-            Main_Form.Helix_thread_is_running = true;
+            Main_Form.Helix_Saving = true;
             string FileName = Main_Form.meetings_days[0, 0].ToString("MMMM");
             loading = 1;
             Opening_Excel(Main_Form.File_Path);
@@ -224,6 +206,13 @@ namespace Project_Insight
             objApp = new Excel.Application();
             objBooks = objApp.Workbooks.Open(path, 0, false, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
 
+
+            /*Begin Experimental*/
+            objSheets = objBooks.Worksheets;
+            Sheet_Week = (Excel.Worksheet)objSheets.get_Item(1);
+            range_main = Sheet_Week.get_Range("A1", "M250");
+            cellValue_main = (object[,])range_main.get_Value();
+            /*End Experimental
             objSheets = objBooks.Worksheets;
             Sheet_VyM = (Excel.Worksheet)objSheets.get_Item(1);
             range_1 = Sheet_VyM.get_Range("A1", "H137");
@@ -248,7 +237,7 @@ namespace Project_Insight
             else
             {
                 Main_Form.Warn("Invalid file");
-            }
+            }*/
         }
 
         public static void VyM_Handler(bool save)
@@ -277,6 +266,609 @@ namespace Project_Insight
                 }
             }
         }
+
+
+        /*-----------------------------------------BEGIN EXPERIMENTAL-------------------------------------------*/
+        /*public class Coordinates
+        {
+            public string Column;
+            public int Row;
+        }*/
+
+        public static void Gaia_Protocol()
+        {
+            Main_Form.Notify("Executing Gaia Protocol");
+            string FileName = "Experimental Gaia Protocol";//Main_Form.meetings_days[0, 0].ToString("MMMM");
+            string path = Application.StartupPath + "\\\\Experimental.xlsx";
+            Opening_Excel(path);  /**/
+            if (Main_Form.Week_Format)
+            {
+                Main_Form.Notify("Running Full Week Format");
+                Sheet_Week.PageSetup.LeftHeader = "&16&B" + Main_Form.Cong_Name;
+                Sheet_Week.PageSetup.RightHeader = "&16&B" + "Programa de Reuniones";
+                Main_Form.Notify("Saving week 1");
+                cell = 2;
+                VyM_Builder(Main_Form.Insight_month.Semana1);
+                cell += 2;
+                RP_Builder(Main_Form.Insight_month.Semana1);
+                cell += 2;
+                AC_Builder(Main_Form.Insight_month.Semana1);
+                Main_Form.Notify("Saving week 2");
+                cell = 52;
+                VyM_Builder(Main_Form.Insight_month.Semana2); //52
+                cell += 2;
+                RP_Builder(Main_Form.Insight_month.Semana2);
+                cell += 2;
+                AC_Builder(Main_Form.Insight_month.Semana2);
+                Main_Form.Notify("Saving week 3");
+                cell = 102;
+                VyM_Builder(Main_Form.Insight_month.Semana3); //102
+                cell += 2;
+                RP_Builder(Main_Form.Insight_month.Semana3);
+                cell += 2;
+                AC_Builder(Main_Form.Insight_month.Semana3);
+                Main_Form.Notify("Saving week 4");
+                cell = 152;
+                VyM_Builder(Main_Form.Insight_month.Semana4); //152
+                cell += 2;
+                RP_Builder(Main_Form.Insight_month.Semana4);
+                cell += 2;
+                AC_Builder(Main_Form.Insight_month.Semana4);
+                if (Main_Form.week_five_exist)
+                {
+                    Main_Form.Notify("Saving week 5");
+                    cell = 202;
+                    VyM_Builder(Main_Form.Insight_month.Semana5); //202
+                    cell += 2;
+                    RP_Builder(Main_Form.Insight_month.Semana5);
+                    cell += 2;
+                    AC_Builder(Main_Form.Insight_month.Semana5);
+                }
+
+            }
+            else
+            {
+                Main_Form.Notify("Running Individual Week Format");
+
+
+
+
+            }
+
+            Main_Form.Notify("FileName: " + FileName);
+            if (Main_Form.is_new_instance)
+            {
+                string createfolder = "c:\\Project_Insight";
+                System.IO.Directory.CreateDirectory(createfolder);
+                objApp.DisplayAlerts = false;
+                objBooks.SaveAs(createfolder + "\\" + FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing, Type.Missing);
+
+                //objBooks.SaveAs(createfolder + "\\" + FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, false, false, Excel.XlSaveAsAccessMode.xlNoChange, Excel.XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
+                Main_Form.File_Path = createfolder + "\\" + FileName;
+                if (Main_Form.Save_as_pdf)
+                {
+                    objBooks.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, Main_Form.File_Path);
+                    Main_Form.Notify("Saving as Pdf");
+                    Main_Form.Save_as_pdf = false;
+                }
+                Main_Form.Notify("Saved path: " + Main_Form.File_Path);
+                objBooks.Close(0);
+                objApp.Quit();
+            }
+
+            Main_Form.Notify("Adding Persistence Request");
+            Persistence.Persistence_Request request = new Persistence.Persistence_Request();
+            request.persistence_insight = Main_Form.Insight_month.Semana1;
+            Persistence.Persistence_Requests_List.Add(request);
+            request.persistence_insight = Main_Form.Insight_month.Semana2;
+            Persistence.Persistence_Requests_List.Add(request);
+            request.persistence_insight = Main_Form.Insight_month.Semana3;
+            Persistence.Persistence_Requests_List.Add(request);
+            request.persistence_insight = Main_Form.Insight_month.Semana4;
+            Persistence.Persistence_Requests_List.Add(request);
+            if (Main_Form.week_five_exist)
+            {
+                request.persistence_insight = Main_Form.Insight_month.Semana5;
+                Persistence.Persistence_Requests_List.Add(request);
+            }
+            Main_Form.Notify("Save complete!");
+        }
+
+        public static void VyM_Builder(Insight_Sem sem)
+        {
+            //if(sem.Overwatch_Aprobal)
+            {
+                CultureInfo spanish = new CultureInfo("es-MX");
+                Excel.Range range;
+                if(sem.Special_Week == Main_Form.Special_Week_Type.Conv_type)
+                {
+                    //Handler for Convention type
+                }
+                else
+                {
+                    //Informacion de semana
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "M" + cell.ToString());
+                    range.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    range.Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 4d;
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "I" + cell.ToString());
+                    range.Cells.Merge();
+                    range = Sheet_Week.get_Range("J" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 11;
+                    if (sem.Special_Week == Main_Form.Special_Week_Type.Visit_type)
+                    {
+                        //Handler for Visit type
+                    }
+                    //Horario
+                    Sheet_Week.Cells[cell, J] = "Horario: " + sem.Fecha_VyM.ToString("dddd", spanish) + " " + Main_Form.VyM_horary.ToString("hh:mm tt");
+                    cell += 1;
+                    //Fecha
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "C" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 11;
+                    range.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlContinuous; 
+                    range.Borders[Excel.XlBordersIndex.xlEdgeRight].Weight = 4d;
+                    Sheet_Week.Cells[cell, A] = sem.Fecha_VyM.ToString("dddd, dd MMMM");
+                    //Lectura de la biblia semanal
+                    range = Sheet_Week.get_Range("D" + cell.ToString(), "G" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 11;
+                    Sheet_Week.Cells[cell, D] = sem.Sem_Biblia;
+                    //Presidente y Consejero auxiliar
+                    range = Sheet_Week.get_Range("H" + cell.ToString(), "J" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Size = 8;
+                    range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    Sheet_Week.Cells[cell, H] = "Presidente";
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 9;
+                    Sheet_Week.Cells[cell, K] = sem.Presidente_VyM; 
+                    range = Sheet_Week.get_Range("H" + (cell + 1).ToString(), "J" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Size = 8;
+                    range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    Sheet_Week.Cells[cell + 1, H] = "Consejero Auxiliar";
+                    range = Sheet_Week.get_Range("K" + (cell + 1).ToString(), "M" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Size = 9;
+                    Sheet_Week.Cells[cell + 1, K] = sem.Consejero_Aux;
+                    cell += 2;
+                    //Cancion y Palabras de Introduccion
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "E" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                    Sheet_Week.Cells[cell, A] = "• Cancion y Oracion Inicial";
+                    range = Sheet_Week.get_Range("A" + (cell + 1).ToString(), "E" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                    Sheet_Week.Cells[cell + 1, A] = "• Palabras de introduccion (1 min.)";
+                    Set_Font(Sheet_Week.get_Range("A" + (cell + 1)));
+                    cell += 2;
+                    //Seccion "Tesoros de la biblia"
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 11;
+                    range.Cells.Font.Color = Color.White;
+                    Sheet_Week.Cells[cell, A].Interior.Color = Color.FromArgb(87, 90, 93);
+                    Sheet_Week.Cells[cell, A] = "TESOROS DE LA BIBLIA";
+                    range = Sheet_Week.get_Range("H" + cell.ToString(), "J" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Size = 8;
+                    range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Sheet_Week.Cells[cell, H] = "Sala Auxiliar";
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Size = 8;
+                    range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Sheet_Week.Cells[cell, K] = "Sala Principal";
+                    cell++;
+                    //Discurso
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, A] = "• " + sem.Discurso_VyM;
+                    Set_Font(Sheet_Week.get_Range("A" + cell));
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, K] = sem.Discurso_VyM_A;
+                    cell++;
+                    //Perlas                    
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, A] = "• Busquemos Perlas Escondidas (10 mins.)";
+                    Set_Font(Sheet_Week.get_Range("A" + cell));
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, K] = sem.Perlas;
+                    cell++;
+                    //Lectura
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, A] = "• " + sem.Lectura;
+                    Set_Font(Sheet_Week.get_Range("A" + cell));
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, K] = sem.Lectura_A;
+                    range = Sheet_Week.get_Range("H" + cell.ToString(), "J" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, H] = sem.Lectura_B;
+                    cell++;
+                    //Seccion "Seamos mejores maestros"
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 11;
+                    range.Cells.Font.Color = Color.White;
+                    Sheet_Week.Cells[cell, A].Interior.Color = Color.FromArgb(190, 137, 0);
+                    Sheet_Week.Cells[cell, A] = "SEAMOS MEJORES MAESTROS";
+                    cell++;
+                    //Asignacion 1
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, A] = "• " + sem.SMM1;
+                    Set_Font(Sheet_Week.get_Range("A" + cell));
+                    range.Cells.WrapText = true;
+                    range = Sheet_Week.get_Range("H" + cell.ToString(), "J" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, H] = sem.SMM1_B;
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, K] = sem.SMM1_A;
+                    cell += 2;
+                    //Asignacion 2                    
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, A] = "• " + sem.SMM2;
+                    Set_Font(Sheet_Week.get_Range("A" + cell));
+                    range.Cells.WrapText = true;
+                    range = Sheet_Week.get_Range("H" + cell.ToString(), "J" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, H] = sem.SMM2_B;
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, K] = sem.SMM2_A;
+                    cell += 2;
+                    //Asignacion 3
+                    if(sem.SMM3 != null && sem.SMM3.Length > 5)
+                    {
+                        range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + (cell + 1).ToString());
+                        range.Cells.Merge();
+                        Sheet_Week.Cells[cell, A] = "• " + sem.SMM3;
+                        Set_Font(Sheet_Week.get_Range("A" + cell));
+                        range.Cells.WrapText = true;
+                        range = Sheet_Week.get_Range("H" + cell.ToString(), "J" + (cell + 1).ToString());
+                        range.Cells.Merge();
+                        Sheet_Week.Cells[cell, H] = sem.SMM3_B;
+                        range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + (cell + 1).ToString());
+                        range.Cells.Merge();
+                        Sheet_Week.Cells[cell, K] = sem.SMM3_A;
+                        cell += 2;
+                    }
+                    //Asignacion 4
+                    if (sem.SMM4 != null && sem.SMM4.Length > 5)
+                    {
+                        range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + (cell + 1).ToString());
+                        range.Cells.Merge();
+                        Sheet_Week.Cells[cell, A] = "• " + sem.SMM4;
+                        Set_Font(Sheet_Week.get_Range("A" + cell));
+                        range.Cells.WrapText = true;
+                        range = Sheet_Week.get_Range("H" + cell.ToString(), "J" + (cell + 1).ToString());
+                        range.Cells.Merge();
+                        Sheet_Week.Cells[cell, H] = sem.SMM4_B;
+                        range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + (cell + 1).ToString());
+                        range.Cells.Merge();
+                        Sheet_Week.Cells[cell, K] = sem.SMM4_A;
+                        cell += 2;
+                    }
+                    //Seccion "Nuestra vida cristiana"
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 11;
+                    range.Cells.Font.Color = Color.White;
+                    Sheet_Week.Cells[cell, A].Interior.Color = Color.FromArgb(126, 0, 36);
+                    Sheet_Week.Cells[cell, A] = "NUESTRA VIDA CRISTIANA";
+                    cell++;
+                    //Cancion
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, A] = "• Cancion";
+                    cell++;
+                    //Parte 1
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "J" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, A] = "• " + sem.NVC1;
+                    Set_Font(Sheet_Week.get_Range("A" + cell)); 
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, K] = sem.NVC1_A;
+                    cell++;
+                    //Parte 2
+                    if (sem.NVC2 != null && sem.NVC2.Length > 5)
+                    {
+                        range = Sheet_Week.get_Range("A" + cell.ToString(), "J" + cell.ToString());
+                        range.Cells.Merge();
+                        Sheet_Week.Cells[cell, A] = "• " + sem.NVC2;
+                        Set_Font(Sheet_Week.get_Range("A" + cell));
+                        range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                        range.Cells.Merge();
+                        Sheet_Week.Cells[cell, K] = sem.NVC2_A;
+                        cell++;
+                    }
+                    //Estudio Biblico de Congregacion
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, A] = "• " + sem.Libro_Titulo;
+                    Set_Font(Sheet_Week.get_Range("A" + cell));
+                    range = Sheet_Week.get_Range("H" + cell.ToString(), "J" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Size = 8;
+                    range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    Sheet_Week.Cells[cell, H] = "Conductor";
+                    range = Sheet_Week.get_Range("H" + (cell + 1).ToString(), "J" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Size = 8;
+                    range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    Sheet_Week.Cells[cell + 1, H] = "Lector";
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, K] = sem.Libro_Conductor;
+                    range = Sheet_Week.get_Range("K" + (cell + 1).ToString(), "M" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell + 1, K] = sem.Libro_Lector;
+                    cell += 2;
+                    //Repaso
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "J" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, A] = "• Repaso de esta reunion, adelanto e la proxima y anuncios (3 mins.)";
+                    Set_Font(Sheet_Week.get_Range("B" + cell));
+                    cell++;
+                    //Cancion y Oracion Final
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "E" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, A] = "• Cancion y Oracion Final"; 
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, K] = sem.Oracion_End_VyM;
+
+                }
+            }
+        }
+        public static void RP_Builder(Insight_Sem sem)
+        {
+            //if (sem.Overwatch_Aprobal)
+            {
+                CultureInfo spanish = new CultureInfo("es-MX");
+                Excel.Range range;
+                if (sem.Special_Week == Main_Form.Special_Week_Type.Conv_type)
+                {
+                    //Handler for Convention type
+                }
+                else
+                {
+                    //Informacion de semana
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "M" + cell.ToString());
+                    range.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    range.Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 4d;
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "I" + cell.ToString());
+                    range.Cells.Merge();
+                    range = Sheet_Week.get_Range("J" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 11;
+                    if (sem.Special_Week == Main_Form.Special_Week_Type.Visit_type)
+                    {
+                        //Handler for Visit type
+                    }
+                    //Horario
+                    Sheet_Week.Cells[cell, J] = "Horario: " + sem.Fecha_RP.ToString("dddd", spanish) + " " + Main_Form.RP_horary.ToString("hh:mm tt");
+                    cell += 1;
+                    //Fecha
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "C" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 11;
+                    range.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    range.Borders[Excel.XlBordersIndex.xlEdgeRight].Weight = 4d;
+                    Sheet_Week.Cells[cell, A] = sem.Fecha_RP.ToString("dddd, dd MMMM");
+                    //Presidente
+                    range = Sheet_Week.get_Range("H" + cell.ToString(), "J" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Size = 8;
+                    range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    Sheet_Week.Cells[cell, H] = "Presidente";
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 9;
+                    Sheet_Week.Cells[cell, K] = sem.Presidente_RP; 
+                    cell += 2;
+                    //Seccion "Reunion Publica"
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 11;
+                    range.Cells.Font.Color = Color.White;
+                    Sheet_Week.Cells[cell, A].Interior.Color = Color.FromArgb(68, 84, 106);
+                    Sheet_Week.Cells[cell, A] = "REUNION PUBLICA";
+                    cell++;
+                    //Informacion del discurso
+                    Sheet_Week.Cells[cell, A] = "• Tema";
+                    range = Sheet_Week.get_Range("B" + cell.ToString(), "J" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, B] = sem.Titulo_RP;
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Sheet_Week.Cells[cell, K] = sem.Discursante;
+                    cell++;
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "C" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, A] = "Congregacion";
+                    range = Sheet_Week.get_Range("D" + cell.ToString(), "I" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, D] = sem.Congregacion_RP;
+                    cell += 2;
+                    //Seccion "Analisis de La Atalaya"
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 11;
+                    range.Cells.Font.Color = Color.White;
+                    Sheet_Week.Cells[cell, A].Interior.Color = Color.FromArgb(84, 130, 53);
+                    Sheet_Week.Cells[cell, A] = "ANALISIS DE LA ATALAYA";
+                    cell++;
+                    //Informacion de La Atalaya
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "H" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, A] = "• " + sem.Titulo_Atalaya;
+                    range = Sheet_Week.get_Range("I" + cell.ToString(), "J" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Size = 8;
+                    range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    Sheet_Week.Cells[cell, I] = "Conductor";
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, K] = sem.Conductor_Atalaya;
+                    cell++;
+                    range = Sheet_Week.get_Range("I" + cell.ToString(), "J" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Size = 8;
+                    range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    Sheet_Week.Cells[cell, I] = "Lector";
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, K] = sem.Lector_Atalaya;
+                    cell++; 
+                    range = Sheet_Week.get_Range("I" + cell.ToString(), "J" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Size = 8;
+                    range.Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    Sheet_Week.Cells[cell, I] = "Oracion Final";
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, K] = sem.Oracion_End_RP;
+                    cell++;
+                    //Salidas a Discursar
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "D" + cell.ToString());
+                    range.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    range.Borders[Excel.XlBordersIndex.xlEdgeTop].Weight = 2d;
+                    range.Cells.Font.Bold = true;
+                    Sheet_Week.Cells[cell, A] = "Salidas a Discursar:";
+                    cell++;
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "C" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, A] = sem.Discu_Sal;
+                    range = Sheet_Week.get_Range("D" + cell.ToString(), "J" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, D] = sem.Ttl_Sal;
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, K] = sem.Cong_Sal;
+                }
+            }
+        }
+        public static void AC_Builder(Insight_Sem sem)
+        {
+            //if (sem.Overwatch_Aprobal)
+            {
+                CultureInfo spanish = new CultureInfo("es-MX");
+                Excel.Range range;
+                if (sem.Special_Week == Main_Form.Special_Week_Type.Conv_type)
+                {
+                    //Handler for Convention type
+                }
+                else 
+                {
+                    //Informacion de semana
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "M" + cell.ToString());
+                    range.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    range.Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 4d;
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "I" + cell.ToString());
+                    range.Cells.Merge();
+                    if (sem.Special_Week == Main_Form.Special_Week_Type.Visit_type)
+                    {
+                        //Handler for Visit type
+                    }
+                    cell += 1;
+                    //Fecha
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "C" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 11;
+                    range.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    range.Borders[Excel.XlBordersIndex.xlEdgeRight].Weight = 4d;
+                    Sheet_Week.Cells[cell, A].Interior.Color = Color.FromArgb(180, 198, 231);
+                    Sheet_Week.Cells[cell, A] = "FECHA";
+                    range = Sheet_Week.get_Range("D" + cell.ToString(), "H" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 11;
+                    range.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    range.Borders[Excel.XlBordersIndex.xlEdgeRight].Weight = 4d;
+                    Sheet_Week.Cells[cell, D].Interior.Color = Color.FromArgb(180, 198, 231);
+                    Sheet_Week.Cells[cell, D] = sem.Fecha_VyM.ToString("dddd, dd MMMM"); 
+                    range = Sheet_Week.get_Range("I" + cell.ToString(), "M" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    range.Cells.Font.Size = 11;
+                    range.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    range.Borders[Excel.XlBordersIndex.xlEdgeRight].Weight = 4d;
+                    Sheet_Week.Cells[cell, I].Interior.Color = Color.FromArgb(180, 198, 231);
+                    Sheet_Week.Cells[cell, I] = sem.Fecha_RP.ToString("dddd, dd MMMM");
+                    cell += 3;
+                    //Aseo
+                    range = Sheet_Week.get_Range("A" + cell.ToString(), "C" + cell.ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    Sheet_Week.Cells[cell, A] = "Aseo";
+                    range = Sheet_Week.get_Range("A" + (cell + 1).ToString(), "C" + (cell + 2).ToString());
+                    range.Cells.Merge();
+                    range.Cells.Font.Bold = true;
+                    Sheet_Week.Cells[cell + 1, A] = sem.Aseo;
+                    //Acomodadores VyM
+                    range = Sheet_Week.get_Range("D" + cell.ToString(), "E" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, D] = "Capitan";
+                    range = Sheet_Week.get_Range("F" + cell.ToString(), "H" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, F] = sem.Vym_Cap; 
+                    range = Sheet_Week.get_Range("D" + (cell+1).ToString(), "E" + (cell+2).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell + 1, D] = "Acomodadores";
+                    range = Sheet_Week.get_Range("F" + (cell + 1).ToString(), "H" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell + 1, F] = sem.Vym_Der;
+                    range = Sheet_Week.get_Range("F" + (cell + 2).ToString(), "H" + (cell + 2).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell + 2, F] = sem.Vym_Izq;
+                    //Acomodadores RP
+                    range = Sheet_Week.get_Range("I" + cell.ToString(), "J" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, I] = "Capitan";
+                    range = Sheet_Week.get_Range("K" + cell.ToString(), "M" + cell.ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell, K] = sem.Rp_Cap;
+                    range = Sheet_Week.get_Range("I" + (cell + 1).ToString(), "J" + (cell + 2).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell + 1, I] = "Acomodadores";
+                    range = Sheet_Week.get_Range("K" + (cell + 1).ToString(), "M" + (cell + 1).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell + 1, K] = sem.Rp_Der;
+                    range = Sheet_Week.get_Range("K" + (cell + 2).ToString(), "M" + (cell + 2).ToString());
+                    range.Cells.Merge();
+                    Sheet_Week.Cells[cell + 2, K] = sem.Rp_Izq;
+                }
+            }
+        }
+
+        /*-----------------------------------------END EXPERIMENTAL-------------------------------------------*/
+
 
         public static void VyM_Save_Week(VyM_Sem sem)
         {
@@ -404,7 +996,7 @@ namespace Project_Insight
                     Sheet_VyM.Cells[primary_cell + 20, G] = sem.Libro_L;
                     Sheet_VyM.Cells[primary_cell + 22, G] = sem.Oracion;
 
-                    string[] Time_data = Get_time_from_week(sem);
+                    /*string[] Time_data = Get_time_from_week(sem);
                     Sheet_VyM.Cells[primary_cell + 2, A] = Time_data[0];
                     Sheet_VyM.Cells[primary_cell + 3, A] = Time_data[1];
                     Sheet_VyM.Cells[primary_cell + 6, A] = Time_data[2];
@@ -419,7 +1011,7 @@ namespace Project_Insight
                     Sheet_VyM.Cells[primary_cell + 18, A] = Time_data[11];
                     Sheet_VyM.Cells[primary_cell + 19, A] = Time_data[12];
                     Sheet_VyM.Cells[primary_cell + 21, A] = Time_data[13];
-                    Sheet_VyM.Cells[primary_cell + 22, A] = Time_data[14];
+                    Sheet_VyM.Cells[primary_cell + 22, A] = Time_data[14];*/
 
 
                     // original = 15, increments = 23
@@ -438,14 +1030,14 @@ namespace Project_Insight
                     /*Persistence Request*/
                     Persistence.Persistence_Request request_pers = new Persistence.Persistence_Request
                     {
-                        persistence_vym = sem,
+                        //persistence_insight = sem,
                     };
                     Persistence.Persistence_Requests_List.Add(request_pers);
 
                     /*Heavensward Request*/
                     Heavensward.HW_Oracle_Request request_hw = new Heavensward.HW_Oracle_Request
                     {
-                        hw_oracle_vym = sem
+                        //hw_oracle_vym = sem
                     };
                     Heavensward.HW_Oracle_Requests_List.Add(request_hw);
                 }
@@ -603,7 +1195,7 @@ namespace Project_Insight
                     /*Persistence Request*/
                     Persistence.Persistence_Request request_pers = new Persistence.Persistence_Request
                     {
-                        persistence_rp = sem,
+                        //persistence_rp = sem,
                     };
                     Persistence.Persistence_Requests_List.Add(request_pers);
 
@@ -746,7 +1338,7 @@ namespace Project_Insight
                         /*Persistence Request*/
                         Persistence.Persistence_Request request_pers = new Persistence.Persistence_Request
                         {
-                            persistence_ac = sem,
+                            //persistence_ac = sem,
                         };
                         Persistence.Persistence_Requests_List.Add(request_pers);
 
@@ -782,7 +1374,7 @@ namespace Project_Insight
                         /*Persistence Request*/
                         Persistence.Persistence_Request request_pers = new Persistence.Persistence_Request
                         {
-                            persistence_ac = sem,
+                            //persistence_ac = sem,
                         };
                         Persistence.Persistence_Requests_List.Add(request_pers);
 
@@ -911,11 +1503,24 @@ namespace Project_Insight
         public static void Set_Font(Excel.Range cell)
         {
             string Str = cell.Text;
-            int index = Str.IndexOf("mins");
+            int index = Str.IndexOf("min");
             if (index > 4)
             {
                 cell.Characters[index - 3, Str.Length].Font.Size = 8;
-            }
+            }/*
+            if (Str.Length > 135)
+            {
+                //find next space
+                for (int i = 135; i < Str.Length; i++)
+                {
+                    if (Str.Substring(i, 1).Equals(" "))
+                    {
+                        Str = Str.Substring(0, i);
+                        cell.Characters[0, i].Text = Str;
+                    }
+
+                }
+            }*/
         }
 
 
@@ -1056,7 +1661,7 @@ namespace Project_Insight
             return cell;
         }
 
-        public static string[] Get_time_from_week(VyM_Sem sem)
+        public static string[] Get_time_from_week(Insight_Sem sem)
         {
             string[] Time_data = new string[15];
             DateTime Aux_dateTime = new DateTime(2019, 1, 1, 7, 00, 00);
