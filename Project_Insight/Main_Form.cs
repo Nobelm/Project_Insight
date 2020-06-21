@@ -47,12 +47,21 @@ namespace Project_Insight
             Allowed,
             Blocked
         };
-        public enum Special_Week_Type
+        //todo
+        public enum Special_Meeting_Type
         {
             Non_status,
             Visit_type,
             Conv_type
         };
+        public enum Clear_Insight
+        {
+            Clear_VyM,
+            Clear_RP,
+            Clear_Ac,
+            Clear_All, 
+            Clear_none
+        }
         public static short iterator_stack = 0;
         public static short current_week = 1;
         public static short presenter_RP = 3;
@@ -75,13 +84,14 @@ namespace Project_Insight
         public static bool UI_running = false;
         public static bool is_new_instance = false;
         public static bool Room_B_enabled = false;
-        public static bool Write_config_status = false;
+        public static bool save_cfg = false;
         public static bool Save_as_pdf = false;
         public static bool Ac_same_all_week = false;
         public static bool Helix_Saving = false;
         public static bool Pending_refresh_status_grids = false;
         public static bool Heavensward_request_complete = false;
         public static bool Pending_Week_Handler_Refresh = false;
+        public static bool Pending_Overwatch_Refresh = false;
         public static bool month_found = false;
         public static bool Male_List_filled = false;
         public static bool Autocomplete_aux_status = true;
@@ -89,6 +99,7 @@ namespace Project_Insight
         public static bool Week_Format = false;     //True for Full format, False for Individual Format
         private static bool Covert_Ops = false;
         private static bool Edit_Rule = true;
+        private static bool Special_Week_Input = false;
         public static DayOfWeek VyM_Day;
         public static DayOfWeek RP_Day;
         public static DateTime start_time = new DateTime(DateTime.Today.Year, 1, 1, 7, 00, 00);
@@ -115,12 +126,14 @@ namespace Project_Insight
         public static List<Trace> Info_trace = new List<Trace>();
         public static List<string> Autocomplete_Males_List = new List<string>();
         public static BindingList<Males> Male_List = new BindingList<Males>();
+        public static BindingList<Overwatch.Overwatch_Object> Overwatch_Information_List = new BindingList<Overwatch.Overwatch_Object>();
         public static Males Rule_Elders = new Males();
         public static Males Rule_Ministerials = new Males();
         public static Males Rule_Generals = new Males();
         public static Thread Persistence_thread = new Thread(() => Persistence.Start_DataBase());
         public static Thread Heavensward_thread = new Thread(() => Heavensward.Start_Heavensward());
         public static Thread Helix_thread = new Thread(() => Helix.Start_Helix());
+        public static Thread Overwatch_thread = new Thread(() => Overwatch.Start_Overwatch());
         public static Insight_Month Insight_month = new Insight_Month();
 
 
@@ -157,6 +170,8 @@ namespace Project_Insight
             Heavensward_thread.Start();
 
             Helix_thread.Start();
+
+            Overwatch_thread.Start();
         }
 
         public static void Set_number_weeks()
@@ -202,8 +217,9 @@ namespace Project_Insight
         public void Autocomplete_dictionary()
         {
             Dict_vym.Add("ig_01", txt_Lec_Sem);
-            Dict_vym.Add("ig_02", txt_Pres);
-            Dict_vym.Add("ig_03", txt_ConAux);
+            Dict_vym.Add("ig_02", txt_Song_VyM_1);
+            Dict_vym.Add("ig_03", txt_Pres);
+            Dict_vym.Add("ig_04", txt_ConAux);
             Dict_vym.Add("tb_01", txt_TdlB_1);
             Dict_vym.Add("tb_02", txt_TdlB_A1);
             Dict_vym.Add("tb_03", txt_TdlB_A2);
@@ -222,25 +238,30 @@ namespace Project_Insight
             Dict_vym.Add("sm_41", txt_SMM4);
             Dict_vym.Add("sm_42", txt_SMM_A4);
             Dict_vym.Add("sm_43", txt_SMM_B4);
+            Dict_vym.Add("nv_01", txt_Song_VyM_2);
             Dict_vym.Add("nv_11", txt_NVC1);
             Dict_vym.Add("nv_12", txt_NVC_A1);
             Dict_vym.Add("nv_21", txt_NVC2);
             Dict_vym.Add("nv_22", txt_NVC_A2);
             Dict_vym.Add("nv_31", txt_NVC_A3);
             Dict_vym.Add("nv_40", txt_NVC_A4);
-            Dict_vym.Add("nv_50", txt_Ora2VyM);
+            Dict_vym.Add("nv_50", txt_Song_VyM_3);
+            Dict_vym.Add("nv_51", txt_Ora2VyM);
 
-            Dict_rp.Add("rp_01", txt_PresRP);
-            Dict_rp.Add("rp_02", txt_RP_Speech);
-            Dict_rp.Add("rp_03", txt_RP_Disc);
-            Dict_rp.Add("rp_04", txt_RP_Cong);
-            Dict_rp.Add("rp_05", txt_Title_Atly);
-            Dict_rp.Add("rp_06", txt_Con_Atly);
-            Dict_rp.Add("rp_07", txt_Lect_Atly);
-            Dict_rp.Add("rp_08", txt_OraRP);
-            Dict_rp.Add("rp_09", txt_Sal_Disc);
-            Dict_rp.Add("rp_10", txt_Sal_Title);
-            Dict_rp.Add("rp_11", txt_Sal_Cong);
+            Dict_rp.Add("rp_01", txt_Song_RP_1);
+            Dict_rp.Add("rp_02", txt_PresRP);
+            Dict_rp.Add("rp_03", txt_RP_Speech);
+            Dict_rp.Add("rp_04", txt_RP_Disc);
+            Dict_rp.Add("rp_05", txt_RP_Cong);
+            Dict_rp.Add("rp_06", txt_Song_RP_2);
+            Dict_rp.Add("rp_07", txt_Title_Atly);
+            Dict_rp.Add("rp_08", txt_Con_Atly);
+            Dict_rp.Add("rp_09", txt_Lect_Atly);
+            Dict_rp.Add("rp_10", txt_Song_RP_3);
+            Dict_rp.Add("rp_11", txt_OraRP);
+            Dict_rp.Add("rp_12", txt_Sal_Disc);
+            Dict_rp.Add("rp_13", txt_Sal_Title);
+            Dict_rp.Add("rp_14", txt_Sal_Cong);
 
             Dict_ac.Add("ac_11", txt_Aseo_1);
             Dict_ac.Add("ac_12", txt_Cap_vym_1);
@@ -284,6 +305,7 @@ namespace Project_Insight
             Heavensward_thread.Abort();
             Persistence_thread.Abort();
             Helix_thread.Abort();
+            Overwatch_thread.Abort();
             Helix.Close_Ex();
             Persistence.Close_DB();
             Application.Exit();
@@ -427,6 +449,10 @@ namespace Project_Insight
             {
                 Refresh_Males_Grid();
             }
+            if (Pending_Overwatch_Refresh)
+            {
+                Refresh_Overwatch_Grid();
+            }
             if (Pending_Week_Handler_Refresh || Heavensward_request_complete)
             {
                 Read_Current_Week();
@@ -465,7 +491,7 @@ namespace Project_Insight
                     Str = cmd + " " + sup;
                     Save_command(txt_Command.Text);
                     command_iterator = 0;
-                    if (!Write_config_status)
+                    if (!Special_Week_Input)
                     {
                         switch (cmd)
                         {
@@ -584,7 +610,7 @@ namespace Project_Insight
                                 }
                             case "cfg":
                                 {
-                                    Notify("Entering Write_Config mode");
+                                    Notify("Entering Write Config mode");
                                     tab_Control.SelectedIndex = 4;
                                     break;
                                 }
@@ -620,51 +646,24 @@ namespace Project_Insight
                                     }
                                     break;
                                 }
-                            case "conv":
+                            case "spec":
                                 {
                                     if (UI_running)
                                     {
-                                        //sup = sup.ToLower(); 
-                                        if (sup.Contains("false"))
+                                        if (sup.Contains("rmv"))
                                         {
-                                            Set_Convention_Week(false);
+                                            Notify("Clear Special Meeting info for current week");
+                                            Insight_Sem aux_sem = new Insight_Sem();
+                                            aux_sem.Special_VyM_Meeting = Special_Meeting_Type.Non_status;
+                                            aux_sem.Special_RP_Meeting = Special_Meeting_Type.Non_status;
+                                            aux_sem.Special_VyM_Meeting_Info = "";
+                                            aux_sem.Special_RP_Meeting_Info = "";
+                                            Spec_Control(aux_sem);
                                         }
                                         else
                                         {
-                                            Conv_Name = "Asamblea de los Testigos de Jehová: " + sup;
-                                            Set_Convention_Week(true);
-                                        }
-                                        Notify("Current week [" + current_week.ToString() + "] setting as Convention [" + (sup.Contains("false") ? "False" : "True") + "]");
-                                        Alert_Label_VyM.Text = "Semana de Asamblea!";
-                                        Alert_Label_VyM.Visible = true;
-                                    }
-                                    else
-                                    {
-                                        Warn("Need to create a new instance or open an existing program");
-                                    }
-                                    break;
-                                }
-                            case "vst":
-                                {
-                                    if (UI_running)
-                                    {
-                                        sup = sup.ToLower();
-                                        if (sup.Contains("true"))
-                                        {
-                                            Set_Visit_Week(true);
-                                            Notify("Marked current week [" + current_week + "] as Visit");
-                                            Alert_Label_VyM.Text = "Semana de la Visita del Superintendente de Circuito";
-                                            Alert_Label_VyM.Visible = true;
-                                            txt_NVC3.Enabled = true;
-                                        }
-                                        else if (sup.Contains("false"))
-                                        {
-                                            Notify("Removed mark week [" + current_week + "] as Visit");
-                                            Set_Visit_Week(false);
-                                        }
-                                        else
-                                        {
-                                            Warn("Command not recognized or not supported");
+                                            Notify("Select one of the following commands for special week:\n1 .- All Week Visit Type\n2 .- All Week Conv Type\n3 .- VyM Visit Type\n4 .- VyM Conv Type\n5 .- RP Visit Type\n6 .- RP Conv Type\n Other Number to clear Week\n");
+                                            Special_Week_Input = true;
                                         }
                                     }
                                     else
@@ -681,37 +680,6 @@ namespace Project_Insight
                                     }
                                     break;
                                 }
-                            /*case "cfg":
-                                {
-                                    /*sup = sup.ToLower();
-                                    if (sup == "read")
-                                    {
-                                        Notify("Reading config status\n");
-                                        Notify("Congregation Name: " + Cong_Name);
-                                        Notify("Room B : " + (Room_B_enabled ? "Enabled" : "Disabled"));
-                                        Notify("VyM horary : " + VyM_Day + " " + VyM_horary.ToString("HH:mm"));
-                                        Notify("RP horary : " + RP_Day + " " + RP_horary.ToString("HH:mm"));
-                                        Notify("AC all week : " + (Ac_same_all_week ? "Enabled": "Disabled") + "\n");
-                                    }
-                                    else if (sup == "write")
-                                    {
-                                        Notify("Entering Write_Config mode");
-                                        Write_config_status = true;
-                                    }
-                                    else
-                                    {
-                                        Warn("Invalid command");
-                                    }
-                                    Notify("Entering Write_Config mode");
-                                    Write_config_status = true;
-                                    break;
-                                }*/
-                            case "help":
-                                {
-                                    Notify("TBD");
-                                    //Notify(Project_Insight.Properties.Resources.Commands_Helper);
-                                    break;
-                                }
                             case "hw":
                                 {
                                     if (UI_running)
@@ -719,7 +687,6 @@ namespace Project_Insight
                                         Notify("Request Heavensward info");
                                         Save_Current_Week();
                                         Heavensward.Request_Heavensward = true;
-                                        //Heavensward.HW_Requests_List.Add(current_week);
                                     }
                                     else
                                     {
@@ -736,10 +703,41 @@ namespace Project_Insight
                                     }
                                     break;
                                 }
+                            case "clear":
+                                {
+                                    if (UI_running)
+                                    {
+                                        sup = sup.ToLower();
+                                        Clear_Insight clear_Insight;
+                                        if (sup.Contains("vym"))
+                                        {
+                                            clear_Insight = Clear_Insight.Clear_VyM;
+                                        }
+                                        else if (sup.Contains("rp"))
+                                        {
+                                            clear_Insight = Clear_Insight.Clear_RP;
+                                        }
+                                        else if (sup.Contains("ac"))
+                                        {
+                                            clear_Insight = Clear_Insight.Clear_Ac;
+                                        }
+                                        else if (sup.Contains("all"))
+                                        {
+                                            clear_Insight = Clear_Insight.Clear_All;
+                                        }
+                                        else
+                                        {
+                                            clear_Insight = Clear_Insight.Clear_none;
+                                            Warn("Command not recognized");
+                                        }
+                                        Clear_Handler(clear_Insight);
+                                    }
+                                    break;
+                                }
                             case "test":
                                 {
-                                    Save_Current_Week();
-                                    Helix.Gaia_Protocol();
+                                    Notify("Testing");
+                                    Heavensward.Get_Songs_From_Watchtower();
                                     break;
                                 }
                             default:
@@ -773,7 +771,7 @@ namespace Project_Insight
                                                         txt.Text = sup;
                                                         txt.BackColor = Color.White;
                                                         Notify("Writing in [" + txt.Name + "]");
-                                                        if (cmd.Equals("rp_02") || cmd.Equals("rp_10"))
+                                                        if (cmd.Equals("rp_03") || cmd.Equals("rp_13"))
                                                         {
                                                             txt.Text = Get_Speech(sup);
                                                         }
@@ -813,133 +811,111 @@ namespace Project_Insight
                     }
                     else
                     {
-                        /*Switch to attend writing request to cfg file*/
+                        Insight_Sem aux_sem = new Insight_Sem();
+                        switch (current_week)
+                        {
+                            case 1:
+                                {
+                                    aux_sem = Insight_month.Semana1;
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    aux_sem = Insight_month.Semana2;
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    aux_sem = Insight_month.Semana3;
+                                    break;
+                                }
+                            case 4:
+                                {
+                                    aux_sem = Insight_month.Semana4;
+                                    break;
+                                }
+                            case 5:
+                                {
+                                    aux_sem = Insight_month.Semana5;
+                                    break;
+                                }
+                        }
+                        string Notify_Message = " ";
                         switch (cmd)
                         {
-                            case "cong":
+                            case "1": //All Week Visit Type
                                 {
-                                    Cong_Name = sup;
-                                    Notify("Seeting Congregation Name to: " + Cong_Name);
+                                    Notify_Message = "All Week Visit Type Selected for week " + current_week.ToString();
+                                    aux_sem.Special_VyM_Meeting = Special_Meeting_Type.Visit_type;
+                                    aux_sem.Special_RP_Meeting = Special_Meeting_Type.Visit_type;
+                                    aux_sem.Special_VyM_Meeting_Info = sup;
+                                    aux_sem.Special_RP_Meeting_Info = sup;
                                     break;
                                 }
-                            case "roomb":
+                            case "2": //All Week Conv Type
                                 {
-                                    sup = sup.ToLower();
-                                    if (sup.Contains("false"))
-                                    {
-                                        Room_B_enabled = false;
-                                    }
-                                    else if (sup.Contains("true"))
-                                    {
-                                        Room_B_enabled = true;
-                                    }
-                                    else
-                                    {
-                                        Warn("Wrong condition, only boolean status");
-                                    }
-                                    Notify("Room B available status: " + (Room_B_enabled ? "true" : "false"));
+                                    Notify_Message = "All Week Convention Type Selected for week " + current_week.ToString();
+                                    aux_sem.Special_VyM_Meeting = Special_Meeting_Type.Conv_type;
+                                    aux_sem.Special_RP_Meeting = Special_Meeting_Type.Conv_type;
+                                    aux_sem.Special_VyM_Meeting_Info = sup;
+                                    aux_sem.Special_RP_Meeting_Info = sup;
                                     break;
                                 }
-                            case "vymh":
+                            case "3": //VyM Visit Type
                                 {
-                                    sup = sup.ToLower();
-                                    if (sup.Contains(":"))
-                                    {
-                                        int dot = sup.IndexOf(":");
-                                        string aux_sup = "";
-                                        aux_sup = sup.Remove(dot);
-                                        if (!int.TryParse(aux_sup, out int Hr))
-                                        {
-                                            Warn("Unable to get hour");
-                                        }
-                                        aux_sup = sup.Remove(0, 3);
-                                        if (!int.TryParse(aux_sup, out int Mn))
-                                        {
-                                            Warn("Unable to get minutes");
-                                        }
-                                        if (Hr > 0 && Mn >= 0)
-                                        {
-                                            VyM_horary = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, Hr, Mn, 0);
-                                            Notify("Seeting Schedule for VyM Meeting at: " + VyM_horary.ToString("HH:mm"));
-                                        }
-                                    }
+                                    Notify_Message = "VyM Visit Type Selected for week " + current_week.ToString();
+                                    aux_sem.Special_VyM_Meeting = Special_Meeting_Type.Visit_type;
+                                    aux_sem.Special_VyM_Meeting_Info = sup;
                                     break;
                                 }
-                            case "rph":
+                            case "4": //VyM Conv Type
                                 {
-                                    sup = sup.ToLower();
-                                    if (sup.Contains(":"))
-                                    {
-                                        int dot = sup.IndexOf(":");
-                                        string aux_sup = "";
-                                        aux_sup = sup.Remove(dot);
-                                        if (!int.TryParse(aux_sup, out int Hr))
-                                        {
-                                            Warn("Unable to get hour");
-                                        }
-                                        aux_sup = sup.Remove(0, 3);
-                                        if (!int.TryParse(aux_sup, out int Mn))
-                                        {
-                                            Warn("Unable to get minutes");
-                                        }
-                                        if (Hr > 0 && Mn >= 0)
-                                        {
-                                            RP_horary = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, Hr, Mn, 0);
-                                            Notify("Seeting Schedule for RP Meeting at: " + RP_horary.ToString("HH:mm"));
-                                        }
-                                    }
+                                    Notify_Message = "VyM Convention Type Type Selected for week " + current_week.ToString();
+                                    aux_sem.Special_VyM_Meeting = Special_Meeting_Type.Conv_type;
+                                    aux_sem.Special_VyM_Meeting_Info = sup;
                                     break;
                                 }
-                            case "vymd":
+                            case "5": //RP Visit Type
                                 {
-                                    sup = sup.ToLower();
-                                    VyM_Day = GetDayOfWeek(sup);
-                                    Notify("VyM day meeting set in: " + VyM_Day.ToString());
+                                    Notify_Message = "RP Visit Type Selected for week " + current_week.ToString();
+                                    aux_sem.Special_RP_Meeting = Special_Meeting_Type.Visit_type;
+                                    aux_sem.Special_RP_Meeting_Info = sup;
                                     break;
                                 }
-                            case "rpd":
+                            case "6": //RP Conv Type
                                 {
-                                    sup = sup.ToLower();
-                                    RP_Day = GetDayOfWeek(sup);
-                                    Notify("RP day meeting set in: " + RP_Day.ToString());
-                                    break;
-                                }
-                            case "ac":
-                                {
-                                    sup = sup.ToLower();
-                                    if (sup.Contains("false"))
-                                    {
-                                        Ac_same_all_week = false;
-                                    }
-                                    else if (sup.Contains("true"))
-                                    {
-                                        Ac_same_all_week = true;
-                                    }
-                                    else
-                                    {
-                                        Warn("Wrong condition, only boolean status");
-                                    }
-                                    Notify("AC same all week status: " + (Ac_same_all_week ? "true" : "false"));
-                                    break;
-                                }
-                            case "exit":
-                                {
-                                    Write_config_status = false;
-                                    Notify("Exiting Write_Config mode");
-                                    Config_Control(false);
-                                    Get_Meetings();
-                                    Pending_Week_Handler_Refresh = true;
+                                    Notify_Message = "RP Convention Type Selected for week " + current_week.ToString();
+                                    aux_sem.Special_RP_Meeting = Special_Meeting_Type.Conv_type;
+                                    aux_sem.Special_RP_Meeting_Info = sup;
                                     break;
                                 }
                             default:
                                 {
-                                    Warn("Unexpected command while Write_Config_Status is true");
+                                    Notify_Message = " ";
+                                    aux_sem.Special_VyM_Meeting = Special_Meeting_Type.Non_status;
+                                    aux_sem.Special_RP_Meeting = Special_Meeting_Type.Non_status;
+                                    aux_sem.Special_VyM_Meeting_Info = "";
+                                    aux_sem.Special_RP_Meeting_Info = "";
                                     break;
                                 }
                         }
+                        if (Notify_Message.Length > 5)
+                        {
+                            Notify(Notify_Message);
+                        }
+                        else
+                        {
+                            Warn("Invalid Parameter, return to normal commands");
+                        }
+                        Spec_Control(aux_sem);
+                        Special_Week_Input = false;
                     }
                     txt_Command.Text = "";
                     txt_Command.Focus();
+                }
+                if (UI_running)
+                {
+                    //Overwatch.OW_Request = true;
                 }
             }
             else if (e.KeyCode == Keys.Up)
@@ -1091,6 +1067,56 @@ namespace Project_Insight
             Command_history[1] = cmd;
         }
 
+        /*--------------------------------------- Spec Control ---------------------------------------*/
+
+        public void Spec_Control(Insight_Sem sem)
+        {
+            switch (current_week)
+            {
+                case 1:
+                    {
+                        Insight_month.Semana1.Special_VyM_Meeting = sem.Special_VyM_Meeting;
+                        Insight_month.Semana1.Special_RP_Meeting = sem.Special_RP_Meeting;
+                        Insight_month.Semana1.Special_VyM_Meeting_Info = sem.Special_VyM_Meeting_Info;
+                        Insight_month.Semana1.Special_RP_Meeting_Info = sem.Special_RP_Meeting_Info;
+                        break;
+                    }
+                case 2:
+                    {
+                        Insight_month.Semana2.Special_VyM_Meeting = sem.Special_VyM_Meeting;
+                        Insight_month.Semana2.Special_RP_Meeting = sem.Special_RP_Meeting;
+                        Insight_month.Semana2.Special_VyM_Meeting_Info = sem.Special_VyM_Meeting_Info;
+                        Insight_month.Semana2.Special_RP_Meeting_Info = sem.Special_RP_Meeting_Info;
+                        break;
+                    }
+                case 3:
+                    {
+                        Insight_month.Semana3.Special_VyM_Meeting = sem.Special_VyM_Meeting;
+                        Insight_month.Semana3.Special_RP_Meeting = sem.Special_RP_Meeting;
+                        Insight_month.Semana3.Special_VyM_Meeting_Info = sem.Special_VyM_Meeting_Info;
+                        Insight_month.Semana3.Special_RP_Meeting_Info = sem.Special_RP_Meeting_Info;
+                        break;
+                    }
+                case 4:
+                    {
+                        Insight_month.Semana4.Special_VyM_Meeting = sem.Special_VyM_Meeting;
+                        Insight_month.Semana4.Special_RP_Meeting = sem.Special_RP_Meeting;
+                        Insight_month.Semana4.Special_VyM_Meeting_Info = sem.Special_VyM_Meeting_Info;
+                        Insight_month.Semana4.Special_RP_Meeting_Info = sem.Special_RP_Meeting_Info;
+                        break;
+                    }
+                case 5:
+                    {
+                        Insight_month.Semana5.Special_VyM_Meeting = sem.Special_VyM_Meeting;
+                        Insight_month.Semana5.Special_RP_Meeting = sem.Special_RP_Meeting;
+                        Insight_month.Semana5.Special_VyM_Meeting_Info = sem.Special_VyM_Meeting_Info;
+                        Insight_month.Semana5.Special_RP_Meeting_Info = sem.Special_RP_Meeting_Info;
+                        break;
+                    }
+            }
+            Read_Current_Week();
+        }
+
         /*--------------------------------------- Excel file Control ---------------------------------------*/
 
         /*New excel file*/
@@ -1103,9 +1129,39 @@ namespace Project_Insight
             autocomplete.AddRange(Dict_vym.Keys.ToArray());
             txt_Command.AutoCompleteCustomSource = autocomplete;
             UI_running = true;
-            Time_Handler();
+            //Time_Handler();
             Notify("Project Insight Ready Executor Nobelm!");
             tab_Control.Enabled = true;
+        }
+
+        /*Open an existing excel program*/
+        public void Known_Instance()
+        {
+            OpenFileDialog openExcel = new OpenFileDialog
+            {
+                Filter = "Excel files (*.xlsx, *.xls)|*.xlsx;*.xls",
+                FileName = "",
+                Title = "Load Excel File"
+            };
+            if (DialogResult.OK == openExcel.ShowDialog())
+            {
+                if (null != openExcel.FileName)
+                {
+                    File_Path = openExcel.FileName;
+                    Process_Helix(3);
+                }
+            }
+            else
+            {
+                Warn("File not loaded");
+            }
+
+            is_new_instance = false;
+            tab_Control.Enabled = true;
+            var autocomplete = new AutoCompleteStringCollection();
+            autocomplete.AddRange(Dict_vym.Keys.ToArray());
+            txt_Command.AutoCompleteCustomSource = autocomplete;
+            //Time_Handler();
         }
 
         /*Open config file*/
@@ -1123,7 +1179,7 @@ namespace Project_Insight
                 Week_Format = Properties.Settings.Default.Week_Format;
 
                 Rule_Elders.Name = Properties.Settings.Default.Rule_Elders_Name;
-                Rule_Elders.male_type = (Male_Type)Properties.Settings.Default.Rule_Elders_Type;
+                Rule_Elders.Male_Type = (Male_Type)Properties.Settings.Default.Rule_Elders_Type;
                 Rule_Elders.Atalaya = Properties.Settings.Default.Rule_Elders_Atalaya;
                 Rule_Elders.Capitan = Properties.Settings.Default.Rule_Elders_Capitan;
                 Rule_Elders.Acomodador = Properties.Settings.Default.Rule_Elders_Acomodador;
@@ -1132,7 +1188,7 @@ namespace Project_Insight
                 Rule_Elders.Oracion = Properties.Settings.Default.Rule_Elders_Oracion;
 
                 Rule_Ministerials.Name = Properties.Settings.Default.Rule_Ministerial_Name;
-                Rule_Ministerials.male_type = (Male_Type)Properties.Settings.Default.Rule_Ministerial_Type;
+                Rule_Ministerials.Male_Type = (Male_Type)Properties.Settings.Default.Rule_Ministerial_Type;
                 Rule_Ministerials.Atalaya = Properties.Settings.Default.Rule_Ministerial_Atalaya;
                 Rule_Ministerials.Capitan = Properties.Settings.Default.Rule_Ministerial_Capitan;
                 Rule_Ministerials.Acomodador = Properties.Settings.Default.Rule_Ministerial_Acomodador;
@@ -1141,7 +1197,7 @@ namespace Project_Insight
                 Rule_Ministerials.Oracion = Properties.Settings.Default.Rule_Ministerial_Oracion;
 
                 Rule_Generals.Name = Properties.Settings.Default.Rule_General_Name;
-                Rule_Generals.male_type = (Male_Type)Properties.Settings.Default.Rule_General_Type;
+                Rule_Generals.Male_Type = (Male_Type)Properties.Settings.Default.Rule_General_Type;
                 Rule_Generals.Atalaya = Properties.Settings.Default.Rule_General_Atalaya;
                 Rule_Generals.Capitan = Properties.Settings.Default.Rule_General_Capitan;
                 Rule_Generals.Acomodador = Properties.Settings.Default.Rule_General_Acomodador;
@@ -1157,17 +1213,18 @@ namespace Project_Insight
                 Cbx_RP_Day.SelectedIndex = (int)RP_Day;
                 Chb_Setters_Same_Week.Checked = Ac_same_all_week;
                 Chbx_Wekk_Format.Checked = Week_Format;
-
-                /*
-                Lbl_Room_B.Text = "Room B: " + Room_B_enabled.ToString();
-                Lbl_VyM_Horary.Text = "VyM Horary: " + VyM_horary.ToString("HH:mm");
-                Lbl_RP_Horary.Text = "RP Horary: " + RP_horary.ToString("HH:mm");
-                Lbl_VyM_Day.Text = "Day: " + VyM_Day.ToString();
-                Lbl_RP_Day.Text = "Day: " + RP_Day.ToString();
-                Lbl_AC_Same.Text = "AC Same Week: " + Ac_same_all_week.ToString();*/
             }
             else
             {
+                Cong_Name = Txbx_Cong_Name.Text;
+                Room_B_enabled = Chbx_Auxiliar_Room.Checked;
+                VyM_horary = DateTmPk_VyM.Value;
+                VyM_Day = (DayOfWeek)Cbx_VyM_Day.SelectedIndex;
+                RP_horary = DateTmPk_RP.Value;
+                RP_Day = (DayOfWeek)Cbx_RP_Day.SelectedIndex;
+                Ac_same_all_week = Chb_Setters_Same_Week.Checked;
+                Week_Format = Chbx_Wekk_Format.Checked;
+
                 Properties.Settings.Default.Cong_Name = Cong_Name;
                 Properties.Settings.Default.Room_B_enabled = Room_B_enabled;
                 Properties.Settings.Default.VyM_horary = VyM_horary;
@@ -1177,7 +1234,7 @@ namespace Project_Insight
                 Properties.Settings.Default.Ac_same_all_week = Ac_same_all_week;
 
                 Properties.Settings.Default.Rule_Elders_Name = Rule_Elders.Name;
-                Properties.Settings.Default.Rule_Elders_Type = (int)Rule_Elders.male_type;
+                Properties.Settings.Default.Rule_Elders_Type = (int)Rule_Elders.Male_Type;
                 Properties.Settings.Default.Rule_Elders_Atalaya = Rule_Elders.Atalaya;
                 Properties.Settings.Default.Rule_Elders_Capitan = Rule_Elders.Capitan;
                 Properties.Settings.Default.Rule_Elders_Acomodador = Rule_Elders.Acomodador;
@@ -1186,7 +1243,7 @@ namespace Project_Insight
                 Properties.Settings.Default.Rule_Elders_Oracion = Rule_Elders.Oracion;
 
                 Properties.Settings.Default.Rule_Ministerial_Name = Rule_Ministerials.Name;
-                Properties.Settings.Default.Rule_Ministerial_Type = (int)Rule_Ministerials.male_type;
+                Properties.Settings.Default.Rule_Ministerial_Type = (int)Rule_Ministerials.Male_Type;
                 Properties.Settings.Default.Rule_Ministerial_Atalaya = Rule_Ministerials.Atalaya;
                 Properties.Settings.Default.Rule_Ministerial_Capitan = Rule_Ministerials.Capitan;
                 Properties.Settings.Default.Rule_Ministerial_Acomodador = Rule_Ministerials.Acomodador;
@@ -1195,15 +1252,13 @@ namespace Project_Insight
                 Properties.Settings.Default.Rule_Ministerial_Oracion = Rule_Ministerials.Oracion;
 
                 Properties.Settings.Default.Rule_General_Name = Rule_Generals.Name;
-                Properties.Settings.Default.Rule_General_Type = (int)Rule_Generals.male_type;
+                Properties.Settings.Default.Rule_General_Type = (int)Rule_Generals.Male_Type;
                 Properties.Settings.Default.Rule_General_Atalaya = Rule_Generals.Atalaya;
                 Properties.Settings.Default.Rule_General_Capitan = Rule_Generals.Capitan;
                 Properties.Settings.Default.Rule_General_Acomodador = Rule_Generals.Acomodador;
                 Properties.Settings.Default.Rule_General_Lector = Rule_Generals.Lector;
                 Properties.Settings.Default.Rule_General_PresRp = Rule_Generals.Pres_RP;
                 Properties.Settings.Default.Rule_General_Oracion = Rule_Generals.Oracion;
-
-                /*ToDo*/
 
                 Properties.Settings.Default.Save();
                 Config_Control(true);
@@ -1215,10 +1270,22 @@ namespace Project_Insight
             if (Chbx_Auxiliar_Room.Checked)
             {
                 Chbx_Auxiliar_Room.Text = "Enabled";
+                txt_TdlB_B3.Visible = true;
+                txt_SMM_B1.Visible = true;
+                txt_SMM_B2.Visible = true;
+                txt_SMM_B3.Visible = true;
+                txt_SMM_B4.Visible = true;
+                Notify("Auxiliar Room Enabled");
             }
             else
             {
                 Chbx_Auxiliar_Room.Text = "Disabled";
+                txt_TdlB_B3.Visible = false;
+                txt_SMM_B1.Visible = false;
+                txt_SMM_B2.Visible = false;
+                txt_SMM_B3.Visible = false;
+                txt_SMM_B4.Visible = false;
+                Notify("Auxiliar Room Disabled");
             }
         }
 
@@ -1284,36 +1351,6 @@ namespace Project_Insight
             }
         }
 
-        /*Open an existing excel program*/
-        public void Known_Instance()
-        {
-            OpenFileDialog openExcel = new OpenFileDialog
-            {
-                Filter = "Excel files (*.xlsx, *.xls)|*.xlsx;*.xls",
-                FileName = "",
-                Title = "Load Excel File"
-            };
-            if (DialogResult.OK == openExcel.ShowDialog())
-            {
-                if (null != openExcel.FileName)
-                {
-                    File_Path = openExcel.FileName;
-                    Process_Helix(6);
-                }
-            }
-            else
-            {
-                Warn("File not loaded");
-            }
-
-            is_new_instance = false;
-            tab_Control.Enabled = true;
-            var autocomplete = new AutoCompleteStringCollection();
-            autocomplete.AddRange(Dict_vym.Keys.ToArray());
-            txt_Command.AutoCompleteCustomSource = autocomplete;
-            Time_Handler();
-        }
-
         /*Add DateTime of the month meetings in the array*/
         public static void Get_Meetings()
         {
@@ -1348,35 +1385,6 @@ namespace Project_Insight
             {
                 week_five_exist = true;
             }
-            VyM_mes.Semana1.Fecha = meetings_days[0, 0];
-            VyM_mes.Semana2.Fecha = meetings_days[1, 0];
-            VyM_mes.Semana3.Fecha = meetings_days[2, 0];
-            VyM_mes.Semana4.Fecha = meetings_days[3, 0];
-            if (week_five_exist)
-            {
-                VyM_mes.Semana5.Fecha = meetings_days[4, 0];
-                AC_mes.Semana5.Fecha_VyM = meetings_days[4, 0];
-                RP_mes.Semana5.Fecha = meetings_days[4, 1];
-                AC_mes.Semana5.Fecha_RP = meetings_days[4, 1];
-                //AC_grpbx_wk5.Visible = true;
-            }
-            else
-            {
-                //AC_grpbx_wk5.Visible = false;
-            }
-            RP_mes.Semana1.Fecha = meetings_days[0, 1];
-            RP_mes.Semana2.Fecha = meetings_days[1, 1];
-            RP_mes.Semana3.Fecha = meetings_days[2, 1];
-            RP_mes.Semana4.Fecha = meetings_days[3, 1];
-
-            AC_mes.Semana1.Fecha_VyM = meetings_days[0, 0];
-            AC_mes.Semana2.Fecha_VyM = meetings_days[1, 0];
-            AC_mes.Semana3.Fecha_VyM = meetings_days[2, 0];
-            AC_mes.Semana4.Fecha_VyM = meetings_days[3, 0];
-            AC_mes.Semana1.Fecha_RP = meetings_days[0, 1];
-            AC_mes.Semana2.Fecha_RP = meetings_days[1, 1];
-            AC_mes.Semana3.Fecha_RP = meetings_days[2, 1];
-            AC_mes.Semana4.Fecha_RP = meetings_days[3, 1];
 
             Insight_month.Semana1.Fecha_VyM = meetings_days[0, 0];
             Insight_month.Semana2.Fecha_VyM = meetings_days[1, 0];
@@ -1392,8 +1400,6 @@ namespace Project_Insight
                 Insight_month.Semana5.Fecha_RP = meetings_days[4, 1];
             }
         }
-
-
 
         public async void LoadingBarHandler()
         {
@@ -1418,6 +1424,40 @@ namespace Project_Insight
                 txt_Command.Focus();
                 Helix_Saving = false;
             }
+        }
+
+        public void Clear_Handler(Clear_Insight clear_Insight)
+        {
+            switch (current_week)
+            {
+                case 1:
+                    {
+                        Insight_month.Semana1.Clear(clear_Insight);
+                        break;
+                    }
+                case 2:
+                    {
+                        Insight_month.Semana2.Clear(clear_Insight);
+                        break;
+                    }
+                case 3:
+                    {
+                        Insight_month.Semana3.Clear(clear_Insight);
+                        break;
+                    }
+                case 4:
+                    {
+                        Insight_month.Semana4.Clear(clear_Insight);
+                        break;
+                    }
+                case 5:
+                    {
+                        Insight_month.Semana5.Clear(clear_Insight);
+                        break;
+                    }
+            }
+            Pending_Week_Handler_Refresh = true;
+            Notify("Clear for week [" + current_week + "] with command [" + clear_Insight.ToString() + "]");
         }
 
         /*---------------------------------------- Helix handler -----------------------------------------*/
@@ -1458,6 +1498,11 @@ namespace Project_Insight
         private void Tab_Control_SelectedIndexChanged(object sender, EventArgs e)
         {
             var autocomplete = new AutoCompleteStringCollection();
+            if (save_cfg)
+            {
+                Config_Control(false);
+                save_cfg = false;
+            }
             if (current_tab != tab_Control.SelectedIndex)
             {
                 Save_Current_Week();
@@ -1511,7 +1556,8 @@ namespace Project_Insight
                     {
                         current_tab = 4;
                         Notify("Config Section");
-                        Config_Control(true);
+                        save_cfg = true;
+                        Rules_cmbx.SelectedIndex = 0;
                         break;
                     }
             }
@@ -1614,9 +1660,9 @@ namespace Project_Insight
                         break;
                     }
             }
-            Time_Handler();
+            //Time_Handler();
         }
-
+        /*
         public void Time_Handler()
         {
             string[] Time_data = new string[15];
@@ -1663,7 +1709,7 @@ namespace Project_Insight
             time_12.Text = Time_data[12];
             time_13.Text = Time_data[13];
             time_14.Text = Time_data[14];
-        }
+        }*/
 
         private void Set_date()
         {
@@ -1682,6 +1728,7 @@ namespace Project_Insight
         }
 
         /*************************************Autofill handler*******************************************/
+
         public void AutoFill_Handler()
         {
             Notify("Executing AutoFill Handler");
@@ -1854,14 +1901,15 @@ namespace Project_Insight
         {
             lbl_DateVyM.Text = sem.Fecha_VyM.ToString("dddd, dd MMMM");
             txt_Lec_Sem.Text = sem.Sem_Biblia;
+            txt_Song_VyM_1.Text = sem.Cancion_VyM_1;
             txt_Pres.Text = sem.Presidente_VyM;
             txt_ConAux.Text = sem.Consejero_Aux;
             txt_TdlB_1.Text = sem.Discurso_VyM;
             txt_TdlB_A1.Text = sem.Discurso_VyM_A;
             txt_TdlB_A2.Text = sem.Perlas;
-            txt_TdlB_3.Text = sem.Lectura;
-            txt_TdlB_A3.Text = sem.Lectura_A;
-            txt_TdlB_B3.Text = sem.Lectura_B;
+            txt_TdlB_3.Text = sem.Lectura_Biblia;
+            txt_TdlB_A3.Text = sem.Lectura_Biblia_A;
+            txt_TdlB_B3.Text = sem.Lectura_Biblia_B;
             txt_SMM1.Text = sem.SMM1;
             txt_SMM_A1.Text = sem.SMM1_A;
             txt_SMM_B1.Text = sem.SMM1_B;
@@ -1874,60 +1922,49 @@ namespace Project_Insight
             txt_SMM4.Text = sem.SMM4;
             txt_SMM_A4.Text = sem.SMM4_A;
             txt_SMM_B4.Text = sem.SMM4_B;
+            txt_Song_VyM_2.Text = sem.Cancion_VyM_2;
             txt_NVC1.Text = sem.NVC1;
             txt_NVC_A1.Text = sem.NVC1_A;
             txt_NVC2.Text = sem.NVC2;
             txt_NVC_A2.Text = sem.NVC2_A;
             txt_NVC_A3.Text = sem.Libro_Conductor;
             txt_NVC_A4.Text = sem.Libro_Lector;
+            txt_Song_VyM_3.Text = sem.Cancion_VyM_3;
             txt_Ora2VyM.Text = sem.Oracion_End_VyM;
             //RP
             lbl_DateRP.Text = sem.Fecha_RP.ToString("dddd, dd MMMM");
-            txt_RP_Speech.Text = sem.Titulo_RP;
+            txt_Song_RP_1.Text = sem.Cancion_RP_1;
+            txt_RP_Speech.Text = sem.Titulo_Discurso_RP;
             txt_PresRP.Text = sem.Presidente_RP;
             txt_RP_Cong.Text = sem.Congregacion_RP;
-            txt_RP_Disc.Text = sem.Discursante;
+            txt_RP_Disc.Text = sem.Discursante_RP;
+            txt_Song_RP_2.Text = sem.Cancion_RP_2;
             txt_Title_Atly.Text = sem.Titulo_Atalaya;
             txt_Con_Atly.Text = sem.Conductor_Atalaya;
             txt_Lect_Atly.Text = sem.Lector_Atalaya;
+            txt_Song_RP_3.Text = sem.Cancion_RP_3;
             txt_OraRP.Text = sem.Oracion_End_RP;
             txt_Sal_Disc.Text = sem.Discu_Sal;
             txt_Sal_Title.Text = sem.Ttl_Sal;
             txt_Sal_Cong.Text = sem.Cong_Sal;
-            /*
-            if (sem.Vst_Week)
+
+            if (sem.Special_VyM_Meeting != Special_Meeting_Type.Non_status)
             {
-                txt_NVC3.Text = sem.Titulo_Libro; 
-                Warn("Week [" + current_week.ToString() + "] selected as Visit");
-                Alert_Label_VyM.Text = "Semana de la Visita del Superintendente de Circuito";
+                sem.Libro_Titulo = "Discurso de servicio (30 mins.)";
+                txt_NVC3.Text = sem.Libro_Titulo;
+                txt_NVC3.Enabled = true;
+                Alert_Label_VyM.Text = sem.Special_VyM_Meeting_Info;
                 Alert_Label_VyM.Visible = true;
             }
             else
             {
-                txt_NVC3.Text = "Estudio biblico de congregacion (30 min.)";
+                txt_NVC3.Text = sem.Libro_Titulo;
                 Alert_Label_VyM.Visible = false;
                 txt_NVC3.Enabled = false;
-                txt_NVC_A4.Enabled = true;
-            }*/
-        }
-
-        public void RP_Week_Handler(RP_Sem sem)
-        {
-            lbl_DateRP.Text = sem.Fecha.ToString("dddd, dd MMMM");
-            txt_RP_Speech.Text = sem.Titulo;
-            txt_PresRP.Text = sem.Presidente;
-            txt_RP_Cong.Text = sem.Congregacion;
-            txt_RP_Disc.Text = sem.Discursante;
-            txt_Title_Atly.Text = sem.Titulo_Atalaya;
-            txt_Con_Atly.Text = sem.Conductor;
-            txt_Lect_Atly.Text = sem.Lector;
-            txt_OraRP.Text = sem.Oracion;
-            txt_Sal_Disc.Text = sem.Discu_Sal;
-            txt_Sal_Title.Text = sem.Ttl_Sal;
-            txt_Sal_Cong.Text = sem.Cong_Sal;
-            if (sem.Vst_Week)
+            }
+            if (sem.Special_RP_Meeting != Special_Meeting_Type.Non_status)
             {
-                Alert_Label_RP.Text = "Semana de la Visita del Superintendente de Circuito";
+                Alert_Label_RP.Text = sem.Special_RP_Meeting_Info;
                 Alert_Label_RP.Visible = true;
             }
             else
@@ -1935,7 +1972,6 @@ namespace Project_Insight
                 Alert_Label_RP.Visible = false;
             }
         }
-
 
         /*Function to save txtbx info in local variables*/
         public void Save_Current_Week()
@@ -1945,27 +1981,27 @@ namespace Project_Insight
             {
                 case 1:
                     {
-                        Insight_month.Semana1 = Write_Week(Insight_month.Semana1.Num_of_Week);
+                        Insight_month.Semana1 = Write_Week(Insight_month.Semana1);
                         break;
                     }
                 case 2:
                     {
-                        Insight_month.Semana2 = Write_Week(Insight_month.Semana2.Num_of_Week);
+                        Insight_month.Semana2 = Write_Week(Insight_month.Semana2);
                         break;
                     }
                 case 3:
                     {
-                        Insight_month.Semana3 = Write_Week(Insight_month.Semana3.Num_of_Week);
+                        Insight_month.Semana3 = Write_Week(Insight_month.Semana3);
                         break;
                     }
                 case 4:
                     {
-                        Insight_month.Semana4 = Write_Week(Insight_month.Semana4.Num_of_Week);
+                        Insight_month.Semana4 = Write_Week(Insight_month.Semana4);
                         break;
                     }
                 case 5:
                     {
-                        Insight_month.Semana5 = Write_Week(Insight_month.Semana5.Num_of_Week);
+                        Insight_month.Semana5 = Write_Week(Insight_month.Semana5);
                         break;
                     }
             }
@@ -2012,21 +2048,23 @@ namespace Project_Insight
         }
     
 
-        public Insight_Sem Write_Week(int num_week)
+        public Insight_Sem Write_Week(Insight_Sem sem_aux)
         {
+            int num_week = sem_aux.Num_of_Week;
             Insight_Sem sem = new Insight_Sem
             {
                 //VyM
                 Fecha_VyM      = meetings_days[num_week-1, 0],
                 Sem_Biblia     = txt_Lec_Sem.Text,
+                Cancion_VyM_1  = txt_Song_VyM_1.Text,
                 Presidente_VyM = txt_Pres.Text,
                 Consejero_Aux  = txt_ConAux.Text,
                 Discurso_VyM       = txt_TdlB_1.Text,
                 Discurso_VyM_A     = txt_TdlB_A1.Text,
                 Perlas         = txt_TdlB_A2.Text,
-                Lectura        = txt_TdlB_3.Text,
-                Lectura_A      = txt_TdlB_A3.Text,
-                Lectura_B      = txt_TdlB_B3.Text,
+                Lectura_Biblia        = txt_TdlB_3.Text,
+                Lectura_Biblia_A      = txt_TdlB_A3.Text,
+                Lectura_Biblia_B      = txt_TdlB_B3.Text,
                 SMM1           = txt_SMM1.Text,
                 SMM1_A         = txt_SMM_A1.Text,
                 SMM1_B         = txt_SMM_B1.Text,
@@ -2039,38 +2077,55 @@ namespace Project_Insight
                 SMM4           = txt_SMM4.Text,
                 SMM4_A         = txt_SMM_A4.Text,
                 SMM4_B         = txt_SMM_B4.Text,
+                Cancion_VyM_2  = txt_Song_VyM_2.Text,
                 NVC1           = txt_NVC1.Text,
                 NVC1_A         = txt_NVC_A1.Text,
                 NVC2           = txt_NVC2.Text,
+                Libro_Titulo   = txt_NVC3.Text,
                 NVC2_A         = txt_NVC_A2.Text,
-                Libro_Conductor        = txt_NVC_A3.Text,
-                Libro_Lector        = txt_NVC_A4.Text,
+                Libro_Conductor = txt_NVC_A3.Text,
+                Libro_Lector    = txt_NVC_A4.Text,
+                Cancion_VyM_3   = txt_Song_VyM_3.Text,
                 Oracion_End_VyM = txt_Ora2VyM.Text,
                 //RP
                 Fecha_RP        = meetings_days[num_week - 1, 1],
+                Cancion_RP_1    = txt_Song_RP_1.Text,
                 Presidente_RP   = txt_PresRP.Text,
-                Titulo_RP       = txt_RP_Speech.Text,
+                Titulo_Discurso_RP       = txt_RP_Speech.Text,
                 Congregacion_RP = txt_RP_Cong.Text,
-                Discursante     = txt_RP_Disc.Text,
+                Discursante_RP  = txt_RP_Disc.Text,
+                Cancion_RP_2    = txt_Song_RP_2.Text,
                 Titulo_Atalaya  = txt_Title_Atly.Text,
                 Conductor_Atalaya = txt_Con_Atly.Text,
                 Lector_Atalaya  = txt_Lect_Atly.Text,
+                Cancion_RP_3    = txt_Song_RP_3.Text,
                 Oracion_End_RP  = txt_OraRP.Text,
                 Discu_Sal       = txt_Sal_Disc.Text,
                 Ttl_Sal         = txt_Sal_Title.Text,
                 Cong_Sal        = txt_Sal_Cong.Text,
-                Num_of_Week = (short)num_week,
-            };
-            /*
-            if (Vst_Wk == num_week)
+                Num_of_Week     = (short)num_week,
+                //Special Meeting
+                Special_VyM_Meeting = sem_aux.Special_VyM_Meeting,
+                Special_RP_Meeting = sem_aux.Special_RP_Meeting,
+                Special_VyM_Meeting_Info = sem_aux.Special_VyM_Meeting_Info,
+                Special_RP_Meeting_Info = sem_aux.Special_RP_Meeting_Info,
+            };/*
+            if (sem.Special_VyM_Meeting == Special_Meeting_Type.Visit_type)
             {
-                sem.Titulo_Libro = txt_NVC3.Text;
+                sem.Libro_Titulo = txt_NVC3.Text;
+                Alert_Label_VyM.Visible = true;
+                Alert_Label_RP.Visible = true;
+                Alert_Label_VyM.Text = sem.Special_VyM_Meeting_Info;
+                Alert_Label_RP.Text = sem.Special_RP_Meeting_Info;
             }
             else
             {
-                sem.Titulo_Libro = "Estudio biblico de congregacion (30 min.)";
+                sem.Libro_Titulo = "Estudio bíblico de la congregación (30 mins. o menos)";
+                Alert_Label_VyM.Visible = false;
+                Alert_Label_RP.Visible = false;
+                Alert_Label_VyM.Text = "";
+                Alert_Label_RP.Text = "";
             }*/
-            sem.Libro_Titulo = "Estudio biblico de congregacion (30 min.)";
             return sem;
         }
 
@@ -2247,90 +2302,6 @@ namespace Project_Insight
             return retval;
         }
 
-        public void Set_Convention_Week(bool Conv_wk)
-        {
-            switch (current_week)
-            {
-                case 1:
-                    {
-                        VyM_mes.Semana1.Conv_Week = Conv_wk;
-                        RP_mes.Semana1.Conv_Week = Conv_wk;
-                        AC_mes.Semana1.Conv_Week = Conv_wk;
-                        break;
-                    }
-                case 2:
-                    {
-                        VyM_mes.Semana2.Conv_Week = Conv_wk;
-                        RP_mes.Semana2.Conv_Week = Conv_wk;
-                        AC_mes.Semana2.Conv_Week = Conv_wk;
-                        break;
-                    }
-                case 3:
-                    {
-                        VyM_mes.Semana3.Conv_Week = Conv_wk;
-                        RP_mes.Semana3.Conv_Week = Conv_wk;
-                        AC_mes.Semana3.Conv_Week = Conv_wk;
-                        break;
-                    }
-                case 4:
-                    {
-                        VyM_mes.Semana4.Conv_Week = Conv_wk;
-                        RP_mes.Semana4.Conv_Week = Conv_wk;
-                        AC_mes.Semana4.Conv_Week = Conv_wk;
-                        break;
-                    }
-                case 5:
-                    {
-                        VyM_mes.Semana5.Conv_Week = Conv_wk;
-                        RP_mes.Semana5.Conv_Week = Conv_wk;
-                        AC_mes.Semana5.Conv_Week = Conv_wk;
-                        break;
-                    }
-            }
-        }
-
-        public void Set_Visit_Week(bool Vst_wk)
-        {
-            switch (current_week)
-            {
-                case 1:
-                    {
-                        VyM_mes.Semana1.Vst_Week = Vst_wk;
-                        RP_mes.Semana1.Vst_Week = Vst_wk;
-                        AC_mes.Semana1.Vst_Week = Vst_wk;
-                        break;
-                    }
-                case 2:
-                    {
-                        VyM_mes.Semana2.Vst_Week = Vst_wk;
-                        RP_mes.Semana2.Vst_Week = Vst_wk;
-                        AC_mes.Semana2.Vst_Week = Vst_wk;
-                        break;
-                    }
-                case 3:
-                    {
-                        VyM_mes.Semana3.Vst_Week = Vst_wk;
-                        RP_mes.Semana3.Vst_Week = Vst_wk;
-                        AC_mes.Semana3.Vst_Week = Vst_wk;
-                        break;
-                    }
-                case 4:
-                    {
-                        VyM_mes.Semana4.Vst_Week = Vst_wk;
-                        RP_mes.Semana4.Vst_Week = Vst_wk;
-                        AC_mes.Semana4.Vst_Week = Vst_wk;
-                        break;
-                    }
-                case 5:
-                    {
-                        VyM_mes.Semana5.Vst_Week = Vst_wk;
-                        RP_mes.Semana5.Vst_Week = Vst_wk;
-                        AC_mes.Semana5.Vst_Week = Vst_wk;
-                        break;
-                    }
-            }
-        }
-
         /*--------------------------------------- State Database Handlers  ---------------------------------------*/
 
         public void Refresh_Males_Grid()
@@ -2415,7 +2386,7 @@ namespace Project_Insight
                 if ((Male_List.Count > Males_Count) && (cell.Value != null))  
                 {
                     Notify("New Male added: " + cell.Value.ToString());
-                    Male_List[cell.RowIndex].male_type = Male_Type.Publicador;
+                    Male_List[cell.RowIndex].Male_Type = Male_Type.Publicador;
                     Change_Male_type(cell.RowIndex, Male_Type.Publicador);
                 }
                 else
@@ -2423,7 +2394,7 @@ namespace Project_Insight
                     if (cell.Value == null || cell.Value.ToString() == "")
                     {
                         Notify("Male removed: " + Male_List[cell.RowIndex].Name);
-                        Previous_Male_Type = Male_List[cell.RowIndex].male_type.ToString();
+                        Previous_Male_Type = Male_List[cell.RowIndex].Male_Type.ToString();
                         Remove_Males_Count();
                         Males_Count = Elders_Count + Ministerials_Count + Generals_Count;
                         Male_List.RemoveAt(cell.RowIndex);
@@ -2693,6 +2664,28 @@ namespace Project_Insight
             }
         }
 
+        private void txt_Song_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+            string retval = "";
+            if (txt.TextLength < 5)
+            {
+                if (txt.Text.Length > 0)
+                {
+                    retval = Heavensward.Find_Song_Name(txt.Text);
+                }
+                if (txt.Name.Contains("1"))
+                {
+                    retval += " y oración de inicio";
+                }
+                else if (txt.Name.Contains("3"))
+                {
+                    retval += " y oración final";
+                }
+                txt.Text = retval;
+            }
+        }
+
         public Males Run_Rules(Males local_rule)
         {
             local_rule.Atalaya    = Check_CheckBox_Modifications(Chk_Atalaya);
@@ -2713,5 +2706,17 @@ namespace Project_Insight
             }
             return str;
         }
+
+
+        /*--------------------------------------- Overwatch Support  ---------------------------------------*/
+
+        public void Refresh_Overwatch_Grid()
+        {
+            Overwatch_Status_GridView.DataSource = Overwatch_Information_List;
+            Overwatch_Status_GridView.Refresh();
+            Overwatch_Status_GridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            Pending_Overwatch_Refresh = false;
+        }
+
     }
 }

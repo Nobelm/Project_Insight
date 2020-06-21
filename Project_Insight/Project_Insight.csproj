@@ -214,5 +214,8 @@
   <ItemGroup>
     <None Include="bin\Debug\Speech_list.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Songs_List.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

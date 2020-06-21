@@ -20,9 +20,10 @@ namespace Project_Insight
         private static string month = "";
         private const string find_bible_week = "Guía de actividades";
         private const string find_hidden_perls = "Busquemos perlas escondidas";
-        private const string find_book_study = "Estudio bíblico";
         private const string find_watchtower = "Artículo de estudio";
+        private static string hyperlink_WT = "";
         public static string[] Bible_Books;
+        public static  List<string> Songs_Titles_List = new List<string>();
         public static string[] Smm_keys = { "sm_11", "sm_21", "sm_31", "sm_41" };
         public static string[] Nvc_keys = { "nv_11", "nv_21" };
         private static bool pending_break = false;
@@ -96,6 +97,13 @@ namespace Project_Insight
             for (int i = 0; i < Bible_Books.Length -1; i++)
             {
                 Bible_Books[i] = Bible_Books[i].Remove(Bible_Books[i].Length - 1);
+            }
+            string[] Songs_Titles;
+            raw = Properties.Resources.Songs_List;
+            Songs_Titles = raw.Split('\n');
+            for (int i = 0; i < Songs_Titles.Length - 1; i++)
+            {
+                Songs_Titles_List.Add(Songs_Titles[i].Remove(Songs_Titles[i].Length - 1));
             }
             VyM_mes_HW_Local.Semana1.Num_of_Week = 1;
             VyM_mes_HW_Local.Semana2.Num_of_Week = 2;
@@ -178,7 +186,6 @@ namespace Project_Insight
             {
                 max_sem = 5;
             }
-            Main_Form.Notify("Gather information from heavensward for " + month);
             for (current_week = 1; current_week <= max_sem; current_week++)
             {
                 Copy_Main_Week();
@@ -187,6 +194,7 @@ namespace Project_Insight
                     string fecha = Main_Form.meetings_days[current_week - 1, 0].ToString("yyyy/MM/dd");
                     string url = "https://wol.jw.org/es/wol/dt/r4/lp-s/" + fecha;
                     month = Main_Form.meetings_days[current_week - 1, 0].ToString("MMMM");
+                    Main_Form.Notify("Gather information from heavensward for " + month);
                     try
                     {
                         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -215,7 +223,9 @@ namespace Project_Insight
                 }
             }
             Return_Values_From_Heavensward();
+            Overwatch.OW_Request = true;
             Main_Form.Heavensward_request_complete = true;
+            Main_Form.Notify("Heavensward Request Complete");
             Hw_inProgress = false;
             Request_Heavensward = false;
         }
@@ -277,14 +287,20 @@ namespace Project_Insight
             {
                 case 0:
                     {
-                        if(month_found)
+                        if (month_found)
                         {
                             insight_Sem_Local.Sem_Biblia = Analyze_string(str);
-                            current_meeting = 99;
+                            month_found = false;
                         }
                         if (str.Contains(month))
                         {
                             month_found = true;
+                        }
+                        if (str.Contains("Canción"))
+                        {
+                            insight_Sem_Local.Cancion_VyM_1 = Find_Song_Name(Analyze_string(str));
+                            insight_Sem_Local.Cancion_VyM_1 += " de inicio";
+                            current_meeting = 99;
                         }
                         break;
                     }
@@ -300,9 +316,9 @@ namespace Project_Insight
                                     insight_Sem_Local.Discurso_VyM = aux;
                                     tdb_attend++;
                                 }
-                                else if(!aux.Contains(find_hidden_perls))
+                                else if (!aux.Contains(find_hidden_perls))
                                 {
-                                    insight_Sem_Local.Lectura = aux;
+                                    insight_Sem_Local.Lectura_Biblia = aux;
                                     current_meeting = 99;
                                 }
 
@@ -357,12 +373,6 @@ namespace Project_Insight
                     }
                 case 3:
                     {
-                        if(str.Contains(find_book_study))
-                        {
-                            current_meeting = 99;
-                            //break_reader = true;
-                            break;
-                        }
                         if (str.Contains("<li>"))
                         {
                             string aux = Analyze_string(str);
@@ -375,7 +385,32 @@ namespace Project_Insight
                                 }
                                 else
                                 {
-                                    insight_Sem_Local.NVC2 = aux;
+                                    if (!aux.Contains("Palabras de conclusión"))
+                                    {
+                                        if (aux.Contains("30 mins."))
+                                        {
+                                            insight_Sem_Local.Libro_Titulo = aux;
+                                        }
+                                        else
+                                        {
+                                            insight_Sem_Local.NVC2 = aux;
+                                        }
+                                    }
+                                }
+                            }
+                            else if (str.Contains("Canción"))
+                            {
+                                if (nvc_attend == 0)
+                                {
+                                    insight_Sem_Local.Cancion_VyM_2 = Find_Song_Name(Analyze_string(str));
+                                }
+                                else
+                                {
+                                    insight_Sem_Local.Cancion_VyM_3 = Find_Song_Name(Analyze_string(str));
+                                    insight_Sem_Local.Cancion_VyM_3 += " final";
+                                    current_meeting = 99;
+                                    //break_reader = true;
+                                    break;
                                 }
                             }
                         }
@@ -420,12 +455,14 @@ namespace Project_Insight
         {
             if(WT_found)
             {
+                //Get hyperlink to WT article
+                Get_Link_to_Watchtower(str);
+                //Continue operation
                 string final_value = Analyze_string(str);
                 final_value = final_value.Substring(2); //String have number page at the beginning 
                 if (final_value != "")
                 {
                     insight_Sem_Local.Titulo_Atalaya = final_value;
-                    //Save_RP_Information();
                 }
                 break_reader = true;
             }
@@ -433,6 +470,15 @@ namespace Project_Insight
             {
                 WT_found = true;
             }
+        }
+
+        private static void Get_Link_to_Watchtower(string str)
+        {
+            hyperlink_WT = "https://wol.jw.org";
+            int initial_index = str.IndexOf("/es/wol");
+            int final_index = str.IndexOf("\"><strong>");
+            hyperlink_WT += str.Substring(initial_index, final_index - initial_index);
+            Get_Songs_From_Watchtower();
         }
 
         private static string Analyze_string(string str)
@@ -469,6 +515,81 @@ namespace Project_Insight
             }
             retval = retval.Replace("  ", "");
             return retval;
+        }
+
+        public static string Find_Song_Name(string str)
+        {
+            string retval = str;
+            if (str.Length > 0)
+            {
+                //Find Number
+                string title = "";
+                string number_found = "";
+                bool is_number_found = false;
+                char[] array = str.ToCharArray();
+                for (int i = 0; i < str.Length; i++)
+                {
+                    if (Char.IsWhiteSpace(array[i]) && is_number_found)
+                    {
+                        break;
+                    }
+                    else if (Char.IsDigit(array[i]))
+                    {
+                        is_number_found = true;
+                        number_found += array[i].ToString();
+                    }
+                }
+                //Find Title
+                if (int.TryParse(number_found, out int index))
+                {
+                    title = Songs_Titles_List[index - 1];
+                    //Format string
+                    retval = "Canción: " + number_found.ToString() + " - \"" + title + "\"";
+                    if (str.Contains("oración"))
+                    {
+                        retval += " y oración"; 
+                    }
+                }
+
+            }
+            return retval;
+        }
+
+        public static void Get_Songs_From_Watchtower()
+        {
+            try
+            {
+                bool song_2_found = false;
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(hyperlink_WT);
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    string raw;// = reader.ReadToEnd(); //Test --Do Not Delete Comment!--
+                    Main_Form.Notify("Connection ready for Watchtower");
+                     while ((raw = reader.ReadLine()) != null)
+                     {
+                        if (raw.Contains(">CANCIÓN"))
+                        {
+                            if (!song_2_found)
+                            {
+                                insight_Sem_Local.Cancion_RP_2 = Find_Song_Name(Analyze_string(raw));
+                                song_2_found = true;
+                            }
+                            else
+                            {
+                                insight_Sem_Local.Cancion_RP_3 = Find_Song_Name(Analyze_string(raw)) + " y oración final";
+                                break;
+                            }
+                        }
+                     }
+                    Main_Form.Notify("Songs from Watchtower retrieved.");
+                }
+            }
+            catch
+            {
+                
+            }
         }
 
         /*Store info into local variables*/
@@ -509,64 +630,21 @@ namespace Project_Insight
             }
         }
 
-        /*Store info into local variables*/
-        private static void Save_RP_Information()
-        {
-            switch (current_week)
-            {
-                case 1:
-                    {
-                        RP_mes_HW_Local.Semana1 = Aux_RP_Sem;
-                        RP_mes_HW_Local.Semana1.HW_Data = true;
-                        break;
-                    }
-                case 2:
-                    {
-                        RP_mes_HW_Local.Semana2 = Aux_RP_Sem;
-                        RP_mes_HW_Local.Semana2.HW_Data = true;
-                        break;
-                    }
-                case 3:
-                    {
-                        RP_mes_HW_Local.Semana3 = Aux_RP_Sem;
-                        RP_mes_HW_Local.Semana3.HW_Data = true;
-                        break;
-                    }
-                case 4:
-                    {
-                        RP_mes_HW_Local.Semana4 = Aux_RP_Sem;
-                        RP_mes_HW_Local.Semana4.HW_Data = true;
-                        break;
-                    }
-                case 5:
-                    {
-                        RP_mes_HW_Local.Semana5 = Aux_RP_Sem;
-                        RP_mes_HW_Local.Semana5.HW_Data = true;
-                        break;
-                    }
-            }
-        }
-
         private static void Return_Values_From_Heavensward()
         {
             Main_Form.Notify("Storing info from Heavensward into Main");
             
             Main_Form.Insight_month.Semana1.Save_Heavensward_Info(insight_Month_Local.Semana1);
-            //Main_Form.RP_mes.Semana1.Save_Heavensward_Info(RP_mes_HW_Local.Semana1);
 
             Main_Form.Insight_month.Semana2.Save_Heavensward_Info(insight_Month_Local.Semana2);
-           //Main_Form.RP_mes.Semana2.Save_Heavensward_Info(RP_mes_HW_Local.Semana2);
 
             Main_Form.Insight_month.Semana3.Save_Heavensward_Info(insight_Month_Local.Semana3);
-            //Main_Form.RP_mes.Semana3.Save_Heavensward_Info(RP_mes_HW_Local.Semana3);
 
             Main_Form.Insight_month.Semana4.Save_Heavensward_Info(insight_Month_Local.Semana4);
-            //Main_Form.RP_mes.Semana4.Save_Heavensward_Info(RP_mes_HW_Local.Semana4);
 
             if (Main_Form.week_five_exist)
             {
                 Main_Form.Insight_month.Semana5.Save_Heavensward_Info(insight_Month_Local.Semana5);
-                //Main_Form.RP_mes.Semana5.Save_Heavensward_Info(RP_mes_HW_Local.Semana5);
             }
         }
 

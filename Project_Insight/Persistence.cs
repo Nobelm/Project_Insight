@@ -169,9 +169,9 @@ namespace Project_Insight
                         Lector     = cellValue_stat[i, 5].ToString(),
                         Pres_RP    = cellValue_stat[i, 6].ToString(),
                         Oracion    = cellValue_stat[i, 7].ToString(),
-                        male_type  = (Main_Form.Male_Type)Convert.ToInt16(cellValue_stat[i, 8].ToString()),
+                        Male_Type  = (Main_Form.Male_Type)Convert.ToInt16(cellValue_stat[i, 8].ToString()),
                     };
-                    switch (aux_male.male_type)
+                    switch (aux_male.Male_Type)
                     {
                         case Main_Form.Male_Type.Anciano:
                             {
@@ -203,7 +203,7 @@ namespace Project_Insight
         {
             for (int i = 0; i < Main_Form.Male_List.Count; i++)
             {
-                switch (Main_Form.Male_List[i].male_type)
+                switch (Main_Form.Male_List[i].Male_Type)
                 {
                     case Main_Form.Male_Type.Anciano:
                         {
@@ -232,7 +232,7 @@ namespace Project_Insight
             male.Lector     = Sub_State_Set(local_rule.Lector, male.Lector);
             male.Pres_RP    = Sub_State_Set(local_rule.Pres_RP, male.Pres_RP);
             male.Oracion    = Sub_State_Set(local_rule.Oracion, male.Oracion);
-            male.male_type  = local_rule.male_type;
+            male.Male_Type  = local_rule.Male_Type;
             return male;
         }
 
@@ -279,7 +279,7 @@ namespace Project_Insight
                 Sheet_Stat.Cells[j, 5] = '\'' + Main_Form.Male_List[j - 1].Lector;
                 Sheet_Stat.Cells[j, 6] = '\'' + Main_Form.Male_List[j - 1].Pres_RP;
                 Sheet_Stat.Cells[j, 7] = '\'' + Main_Form.Male_List[j - 1].Oracion;
-                Sheet_Stat.Cells[j, 8] = Main_Form.Male_List[j - 1].male_type;
+                Sheet_Stat.Cells[j, 8] = Main_Form.Male_List[j - 1].Male_Type;
             }
             while (cellValue_stat[j, 1] != null)
             {
@@ -328,10 +328,11 @@ namespace Project_Insight
             string req = "";
             if (request.persistence_insight != null)
             {
-                req = "VyM week: " + request.persistence_insight.Num_of_Week;
+                req = "Week: " + request.persistence_insight.Num_of_Week;
+                Main_Form.Notify("Persistence Request for " + req);
                 Persistence_Worker(request.persistence_insight);
+                Main_Form.Pending_refresh_status_grids = true;
             }
-            Main_Form.Notify("Persistence Request for: " + req);
             attending_persistance = false;
         }
 
@@ -365,66 +366,6 @@ namespace Project_Insight
                     {
                         Main_Form.Male_List[i].Oracion = sem.Fecha_RP.ToString("dd/MM/yyyy");
                     }
-                    if (Main_Form.Male_List[i].Name.Equals(sem.Vym_Cap) && Main_Form.Male_List[i].Capitan.Contains('/'))
-                    {
-                        Main_Form.Male_List[i].Capitan = sem.Fecha_VyM.ToString("dd/MM/yyyy");
-                    }
-                    if (Main_Form.Male_List[i].Name.Equals(sem.Rp_Cap) && Main_Form.Male_List[i].Capitan.Contains('/'))
-                    {
-                        Main_Form.Male_List[i].Capitan = sem.Fecha_RP.ToString("dd/MM/yyyy");
-                    }
-                    if (Main_Form.Male_List[i].Name.Equals(sem.Vym_Der) && Main_Form.Male_List[i].Acomodador.Contains('/'))
-                    {
-                        Main_Form.Male_List[i].Acomodador = sem.Fecha_VyM.ToString("dd/MM/yyyy");
-                    }
-                    if (Main_Form.Male_List[i].Name.Equals(sem.Vym_Izq) && Main_Form.Male_List[i].Acomodador.Contains('/'))
-                    {
-                        Main_Form.Male_List[i].Acomodador = sem.Fecha_VyM.ToString("dd/MM/yyyy");
-                    }
-                    if (Main_Form.Male_List[i].Name.Equals(sem.Rp_Der) && Main_Form.Male_List[i].Acomodador.Contains('/'))
-                    {
-                        Main_Form.Male_List[i].Acomodador = sem.Fecha_RP.ToString("dd/MM/yyyy");
-                    }
-                    if (Main_Form.Male_List[i].Name.Equals(sem.Rp_Izq) && Main_Form.Male_List[i].Acomodador.Contains('/'))
-                    {
-                        Main_Form.Male_List[i].Acomodador = sem.Fecha_RP.ToString("dd/MM/yyyy");
-                    }
-                }
-            }
-        }
-
-        public static void Persistence_RP(RP_Sem sem)
-        {
-            if(DB_Allowed)
-            {
-                for (int i = 0; i < Main_Form.Male_List.Count; i++)
-                {
-                    if (Main_Form.Male_List[i].Name.Equals(sem.Presidente) && Main_Form.Male_List[i].Pres_RP.Contains('/'))
-                    {
-                        Main_Form.Male_List[i].Pres_RP = sem.Fecha.ToString("dd/MM/yyyy");
-                    }
-                    if (Main_Form.Male_List[i].Name.Equals(sem.Conductor) && Main_Form.Male_List[i].Atalaya.Contains('/'))
-                    {
-                        Main_Form.Male_List[i].Atalaya = sem.Fecha.ToString("dd/MM/yyyy");
-                    }
-                    if (Main_Form.Male_List[i].Name.Equals(sem.Lector) && Main_Form.Male_List[i].Lector.Contains('/'))
-                    {
-                        Main_Form.Male_List[i].Lector = sem.Fecha.ToString("dd/MM/yyyy");
-                    }
-                    if (Main_Form.Male_List[i].Name.Equals(sem.Oracion) && Main_Form.Male_List[i].Oracion.Contains('/'))
-                    {
-                        Main_Form.Male_List[i].Oracion = sem.Fecha.ToString("dd/MM/yyyy");
-                    }
-                }
-            }
-        }
-
-        public static void Persistence_AC(AC_Sem sem)
-        {
-            if (DB_Allowed)
-            {
-                for (int i = 0; i < Main_Form.Male_List.Count; i++)
-                {
                     if (Main_Form.Male_List[i].Name.Equals(sem.Vym_Cap) && Main_Form.Male_List[i].Capitan.Contains('/'))
                     {
                         Main_Form.Male_List[i].Capitan = sem.Fecha_VyM.ToString("dd/MM/yyyy");

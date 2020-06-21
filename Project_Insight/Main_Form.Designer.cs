@@ -36,20 +36,14 @@
             this.tab_Control = new System.Windows.Forms.TabControl();
             this.Tab_VyM = new System.Windows.Forms.TabPage();
             this.Nuestra_Vida = new System.Windows.Forms.GroupBox();
+            this.txt_Song_VyM_3 = new System.Windows.Forms.TextBox();
+            this.txt_Song_VyM_2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.txt_NVC3 = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
             this.txt_Ora2VyM = new System.Windows.Forms.TextBox();
             this.txt_NVC_A4 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.time_14 = new System.Windows.Forms.Label();
-            this.time_13 = new System.Windows.Forms.Label();
-            this.time_12 = new System.Windows.Forms.Label();
-            this.time_11 = new System.Windows.Forms.Label();
-            this.time_10 = new System.Windows.Forms.Label();
-            this.time_9 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.txt_NVC_A3 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.txt_NVC_A2 = new System.Windows.Forms.TextBox();
             this.txt_NVC2 = new System.Windows.Forms.TextBox();
             this.txt_NVC_A1 = new System.Windows.Forms.TextBox();
@@ -59,13 +53,9 @@
             this.txt_SMM_B1 = new System.Windows.Forms.TextBox();
             this.txt_SMM_B3 = new System.Windows.Forms.TextBox();
             this.txt_SMM_B2 = new System.Windows.Forms.TextBox();
-            this.time_8 = new System.Windows.Forms.Label();
             this.txt_SMM_A4 = new System.Windows.Forms.TextBox();
             this.txt_SMM4 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.time_7 = new System.Windows.Forms.Label();
-            this.time_6 = new System.Windows.Forms.Label();
-            this.time_5 = new System.Windows.Forms.Label();
             this.txt_SMM_A3 = new System.Windows.Forms.TextBox();
             this.txt_SMM3 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -78,9 +68,6 @@
             this.Tesoros_Biblia = new System.Windows.Forms.GroupBox();
             this.txt_TdlB_3 = new System.Windows.Forms.TextBox();
             this.txt_TdlB_B3 = new System.Windows.Forms.TextBox();
-            this.time_4 = new System.Windows.Forms.Label();
-            this.time_3 = new System.Windows.Forms.Label();
-            this.time_2 = new System.Windows.Forms.Label();
             this.txt_TdlB_A3 = new System.Windows.Forms.TextBox();
             this.txt_TdlB_A2 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -88,20 +75,20 @@
             this.txt_TdlB_1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.General_Info = new System.Windows.Forms.GroupBox();
+            this.txt_Song_VyM_1 = new System.Windows.Forms.TextBox();
             this.txt_ConAux = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.Alert_Label_VyM = new System.Windows.Forms.Label();
             this.lbl_DateVyM = new System.Windows.Forms.Label();
-            this.time_0 = new System.Windows.Forms.Label();
-            this.time_1 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.txt_Lec_Sem = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.txt_Pres = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Tab_RP = new System.Windows.Forms.TabPage();
             this.RP_1 = new System.Windows.Forms.GroupBox();
+            this.txt_Song_RP_3 = new System.Windows.Forms.TextBox();
+            this.txt_Song_RP_2 = new System.Windows.Forms.TextBox();
+            this.txt_Song_RP_1 = new System.Windows.Forms.TextBox();
             this.Alert_Label_RP = new System.Windows.Forms.Label();
             this.lbl_DateRP = new System.Windows.Forms.Label();
             this.txt_OraRP = new System.Windows.Forms.TextBox();
@@ -243,7 +230,7 @@
             this.lbl_Month = new System.Windows.Forms.Label();
             this.Main_Timer = new System.Windows.Forms.Timer(this.components);
             this.LoadingBar = new System.Windows.Forms.ProgressBar();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Overwatch_Status_GridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.picPresenter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.protoss_Frame)).BeginInit();
             this.tab_Control.SuspendLayout();
@@ -261,12 +248,12 @@
             this.Tab_Cfg.SuspendLayout();
             this.GrpBox_Cfg.SuspendLayout();
             this.GrpBx_Rules.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Overwatch_Status_GridView)).BeginInit();
             this.SuspendLayout();
             // 
             // Log_txtBx
             // 
-            this.Log_txtBx.BackColor = System.Drawing.Color.MidnightBlue;
+            this.Log_txtBx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             resources.ApplyResources(this.Log_txtBx, "Log_txtBx");
             this.Log_txtBx.ForeColor = System.Drawing.Color.White;
             this.Log_txtBx.Name = "Log_txtBx";
@@ -299,7 +286,7 @@
             // 
             // Tab_VyM
             // 
-            this.Tab_VyM.BackColor = System.Drawing.Color.MidnightBlue;
+            this.Tab_VyM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.Tab_VyM.Controls.Add(this.Nuestra_Vida);
             this.Tab_VyM.Controls.Add(this.Seamos_Maestros);
             this.Tab_VyM.Controls.Add(this.Tesoros_Biblia);
@@ -310,20 +297,14 @@
             // Nuestra_Vida
             // 
             this.Nuestra_Vida.BackColor = System.Drawing.Color.SteelBlue;
+            this.Nuestra_Vida.Controls.Add(this.txt_Song_VyM_3);
+            this.Nuestra_Vida.Controls.Add(this.txt_Song_VyM_2);
+            this.Nuestra_Vida.Controls.Add(this.label5);
             this.Nuestra_Vida.Controls.Add(this.txt_NVC3);
             this.Nuestra_Vida.Controls.Add(this.label41);
             this.Nuestra_Vida.Controls.Add(this.txt_Ora2VyM);
             this.Nuestra_Vida.Controls.Add(this.txt_NVC_A4);
-            this.Nuestra_Vida.Controls.Add(this.label18);
-            this.Nuestra_Vida.Controls.Add(this.time_14);
-            this.Nuestra_Vida.Controls.Add(this.time_13);
-            this.Nuestra_Vida.Controls.Add(this.time_12);
-            this.Nuestra_Vida.Controls.Add(this.time_11);
-            this.Nuestra_Vida.Controls.Add(this.time_10);
-            this.Nuestra_Vida.Controls.Add(this.time_9);
-            this.Nuestra_Vida.Controls.Add(this.label14);
             this.Nuestra_Vida.Controls.Add(this.txt_NVC_A3);
-            this.Nuestra_Vida.Controls.Add(this.label22);
             this.Nuestra_Vida.Controls.Add(this.txt_NVC_A2);
             this.Nuestra_Vida.Controls.Add(this.txt_NVC2);
             this.Nuestra_Vida.Controls.Add(this.txt_NVC_A1);
@@ -333,6 +314,24 @@
             this.Nuestra_Vida.Name = "Nuestra_Vida";
             this.Nuestra_Vida.TabStop = false;
             this.Nuestra_Vida.Enter += new System.EventHandler(this.Nuestra_Vida_Enter);
+            // 
+            // txt_Song_VyM_3
+            // 
+            resources.ApplyResources(this.txt_Song_VyM_3, "txt_Song_VyM_3");
+            this.txt_Song_VyM_3.Name = "txt_Song_VyM_3";
+            this.txt_Song_VyM_3.TextChanged += new System.EventHandler(this.txt_Song_TextChanged);
+            // 
+            // txt_Song_VyM_2
+            // 
+            resources.ApplyResources(this.txt_Song_VyM_2, "txt_Song_VyM_2");
+            this.txt_Song_VyM_2.Name = "txt_Song_VyM_2";
+            this.txt_Song_VyM_2.TextChanged += new System.EventHandler(this.txt_Song_TextChanged);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Name = "label5";
             // 
             // txt_NVC3
             // 
@@ -357,65 +356,11 @@
             this.txt_NVC_A4.ForeColor = System.Drawing.Color.Black;
             this.txt_NVC_A4.Name = "txt_NVC_A4";
             // 
-            // label18
-            // 
-            resources.ApplyResources(this.label18, "label18");
-            this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Name = "label18";
-            // 
-            // time_14
-            // 
-            resources.ApplyResources(this.time_14, "time_14");
-            this.time_14.ForeColor = System.Drawing.Color.Black;
-            this.time_14.Name = "time_14";
-            // 
-            // time_13
-            // 
-            resources.ApplyResources(this.time_13, "time_13");
-            this.time_13.ForeColor = System.Drawing.Color.Black;
-            this.time_13.Name = "time_13";
-            // 
-            // time_12
-            // 
-            resources.ApplyResources(this.time_12, "time_12");
-            this.time_12.ForeColor = System.Drawing.Color.Black;
-            this.time_12.Name = "time_12";
-            // 
-            // time_11
-            // 
-            resources.ApplyResources(this.time_11, "time_11");
-            this.time_11.ForeColor = System.Drawing.Color.Black;
-            this.time_11.Name = "time_11";
-            // 
-            // time_10
-            // 
-            resources.ApplyResources(this.time_10, "time_10");
-            this.time_10.ForeColor = System.Drawing.Color.Black;
-            this.time_10.Name = "time_10";
-            // 
-            // time_9
-            // 
-            resources.ApplyResources(this.time_9, "time_9");
-            this.time_9.ForeColor = System.Drawing.Color.Black;
-            this.time_9.Name = "time_9";
-            // 
-            // label14
-            // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Name = "label14";
-            // 
             // txt_NVC_A3
             // 
             resources.ApplyResources(this.txt_NVC_A3, "txt_NVC_A3");
             this.txt_NVC_A3.ForeColor = System.Drawing.Color.Black;
             this.txt_NVC_A3.Name = "txt_NVC_A3";
-            // 
-            // label22
-            // 
-            resources.ApplyResources(this.label22, "label22");
-            this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Name = "label22";
             // 
             // txt_NVC_A2
             // 
@@ -450,13 +395,9 @@
             this.Seamos_Maestros.Controls.Add(this.txt_SMM_B1);
             this.Seamos_Maestros.Controls.Add(this.txt_SMM_B3);
             this.Seamos_Maestros.Controls.Add(this.txt_SMM_B2);
-            this.Seamos_Maestros.Controls.Add(this.time_8);
             this.Seamos_Maestros.Controls.Add(this.txt_SMM_A4);
             this.Seamos_Maestros.Controls.Add(this.txt_SMM4);
             this.Seamos_Maestros.Controls.Add(this.label19);
-            this.Seamos_Maestros.Controls.Add(this.time_7);
-            this.Seamos_Maestros.Controls.Add(this.time_6);
-            this.Seamos_Maestros.Controls.Add(this.time_5);
             this.Seamos_Maestros.Controls.Add(this.txt_SMM_A3);
             this.Seamos_Maestros.Controls.Add(this.txt_SMM3);
             this.Seamos_Maestros.Controls.Add(this.label17);
@@ -496,12 +437,6 @@
             resources.ApplyResources(this.txt_SMM_B2, "txt_SMM_B2");
             this.txt_SMM_B2.Name = "txt_SMM_B2";
             // 
-            // time_8
-            // 
-            resources.ApplyResources(this.time_8, "time_8");
-            this.time_8.ForeColor = System.Drawing.Color.Black;
-            this.time_8.Name = "time_8";
-            // 
             // txt_SMM_A4
             // 
             this.txt_SMM_A4.ForeColor = System.Drawing.Color.Black;
@@ -520,24 +455,6 @@
             resources.ApplyResources(this.label19, "label19");
             this.label19.ForeColor = System.Drawing.Color.Black;
             this.label19.Name = "label19";
-            // 
-            // time_7
-            // 
-            resources.ApplyResources(this.time_7, "time_7");
-            this.time_7.ForeColor = System.Drawing.Color.Black;
-            this.time_7.Name = "time_7";
-            // 
-            // time_6
-            // 
-            resources.ApplyResources(this.time_6, "time_6");
-            this.time_6.ForeColor = System.Drawing.Color.Black;
-            this.time_6.Name = "time_6";
-            // 
-            // time_5
-            // 
-            resources.ApplyResources(this.time_5, "time_5");
-            this.time_5.ForeColor = System.Drawing.Color.Black;
-            this.time_5.Name = "time_5";
             // 
             // txt_SMM_A3
             // 
@@ -601,9 +518,6 @@
             this.Tesoros_Biblia.BackColor = System.Drawing.Color.SteelBlue;
             this.Tesoros_Biblia.Controls.Add(this.txt_TdlB_3);
             this.Tesoros_Biblia.Controls.Add(this.txt_TdlB_B3);
-            this.Tesoros_Biblia.Controls.Add(this.time_4);
-            this.Tesoros_Biblia.Controls.Add(this.time_3);
-            this.Tesoros_Biblia.Controls.Add(this.time_2);
             this.Tesoros_Biblia.Controls.Add(this.txt_TdlB_A3);
             this.Tesoros_Biblia.Controls.Add(this.txt_TdlB_A2);
             this.Tesoros_Biblia.Controls.Add(this.label12);
@@ -627,24 +541,6 @@
             this.txt_TdlB_B3.ForeColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.txt_TdlB_B3, "txt_TdlB_B3");
             this.txt_TdlB_B3.Name = "txt_TdlB_B3";
-            // 
-            // time_4
-            // 
-            resources.ApplyResources(this.time_4, "time_4");
-            this.time_4.ForeColor = System.Drawing.Color.Black;
-            this.time_4.Name = "time_4";
-            // 
-            // time_3
-            // 
-            resources.ApplyResources(this.time_3, "time_3");
-            this.time_3.ForeColor = System.Drawing.Color.Black;
-            this.time_3.Name = "time_3";
-            // 
-            // time_2
-            // 
-            resources.ApplyResources(this.time_2, "time_2");
-            this.time_2.ForeColor = System.Drawing.Color.Black;
-            this.time_2.Name = "time_2";
             // 
             // txt_TdlB_A3
             // 
@@ -685,16 +581,13 @@
             // General_Info
             // 
             this.General_Info.BackColor = System.Drawing.Color.SteelBlue;
+            this.General_Info.Controls.Add(this.txt_Song_VyM_1);
             this.General_Info.Controls.Add(this.txt_ConAux);
             this.General_Info.Controls.Add(this.label47);
             this.General_Info.Controls.Add(this.Alert_Label_VyM);
             this.General_Info.Controls.Add(this.lbl_DateVyM);
-            this.General_Info.Controls.Add(this.time_0);
-            this.General_Info.Controls.Add(this.time_1);
-            this.General_Info.Controls.Add(this.label8);
             this.General_Info.Controls.Add(this.txt_Lec_Sem);
             this.General_Info.Controls.Add(this.label7);
-            this.General_Info.Controls.Add(this.label5);
             this.General_Info.Controls.Add(this.txt_Pres);
             this.General_Info.Controls.Add(this.label2);
             this.General_Info.ForeColor = System.Drawing.Color.Black;
@@ -702,6 +595,12 @@
             this.General_Info.Name = "General_Info";
             this.General_Info.TabStop = false;
             this.General_Info.Enter += new System.EventHandler(this.General_Info_Enter);
+            // 
+            // txt_Song_VyM_1
+            // 
+            resources.ApplyResources(this.txt_Song_VyM_1, "txt_Song_VyM_1");
+            this.txt_Song_VyM_1.Name = "txt_Song_VyM_1";
+            this.txt_Song_VyM_1.TextChanged += new System.EventHandler(this.txt_Song_TextChanged);
             // 
             // txt_ConAux
             // 
@@ -728,24 +627,6 @@
             this.lbl_DateVyM.ForeColor = System.Drawing.Color.Black;
             this.lbl_DateVyM.Name = "lbl_DateVyM";
             // 
-            // time_0
-            // 
-            resources.ApplyResources(this.time_0, "time_0");
-            this.time_0.ForeColor = System.Drawing.Color.Black;
-            this.time_0.Name = "time_0";
-            // 
-            // time_1
-            // 
-            resources.ApplyResources(this.time_1, "time_1");
-            this.time_1.ForeColor = System.Drawing.Color.Black;
-            this.time_1.Name = "time_1";
-            // 
-            // label8
-            // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Name = "label8";
-            // 
             // txt_Lec_Sem
             // 
             this.txt_Lec_Sem.ForeColor = System.Drawing.Color.Black;
@@ -757,12 +638,6 @@
             resources.ApplyResources(this.label7, "label7");
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Name = "label7";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Name = "label5";
             // 
             // txt_Pres
             // 
@@ -786,6 +661,9 @@
             // RP_1
             // 
             this.RP_1.BackColor = System.Drawing.Color.SteelBlue;
+            this.RP_1.Controls.Add(this.txt_Song_RP_3);
+            this.RP_1.Controls.Add(this.txt_Song_RP_2);
+            this.RP_1.Controls.Add(this.txt_Song_RP_1);
             this.RP_1.Controls.Add(this.Alert_Label_RP);
             this.RP_1.Controls.Add(this.lbl_DateRP);
             this.RP_1.Controls.Add(this.txt_OraRP);
@@ -816,6 +694,24 @@
             resources.ApplyResources(this.RP_1, "RP_1");
             this.RP_1.Name = "RP_1";
             this.RP_1.TabStop = false;
+            // 
+            // txt_Song_RP_3
+            // 
+            resources.ApplyResources(this.txt_Song_RP_3, "txt_Song_RP_3");
+            this.txt_Song_RP_3.Name = "txt_Song_RP_3";
+            this.txt_Song_RP_3.TextChanged += new System.EventHandler(this.txt_Song_TextChanged);
+            // 
+            // txt_Song_RP_2
+            // 
+            resources.ApplyResources(this.txt_Song_RP_2, "txt_Song_RP_2");
+            this.txt_Song_RP_2.Name = "txt_Song_RP_2";
+            this.txt_Song_RP_2.TextChanged += new System.EventHandler(this.txt_Song_TextChanged);
+            // 
+            // txt_Song_RP_1
+            // 
+            resources.ApplyResources(this.txt_Song_RP_1, "txt_Song_RP_1");
+            this.txt_Song_RP_1.Name = "txt_Song_RP_1";
+            this.txt_Song_RP_1.TextChanged += new System.EventHandler(this.txt_Song_TextChanged);
             // 
             // Alert_Label_RP
             // 
@@ -1556,7 +1452,9 @@
             // 
             // Male_Status_GridView
             // 
+            this.Male_Status_GridView.BackgroundColor = System.Drawing.Color.SteelBlue;
             this.Male_Status_GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Male_Status_GridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             resources.ApplyResources(this.Male_Status_GridView, "Male_Status_GridView");
             this.Male_Status_GridView.Name = "Male_Status_GridView";
             this.Male_Status_GridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.Male_Status_GridView_CellBeginEdit);
@@ -1788,7 +1686,7 @@
             // 
             this.txt_Command.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txt_Command.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_Command.BackColor = System.Drawing.Color.MidnightBlue;
+            this.txt_Command.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txt_Command.ForeColor = System.Drawing.Color.Orange;
             resources.ApplyResources(this.txt_Command, "txt_Command");
             this.txt_Command.Name = "txt_Command";
@@ -1798,13 +1696,13 @@
             // lbl_Week
             // 
             resources.ApplyResources(this.lbl_Week, "lbl_Week");
-            this.lbl_Week.ForeColor = System.Drawing.Color.Indigo;
+            this.lbl_Week.ForeColor = System.Drawing.Color.Aqua;
             this.lbl_Week.Name = "lbl_Week";
             // 
             // lbl_Month
             // 
             resources.ApplyResources(this.lbl_Month, "lbl_Month");
-            this.lbl_Month.ForeColor = System.Drawing.Color.Indigo;
+            this.lbl_Month.ForeColor = System.Drawing.Color.Aqua;
             this.lbl_Month.Name = "lbl_Month";
             // 
             // Main_Timer
@@ -1819,21 +1717,22 @@
             this.LoadingBar.Name = "LoadingBar";
             this.LoadingBar.Step = 1;
             // 
-            // groupBox1
+            // Overwatch_Status_GridView
             // 
-            this.groupBox1.Controls.Add(this.lbl_Month);
-            this.groupBox1.Controls.Add(this.lbl_Week);
-            this.groupBox1.ForeColor = System.Drawing.Color.Indigo;
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            this.Overwatch_Status_GridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.Overwatch_Status_GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Overwatch_Status_GridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            resources.ApplyResources(this.Overwatch_Status_GridView, "Overwatch_Status_GridView");
+            this.Overwatch_Status_GridView.Name = "Overwatch_Status_GridView";
             // 
             // Main_Form
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Teal;
-            this.Controls.Add(this.groupBox1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.Controls.Add(this.Overwatch_Status_GridView);
+            this.Controls.Add(this.lbl_Month);
+            this.Controls.Add(this.lbl_Week);
             this.Controls.Add(this.LoadingBar);
             this.Controls.Add(this.txt_Command);
             this.Controls.Add(this.m_calendar);
@@ -1871,8 +1770,7 @@
             this.GrpBox_Cfg.PerformLayout();
             this.GrpBx_Rules.ResumeLayout(false);
             this.GrpBx_Rules.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Overwatch_Status_GridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1943,25 +1841,13 @@
         private System.Windows.Forms.TextBox txt_Command;
         private System.Windows.Forms.GroupBox RP_1;
         private System.Windows.Forms.GroupBox Nuestra_Vida;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label time_14;
-        private System.Windows.Forms.Label time_13;
-        private System.Windows.Forms.Label time_12;
-        private System.Windows.Forms.Label time_11;
-        private System.Windows.Forms.Label time_10;
-        private System.Windows.Forms.Label time_9;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txt_NVC_A3;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txt_NVC_A2;
         private System.Windows.Forms.TextBox txt_NVC2;
         private System.Windows.Forms.TextBox txt_NVC_A1;
         private System.Windows.Forms.TextBox txt_NVC1;
         private System.Windows.Forms.GroupBox Seamos_Maestros;
-        private System.Windows.Forms.Label time_7;
-        private System.Windows.Forms.Label time_6;
-        private System.Windows.Forms.Label time_5;
         private System.Windows.Forms.TextBox txt_SMM_A3;
         private System.Windows.Forms.TextBox txt_SMM3;
         private System.Windows.Forms.Label label17;
@@ -1972,9 +1858,6 @@
         private System.Windows.Forms.TextBox txt_SMM1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox Tesoros_Biblia;
-        private System.Windows.Forms.Label time_4;
-        private System.Windows.Forms.Label time_3;
-        private System.Windows.Forms.Label time_2;
         private System.Windows.Forms.TextBox txt_TdlB_A3;
         private System.Windows.Forms.TextBox txt_TdlB_A2;
         private System.Windows.Forms.Label label12;
@@ -1982,12 +1865,8 @@
         private System.Windows.Forms.TextBox txt_TdlB_1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox General_Info;
-        private System.Windows.Forms.Label time_0;
-        private System.Windows.Forms.Label time_1;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_Lec_Sem;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_Pres;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_Week;
@@ -2027,7 +1906,6 @@
         private System.Windows.Forms.TextBox txt_OraRP;
         private System.Windows.Forms.Label lbl_DateVyM;
         private System.Windows.Forms.Label lbl_DateRP;
-        private System.Windows.Forms.Label time_8;
         private System.Windows.Forms.TextBox txt_SMM_A4;
         private System.Windows.Forms.TextBox txt_SMM4;
         private System.Windows.Forms.Label label19;
@@ -2068,7 +1946,6 @@
         private System.Windows.Forms.TextBox txt_NVC3;
         private System.Windows.Forms.DataGridView Male_Status_GridView;
         private System.Windows.Forms.Label Alert_Label_RP;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TabPage Tab_Cfg;
         private System.Windows.Forms.GroupBox GrpBox_Cfg;
         private System.Windows.Forms.Label label25;
@@ -2094,6 +1971,14 @@
         private System.Windows.Forms.ComboBox Rules_cmbx;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox Chbx_Wekk_Format;
+        private System.Windows.Forms.DataGridView Overwatch_Status_GridView;
+        private System.Windows.Forms.TextBox txt_Song_VyM_1;
+        private System.Windows.Forms.TextBox txt_Song_VyM_3;
+        private System.Windows.Forms.TextBox txt_Song_VyM_2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txt_Song_RP_3;
+        private System.Windows.Forms.TextBox txt_Song_RP_2;
+        private System.Windows.Forms.TextBox txt_Song_RP_1;
     }
 }
 

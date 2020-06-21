@@ -132,7 +132,7 @@ namespace Project_Insight
                         {
                             for (int i = 0; i < Main_Form.Male_List.Count; i++)
                             {                                                           //Custom rule: Elders not read on VyM
-                                if (Main_Form.Male_List[i].Lector.Contains('/') && Main_Form.Male_List[i].male_type != Main_Form.Male_Type.Anciano)
+                                if (Main_Form.Male_List[i].Lector.Contains('/') && Main_Form.Male_List[i].Male_Type != Main_Form.Male_Type.Anciano)
                                 {
                                     Person ps = new Person
                                     {

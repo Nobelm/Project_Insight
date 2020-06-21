@@ -125,7 +125,7 @@
     <value>864, 171</value>
   </data>
   <data name="Log_txtBx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>383, 493</value>
+    <value>383, 512</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Log_txtBx.TabIndex" type="System.Int32, mscorlib">
@@ -144,10 +144,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Log_txtBx.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="picPresenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1108, 719</value>
+    <value>1096, 746</value>
   </data>
   <data name="picPresenter.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 115</value>
@@ -169,7 +169,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;picPresenter.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="protoss_Frame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1453,7 +1453,7 @@
 </value>
   </data>
   <data name="protoss_Frame.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1091, 697</value>
+    <value>1079, 724</value>
   </data>
   <data name="protoss_Frame.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 153</value>
@@ -1474,13 +1474,88 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;protoss_Frame.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
+  </data>
+  <data name="txt_Song_VyM_3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 166</value>
+  </data>
+  <data name="txt_Song_VyM_3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 20</value>
+  </data>
+  <data name="txt_Song_VyM_3.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_VyM_3.Name" xml:space="preserve">
+    <value>txt_Song_VyM_3</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_VyM_3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_VyM_3.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_VyM_3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txt_Song_VyM_2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 19</value>
+  </data>
+  <data name="txt_Song_VyM_2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 20</value>
+  </data>
+  <data name="txt_Song_VyM_2.TabIndex" type="System.Int32, mscorlib">
+    <value>116</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_VyM_2.Name" xml:space="preserve">
+    <value>txt_Song_VyM_2</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_VyM_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_VyM_2.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_VyM_2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>532, 109</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>161</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Conductor</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>Nuestra_Vida</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="txt_NVC3.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="txt_NVC3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 114</value>
+    <value>18, 116</value>
   </data>
   <data name="txt_NVC3.Size" type="System.Drawing.Size, System.Drawing">
     <value>378, 20</value>
@@ -1501,7 +1576,7 @@
     <value>Nuestra_Vida</value>
   </data>
   <data name="&gt;&gt;txt_NVC3.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="label41.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1510,7 +1585,7 @@
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="label41.Location" type="System.Drawing.Point, System.Drawing">
-    <value>552, 147</value>
+    <value>551, 134</value>
   </data>
   <data name="label41.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 13</value>
@@ -1531,13 +1606,13 @@
     <value>Nuestra_Vida</value>
   </data>
   <data name="&gt;&gt;label41.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="txt_Ora2VyM.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="txt_Ora2VyM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 170</value>
+    <value>595, 166</value>
   </data>
   <data name="txt_Ora2VyM.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 20</value>
@@ -1555,13 +1630,13 @@
     <value>Nuestra_Vida</value>
   </data>
   <data name="&gt;&gt;txt_Ora2VyM.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="txt_NVC_A4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="txt_NVC_A4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 140</value>
+    <value>594, 131</value>
   </data>
   <data name="txt_NVC_A4.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 20</value>
@@ -1579,253 +1654,13 @@
     <value>Nuestra_Vida</value>
   </data>
   <data name="&gt;&gt;txt_NVC_A4.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 174</value>
-  </data>
-  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 13</value>
-  </data>
-  <data name="label18.TabIndex" type="System.Int32, mscorlib">
-    <value>156</value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Cancion y Oracion Final</value>
-  </data>
-  <data name="&gt;&gt;label18.Name" xml:space="preserve">
-    <value>label18</value>
-  </data>
-  <data name="&gt;&gt;label18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
-    <value>Nuestra_Vida</value>
-  </data>
-  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="time_14.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="time_14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 174</value>
-  </data>
-  <data name="time_14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_14.TabIndex" type="System.Int32, mscorlib">
-    <value>155</value>
-  </data>
-  <data name="time_14.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_14.Name" xml:space="preserve">
-    <value>time_14</value>
-  </data>
-  <data name="&gt;&gt;time_14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_14.Parent" xml:space="preserve">
-    <value>Nuestra_Vida</value>
-  </data>
-  <data name="&gt;&gt;time_14.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="time_13.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="time_13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 144</value>
-  </data>
-  <data name="time_13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_13.TabIndex" type="System.Int32, mscorlib">
-    <value>154</value>
-  </data>
-  <data name="time_13.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_13.Name" xml:space="preserve">
-    <value>time_13</value>
-  </data>
-  <data name="&gt;&gt;time_13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_13.Parent" xml:space="preserve">
-    <value>Nuestra_Vida</value>
-  </data>
-  <data name="&gt;&gt;time_13.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="time_12.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="time_12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 114</value>
-  </data>
-  <data name="time_12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_12.TabIndex" type="System.Int32, mscorlib">
-    <value>152</value>
-  </data>
-  <data name="time_12.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_12.Name" xml:space="preserve">
-    <value>time_12</value>
-  </data>
-  <data name="&gt;&gt;time_12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_12.Parent" xml:space="preserve">
-    <value>Nuestra_Vida</value>
-  </data>
-  <data name="&gt;&gt;time_12.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="time_11.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="time_11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 84</value>
-  </data>
-  <data name="time_11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_11.TabIndex" type="System.Int32, mscorlib">
-    <value>151</value>
-  </data>
-  <data name="time_11.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_11.Name" xml:space="preserve">
-    <value>time_11</value>
-  </data>
-  <data name="&gt;&gt;time_11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_11.Parent" xml:space="preserve">
-    <value>Nuestra_Vida</value>
-  </data>
-  <data name="&gt;&gt;time_11.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="time_10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="time_10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 54</value>
-  </data>
-  <data name="time_10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_10.TabIndex" type="System.Int32, mscorlib">
-    <value>150</value>
-  </data>
-  <data name="time_10.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_10.Name" xml:space="preserve">
-    <value>time_10</value>
-  </data>
-  <data name="&gt;&gt;time_10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_10.Parent" xml:space="preserve">
-    <value>Nuestra_Vida</value>
-  </data>
-  <data name="&gt;&gt;time_10.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="time_9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="time_9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 28</value>
-  </data>
-  <data name="time_9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_9.TabIndex" type="System.Int32, mscorlib">
-    <value>138</value>
-  </data>
-  <data name="time_9.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_9.Name" xml:space="preserve">
-    <value>time_9</value>
-  </data>
-  <data name="&gt;&gt;time_9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_9.Parent" xml:space="preserve">
-    <value>Nuestra_Vida</value>
-  </data>
-  <data name="&gt;&gt;time_9.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 28</value>
-  </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
-  </data>
-  <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>146</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Cancion</value>
-  </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>Nuestra_Vida</value>
-  </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>11</value>
   </data>
   <data name="txt_NVC_A3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="txt_NVC_A3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 110</value>
+    <value>594, 106</value>
   </data>
   <data name="txt_NVC_A3.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 20</value>
@@ -1843,43 +1678,13 @@
     <value>Nuestra_Vida</value>
   </data>
   <data name="&gt;&gt;txt_NVC_A3.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="label22.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 144</value>
-  </data>
-  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>286, 13</value>
-  </data>
-  <data name="label22.TabIndex" type="System.Int32, mscorlib">
-    <value>142</value>
-  </data>
-  <data name="label22.Text" xml:space="preserve">
-    <value>Repaso de esta reunion, adelanto de la proxima y anuncios</value>
-  </data>
-  <data name="&gt;&gt;label22.Name" xml:space="preserve">
-    <value>label22</value>
-  </data>
-  <data name="&gt;&gt;label22.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
-    <value>Nuestra_Vida</value>
-  </data>
-  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>7</value>
   </data>
   <data name="txt_NVC_A2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="txt_NVC_A2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 80</value>
+    <value>594, 80</value>
   </data>
   <data name="txt_NVC_A2.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 20</value>
@@ -1897,13 +1702,13 @@
     <value>Nuestra_Vida</value>
   </data>
   <data name="&gt;&gt;txt_NVC_A2.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>8</value>
   </data>
   <data name="txt_NVC2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="txt_NVC2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 80</value>
+    <value>21, 80</value>
   </data>
   <data name="txt_NVC2.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1924,13 +1729,13 @@
     <value>Nuestra_Vida</value>
   </data>
   <data name="&gt;&gt;txt_NVC2.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>9</value>
   </data>
   <data name="txt_NVC_A1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="txt_NVC_A1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 50</value>
+    <value>594, 50</value>
   </data>
   <data name="txt_NVC_A1.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 20</value>
@@ -1948,13 +1753,13 @@
     <value>Nuestra_Vida</value>
   </data>
   <data name="&gt;&gt;txt_NVC_A1.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>10</value>
   </data>
   <data name="txt_NVC1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="txt_NVC1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 50</value>
+    <value>21, 50</value>
   </data>
   <data name="txt_NVC1.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1975,7 +1780,7 @@
     <value>Nuestra_Vida</value>
   </data>
   <data name="&gt;&gt;txt_NVC1.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>11</value>
   </data>
   <data name="Nuestra_Vida.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -2088,33 +1893,6 @@
   <data name="&gt;&gt;txt_SMM_B2.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="time_8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 155</value>
-  </data>
-  <data name="time_8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_8.TabIndex" type="System.Int32, mscorlib">
-    <value>141</value>
-  </data>
-  <data name="time_8.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_8.Name" xml:space="preserve">
-    <value>time_8</value>
-  </data>
-  <data name="&gt;&gt;time_8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_8.Parent" xml:space="preserve">
-    <value>Seamos_Maestros</value>
-  </data>
-  <data name="&gt;&gt;time_8.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="txt_SMM_A4.Location" type="System.Drawing.Point, System.Drawing">
     <value>598, 151</value>
   </data>
@@ -2134,16 +1912,16 @@
     <value>Seamos_Maestros</value>
   </data>
   <data name="&gt;&gt;txt_SMM_A4.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="txt_SMM4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 151</value>
+    <value>21, 153</value>
   </data>
   <data name="txt_SMM4.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="txt_SMM4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 39</value>
+    <value>351, 39</value>
   </data>
   <data name="txt_SMM4.TabIndex" type="System.Int32, mscorlib">
     <value>139</value>
@@ -2158,13 +1936,13 @@
     <value>Seamos_Maestros</value>
   </data>
   <data name="&gt;&gt;txt_SMM4.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 155</value>
+    <value>6, 166</value>
   </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 13</value>
@@ -2185,88 +1963,7 @@
     <value>Seamos_Maestros</value>
   </data>
   <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="time_7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 110</value>
-  </data>
-  <data name="time_7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_7.TabIndex" type="System.Int32, mscorlib">
-    <value>137</value>
-  </data>
-  <data name="time_7.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_7.Name" xml:space="preserve">
-    <value>time_7</value>
-  </data>
-  <data name="&gt;&gt;time_7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_7.Parent" xml:space="preserve">
-    <value>Seamos_Maestros</value>
-  </data>
-  <data name="&gt;&gt;time_7.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="time_6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 65</value>
-  </data>
-  <data name="time_6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_6.TabIndex" type="System.Int32, mscorlib">
-    <value>136</value>
-  </data>
-  <data name="time_6.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_6.Name" xml:space="preserve">
-    <value>time_6</value>
-  </data>
-  <data name="&gt;&gt;time_6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_6.Parent" xml:space="preserve">
-    <value>Seamos_Maestros</value>
-  </data>
-  <data name="&gt;&gt;time_6.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="time_5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 21</value>
-  </data>
-  <data name="time_5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_5.TabIndex" type="System.Int32, mscorlib">
-    <value>116</value>
-  </data>
-  <data name="time_5.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_5.Name" xml:space="preserve">
-    <value>time_5</value>
-  </data>
-  <data name="&gt;&gt;time_5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_5.Parent" xml:space="preserve">
-    <value>Seamos_Maestros</value>
-  </data>
-  <data name="&gt;&gt;time_5.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>6</value>
   </data>
   <data name="txt_SMM_A3.Location" type="System.Drawing.Point, System.Drawing">
     <value>597, 106</value>
@@ -2287,16 +1984,16 @@
     <value>Seamos_Maestros</value>
   </data>
   <data name="&gt;&gt;txt_SMM_A3.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>7</value>
   </data>
   <data name="txt_SMM3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 106</value>
+    <value>19, 108</value>
   </data>
   <data name="txt_SMM3.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="txt_SMM3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>286, 39</value>
+    <value>353, 39</value>
   </data>
   <data name="txt_SMM3.TabIndex" type="System.Int32, mscorlib">
     <value>129</value>
@@ -2311,13 +2008,13 @@
     <value>Seamos_Maestros</value>
   </data>
   <data name="&gt;&gt;txt_SMM3.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>8</value>
   </data>
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 110</value>
+    <value>4, 121</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 13</value>
@@ -2338,7 +2035,7 @@
     <value>Seamos_Maestros</value>
   </data>
   <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>9</value>
   </data>
   <data name="txt_SMM_A2.Location" type="System.Drawing.Point, System.Drawing">
     <value>597, 62</value>
@@ -2359,16 +2056,16 @@
     <value>Seamos_Maestros</value>
   </data>
   <data name="&gt;&gt;txt_SMM_A2.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>10</value>
   </data>
   <data name="txt_SMM2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 61</value>
+    <value>19, 63</value>
   </data>
   <data name="txt_SMM2.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="txt_SMM2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>286, 39</value>
+    <value>353, 39</value>
   </data>
   <data name="txt_SMM2.TabIndex" type="System.Int32, mscorlib">
     <value>124</value>
@@ -2383,13 +2080,13 @@
     <value>Seamos_Maestros</value>
   </data>
   <data name="&gt;&gt;txt_SMM2.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>11</value>
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 65</value>
+    <value>4, 76</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 13</value>
@@ -2410,7 +2107,7 @@
     <value>Seamos_Maestros</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>12</value>
   </data>
   <data name="txt_SMM_A1.Location" type="System.Drawing.Point, System.Drawing">
     <value>596, 17</value>
@@ -2431,16 +2128,16 @@
     <value>Seamos_Maestros</value>
   </data>
   <data name="&gt;&gt;txt_SMM_A1.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>13</value>
   </data>
   <data name="txt_SMM1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 17</value>
+    <value>20, 19</value>
   </data>
   <data name="txt_SMM1.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="txt_SMM1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>286, 39</value>
+    <value>352, 39</value>
   </data>
   <data name="txt_SMM1.TabIndex" type="System.Int32, mscorlib">
     <value>119</value>
@@ -2455,13 +2152,13 @@
     <value>Seamos_Maestros</value>
   </data>
   <data name="&gt;&gt;txt_SMM1.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>14</value>
   </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 21</value>
+    <value>5, 32</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 13</value>
@@ -2482,7 +2179,7 @@
     <value>Seamos_Maestros</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>15</value>
   </data>
   <data name="Seamos_Maestros.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 261</value>
@@ -2509,10 +2206,10 @@
     <value>1</value>
   </data>
   <data name="txt_TdlB_3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 85</value>
+    <value>18, 85</value>
   </data>
   <data name="txt_TdlB_3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 20</value>
+    <value>354, 20</value>
   </data>
   <data name="txt_TdlB_3.TabIndex" type="System.Int32, mscorlib">
     <value>117</value>
@@ -2550,87 +2247,6 @@
   <data name="&gt;&gt;txt_TdlB_B3.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="time_4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 89</value>
-  </data>
-  <data name="time_4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_4.TabIndex" type="System.Int32, mscorlib">
-    <value>115</value>
-  </data>
-  <data name="time_4.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_4.Name" xml:space="preserve">
-    <value>time_4</value>
-  </data>
-  <data name="&gt;&gt;time_4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_4.Parent" xml:space="preserve">
-    <value>Tesoros_Biblia</value>
-  </data>
-  <data name="&gt;&gt;time_4.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="time_3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 59</value>
-  </data>
-  <data name="time_3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_3.TabIndex" type="System.Int32, mscorlib">
-    <value>114</value>
-  </data>
-  <data name="time_3.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_3.Name" xml:space="preserve">
-    <value>time_3</value>
-  </data>
-  <data name="&gt;&gt;time_3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_3.Parent" xml:space="preserve">
-    <value>Tesoros_Biblia</value>
-  </data>
-  <data name="&gt;&gt;time_3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="time_2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 29</value>
-  </data>
-  <data name="time_2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_2.TabIndex" type="System.Int32, mscorlib">
-    <value>107</value>
-  </data>
-  <data name="time_2.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_2.Name" xml:space="preserve">
-    <value>time_2</value>
-  </data>
-  <data name="&gt;&gt;time_2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_2.Parent" xml:space="preserve">
-    <value>Tesoros_Biblia</value>
-  </data>
-  <data name="&gt;&gt;time_2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="txt_TdlB_A3.Location" type="System.Drawing.Point, System.Drawing">
     <value>595, 85</value>
   </data>
@@ -2650,7 +2266,7 @@
     <value>Tesoros_Biblia</value>
   </data>
   <data name="&gt;&gt;txt_TdlB_A3.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="txt_TdlB_A2.Location" type="System.Drawing.Point, System.Drawing">
     <value>595, 55</value>
@@ -2671,13 +2287,13 @@
     <value>Tesoros_Biblia</value>
   </data>
   <data name="&gt;&gt;txt_TdlB_A2.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 59</value>
+    <value>18, 59</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 13</value>
@@ -2698,7 +2314,7 @@
     <value>Tesoros_Biblia</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>4</value>
   </data>
   <data name="txt_TdlB_A1.Location" type="System.Drawing.Point, System.Drawing">
     <value>595, 25</value>
@@ -2719,10 +2335,10 @@
     <value>Tesoros_Biblia</value>
   </data>
   <data name="&gt;&gt;txt_TdlB_A1.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>5</value>
   </data>
   <data name="txt_TdlB_1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 25</value>
+    <value>72, 25</value>
   </data>
   <data name="txt_TdlB_1.Size" type="System.Drawing.Size, System.Drawing">
     <value>454, 20</value>
@@ -2740,13 +2356,13 @@
     <value>Tesoros_Biblia</value>
   </data>
   <data name="&gt;&gt;txt_TdlB_1.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>6</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 29</value>
+    <value>18, 29</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 13</value>
@@ -2767,7 +2383,7 @@
     <value>Tesoros_Biblia</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>7</value>
   </data>
   <data name="Tesoros_Biblia.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 137</value>
@@ -2793,6 +2409,27 @@
   <data name="&gt;&gt;Tesoros_Biblia.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="txt_Song_VyM_1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 77</value>
+  </data>
+  <data name="txt_Song_VyM_1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>378, 20</value>
+  </data>
+  <data name="txt_Song_VyM_1.TabIndex" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_VyM_1.Name" xml:space="preserve">
+    <value>txt_Song_VyM_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_VyM_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_VyM_1.Parent" xml:space="preserve">
+    <value>General_Info</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_VyM_1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="txt_ConAux.Location" type="System.Drawing.Point, System.Drawing">
     <value>595, 77</value>
   </data>
@@ -2812,7 +2449,7 @@
     <value>General_Info</value>
   </data>
   <data name="&gt;&gt;txt_ConAux.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="label47.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2842,7 +2479,7 @@
     <value>General_Info</value>
   </data>
   <data name="&gt;&gt;label47.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="Alert_Label_VyM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2875,7 +2512,7 @@
     <value>General_Info</value>
   </data>
   <data name="&gt;&gt;Alert_Label_VyM.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lbl_DateVyM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2899,88 +2536,7 @@
     <value>General_Info</value>
   </data>
   <data name="&gt;&gt;lbl_DateVyM.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="time_0.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_0.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 74</value>
-  </data>
-  <data name="time_0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_0.TabIndex" type="System.Int32, mscorlib">
-    <value>110</value>
-  </data>
-  <data name="time_0.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_0.Name" xml:space="preserve">
-    <value>time_0</value>
-  </data>
-  <data name="&gt;&gt;time_0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_0.Parent" xml:space="preserve">
-    <value>General_Info</value>
-  </data>
-  <data name="&gt;&gt;time_0.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="time_1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="time_1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 98</value>
-  </data>
-  <data name="time_1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="time_1.TabIndex" type="System.Int32, mscorlib">
-    <value>109</value>
-  </data>
-  <data name="time_1.Text" xml:space="preserve">
-    <value>00.00</value>
-  </data>
-  <data name="&gt;&gt;time_1.Name" xml:space="preserve">
-    <value>time_1</value>
-  </data>
-  <data name="&gt;&gt;time_1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;time_1.Parent" xml:space="preserve">
-    <value>General_Info</value>
-  </data>
-  <data name="&gt;&gt;time_1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 98</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 13</value>
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>108</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Palabras de Introduccion</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>General_Info</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="txt_Lec_Sem.Location" type="System.Drawing.Point, System.Drawing">
     <value>149, 40</value>
@@ -3001,7 +2557,7 @@
     <value>General_Info</value>
   </data>
   <data name="&gt;&gt;txt_Lec_Sem.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>5</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3030,34 +2586,7 @@ Lectura Semanal</value>
     <value>General_Info</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 74</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>101</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Cancion</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>General_Info</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>6</value>
   </data>
   <data name="txt_Pres.Location" type="System.Drawing.Point, System.Drawing">
     <value>596, 40</value>
@@ -3078,7 +2607,7 @@ Lectura Semanal</value>
     <value>General_Info</value>
   </data>
   <data name="&gt;&gt;txt_Pres.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>7</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3105,7 +2634,7 @@ Lectura Semanal</value>
     <value>General_Info</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>8</value>
   </data>
   <data name="General_Info.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 9</value>
@@ -3138,7 +2667,7 @@ Lectura Semanal</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="Tab_VyM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>827, 780</value>
+    <value>827, 671</value>
   </data>
   <data name="Tab_VyM.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3161,11 +2690,74 @@ Lectura Semanal</value>
   <data name="Tab_RP.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="txt_Song_RP_3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 302</value>
+  </data>
+  <data name="txt_Song_RP_3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>420, 20</value>
+  </data>
+  <data name="txt_Song_RP_3.TabIndex" type="System.Int32, mscorlib">
+    <value>192</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_RP_3.Name" xml:space="preserve">
+    <value>txt_Song_RP_3</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_RP_3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_RP_3.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_RP_3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txt_Song_RP_2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 195</value>
+  </data>
+  <data name="txt_Song_RP_2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>420, 20</value>
+  </data>
+  <data name="txt_Song_RP_2.TabIndex" type="System.Int32, mscorlib">
+    <value>191</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_RP_2.Name" xml:space="preserve">
+    <value>txt_Song_RP_2</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_RP_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_RP_2.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_RP_2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txt_Song_RP_1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 65</value>
+  </data>
+  <data name="txt_Song_RP_1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>420, 20</value>
+  </data>
+  <data name="txt_Song_RP_1.TabIndex" type="System.Int32, mscorlib">
+    <value>190</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_RP_1.Name" xml:space="preserve">
+    <value>txt_Song_RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_RP_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_RP_1.Parent" xml:space="preserve">
+    <value>RP_1</value>
+  </data>
+  <data name="&gt;&gt;txt_Song_RP_1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="Alert_Label_RP.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="Alert_Label_RP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 23</value>
+    <value>162, 26</value>
   </data>
   <data name="Alert_Label_RP.Size" type="System.Drawing.Size, System.Drawing">
     <value>10, 13</value>
@@ -3189,7 +2781,7 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;Alert_Label_RP.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="lbl_DateRP.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3213,13 +2805,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;lbl_DateRP.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="txt_OraRP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>351, 180</value>
+    <value>611, 306</value>
   </data>
   <data name="txt_OraRP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 20</value>
+    <value>181, 20</value>
   </data>
   <data name="txt_OraRP.TabIndex" type="System.Int32, mscorlib">
     <value>187</value>
@@ -3234,10 +2826,10 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;txt_OraRP.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="txt_Lect_Atly.Location" type="System.Drawing.Point, System.Drawing">
-    <value>611, 180</value>
+    <value>611, 254</value>
   </data>
   <data name="txt_Lect_Atly.Size" type="System.Drawing.Size, System.Drawing">
     <value>181, 20</value>
@@ -3255,10 +2847,10 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;txt_Lect_Atly.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="txt_Con_Atly.Location" type="System.Drawing.Point, System.Drawing">
-    <value>611, 150</value>
+    <value>611, 224</value>
   </data>
   <data name="txt_Con_Atly.Size" type="System.Drawing.Size, System.Drawing">
     <value>181, 20</value>
@@ -3276,10 +2868,10 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;txt_Con_Atly.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="txt_PresRP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>611, 19</value>
+    <value>611, 65</value>
   </data>
   <data name="txt_PresRP.Size" type="System.Drawing.Size, System.Drawing">
     <value>181, 20</value>
@@ -3297,10 +2889,10 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;txt_PresRP.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="txt_Sal_Title.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 260</value>
+    <value>93, 491</value>
   </data>
   <data name="txt_Sal_Title.Size" type="System.Drawing.Size, System.Drawing">
     <value>310, 20</value>
@@ -3318,13 +2910,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;txt_Sal_Title.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="label42.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label42.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 120</value>
+    <value>4, 168</value>
   </data>
   <data name="label42.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 13</value>
@@ -3345,13 +2937,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;label42.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="label24.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>548, 23</value>
+    <value>548, 69</value>
   </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 13</value>
@@ -3372,10 +2964,10 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="txt_RP_Disc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>611, 60</value>
+    <value>611, 108</value>
   </data>
   <data name="txt_RP_Disc.Size" type="System.Drawing.Size, System.Drawing">
     <value>181, 20</value>
@@ -3393,13 +2985,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;txt_RP_Disc.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="label36.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label36.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 234</value>
+    <value>25, 465</value>
   </data>
   <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 13</value>
@@ -3420,13 +3012,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;label36.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="label26.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
-    <value>542, 64</value>
+    <value>542, 112</value>
   </data>
   <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 13</value>
@@ -3447,10 +3039,10 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="txt_Sal_Disc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 230</value>
+    <value>93, 461</value>
   </data>
   <data name="txt_Sal_Disc.Size" type="System.Drawing.Size, System.Drawing">
     <value>226, 20</value>
@@ -3468,10 +3060,10 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;txt_Sal_Disc.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="txt_RP_Speech.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 60</value>
+    <value>165, 108</value>
   </data>
   <data name="txt_RP_Speech.Size" type="System.Drawing.Size, System.Drawing">
     <value>369, 20</value>
@@ -3489,13 +3081,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;txt_RP_Speech.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="label27.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 64</value>
+    <value>126, 112</value>
   </data>
   <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 13</value>
@@ -3516,10 +3108,10 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>17</value>
   </data>
   <data name="txt_RP_Cong.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 90</value>
+    <value>165, 138</value>
   </data>
   <data name="txt_RP_Cong.Size" type="System.Drawing.Size, System.Drawing">
     <value>307, 20</value>
@@ -3537,13 +3129,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;txt_RP_Cong.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>18</value>
   </data>
   <data name="label28.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 94</value>
+    <value>86, 142</value>
   </data>
   <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 13</value>
@@ -3564,13 +3156,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>19</value>
   </data>
   <data name="label34.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label34.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 294</value>
+    <value>14, 525</value>
   </data>
   <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 13</value>
@@ -3591,13 +3183,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>20</value>
   </data>
   <data name="label31.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label31.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 154</value>
+    <value>14, 241</value>
   </data>
   <data name="label31.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 13</value>
@@ -3618,10 +3210,10 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;label31.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>21</value>
   </data>
   <data name="txt_Sal_Cong.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 290</value>
+    <value>93, 521</value>
   </data>
   <data name="txt_Sal_Cong.Size" type="System.Drawing.Size, System.Drawing">
     <value>226, 20</value>
@@ -3639,13 +3231,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;txt_Sal_Cong.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>22</value>
   </data>
   <data name="label30.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label30.Location" type="System.Drawing.Point, System.Drawing">
-    <value>549, 154</value>
+    <value>549, 228</value>
   </data>
   <data name="label30.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 13</value>
@@ -3666,13 +3258,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>23</value>
   </data>
   <data name="label35.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label35.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 264</value>
+    <value>54, 495</value>
   </data>
   <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 13</value>
@@ -3693,10 +3285,10 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>24</value>
   </data>
   <data name="txt_Title_Atly.Location" type="System.Drawing.Point, System.Drawing">
-    <value>53, 150</value>
+    <value>53, 237</value>
   </data>
   <data name="txt_Title_Atly.Size" type="System.Drawing.Size, System.Drawing">
     <value>481, 20</value>
@@ -3714,13 +3306,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;txt_Title_Atly.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>25</value>
   </data>
   <data name="label29.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
-    <value>568, 184</value>
+    <value>568, 258</value>
   </data>
   <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 13</value>
@@ -3741,13 +3333,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>26</value>
   </data>
   <data name="label33.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label33.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 210</value>
+    <value>14, 441</value>
   </data>
   <data name="label33.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 13</value>
@@ -3768,13 +3360,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>27</value>
   </data>
   <data name="label40.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label40.Location" type="System.Drawing.Point, System.Drawing">
-    <value>276, 184</value>
+    <value>536, 309</value>
   </data>
   <data name="label40.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 13</value>
@@ -3795,13 +3387,13 @@ Lectura Semanal</value>
     <value>RP_1</value>
   </data>
   <data name="&gt;&gt;label40.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>28</value>
   </data>
   <data name="RP_1.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 6</value>
   </data>
   <data name="RP_1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>798, 326</value>
+    <value>798, 572</value>
   </data>
   <data name="RP_1.TabIndex" type="System.Int32, mscorlib">
     <value>184</value>
@@ -3828,7 +3420,7 @@ Lectura Semanal</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="Tab_RP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>827, 780</value>
+    <value>827, 671</value>
   </data>
   <data name="Tab_RP.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5829,7 +5421,7 @@ Lectura Semanal</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="Tab_AC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>827, 780</value>
+    <value>827, 671</value>
   </data>
   <data name="Tab_AC.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -5853,7 +5445,7 @@ Lectura Semanal</value>
     <value>3, 3</value>
   </data>
   <data name="Male_Status_GridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>821, 774</value>
+    <value>821, 665</value>
   </data>
   <data name="Male_Status_GridView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5874,7 +5466,7 @@ Lectura Semanal</value>
     <value>4, 22</value>
   </data>
   <data name="Status_Tab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>827, 780</value>
+    <value>827, 671</value>
   </data>
   <data name="Status_Tab.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -6600,7 +6192,7 @@ Lectura Semanal</value>
     <value>4, 22</value>
   </data>
   <data name="Tab_Cfg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>827, 780</value>
+    <value>827, 671</value>
   </data>
   <data name="Tab_Cfg.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -6627,7 +6219,7 @@ Lectura Semanal</value>
     <value>12, 12</value>
   </data>
   <data name="tab_Control.Size" type="System.Drawing.Size, System.Drawing">
-    <value>835, 806</value>
+    <value>835, 697</value>
   </data>
   <data name="tab_Control.TabIndex" type="System.Int32, mscorlib">
     <value>81</value>
@@ -6642,10 +6234,10 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tab_Control.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="m_calendar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>911, 3</value>
+    <value>977, 3</value>
   </data>
   <data name="m_calendar.ShowWeekNumbers" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6663,10 +6255,10 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_calendar.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="txt_Command.Location" type="System.Drawing.Point, System.Drawing">
-    <value>864, 667</value>
+    <value>864, 689</value>
   </data>
   <data name="txt_Command.Size" type="System.Drawing.Size, System.Drawing">
     <value>383, 20</value>
@@ -6684,13 +6276,13 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txt_Command.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="lbl_Week.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lbl_Week.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 22</value>
+    <value>861, 43</value>
   </data>
   <data name="lbl_Week.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
@@ -6708,16 +6300,16 @@ Lectura Semanal</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbl_Week.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;lbl_Week.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="lbl_Month.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lbl_Month.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 22</value>
+    <value>861, 21</value>
   </data>
   <data name="lbl_Month.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 13</value>
@@ -6735,10 +6327,10 @@ Lectura Semanal</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbl_Month.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;lbl_Month.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="Main_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -6765,40 +6357,43 @@ Lectura Semanal</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LoadingBar.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>860, 697</value>
+  <data name="Overwatch_Status_GridView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 719</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 153</value>
+  <data name="Overwatch_Status_GridView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>835, 156</value>
   </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="Overwatch_Status_GridView.TabIndex" type="System.Int32, mscorlib">
     <value>96</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Overwatch</value>
+  <data name="&gt;&gt;Overwatch_Status_GridView.Name" xml:space="preserve">
+    <value>Overwatch_Status_GridView</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="&gt;&gt;Overwatch_Status_GridView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Overwatch_Status_GridView.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Overwatch_Status_GridView.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>56</value>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1259, 862</value>
+    <value>1259, 887</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Project Insight</value>

@@ -132,26 +132,6 @@ namespace Project_Insight.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to List of commands:
-        ///&quot;new&quot;  + month (only first 3 chars)
-        ///&quot;open&quot; -&gt; popups an OpenFileDialog
-        ///&quot;exit&quot; -&gt; Close all the application
-        ///&quot;save&quot; + Specify &quot;vym&quot;, &quot;rp&quot;, &quot;ac&quot;, &quot;all&quot;
-        ///&quot;tab&quot;  + Specify &quot;vym&quot;, &quot;rp&quot;, &quot;ac&quot;
-        ///&quot;week&quot; + valid int (between 1 to 4 or 5 if applies)
-        ///&quot;conv&quot; + name of the convention (set current week as convention)
-        ///	   + &quot;false&quot; to set normal a convention week.
-        ///&quot;afil&quot; -&gt; Autofill the fields
-        ///&quot;help&quot; -&gt; To display all the current commands
-        ///&quot;vst&quot;  + &quot;true&quot; or &quot;false&quot; to set current week for the visi [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Commands_Helper {
-            get {
-                return ResourceManager.GetString("Commands_Helper", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap DarkTemplar {
@@ -242,42 +222,6 @@ namespace Project_Insight.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Geoplazas Qro.
-        ///True
-        ///19:00
-        ///19:00
-        ///Tuesday
-        ///Saturday
-        ///False
-        ///Elders
-        ///Allowed
-        ///Allowed
-        ///Non_Status
-        ///Allowed
-        ///Allowed
-        ///Allowed
-        ///Ministerials
-        ///Non_Status
-        ///Allowed
-        ///Allowed
-        ///Allowed
-        ///Allowed
-        ///Allowed
-        ///Generals
-        ///Non_Status
-        ///Non_Status
-        ///Allowed
-        ///Allowed
-        ///Non_Status
-        ///Non_Status.
-        /// </summary>
-        internal static string Project_Insight_Config {
-            get {
-                return ResourceManager.GetString("Project_Insight_Config", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap protoss_Frame {
@@ -298,18 +242,43 @@ namespace Project_Insight.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ¿Conoce usted bien a Dios?	
-        ///¿Sera usted sobreviviente de los últimos días? 	
-        ///Avancemos con la organizacion unida de Jehova	
-        ///El mundo que nos rodea prueba que Dios existe	
-        ///Ayuda practica para las familias	
-        ///¿Que aprendemos del Diluvio de los dıas de Noe?	
-        ///Imitemos al “Padre de tiernas misericordias”	
-        ///Vivamos para hacer la voluntad de Dios, no la nuestra	
-        ///Nunca permitamos que se nos embote el oıdo	
-        ///Conduciendonos honradamente en todo tiempo	
-        ///‘No ser parte del mundo’... a semejanza de Cristo	
-        ///El resp [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Las cualidades principales de Jehová
+        ///Tu nombre es Jehová
+        ///Tú me das fuerza, confianza y valor
+        ///“Jehová es mi Pastor”
+        ///Las maravillosas obras de Dios
+        ///Los cielos proclaman la gloria de Dios
+        ///Jehová es mi fuerza y mi salvación
+        ///Jehová es mi Refugio
+        ///¡Jehová es nuestro Rey!
+        ///¡Alabemos a nuestro Dios, Jehová!
+        ///La creación alaba a Jehová
+        ///Jehová, nuestro gran Dios
+        ///Cristo es nuestro modelo
+        ///Honremos al nuevo Rey de la Tierra
+        ///Alabemos al Primogénito de Jehová
+        ///Alabemos a Jehová por su Hijo, el Ungido
+        ///“Quiero”        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Songs_List {
+            get {
+                return ResourceManager.GetString("Songs_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ¿Conoce usted bien a Dios?
+        ///¿Sera usted sobreviviente de los últimos días?
+        ///Avancemos con la organizacion unida de Jehova
+        ///El mundo que nos rodea prueba que Dios existe
+        ///Ayuda practica para las familias
+        ///¿Que aprendemos del Diluvio de los dıas de Noe?
+        ///Imitemos al “Padre de tiernas misericordias”
+        ///Vivamos para hacer la voluntad de Dios, no la nuestra
+        ///Nunca permitamos que se nos embote el oıdo
+        ///Conduciendonos honradamente en todo tiempo
+        ///‘No ser parte del mundo’... a semejanza de Cristo
+        ///El respeto a la aut [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Speech_list {
             get {

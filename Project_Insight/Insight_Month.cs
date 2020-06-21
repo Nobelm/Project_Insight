@@ -20,15 +20,18 @@ namespace Project_Insight
         //VyM
         public DateTime Fecha_VyM { get; set; }
         public DateTime Fecha_RP { get; set; }
+        public string Cancion_VyM_1 { get; set; }
+        public string Cancion_VyM_2 { get; set; }
+        public string Cancion_VyM_3 { get; set; }
         public string Sem_Biblia { get; set; }
         public string Presidente_VyM { get; set; }
         public string Consejero_Aux { get; set; }
         public string Discurso_VyM { get; set; }
         public string Discurso_VyM_A { get; set; } //Asignado
         public string Perlas { get; set; }
-        public string Lectura { get; set; }
-        public string Lectura_A { get; set; }
-        public string Lectura_B { get; set; }
+        public string Lectura_Biblia { get; set; }
+        public string Lectura_Biblia_A { get; set; }
+        public string Lectura_Biblia_B { get; set; }
         public string SMM1 { get; set; }
         public string SMM1_A { get; set; }
         public string SMM1_B { get; set; }
@@ -50,10 +53,13 @@ namespace Project_Insight
         public string Libro_Lector { get; set; } //Lector
         public string Oracion_End_VyM { get; set; }
         //RP
+        public string Cancion_RP_1 { get; set; }
+        public string Cancion_RP_2 { get; set; }
+        public string Cancion_RP_3 { get; set; }
         public string Presidente_RP { get; set; }
-        public string Titulo_RP { get; set; }
+        public string Titulo_Discurso_RP { get; set; }
         public string Congregacion_RP { get; set; }
-        public string Discursante { get; set; }
+        public string Discursante_RP { get; set; }
         public string Titulo_Atalaya { get; set; }
         public string Conductor_Atalaya { get; set; }
         public string Lector_Atalaya { get; set; }
@@ -71,73 +77,97 @@ namespace Project_Insight
         public string Rp_Der { get; set; }
         //Settings
         public bool HW_Data { get; set; }
-        public Main_Form.Special_Week_Type Special_Week { get; set; }
-        public string Special_Week_Info { get; set; }
+        public Main_Form.Special_Meeting_Type Special_VyM_Meeting { get; set; }
+        public Main_Form.Special_Meeting_Type Special_RP_Meeting { get; set; }
+        public string Special_VyM_Meeting_Info { get; set; }
+        public string Special_RP_Meeting_Info { get; set; }
         public short Num_of_Week { get; set; }
         public bool Overwatch_Aprobal { get; set; }
-        public void Clear()
+        public void Clear(Main_Form.Clear_Insight clear_Insight)
         {
             // Fecha = "";
-            Sem_Biblia = "";
-            Presidente_VyM = "";
-            Consejero_Aux = "";
-            Discurso_VyM = "";
-            Discurso_VyM_A = "";
-            Perlas = "";
-            Lectura_A = "";
-            Lectura_B = "";
-            SMM1 = "";
-            SMM1_A = "";
-            SMM1_B = "";
-            SMM2 = "";
-            SMM2_A = "";
-            SMM2_B = "";
-            SMM3 = "";
-            SMM3_A = "";
-            SMM3_B = "";
-            SMM4 = "";
-            SMM4_A = "";
-            SMM4_B = "";
-            NVC1 = "";
-            NVC1_A = "";
-            NVC2 = "";
-            NVC2_A = "";
-            Libro_Conductor = "";
-            Libro_Lector = "";
-            Oracion_End_VyM = "";
-            Presidente_RP = "";
-            Titulo_RP = "";
-            Congregacion_RP = "";
-            Discursante = "";
-            Titulo_Atalaya = "";
-            Conductor_Atalaya = "";
-            Lector_Atalaya = "";
-            Oracion_End_RP = "";
-            Discu_Sal = "";
-            Ttl_Sal = "";
-            Cong_Sal = "";
-            Aseo = "";
-            Vym_Cap = "";
-            Vym_Izq = "";
-            Vym_Der = "";
-            Rp_Cap = "";
-            Rp_Izq = "";
-            Rp_Der = "";
+            if (clear_Insight == Main_Form.Clear_Insight.Clear_VyM || clear_Insight == Main_Form.Clear_Insight.Clear_All)
+            {
+                Cancion_VyM_1 = "";
+                Cancion_VyM_2 = "";
+                Cancion_VyM_3 = "";
+                Sem_Biblia = "";
+                Presidente_VyM = "";
+                Consejero_Aux = "";
+                Discurso_VyM = "";
+                Discurso_VyM_A = "";
+                Perlas = "";
+                Lectura_Biblia = "";
+                Lectura_Biblia_A = "";
+                Lectura_Biblia_B = "";
+                SMM1 = "";
+                SMM1_A = "";
+                SMM1_B = "";
+                SMM2 = "";
+                SMM2_A = "";
+                SMM2_B = "";
+                SMM3 = "";
+                SMM3_A = "";
+                SMM3_B = "";
+                SMM4 = "";
+                SMM4_A = "";
+                SMM4_B = "";
+                NVC1 = "";
+                NVC1_A = "";
+                NVC2 = "";
+                NVC2_A = "";
+                Libro_Conductor = "";
+                Libro_Lector = "";
+                Oracion_End_VyM = "";
+            }
+            if (clear_Insight == Main_Form.Clear_Insight.Clear_RP || clear_Insight == Main_Form.Clear_Insight.Clear_All)
+            {
+                Cancion_RP_1 = "";
+                Cancion_RP_2 = "";
+                Cancion_RP_3 = "";
+                Presidente_RP = "";
+                Titulo_Discurso_RP = "";
+                Congregacion_RP = "";
+                Discursante_RP = "";
+                Titulo_Atalaya = "";
+                Conductor_Atalaya = "";
+                Lector_Atalaya = "";
+                Oracion_End_RP = "";
+                Discu_Sal = "";
+                Ttl_Sal = "";
+                Cong_Sal = "";
+            }
+            if (clear_Insight == Main_Form.Clear_Insight.Clear_Ac || clear_Insight == Main_Form.Clear_Insight.Clear_All)
+            {
+                Aseo = "";
+                Vym_Cap = "";
+                Vym_Izq = "";
+                Vym_Der = "";
+                Rp_Cap = "";
+                Rp_Izq = "";
+                Rp_Der = "";
+            }
             HW_Data = false;
-            Special_Week = Main_Form.Special_Week_Type.Non_status;
-            Special_Week_Info = "";
-
+            Special_VyM_Meeting = Main_Form.Special_Meeting_Type.Non_status;
+            Special_RP_Meeting = Main_Form.Special_Meeting_Type.Non_status;
+            Special_VyM_Meeting_Info = "";
+            Special_RP_Meeting_Info = "";
         }
 
         public void Save_Heavensward_Info(Insight_Sem sem)
         {
+            Cancion_VyM_1 = sem.Cancion_VyM_1;
+            Cancion_VyM_2 = sem.Cancion_VyM_2;
+            Cancion_VyM_3 = sem.Cancion_VyM_3;
             Sem_Biblia = sem.Sem_Biblia;
             Discurso_VyM = sem.Discurso_VyM;
-            Lectura = sem.Lectura;
+            Lectura_Biblia = sem.Lectura_Biblia;
             SMM1 = sem.SMM1;
             SMM2 = sem.SMM2;
             SMM3 = sem.SMM3;
             SMM4 = sem.SMM4;
+            Cancion_RP_2 = sem.Cancion_RP_2;
+            Cancion_RP_3 = sem.Cancion_RP_3;
             NVC1 = sem.NVC1;
             NVC2 = sem.NVC2;
             Titulo_Atalaya = sem.Titulo_Atalaya;
@@ -157,8 +187,8 @@ namespace Project_Insight
                 Consejero_Aux,
                 Discurso_VyM_A,
                 Perlas,
-                Lectura_A,
-                Lectura_B,
+                Lectura_Biblia_A,
+                Lectura_Biblia_B,
                 SMM1_A,
                 SMM1_B,
                 SMM2_A,
@@ -183,8 +213,10 @@ namespace Project_Insight
         {
             List<string> Asignee = new List<string>
             {
+                Libro_Lector,
+                Oracion_End_VyM,
                 Presidente_RP,
-                Discursante,
+                Discursante_RP,
                 Conductor_Atalaya,
                 Lector_Atalaya,
                 Oracion_End_RP,
@@ -204,37 +236,40 @@ namespace Project_Insight
         {
             List<string> Asignee = Get_Asignee_VyM_List();
             List<Person> People = new List<Person>();
-            //Lector Libro
-            if ((Libro_Lector == null) || (Libro_Lector == ""))
+            if (!(Special_VyM_Meeting_Info != null) || !Special_VyM_Meeting_Info.Contains("Visita"))
             {
-                for (int i = 0; i < Main_Form.Male_List.Count; i++)
-                {                                                           //Custom rule: Elders not read on VyM
-                    if (Main_Form.Male_List[i].Lector.Contains('/') && Main_Form.Male_List[i].male_type != Main_Form.Male_Type.Anciano)
-                    {
-                        Person ps = new Person
+                //Lector Libro
+                if ((Libro_Lector == null) || (Libro_Lector == ""))
+                {
+                    for (int i = 0; i < Main_Form.Male_List.Count; i++)
+                    {                                                           //Custom rule: Elders not read on VyM
+                        if (Main_Form.Male_List[i].Lector.Contains('/') && Main_Form.Male_List[i].Male_Type != Main_Form.Male_Type.Anciano)
                         {
-                            Name = Main_Form.Male_List[i].Name,
-                            Date = Convert.ToDateTime(Main_Form.Male_List[i].Lector)
-                        };
-                        People.Add(ps);
+                            Person ps = new Person
+                            {
+                                Name = Main_Form.Male_List[i].Name,
+                                Date = Convert.ToDateTime(Main_Form.Male_List[i].Lector)
+                            };
+                            People.Add(ps);
+                        }
                     }
                 }
-            }
 
-            People.Sort(delegate (Person ps1, Person ps2)
-            {
-                return DateTime.Compare(ps1.Date, ps2.Date);
-            });
-            for (int i = 0; i < People.Count; i++)
-            {
-                if (!Asignee.Contains(People[i].Name))
+                People.Sort(delegate (Person ps1, Person ps2)
                 {
-                    Libro_Lector = People[i].Name;
-                    Asignee.Add(Libro_Lector);
-                    break;
+                    return DateTime.Compare(ps1.Date, ps2.Date);
+                });
+                for (int i = 0; i < People.Count; i++)
+                {
+                    if (!Asignee.Contains(People[i].Name))
+                    {
+                        Libro_Lector = People[i].Name;
+                        Asignee.Add(Libro_Lector);
+                        break;
+                    }
                 }
+                People.Clear();
             }
-            People.Clear();
             //Oracion Final VyM
             if ((Oracion_End_VyM == null) || (Oracion_End_VyM == ""))
             {
@@ -266,17 +301,47 @@ namespace Project_Insight
                 }
             }
             People.Clear();
-            //Acomodadores
-            if ((Vym_Cap == null) || (Vym_Cap == ""))
+            if (Special_VyM_Meeting != Main_Form.Special_Meeting_Type.Conv_type)
             {
+                //Acomodadores
+                if ((Vym_Cap == null) || (Vym_Cap == ""))
+                {
+                    for (int i = 0; i < Main_Form.Male_List.Count; i++)
+                    {
+                        if (Main_Form.Male_List[i].Capitan.Contains('/'))
+                        {
+                            Person ps = new Person
+                            {
+                                Name = Main_Form.Male_List[i].Name,
+                                Date = Convert.ToDateTime(Main_Form.Male_List[i].Capitan)
+                            };
+                            People.Add(ps);
+                        }
+                    }
+                    People.Sort(delegate (Person ps1, Person ps2)
+                    {
+                        return DateTime.Compare(ps1.Date, ps2.Date);
+                    });
+                    for (int i = 0; i < People.Count; i++)
+                    {
+                        if (!Asignee.Contains(People[i].Name))
+                        {
+                            Vym_Cap = People[i].Name;
+                            Asignee.Add(Vym_Cap);
+                            break;
+                        }
+                    }
+                }
+                People.Clear();
+
                 for (int i = 0; i < Main_Form.Male_List.Count; i++)
                 {
-                    if (Main_Form.Male_List[i].Capitan.Contains('/'))
+                    if (Main_Form.Male_List[i].Acomodador.Contains('/'))
                     {
                         Person ps = new Person
                         {
                             Name = Main_Form.Male_List[i].Name,
-                            Date = Convert.ToDateTime(Main_Form.Male_List[i].Capitan)
+                            Date = Convert.ToDateTime(Main_Form.Male_List[i].Acomodador)
                         };
                         People.Add(ps);
                     }
@@ -285,57 +350,30 @@ namespace Project_Insight
                 {
                     return DateTime.Compare(ps1.Date, ps2.Date);
                 });
-                for (int i = 0; i < People.Count; i++)
+
+                if ((Vym_Izq == null) || (Vym_Izq == ""))
                 {
-                    if (!Asignee.Contains(People[i].Name))
+                    for (int i = 0; i < People.Count; i++)
                     {
-                        Vym_Cap = People[i].Name;
-                        Asignee.Add(Vym_Cap);
-                        break;
+                        if (!Asignee.Contains(People[i].Name))
+                        {
+                            Vym_Izq = People[i].Name;
+                            Asignee.Add(Vym_Izq);
+                            break;
+                        }
                     }
                 }
-            }
-            People.Clear();
 
-            for (int i = 0; i < Main_Form.Male_List.Count; i++)
-            {
-                if (Main_Form.Male_List[i].Acomodador.Contains('/'))
+                if ((Vym_Der == null) || (Vym_Der == ""))
                 {
-                    Person ps = new Person
+                    for (int i = 0; i < People.Count; i++)
                     {
-                        Name = Main_Form.Male_List[i].Name,
-                        Date = Convert.ToDateTime(Main_Form.Male_List[i].Acomodador)
-                    };
-                    People.Add(ps);
-                }
-            }
-            People.Sort(delegate (Person ps1, Person ps2)
-            {
-                return DateTime.Compare(ps1.Date, ps2.Date);
-            });
-
-            if ((Vym_Izq == null) || (Vym_Izq == ""))
-            {
-                for (int i = 0; i < People.Count; i++)
-                {
-                    if (!Asignee.Contains(People[i].Name))
-                    {
-                        Vym_Izq = People[i].Name;
-                        Asignee.Add(Vym_Izq);
-                        break;
-                    }
-                }
-            }
-
-            if ((Vym_Der == null) || (Vym_Der == ""))
-            {
-                for (int i = 0; i < People.Count; i++)
-                {
-                    if (!Asignee.Contains(People[i].Name))
-                    {
-                        Vym_Der = People[i].Name;
-                        Asignee.Add(Vym_Der);
-                        break;
+                        if (!Asignee.Contains(People[i].Name))
+                        {
+                            Vym_Der = People[i].Name;
+                            Asignee.Add(Vym_Der);
+                            break;
+                        }
                     }
                 }
             }
@@ -351,7 +389,7 @@ namespace Project_Insight
             {
                 last_week = 5;
             }
-
+            bool read_lector = true;
             List<Person> People = new List<Person>();
 
             if ((Presidente_RP == null) || (Presidente_RP == ""))
@@ -383,36 +421,43 @@ namespace Project_Insight
                 }
             }
             People.Clear();
-
-            if ((Lector_Atalaya == null) || (Lector_Atalaya == ""))
+            if (Special_RP_Meeting_Info != null && Special_RP_Meeting_Info.Contains("Visita"))
             {
-                for (int i = 0; i < Main_Form.Male_List.Count; i++)
-                {
-                    if (Main_Form.Male_List[i].Lector.Contains('/'))
-                    {
-                        Person ps = new Person
-                        {
-                            Name = Main_Form.Male_List[i].Name,
-                            Date = Convert.ToDateTime(Main_Form.Male_List[i].Lector)
-                        };
-                        People.Add(ps);
-                    }
-                }
-                People.Sort(delegate (Person ps1, Person ps2)
-                {
-                    return DateTime.Compare(ps1.Date, ps2.Date);
-                });
-                for (int i = 0; i < People.Count; i++)
-                {
-                    if (!Asignee.Contains(People[i].Name))
-                    {
-                        Lector_Atalaya = People[i].Name;
-                        Asignee.Add(Lector_Atalaya);
-                        break;
-                    }
-                }
+                read_lector = false;
             }
-            People.Clear();
+
+            if (read_lector)
+            {
+                if ((Lector_Atalaya == null) || (Lector_Atalaya == ""))
+                {
+                    for (int i = 0; i < Main_Form.Male_List.Count; i++)
+                    {
+                        if (Main_Form.Male_List[i].Lector.Contains('/'))
+                        {
+                            Person ps = new Person
+                            {
+                                Name = Main_Form.Male_List[i].Name,
+                                Date = Convert.ToDateTime(Main_Form.Male_List[i].Lector)
+                            };
+                            People.Add(ps);
+                        }
+                    }
+                    People.Sort(delegate (Person ps1, Person ps2)
+                    {
+                        return DateTime.Compare(ps1.Date, ps2.Date);
+                    });
+                    for (int i = 0; i < People.Count; i++)
+                    {
+                        if (!Asignee.Contains(People[i].Name))
+                        {
+                            Lector_Atalaya = People[i].Name;
+                            Asignee.Add(Lector_Atalaya);
+                            break;
+                        }
+                    }
+                }
+                People.Clear();
+            }
 
             if ((Oracion_End_RP == null) || (Oracion_End_RP == ""))
             {
@@ -473,17 +518,48 @@ namespace Project_Insight
                 }
             }
             People.Clear();
-
-            if ((Rp_Cap == null) || (Rp_Cap == ""))
+            //Acomodadores
+            if (Special_RP_Meeting != Main_Form.Special_Meeting_Type.Conv_type)
             {
+                if ((Rp_Cap == null) || (Rp_Cap == ""))
+                {
+                    for (int i = 0; i < Main_Form.Male_List.Count; i++)
+                    {
+                        if (Main_Form.Male_List[i].Capitan.Contains('/'))
+                        {
+                            Person ps = new Person
+                            {
+                                Name = Main_Form.Male_List[i].Name,
+                                Date = Convert.ToDateTime(Main_Form.Male_List[i].Capitan)
+                            };
+                            People.Add(ps);
+                        }
+                    }
+                    People.Sort(delegate (Person ps1, Person ps2)
+                    {
+                        return DateTime.Compare(ps1.Date, ps2.Date);
+                    });
+                    for (int i = 0; i < People.Count; i++)
+                    {
+                        if (!Asignee.Contains(People[i].Name))
+                        {
+                            Rp_Cap = People[i].Name;
+                            Asignee.Add(Rp_Cap);
+                            break;
+                        }
+                    }
+                }
+                People.Clear();
+
+
                 for (int i = 0; i < Main_Form.Male_List.Count; i++)
                 {
-                    if (Main_Form.Male_List[i].Capitan.Contains('/'))
+                    if (Main_Form.Male_List[i].Acomodador.Contains('/'))
                     {
                         Person ps = new Person
                         {
                             Name = Main_Form.Male_List[i].Name,
-                            Date = Convert.ToDateTime(Main_Form.Male_List[i].Capitan)
+                            Date = Convert.ToDateTime(Main_Form.Male_List[i].Acomodador)
                         };
                         People.Add(ps);
                     }
@@ -492,63 +568,34 @@ namespace Project_Insight
                 {
                     return DateTime.Compare(ps1.Date, ps2.Date);
                 });
-                for (int i = 0; i < People.Count; i++)
+
+                if ((Rp_Izq == null) || (Rp_Izq == ""))
                 {
-                    if (!Asignee.Contains(People[i].Name))
+                    for (int i = 0; i < People.Count; i++)
                     {
-                        Rp_Cap = People[i].Name;
-                        Asignee.Add(Rp_Cap);
-                        break;
+                        if (!Asignee.Contains(People[i].Name))
+                        {
+                            Rp_Izq = People[i].Name;
+                            Asignee.Add(Rp_Izq);
+                            break;
+                        }
+                    }
+                }
+
+                if ((Rp_Der == null) || (Rp_Der == ""))
+                {
+                    for (int i = 0; i < People.Count; i++)
+                    {
+                        if (!Asignee.Contains(People[i].Name))
+                        {
+                            Rp_Der = People[i].Name;
+                            Asignee.Add(Rp_Der);
+                            break;
+                        }
                     }
                 }
             }
             People.Clear();
-
-
-            for (int i = 0; i < Main_Form.Male_List.Count; i++)
-            {
-                if (Main_Form.Male_List[i].Acomodador.Contains('/'))
-                {
-                    Person ps = new Person
-                    {
-                        Name = Main_Form.Male_List[i].Name,
-                        Date = Convert.ToDateTime(Main_Form.Male_List[i].Acomodador)
-                    };
-                    People.Add(ps);
-                }
-            }
-            People.Sort(delegate (Person ps1, Person ps2)
-            {
-                return DateTime.Compare(ps1.Date, ps2.Date);
-            });
-
-            if ((Rp_Izq == null) || (Rp_Izq == ""))
-            {
-                for (int i = 0; i < People.Count; i++)
-                {
-                    if (!Asignee.Contains(People[i].Name))
-                    {
-                        Rp_Izq = People[i].Name;
-                        Asignee.Add(Rp_Izq);
-                        break;
-                    }
-                }
-            }
-
-            if ((Rp_Der == null) || (Rp_Der == ""))
-            {
-                for (int i = 0; i < People.Count; i++)
-                {
-                    if (!Asignee.Contains(People[i].Name))
-                    {
-                        Rp_Der = People[i].Name;
-                        Asignee.Add(Rp_Der);
-                        break;
-                    }
-                }
-            }
-            People.Clear();
-
         }
 
         private class Person

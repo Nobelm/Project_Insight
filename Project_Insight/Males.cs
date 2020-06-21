@@ -15,7 +15,7 @@ namespace Project_Insight
         public string Lector { get; set; }
         public string Pres_RP { get; set; }
         public string Oracion { get; set; }
-        public Main_Form.Male_Type male_type { get; set; }
+        public Main_Form.Male_Type Male_Type { get; set; }
 
         public static void Male_Setup(params object[] list)
         {

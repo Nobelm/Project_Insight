@@ -154,16 +154,13 @@
   <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Project_Insight_Config" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Project_Insight_Config.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Commands_Helper" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Commands_Helper.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="Bible_Books" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Bible_Books.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="Speech_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Speech_list.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Songs_List" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Songs_List.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>
