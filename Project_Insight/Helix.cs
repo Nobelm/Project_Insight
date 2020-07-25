@@ -419,7 +419,7 @@ namespace Project_Insight
                 Sheet_Week.Cells[cell, K] = "Sala Principal";
                 cell++;
                 //Discurso
-                range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + cell.ToString());
+                range = Sheet_Week.get_Range("A" + cell.ToString(), "J" + cell.ToString());
                 range.Cells.Merge();
                 Sheet_Week.Cells[cell, A] = "• " + sem.Discurso_VyM;
                 Set_Font(Sheet_Week.get_Range("A" + cell));
