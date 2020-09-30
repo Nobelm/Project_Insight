@@ -45,6 +45,8 @@ namespace Project_Insight
         public class Persistence_Request
         {
             public Insight_Sem persistence_insight;
+            public bool autofill = false;
+            public bool autofill_all = false;
         }
 
         /*-------------------- Initialize methods -------------------- */
@@ -333,6 +335,24 @@ namespace Project_Insight
                 Persistence_Worker(request.persistence_insight);
                 Main_Form.Pending_refresh_status_grids = true;
             }
+            if (request.autofill)
+            {
+                Main_Form.Notify("Executing Autofill handler");
+                if (request.autofill_all)
+                {
+                    Main_Form.Notify("Autofill for all weeks");
+                    for (int i = 1; i <= Main_Form.number_of_weeks; i++)
+                    {
+                        Autofill_Handler(i);
+                    }
+                }
+                else
+                {
+                    Main_Form.Notify("Autofill for week [" + Main_Form.current_week.ToString() + "]");
+                    Autofill_Handler(Main_Form.current_week);
+                }
+                Main_Form.Pending_Week_Handler_Refresh = true;
+            }
             attending_persistance = false;
         }
 
@@ -391,6 +411,43 @@ namespace Project_Insight
                         Main_Form.Male_List[i].Acomodador = sem.Fecha_RP.ToString("dd/MM/yyyy");
                     }
                 }
+            }
+        }
+
+        private static void Autofill_Handler(int week)
+        {
+            switch (week)
+            {
+                case 1:
+                    {
+                        Main_Form.Insight_month.Semana1.AutoFill();
+                        Persistence_Worker(Main_Form.Insight_month.Semana1);
+                        break;
+                    }
+                case 2:
+                    {
+                        Main_Form.Insight_month.Semana2.AutoFill();
+                        Persistence_Worker(Main_Form.Insight_month.Semana2);
+                        break;
+                    }
+                case 3:
+                    {
+                        Main_Form.Insight_month.Semana3.AutoFill();
+                        Persistence_Worker(Main_Form.Insight_month.Semana3);
+                        break;
+                    }
+                case 4:
+                    {
+                        Main_Form.Insight_month.Semana4.AutoFill();
+                        Persistence_Worker(Main_Form.Insight_month.Semana4);
+                        break;
+                    }
+                case 5:
+                    {
+                        Main_Form.Insight_month.Semana5.AutoFill();
+                        Persistence_Worker(Main_Form.Insight_month.Semana5);
+                        break;
+                    }
             }
         }
     }

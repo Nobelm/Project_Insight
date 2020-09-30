@@ -331,7 +331,7 @@ namespace Project_Insight
                         if (str.Contains("<li>"))
                         {
                             string aux = Analyze_string(str);
-                            if(aux.Contains("mins."))
+                            if(aux.Contains("mins"))
                             {
                                 switch (smm_attend)
                                 {
@@ -387,7 +387,7 @@ namespace Project_Insight
                                 {
                                     if (!aux.Contains("Palabras de conclusión"))
                                     {
-                                        if (aux.Contains("30 mins."))
+                                        if (aux.Contains("(30"))
                                         {
                                             insight_Sem_Local.Libro_Titulo = aux;
                                         }
@@ -542,13 +542,20 @@ namespace Project_Insight
                 //Find Title
                 if (int.TryParse(number_found, out int index))
                 {
-                    title = Songs_Titles_List[index - 1];
+                    if (index > 1)
+                    {
+                        title = Songs_Titles_List[index - 1];
+                    }
                     //Format string
                     retval = "Canción: " + number_found.ToString() + " - \"" + title + "\"";
                     if (str.Contains("oración"))
                     {
                         retval += " y oración"; 
                     }
+                }
+                if(!is_number_found && str.ToLower().Contains("pendiente"))
+                {
+                    retval = "Cancion pendiente";
                 }
 
             }

@@ -127,17 +127,34 @@ namespace Project_Insight
                         Main_Form.Main_Allowed = true;
                         Main_Form.Pending_Week_Handler_Refresh = true;
                         Overwatch.OW_Request = true;
-                        Persistence.Persistence_Request request = new Persistence.Persistence_Request();
-                        request.persistence_insight = Main_Form.Insight_month.Semana1;
-                        Persistence.Persistence_Requests_List.Add(request);
-                        request.persistence_insight = Main_Form.Insight_month.Semana2;
-                        Persistence.Persistence_Requests_List.Add(request);
-                        request.persistence_insight = Main_Form.Insight_month.Semana3;
-                        Persistence.Persistence_Requests_List.Add(request);
-                        request.persistence_insight = Main_Form.Insight_month.Semana4;
-                        Persistence.Persistence_Requests_List.Add(request);
-                        request.persistence_insight = Main_Form.Insight_month.Semana5;
-                        Persistence.Persistence_Requests_List.Add(request);
+                        Persistence.Persistence_Request request1 = new Persistence.Persistence_Request
+                        {
+                            persistence_insight = Main_Form.Insight_month.Semana1
+                        };
+                        Persistence.Persistence_Request request2 = new Persistence.Persistence_Request
+                        {
+                            persistence_insight = Main_Form.Insight_month.Semana2
+                        };
+                        Persistence.Persistence_Request request3 = new Persistence.Persistence_Request
+                        {
+                            persistence_insight = Main_Form.Insight_month.Semana3
+                        };
+                        Persistence.Persistence_Request request4 = new Persistence.Persistence_Request
+                        {
+                            persistence_insight = Main_Form.Insight_month.Semana4
+                        };
+                        Persistence.Persistence_Requests_List.Add(request1);
+                        Persistence.Persistence_Requests_List.Add(request2);
+                        Persistence.Persistence_Requests_List.Add(request3);
+                        Persistence.Persistence_Requests_List.Add(request4);
+                        if (Main_Form.week_five_exist)
+                        {
+                            Persistence.Persistence_Request request5 = new Persistence.Persistence_Request
+                            {
+                                persistence_insight = Main_Form.Insight_month.Semana5
+                            };
+                            Persistence.Persistence_Requests_List.Add(request5);
+                        }
                         break;
                     }
             }
@@ -158,32 +175,6 @@ namespace Project_Insight
                 Sheet_Week = (Excel.Worksheet)objSheets.get_Item(1);
                 range_main = Sheet_Week.get_Range("A1", "M250");
                 cellValue_main = (object[,])range_main.get_Value();
-                /*End Experimental
-                objSheets = objBooks.Worksheets;
-                Sheet_VyM = (Excel.Worksheet)objSheets.get_Item(1);
-                range_1 = Sheet_VyM.get_Range("A1", "H137");
-                cellValue_1 = (object[,])range_1.get_Value();
-                excel_ready = false;
-
-                if ((cellValue_1[53, 1] != null) && (cellValue_1[53, 1].ToString() == "S-140 AGR-Technologies"))
-                {
-                    Main_Form.Notify("File decoded correctly");
-
-                    Sheet_RP = (Excel.Worksheet)objSheets.get_Item(2);
-                    range_2 = Sheet_RP.get_Range("A1", "H70");
-                    cellValue_2 = (object[,])range_2.get_Value();
-
-                    Sheet_AC = (Excel.Worksheet)objSheets.get_Item(3);
-                    range_3 = Sheet_AC.get_Range("A1", "H70");
-                    cellValue_3 = (object[,])range_3.get_Value();
-
-                    Main_Form.Notify("Opening excel Main file");
-                    excel_ready = true;
-                }
-                else
-                {
-                    Main_Form.Warn("Invalid file");
-                }*/
                 open_excel = true;
             }
             catch
@@ -201,7 +192,7 @@ namespace Project_Insight
             Main_Form.Helix_Saving = true;
             loading = 1;
             Main_Form.Notify("Executing Gaia Protocol. Helix Saving");
-            string FileName = Main_Form.meetings_days[0, 0].ToString("MMMM");
+            string FileName = Main_Form.meetings_days[0, 0].ToString("MMMM") + "_" + Main_Form.meetings_days[0, 0].ToString("yyyy");
             string path = System.Windows.Forms.Application.StartupPath + "\\\\Experimental.xlsx";
             if (Opening_Excel(path))
             {
@@ -291,11 +282,11 @@ namespace Project_Insight
                     Main_Form.Notify("Saving as Pdf");
                     Main_Form.Save_as_pdf = false;
                 }
-                loading = 100;
                 Main_Form.Notify("Saved path: " + Main_Form.File_Path);
                 objBooks.Close(0);
                 objApp.Quit();
                 Main_Form.Notify("Save complete!");
+                loading = 100;
                 Main_Form.Helix_Saving = false;
             }
         }
@@ -428,7 +419,7 @@ namespace Project_Insight
                 Sheet_Week.Cells[cell, K] = sem.Discurso_VyM_A;
                 cell++;
                 //Perlas                    
-                range = Sheet_Week.get_Range("A" + cell.ToString(), "G" + cell.ToString());
+                range = Sheet_Week.get_Range("A" + cell.ToString(), "J" + cell.ToString());
                 range.Cells.Merge();
                 Sheet_Week.Cells[cell, A] = "• Busquemos Perlas Escondidas (10 mins.)";
                 Set_Font(Sheet_Week.get_Range("A" + cell));

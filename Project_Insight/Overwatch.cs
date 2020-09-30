@@ -212,12 +212,9 @@ namespace Project_Insight
                 Check_Null_Object(sem.Conductor_Atalaya);
                 if (sem.Special_VyM_Meeting == Main_Form.Special_Meeting_Type.Visit_type)
                 {
-                    
+
                 }
             }
-
-
-
             if (assignments > 0)
             {
                 percentaje = (filled * 100) / assignments;

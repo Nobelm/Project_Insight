@@ -59,7 +59,7 @@ namespace Project_Insight
             Clear_VyM,
             Clear_RP,
             Clear_Ac,
-            Clear_All, 
+            Clear_Full, 
             Clear_none
         }
         public static short iterator_stack = 0;
@@ -76,6 +76,7 @@ namespace Project_Insight
         public static int command_iterator = 0;
         public static int current_tab = 0;
         public static int Generals_Count = 0, Ministerials_Count = 0, Elders_Count = 0, Males_Count = 0;
+        public static int number_of_weeks = 4;
         public const int DPI = 96;
         public const int Constant = 72;
         public static bool busy_trace = false;
@@ -97,7 +98,6 @@ namespace Project_Insight
         public static bool Autocomplete_aux_status = true;
         public static bool Main_Allowed = false;
         public static bool Week_Format = false;     //True for Full format, False for Individual Format
-        private static bool Covert_Ops = false;
         private static bool Edit_Rule = true;
         private static bool Special_Week_Input = false;
         public static DayOfWeek VyM_Day;
@@ -155,7 +155,7 @@ namespace Project_Insight
         {
             Notify("Project Insight");
             Notify("UI up and ready \n\n ------- Welcome back Hierarch! -------\n");
-            Presenter(P.Executor);
+            //Presenter(P.Executor);
             Autocomplete_dictionary();
             txt_Command.Focus();
             Config_Control(true);
@@ -312,70 +312,6 @@ namespace Project_Insight
         }
 
         /*--------------------------------------- Traces and UI functions ---------------------------------------*/
-        public async void Presenter(P ID_Presenter)
-        {
-            if (!Covert_Ops)
-            {
-                if (actual_presenter != (int)ID_Presenter)
-                {
-                    actual_presenter = (int)ID_Presenter;
-                    picPresenter.Image = Project_Insight.Properties.Resources.Noise;
-                    await Task.Delay(300);
-                    switch (ID_Presenter)
-                    {
-                        case P.Executor:
-                            {
-                                picPresenter.Image = Project_Insight.Properties.Resources.Executor;
-                                break;
-                            }
-                        case P.FenixZealot:
-                            {
-                                picPresenter.Image = Project_Insight.Properties.Resources.FenixZealot;
-                                break;
-                            }
-                        case P.FenixDragoon:
-                            {
-                                picPresenter.Image = Project_Insight.Properties.Resources.FenixDragoon;
-                                break;
-                            }
-                        case P.Selendis:
-                            {
-                                picPresenter.Image = Project_Insight.Properties.Resources.Selendis;
-                                break;
-                            }
-                        case P.Oracle:
-                            {
-                                picPresenter.Image = Project_Insight.Properties.Resources.Oracle;
-                                break;
-                            }
-                        case P.DarkTemplar:
-                            {
-                                picPresenter.Image = Project_Insight.Properties.Resources.DarkTemplar;
-                                break;
-                            }
-                        case P.HunterKiller:
-                            {
-                                picPresenter.Image = Project_Insight.Properties.Resources.HunterKiller;
-                                break;
-                            }
-                        case P.Hybrid:
-                            {
-                                picPresenter.Image = Project_Insight.Properties.Resources.Hybrid;
-                                break;
-                            }
-                        case P.Artanis:
-                            {
-                                picPresenter.Image = Project_Insight.Properties.Resources.Artanis;
-                                break;
-                            }
-                    }
-                }
-            }
-            else
-            {
-                picPresenter.Image = Project_Insight.Properties.Resources.Noise;
-            }
-        }
 
         public static void Notify(string data)
         {
@@ -441,7 +377,7 @@ namespace Project_Insight
             {
                 Process_Trace(Info_trace[0]);
             }
-            if (Helix_Saving)
+            if (Helix_Saving || LoadingBar.Visible)
             {
                 LoadingBarHandler();
             }
@@ -513,6 +449,8 @@ namespace Project_Insight
                                                     //m_año++;
                                                 }
                                                 Persistence.DB_Requests_List.Add(Persistence.DB_Request.read);
+                                                Notify("Request Heavensward info");
+                                                Heavensward.Request_Heavensward = true;
                                                 break;
                                             }
                                         }
@@ -543,12 +481,12 @@ namespace Project_Insight
                                     {
                                         sup = sup.ToLower();
                                         int hx_rq = 0;
-                                        if (sup.Contains("db"))
+                                        if (sup.Contains("-db"))
                                         {
                                             hx_rq = 1;
                                         }
                                         Process_Helix(hx_rq);
-                                        if (sup.Contains("pdf"))
+                                        if (sup.Contains("-pdf"))
                                         {
                                             Save_as_pdf = true;
                                         }
@@ -650,7 +588,7 @@ namespace Project_Insight
                                 {
                                     if (UI_running)
                                     {
-                                        if (sup.Contains("rmv"))
+                                        if (sup.Contains("-rmv"))
                                         {
                                             Notify("Clear Special Meeting info for current week");
                                             Insight_Sem aux_sem = new Insight_Sem();
@@ -676,7 +614,14 @@ namespace Project_Insight
                                 {
                                     if (UI_running)
                                     {
-                                        AutoFill_Handler();
+                                        Save_Current_Week();
+                                        Persistence.Persistence_Request request = new Persistence.Persistence_Request();
+                                        request.autofill = true;
+                                        if (sup.Contains("-all"))
+                                        {
+                                            request.autofill_all = true;
+                                        }
+                                        Persistence.Persistence_Requests_List.Add(request);
                                     }
                                     break;
                                 }
@@ -694,50 +639,86 @@ namespace Project_Insight
                                     }
                                     break;
                                 }
-                            case "cov":
-                                {
-                                    if (!UI_running)
-                                    {
-                                        Notify("Covert Operations");
-                                        Covert_Ops = true;
-                                    }
-                                    break;
-                                }
                             case "clear":
                                 {
                                     if (UI_running)
                                     {
+                                        string used_cmds = "";
                                         sup = sup.ToLower();
-                                        Clear_Insight clear_Insight;
-                                        if (sup.Contains("vym"))
+                                        if (sup.Contains("-vym"))
                                         {
-                                            clear_Insight = Clear_Insight.Clear_VyM;
+                                            used_cmds = used_cmds + "-vym ";
+                                            if (sup.Contains("-all"))
+                                            {
+                                                for (int i = 1; i <= number_of_weeks; i++)
+                                                {
+                                                    Clear_Handler(Clear_Insight.Clear_VyM, i);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Clear_Handler(Clear_Insight.Clear_VyM, current_week);
+                                            }
                                         }
-                                        else if (sup.Contains("rp"))
+                                        if (sup.Contains("-rp"))
                                         {
-                                            clear_Insight = Clear_Insight.Clear_RP;
+                                            used_cmds = used_cmds + "-rp ";
+                                            if (sup.Contains("-all"))
+                                            {
+                                                for (int i = 1; i <= number_of_weeks; i++)
+                                                {
+                                                    Clear_Handler(Clear_Insight.Clear_RP, i);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Clear_Handler(Clear_Insight.Clear_RP, current_week);
+                                            }
                                         }
-                                        else if (sup.Contains("ac"))
+                                        if (sup.Contains("-ac"))
                                         {
-                                            clear_Insight = Clear_Insight.Clear_Ac;
+                                            used_cmds = used_cmds + "-ac ";
+                                            if (sup.Contains("-all"))
+                                            {
+                                                for (int i = 1; i <= number_of_weeks; i++)
+                                                {
+                                                    Clear_Handler(Clear_Insight.Clear_Ac, i);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Clear_Handler(Clear_Insight.Clear_Ac, current_week);
+                                            }
                                         }
-                                        else if (sup.Contains("all"))
+                                        if (sup.Contains("-full"))
                                         {
-                                            clear_Insight = Clear_Insight.Clear_All;
-                                        }
+                                            used_cmds = used_cmds + "-full ";
+                                            if (sup.Contains("-all"))
+                                            {
+                                                for (int i = 1; i <= number_of_weeks; i++)
+                                                {
+                                                    Clear_Handler(Clear_Insight.Clear_Full, i);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Clear_Handler(Clear_Insight.Clear_Full, current_week);
+                                            }
+                                        }/*
                                         else
                                         {
                                             clear_Insight = Clear_Insight.Clear_none;
                                             Warn("Command not recognized");
-                                        }
-                                        Clear_Handler(clear_Insight);
+                                        }*/
+
+                                        Pending_Week_Handler_Refresh = true;
+                                        Notify("Clear with command(s) [" + used_cmds + "]");
                                     }
                                     break;
                                 }
                             case "test":
                                 {
                                     Notify("Testing");
-                                    Heavensward.Get_Songs_From_Watchtower();
                                     break;
                                 }
                             default:
@@ -971,7 +952,6 @@ namespace Project_Insight
                     {
                         if (Dict_vym.ContainsKey(cmd))
                         {
-                            Change_Presenter(cmd);
                             TextBox txt = (TextBox)Dict_vym[cmd];
                             txt.BackColor = Color.OrangeRed;
                             if ((cmd != aux_command) && (aux_command != null) && Dict_vym.ContainsKey(aux_command))
@@ -995,7 +975,6 @@ namespace Project_Insight
                     {
                         if (Dict_rp.ContainsKey(cmd))
                         {
-                            Change_Presenter(cmd);
                             TextBox txt = (TextBox)Dict_rp[cmd];
                             txt.BackColor = Color.OrangeRed;
                             if ((cmd != aux_command) && (aux_command != null) && Dict_rp.ContainsKey(aux_command))
@@ -1019,7 +998,6 @@ namespace Project_Insight
                     {
                         if (Dict_ac.ContainsKey(cmd))
                         {
-                            Change_Presenter(cmd);
                             TextBox txt = (TextBox)Dict_ac[cmd];
                             txt.BackColor = Color.OrangeRed;
                             if ((cmd != aux_command) && (aux_command != null) && Dict_ac.ContainsKey(aux_command))
@@ -1033,28 +1011,12 @@ namespace Project_Insight
                         {
                             if (Dict_ac.ContainsKey(aux_command))
                             {
-                                TextBox txt = (TextBox)Dict_ac[aux_command];
+                                TextBox txt = (TextBox)Dict_ac[aux_command]; 
                                 txt.BackColor = Color.White;
                             }
                         }
                         break;
                     }
-            }
-        }
-
-        public void Change_Presenter(string cmd)
-        {
-            if (cmd.Contains("ig") || cmd.Contains("tb"))
-            {
-                Presenter(P.Executor);
-            }
-            else if (cmd.Contains("sm"))
-            {
-                Presenter(P.Oracle);
-            }
-            else if (cmd.Contains("nv"))
-            {
-                Presenter(P.DarkTemplar);
             }
         }
 
@@ -1383,6 +1345,7 @@ namespace Project_Insight
             } while (true);
             if (week == 4)
             {
+                number_of_weeks = 5;
                 week_five_exist = true;
             }
 
@@ -1426,9 +1389,9 @@ namespace Project_Insight
             }
         }
 
-        public void Clear_Handler(Clear_Insight clear_Insight)
+        public void Clear_Handler(Clear_Insight clear_Insight, int week)
         {
-            switch (current_week)
+            switch (week)
             {
                 case 1:
                     {
@@ -1456,8 +1419,6 @@ namespace Project_Insight
                         break;
                     }
             }
-            Pending_Week_Handler_Refresh = true;
-            Notify("Clear for week [" + current_week + "] with command [" + clear_Insight.ToString() + "]");
         }
 
         /*---------------------------------------- Helix handler -----------------------------------------*/
@@ -1473,25 +1434,25 @@ namespace Project_Insight
 
         private void General_Info_Enter(object sender, EventArgs e)
         {
-            Presenter(P.Executor);
+            //Presenter(P.Executor);
             Notify("Overview");
         }
 
         private void Tesoros_Biblia_Enter(object sender, EventArgs e)
         {
-            Presenter(P.DarkTemplar);
+            //Presenter(P.DarkTemplar);
             Notify("Section 'Tesoros de la Biblia'");
         }
 
         private void Seamos_Maestros_Enter(object sender, EventArgs e)
         {
-            Presenter(P.Selendis);
+            //Presenter(P.Selendis);
             Notify("Section 'Seamos Mejores Maestros'");
         }
 
         private void Nuestra_Vida_Enter(object sender, EventArgs e)
         {
-            Presenter(P.DarkTemplar);
+            //Presenter(P.DarkTemplar);
             Notify("Section 'Nuestra Vida Cristiana'");
         }
 
@@ -1511,7 +1472,6 @@ namespace Project_Insight
             {
                 case 0:
                     {
-                        Presenter(P.Executor);
                         current_tab = 0;
                         autocomplete.AddRange(Dict_vym.Keys.ToArray());
                         Notify("\"Vida y Ministerio\" meeting");
@@ -1519,12 +1479,6 @@ namespace Project_Insight
                     }
                 case 1:
                     {
-                        presenter_RP++;
-                        if (presenter_RP > 5)
-                        {
-                            presenter_RP = 3;
-                        }
-                        Presenter((P)presenter_RP);
                         current_tab = 1;
                         autocomplete.AddRange(Dict_rp.Keys.ToArray());
                         Notify("\"Reunion Publica y Analisis de La Atalaya\" meeting");
@@ -1532,12 +1486,6 @@ namespace Project_Insight
                     }
                 case 2:
                     {
-                        presenter_AC++;
-                        if (presenter_AC > 8)
-                        {
-                            presenter_AC = 6;
-                        }
-                        Presenter((P)presenter_AC);
                         current_tab = 2;
                         autocomplete.AddRange(Dict_ac.Keys.ToArray());
                         Notify("\"Acomodadores\" Section");
@@ -1546,7 +1494,6 @@ namespace Project_Insight
                 case 3:
                     {
                         Pending_refresh_status_grids = true;
-                        Presenter(P.HunterKiller);
                         current_tab = 3;
                         Notify("\"Male Status\" Section");
                         Rules_cmbx.SelectedIndex = 0;
@@ -1660,56 +1607,7 @@ namespace Project_Insight
                         break;
                     }
             }
-            //Time_Handler();
         }
-        /*
-        public void Time_Handler()
-        {
-            string[] Time_data = new string[15];
-            switch (current_week)
-            {
-                case 1:
-                    {
-                        Time_data = Helix.Get_time_from_week(Insight_month.Semana1);
-                        break;
-                    }
-                case 2:
-                    {
-                        Time_data = Helix.Get_time_from_week(Insight_month.Semana2);
-                        break;
-                    }
-                case 3:
-                    {
-                        Time_data = Helix.Get_time_from_week(Insight_month.Semana3);
-                        break;
-                    }
-                case 4:
-                    {
-                        Time_data = Helix.Get_time_from_week(Insight_month.Semana4);
-                        break;
-                    }
-                default:
-                    {
-                        Time_data = Helix.Get_time_from_week(Insight_month.Semana5);
-                        break;
-                    }
-            }
-            time_0.Text = Time_data[0];
-            time_1.Text = Time_data[1];
-            time_2.Text = Time_data[2];
-            time_3.Text = Time_data[3];
-            time_4.Text = Time_data[4];
-            time_5.Text = Time_data[5];
-            time_6.Text = Time_data[6];
-            time_7.Text = Time_data[7];
-            time_8.Text = Time_data[8];
-            time_9.Text = Time_data[9];
-            time_10.Text = Time_data[10];
-            time_11.Text = Time_data[11];
-            time_12.Text = Time_data[12];
-            time_13.Text = Time_data[13];
-            time_14.Text = Time_data[14];
-        }*/
 
         private void Set_date()
         {
@@ -1725,51 +1623,6 @@ namespace Project_Insight
                     Notify("Current Date: [" + m_dia.ToString() + "/" + m_mes.ToString() + "/" + m_año.ToString() + "]");
                 }
             }
-        }
-
-        /*************************************Autofill handler*******************************************/
-
-        public void AutoFill_Handler()
-        {
-            Notify("Executing AutoFill Handler");
-            Save_Current_Week();
-
-            Persistence.Persistence_Request request = new Persistence.Persistence_Request();
-            switch (current_week)
-            {
-                case 1:
-                    {
-                        Insight_month.Semana1.AutoFill();
-                        request.persistence_insight = Insight_month.Semana1;
-                        break;
-                    }
-                case 2:
-                    {
-                        Insight_month.Semana2.AutoFill();
-                        request.persistence_insight = Insight_month.Semana2;
-                        break;
-                    }
-                case 3:
-                    {
-                        Insight_month.Semana3.AutoFill();
-                        request.persistence_insight = Insight_month.Semana3;
-                        break;
-                    }
-                case 4:
-                    {
-                        Insight_month.Semana4.AutoFill();
-                        request.persistence_insight = Insight_month.Semana4;
-                        break;
-                    }
-                case 5:
-                    {
-                        Insight_month.Semana5.AutoFill();
-                        request.persistence_insight = Insight_month.Semana5;
-                        break;
-                    }
-            }
-            Persistence.Persistence_Requests_List.Add(request);
-            Pending_Week_Handler_Refresh = true;
         }
 
         /*Reader for speech number*/
@@ -1797,7 +1650,7 @@ namespace Project_Insight
             }
             else
             {
-                Warn("Unable to get selected speech");
+                Notify("Unable to get selected speech");
             }
             return retval;
         }
@@ -2059,12 +1912,12 @@ namespace Project_Insight
                 Cancion_VyM_1  = txt_Song_VyM_1.Text,
                 Presidente_VyM = txt_Pres.Text,
                 Consejero_Aux  = txt_ConAux.Text,
-                Discurso_VyM       = txt_TdlB_1.Text,
-                Discurso_VyM_A     = txt_TdlB_A1.Text,
-                Perlas         = txt_TdlB_A2.Text,
-                Lectura_Biblia        = txt_TdlB_3.Text,
-                Lectura_Biblia_A      = txt_TdlB_A3.Text,
-                Lectura_Biblia_B      = txt_TdlB_B3.Text,
+                Discurso_VyM   = txt_TdlB_1.Text,
+                Discurso_VyM_A   = txt_TdlB_A1.Text,
+                Perlas           = txt_TdlB_A2.Text,
+                Lectura_Biblia   = txt_TdlB_3.Text,
+                Lectura_Biblia_A = txt_TdlB_A3.Text,
+                Lectura_Biblia_B = txt_TdlB_B3.Text,
                 SMM1           = txt_SMM1.Text,
                 SMM1_A         = txt_SMM_A1.Text,
                 SMM1_B         = txt_SMM_B1.Text,
@@ -2109,23 +1962,7 @@ namespace Project_Insight
                 Special_RP_Meeting = sem_aux.Special_RP_Meeting,
                 Special_VyM_Meeting_Info = sem_aux.Special_VyM_Meeting_Info,
                 Special_RP_Meeting_Info = sem_aux.Special_RP_Meeting_Info,
-            };/*
-            if (sem.Special_VyM_Meeting == Special_Meeting_Type.Visit_type)
-            {
-                sem.Libro_Titulo = txt_NVC3.Text;
-                Alert_Label_VyM.Visible = true;
-                Alert_Label_RP.Visible = true;
-                Alert_Label_VyM.Text = sem.Special_VyM_Meeting_Info;
-                Alert_Label_RP.Text = sem.Special_RP_Meeting_Info;
-            }
-            else
-            {
-                sem.Libro_Titulo = "Estudio bíblico de la congregación (30 mins. o menos)";
-                Alert_Label_VyM.Visible = false;
-                Alert_Label_RP.Visible = false;
-                Alert_Label_VyM.Text = "";
-                Alert_Label_RP.Text = "";
-            }*/
+            };
             return sem;
         }
 
@@ -2376,7 +2213,6 @@ namespace Project_Insight
                 Previous_Male_Type = cell.Value.ToString();
             }
         }
-
 
         private void Male_Status_GridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -2668,7 +2504,7 @@ namespace Project_Insight
         {
             TextBox txt = (TextBox)sender;
             string retval = "";
-            if (txt.TextLength < 5)
+            if (txt.TextLength < 5 || txt.Text.ToLower().Contains("pendiente"))
             {
                 if (txt.Text.Length > 0)
                 {

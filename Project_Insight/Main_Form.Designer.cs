@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.Log_txtBx = new System.Windows.Forms.RichTextBox();
-            this.picPresenter = new System.Windows.Forms.PictureBox();
-            this.protoss_Frame = new System.Windows.Forms.PictureBox();
             this.tab_Control = new System.Windows.Forms.TabControl();
             this.Tab_VyM = new System.Windows.Forms.TabPage();
             this.Nuestra_Vida = new System.Windows.Forms.GroupBox();
@@ -231,8 +229,6 @@
             this.Main_Timer = new System.Windows.Forms.Timer(this.components);
             this.LoadingBar = new System.Windows.Forms.ProgressBar();
             this.Overwatch_Status_GridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.picPresenter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.protoss_Frame)).BeginInit();
             this.tab_Control.SuspendLayout();
             this.Tab_VyM.SuspendLayout();
             this.Nuestra_Vida.SuspendLayout();
@@ -258,19 +254,6 @@
             this.Log_txtBx.ForeColor = System.Drawing.Color.White;
             this.Log_txtBx.Name = "Log_txtBx";
             this.Log_txtBx.ReadOnly = true;
-            // 
-            // picPresenter
-            // 
-            this.picPresenter.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.picPresenter, "picPresenter");
-            this.picPresenter.Name = "picPresenter";
-            this.picPresenter.TabStop = false;
-            // 
-            // protoss_Frame
-            // 
-            resources.ApplyResources(this.protoss_Frame, "protoss_Frame");
-            this.protoss_Frame.Name = "protoss_Frame";
-            this.protoss_Frame.TabStop = false;
             // 
             // tab_Control
             // 
@@ -1738,14 +1721,11 @@
             this.Controls.Add(this.m_calendar);
             this.Controls.Add(this.tab_Control);
             this.Controls.Add(this.Log_txtBx);
-            this.Controls.Add(this.picPresenter);
-            this.Controls.Add(this.protoss_Frame);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "Main_Form";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_Form_FormClosed);
             this.Load += new System.EventHandler(this.Main_Form_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picPresenter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.protoss_Frame)).EndInit();
             this.tab_Control.ResumeLayout(false);
             this.Tab_VyM.ResumeLayout(false);
             this.Nuestra_Vida.ResumeLayout(false);
@@ -1777,10 +1757,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox picPresenter;
         private System.Windows.Forms.RichTextBox Log_txtBx;
-        private System.Windows.Forms.PictureBox protoss_Frame;
         private System.Windows.Forms.TabControl tab_Control;
         private System.Windows.Forms.TabPage Tab_VyM;
         private System.Windows.Forms.MonthCalendar m_calendar;

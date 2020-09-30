@@ -86,7 +86,7 @@ namespace Project_Insight
         public void Clear(Main_Form.Clear_Insight clear_Insight)
         {
             // Fecha = "";
-            if (clear_Insight == Main_Form.Clear_Insight.Clear_VyM || clear_Insight == Main_Form.Clear_Insight.Clear_All)
+            if (clear_Insight == Main_Form.Clear_Insight.Clear_VyM || clear_Insight == Main_Form.Clear_Insight.Clear_Full)
             {
                 Cancion_VyM_1 = "";
                 Cancion_VyM_2 = "";
@@ -120,7 +120,7 @@ namespace Project_Insight
                 Libro_Lector = "";
                 Oracion_End_VyM = "";
             }
-            if (clear_Insight == Main_Form.Clear_Insight.Clear_RP || clear_Insight == Main_Form.Clear_Insight.Clear_All)
+            if (clear_Insight == Main_Form.Clear_Insight.Clear_RP || clear_Insight == Main_Form.Clear_Insight.Clear_Full)
             {
                 Cancion_RP_1 = "";
                 Cancion_RP_2 = "";
@@ -137,7 +137,7 @@ namespace Project_Insight
                 Ttl_Sal = "";
                 Cong_Sal = "";
             }
-            if (clear_Insight == Main_Form.Clear_Insight.Clear_Ac || clear_Insight == Main_Form.Clear_Insight.Clear_All)
+            if (clear_Insight == Main_Form.Clear_Insight.Clear_Ac || clear_Insight == Main_Form.Clear_Insight.Clear_Full)
             {
                 Aseo = "";
                 Vym_Cap = "";
